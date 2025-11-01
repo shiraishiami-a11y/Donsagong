@@ -1,0 +1,6284 @@
+{
+  "range": "1940-1980",
+  "total_years": 41,
+  "validated_years": 41,
+  "total_terms": 984,
+  "validated_terms": 984,
+  "error_count": 0,
+  "year_results": {
+    "1940": {
+      "year": 1940,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1940-02-28 07:59:59",
+          "calculated_time": "1940-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1940-02-01 08:00:00",
+          "calculated_time": "1940-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1940-03-28 07:59:59",
+          "calculated_time": "1940-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1940-03-01 08:00:00",
+          "calculated_time": "1940-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1940-04-28 07:59:59",
+          "calculated_time": "1940-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1940-04-01 08:00:00",
+          "calculated_time": "1940-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1940-05-28 07:59:59",
+          "calculated_time": "1940-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1940-05-01 08:00:00",
+          "calculated_time": "1940-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1940-06-28 07:59:59",
+          "calculated_time": "1940-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1940-06-01 08:00:00",
+          "calculated_time": "1940-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1940-07-28 07:59:59",
+          "calculated_time": "1940-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1940-07-01 08:00:00",
+          "calculated_time": "1940-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1940-08-28 07:59:59",
+          "calculated_time": "1940-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1940-08-01 08:00:00",
+          "calculated_time": "1940-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1940-09-28 07:59:59",
+          "calculated_time": "1940-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1940-09-01 08:00:00",
+          "calculated_time": "1940-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1940-10-28 07:59:59",
+          "calculated_time": "1940-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1940-10-01 08:00:00",
+          "calculated_time": "1940-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1940-11-28 07:59:59",
+          "calculated_time": "1940-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1940-11-01 08:00:00",
+          "calculated_time": "1940-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1940-12-28 07:59:59",
+          "calculated_time": "1940-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1940-12-01 08:00:00",
+          "calculated_time": "1940-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1941-01-28 07:59:59",
+          "calculated_time": "1941-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1941-01-01 08:00:00",
+          "calculated_time": "1941-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1941": {
+      "year": 1941,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1941-02-28 07:59:59",
+          "calculated_time": "1941-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1941-02-01 08:00:00",
+          "calculated_time": "1941-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1941-03-28 07:59:59",
+          "calculated_time": "1941-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1941-03-01 08:00:00",
+          "calculated_time": "1941-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1941-04-28 07:59:59",
+          "calculated_time": "1941-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1941-04-01 08:00:00",
+          "calculated_time": "1941-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1941-05-28 07:59:59",
+          "calculated_time": "1941-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1941-05-01 08:00:00",
+          "calculated_time": "1941-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1941-06-28 07:59:59",
+          "calculated_time": "1941-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1941-06-01 08:00:00",
+          "calculated_time": "1941-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1941-07-28 07:59:59",
+          "calculated_time": "1941-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1941-07-01 08:00:00",
+          "calculated_time": "1941-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1941-08-28 07:59:59",
+          "calculated_time": "1941-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1941-08-01 08:00:00",
+          "calculated_time": "1941-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1941-09-28 07:59:59",
+          "calculated_time": "1941-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1941-09-01 08:00:00",
+          "calculated_time": "1941-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1941-10-28 07:59:59",
+          "calculated_time": "1941-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1941-10-01 08:00:00",
+          "calculated_time": "1941-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1941-11-28 07:59:59",
+          "calculated_time": "1941-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1941-11-01 08:00:00",
+          "calculated_time": "1941-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1941-12-28 07:59:59",
+          "calculated_time": "1941-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1941-12-01 08:00:00",
+          "calculated_time": "1941-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1942-01-28 07:59:59",
+          "calculated_time": "1942-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1942-01-01 08:00:00",
+          "calculated_time": "1942-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1942": {
+      "year": 1942,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1942-02-28 07:59:59",
+          "calculated_time": "1942-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1942-02-01 08:00:00",
+          "calculated_time": "1942-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1942-03-28 07:59:59",
+          "calculated_time": "1942-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1942-03-01 08:00:00",
+          "calculated_time": "1942-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1942-04-28 07:59:59",
+          "calculated_time": "1942-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1942-04-01 08:00:00",
+          "calculated_time": "1942-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1942-05-28 07:59:59",
+          "calculated_time": "1942-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1942-05-01 08:00:00",
+          "calculated_time": "1942-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1942-06-28 07:59:59",
+          "calculated_time": "1942-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1942-06-01 08:00:00",
+          "calculated_time": "1942-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1942-07-28 07:59:59",
+          "calculated_time": "1942-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1942-07-01 08:00:00",
+          "calculated_time": "1942-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1942-08-28 07:59:59",
+          "calculated_time": "1942-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1942-08-01 08:00:00",
+          "calculated_time": "1942-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1942-09-28 07:59:59",
+          "calculated_time": "1942-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1942-09-01 08:00:00",
+          "calculated_time": "1942-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1942-10-28 07:59:59",
+          "calculated_time": "1942-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1942-10-01 08:00:00",
+          "calculated_time": "1942-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1942-11-28 07:59:59",
+          "calculated_time": "1942-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1942-11-01 08:00:00",
+          "calculated_time": "1942-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1942-12-28 07:59:59",
+          "calculated_time": "1942-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1942-12-01 08:00:00",
+          "calculated_time": "1942-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1943-01-28 07:59:59",
+          "calculated_time": "1943-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1943-01-01 08:00:00",
+          "calculated_time": "1943-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1943": {
+      "year": 1943,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1943-02-28 07:59:59",
+          "calculated_time": "1943-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1943-02-01 08:00:00",
+          "calculated_time": "1943-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1943-03-28 07:59:59",
+          "calculated_time": "1943-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1943-03-01 08:00:00",
+          "calculated_time": "1943-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1943-04-28 07:59:59",
+          "calculated_time": "1943-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1943-04-01 08:00:00",
+          "calculated_time": "1943-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1943-05-28 07:59:59",
+          "calculated_time": "1943-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1943-05-01 08:00:00",
+          "calculated_time": "1943-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1943-06-28 07:59:59",
+          "calculated_time": "1943-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1943-06-01 08:00:00",
+          "calculated_time": "1943-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1943-07-28 07:59:59",
+          "calculated_time": "1943-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1943-07-01 08:00:00",
+          "calculated_time": "1943-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1943-08-28 07:59:59",
+          "calculated_time": "1943-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1943-08-01 08:00:00",
+          "calculated_time": "1943-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1943-09-28 07:59:59",
+          "calculated_time": "1943-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1943-09-01 08:00:00",
+          "calculated_time": "1943-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1943-10-28 07:59:59",
+          "calculated_time": "1943-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1943-10-01 08:00:00",
+          "calculated_time": "1943-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1943-11-28 07:59:59",
+          "calculated_time": "1943-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1943-11-01 08:00:00",
+          "calculated_time": "1943-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1943-12-28 07:59:59",
+          "calculated_time": "1943-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1943-12-01 08:00:00",
+          "calculated_time": "1943-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1944-01-28 07:59:59",
+          "calculated_time": "1944-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1944-01-01 08:00:00",
+          "calculated_time": "1944-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1944": {
+      "year": 1944,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1944-02-28 07:59:59",
+          "calculated_time": "1944-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1944-02-01 08:00:00",
+          "calculated_time": "1944-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1944-03-28 07:59:59",
+          "calculated_time": "1944-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1944-03-01 08:00:00",
+          "calculated_time": "1944-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1944-04-28 07:59:59",
+          "calculated_time": "1944-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1944-04-01 08:00:00",
+          "calculated_time": "1944-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1944-05-28 07:59:59",
+          "calculated_time": "1944-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1944-05-01 08:00:00",
+          "calculated_time": "1944-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1944-06-28 07:59:59",
+          "calculated_time": "1944-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1944-06-01 08:00:00",
+          "calculated_time": "1944-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1944-07-28 07:59:59",
+          "calculated_time": "1944-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1944-07-01 08:00:00",
+          "calculated_time": "1944-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1944-08-28 07:59:59",
+          "calculated_time": "1944-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1944-08-01 08:00:00",
+          "calculated_time": "1944-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1944-09-28 07:59:59",
+          "calculated_time": "1944-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1944-09-01 08:00:00",
+          "calculated_time": "1944-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1944-10-28 07:59:59",
+          "calculated_time": "1944-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1944-10-01 08:00:00",
+          "calculated_time": "1944-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1944-11-28 07:59:59",
+          "calculated_time": "1944-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1944-11-01 08:00:00",
+          "calculated_time": "1944-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1944-12-28 07:59:59",
+          "calculated_time": "1944-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1944-12-01 08:00:00",
+          "calculated_time": "1944-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1945-01-28 07:59:59",
+          "calculated_time": "1945-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1945-01-01 08:00:00",
+          "calculated_time": "1945-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1945": {
+      "year": 1945,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1945-02-28 07:59:59",
+          "calculated_time": "1945-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1945-02-01 08:00:00",
+          "calculated_time": "1945-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1945-03-28 07:59:59",
+          "calculated_time": "1945-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1945-03-01 08:00:00",
+          "calculated_time": "1945-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1945-04-28 07:59:59",
+          "calculated_time": "1945-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1945-04-01 08:00:00",
+          "calculated_time": "1945-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1945-05-28 07:59:59",
+          "calculated_time": "1945-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1945-05-01 08:00:00",
+          "calculated_time": "1945-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1945-06-28 07:59:59",
+          "calculated_time": "1945-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1945-06-01 08:00:00",
+          "calculated_time": "1945-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1945-07-28 07:59:59",
+          "calculated_time": "1945-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1945-07-01 08:00:00",
+          "calculated_time": "1945-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1945-08-28 07:59:59",
+          "calculated_time": "1945-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1945-08-01 08:00:00",
+          "calculated_time": "1945-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1945-09-28 07:59:59",
+          "calculated_time": "1945-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1945-09-01 08:00:00",
+          "calculated_time": "1945-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1945-10-28 07:59:59",
+          "calculated_time": "1945-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1945-10-01 08:00:00",
+          "calculated_time": "1945-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1945-11-28 07:59:59",
+          "calculated_time": "1945-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1945-11-01 08:00:00",
+          "calculated_time": "1945-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1945-12-28 07:59:59",
+          "calculated_time": "1945-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1945-12-01 08:00:00",
+          "calculated_time": "1945-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1946-01-28 07:59:59",
+          "calculated_time": "1946-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1946-01-01 08:00:00",
+          "calculated_time": "1946-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1946": {
+      "year": 1946,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1946-02-28 07:59:59",
+          "calculated_time": "1946-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1946-02-01 08:00:00",
+          "calculated_time": "1946-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1946-03-28 07:59:59",
+          "calculated_time": "1946-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1946-03-01 08:00:00",
+          "calculated_time": "1946-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1946-04-28 07:59:59",
+          "calculated_time": "1946-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1946-04-01 08:00:00",
+          "calculated_time": "1946-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1946-05-28 07:59:59",
+          "calculated_time": "1946-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1946-05-01 08:00:00",
+          "calculated_time": "1946-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1946-06-28 07:59:59",
+          "calculated_time": "1946-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1946-06-01 08:00:00",
+          "calculated_time": "1946-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1946-07-28 07:59:59",
+          "calculated_time": "1946-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1946-07-01 08:00:00",
+          "calculated_time": "1946-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1946-08-28 07:59:59",
+          "calculated_time": "1946-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1946-08-01 08:00:00",
+          "calculated_time": "1946-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1946-09-28 07:59:59",
+          "calculated_time": "1946-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1946-09-01 08:00:00",
+          "calculated_time": "1946-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1946-10-28 07:59:59",
+          "calculated_time": "1946-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1946-10-01 08:00:00",
+          "calculated_time": "1946-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1946-11-28 07:59:59",
+          "calculated_time": "1946-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1946-11-01 08:00:00",
+          "calculated_time": "1946-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1946-12-28 07:59:59",
+          "calculated_time": "1946-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1946-12-01 08:00:00",
+          "calculated_time": "1946-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1947-01-28 07:59:59",
+          "calculated_time": "1947-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1947-01-01 08:00:00",
+          "calculated_time": "1947-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1947": {
+      "year": 1947,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1947-02-28 07:59:59",
+          "calculated_time": "1947-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1947-02-01 08:00:00",
+          "calculated_time": "1947-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1947-03-28 07:59:59",
+          "calculated_time": "1947-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1947-03-01 08:00:00",
+          "calculated_time": "1947-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1947-04-28 07:59:59",
+          "calculated_time": "1947-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1947-04-01 08:00:00",
+          "calculated_time": "1947-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1947-05-28 07:59:59",
+          "calculated_time": "1947-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1947-05-01 08:00:00",
+          "calculated_time": "1947-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1947-06-28 07:59:59",
+          "calculated_time": "1947-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1947-06-01 08:00:00",
+          "calculated_time": "1947-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1947-07-28 07:59:59",
+          "calculated_time": "1947-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1947-07-01 08:00:00",
+          "calculated_time": "1947-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1947-08-28 07:59:59",
+          "calculated_time": "1947-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1947-08-01 08:00:00",
+          "calculated_time": "1947-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1947-09-28 07:59:59",
+          "calculated_time": "1947-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1947-09-01 08:00:00",
+          "calculated_time": "1947-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1947-10-28 07:59:59",
+          "calculated_time": "1947-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1947-10-01 08:00:00",
+          "calculated_time": "1947-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1947-11-28 07:59:59",
+          "calculated_time": "1947-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1947-11-01 08:00:00",
+          "calculated_time": "1947-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1947-12-28 07:59:59",
+          "calculated_time": "1947-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1947-12-01 08:00:00",
+          "calculated_time": "1947-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1948-01-28 07:59:59",
+          "calculated_time": "1948-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1948-01-01 08:00:00",
+          "calculated_time": "1948-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1948": {
+      "year": 1948,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1948-02-28 07:59:59",
+          "calculated_time": "1948-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1948-02-01 08:00:00",
+          "calculated_time": "1948-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1948-03-28 07:59:59",
+          "calculated_time": "1948-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1948-03-01 08:00:00",
+          "calculated_time": "1948-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1948-04-28 07:59:59",
+          "calculated_time": "1948-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1948-04-01 08:00:00",
+          "calculated_time": "1948-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1948-05-28 07:59:59",
+          "calculated_time": "1948-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1948-05-01 08:00:00",
+          "calculated_time": "1948-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1948-06-28 07:59:59",
+          "calculated_time": "1948-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1948-06-01 08:00:00",
+          "calculated_time": "1948-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1948-07-28 07:59:59",
+          "calculated_time": "1948-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1948-07-01 08:00:00",
+          "calculated_time": "1948-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1948-08-28 07:59:59",
+          "calculated_time": "1948-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1948-08-01 08:00:00",
+          "calculated_time": "1948-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1948-09-28 07:59:59",
+          "calculated_time": "1948-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1948-09-01 08:00:00",
+          "calculated_time": "1948-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1948-10-28 07:59:59",
+          "calculated_time": "1948-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1948-10-01 08:00:00",
+          "calculated_time": "1948-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1948-11-28 07:59:59",
+          "calculated_time": "1948-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1948-11-01 08:00:00",
+          "calculated_time": "1948-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1948-12-28 07:59:59",
+          "calculated_time": "1948-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1948-12-01 08:00:00",
+          "calculated_time": "1948-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1949-01-28 07:59:59",
+          "calculated_time": "1949-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1949-01-01 08:00:00",
+          "calculated_time": "1949-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1949": {
+      "year": 1949,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1949-02-28 07:59:59",
+          "calculated_time": "1949-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1949-02-01 08:00:00",
+          "calculated_time": "1949-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1949-03-28 07:59:59",
+          "calculated_time": "1949-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1949-03-01 08:00:00",
+          "calculated_time": "1949-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1949-04-28 07:59:59",
+          "calculated_time": "1949-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1949-04-01 08:00:00",
+          "calculated_time": "1949-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1949-05-28 07:59:59",
+          "calculated_time": "1949-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1949-05-01 08:00:00",
+          "calculated_time": "1949-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1949-06-28 07:59:59",
+          "calculated_time": "1949-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1949-06-01 08:00:00",
+          "calculated_time": "1949-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1949-07-28 07:59:59",
+          "calculated_time": "1949-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1949-07-01 08:00:00",
+          "calculated_time": "1949-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1949-08-28 07:59:59",
+          "calculated_time": "1949-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1949-08-01 08:00:00",
+          "calculated_time": "1949-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1949-09-28 07:59:59",
+          "calculated_time": "1949-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1949-09-01 08:00:00",
+          "calculated_time": "1949-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1949-10-28 07:59:59",
+          "calculated_time": "1949-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1949-10-01 08:00:00",
+          "calculated_time": "1949-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1949-11-28 07:59:59",
+          "calculated_time": "1949-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1949-11-01 08:00:00",
+          "calculated_time": "1949-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1949-12-28 07:59:59",
+          "calculated_time": "1949-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1949-12-01 08:00:00",
+          "calculated_time": "1949-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1950-01-28 07:59:59",
+          "calculated_time": "1950-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1950-01-01 08:00:00",
+          "calculated_time": "1950-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1950": {
+      "year": 1950,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1950-02-28 07:59:59",
+          "calculated_time": "1950-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1950-02-01 08:00:00",
+          "calculated_time": "1950-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1950-03-28 07:59:59",
+          "calculated_time": "1950-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1950-03-01 08:00:00",
+          "calculated_time": "1950-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1950-04-28 07:59:59",
+          "calculated_time": "1950-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1950-04-01 08:00:00",
+          "calculated_time": "1950-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1950-05-28 07:59:59",
+          "calculated_time": "1950-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1950-05-01 08:00:00",
+          "calculated_time": "1950-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1950-06-28 07:59:59",
+          "calculated_time": "1950-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1950-06-01 08:00:00",
+          "calculated_time": "1950-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1950-07-28 07:59:59",
+          "calculated_time": "1950-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1950-07-01 08:00:00",
+          "calculated_time": "1950-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1950-08-28 07:59:59",
+          "calculated_time": "1950-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1950-08-01 08:00:00",
+          "calculated_time": "1950-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1950-09-28 07:59:59",
+          "calculated_time": "1950-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1950-09-01 08:00:00",
+          "calculated_time": "1950-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1950-10-28 07:59:59",
+          "calculated_time": "1950-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1950-10-01 08:00:00",
+          "calculated_time": "1950-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1950-11-28 07:59:59",
+          "calculated_time": "1950-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1950-11-01 08:00:00",
+          "calculated_time": "1950-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1950-12-28 07:59:59",
+          "calculated_time": "1950-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1950-12-01 08:00:00",
+          "calculated_time": "1950-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1951-01-28 07:59:59",
+          "calculated_time": "1951-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1951-01-01 08:00:00",
+          "calculated_time": "1951-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1951": {
+      "year": 1951,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1951-02-28 07:59:59",
+          "calculated_time": "1951-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1951-02-01 08:00:00",
+          "calculated_time": "1951-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1951-03-28 07:59:59",
+          "calculated_time": "1951-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1951-03-01 08:00:00",
+          "calculated_time": "1951-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1951-04-28 07:59:59",
+          "calculated_time": "1951-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1951-04-01 08:00:00",
+          "calculated_time": "1951-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1951-05-28 07:59:59",
+          "calculated_time": "1951-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1951-05-01 08:00:00",
+          "calculated_time": "1951-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1951-06-28 07:59:59",
+          "calculated_time": "1951-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1951-06-01 08:00:00",
+          "calculated_time": "1951-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1951-07-28 07:59:59",
+          "calculated_time": "1951-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1951-07-01 08:00:00",
+          "calculated_time": "1951-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1951-08-28 07:59:59",
+          "calculated_time": "1951-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1951-08-01 08:00:00",
+          "calculated_time": "1951-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1951-09-28 07:59:59",
+          "calculated_time": "1951-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1951-09-01 08:00:00",
+          "calculated_time": "1951-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1951-10-28 07:59:59",
+          "calculated_time": "1951-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1951-10-01 08:00:00",
+          "calculated_time": "1951-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1951-11-28 07:59:59",
+          "calculated_time": "1951-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1951-11-01 08:00:00",
+          "calculated_time": "1951-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1951-12-28 07:59:59",
+          "calculated_time": "1951-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1951-12-01 08:00:00",
+          "calculated_time": "1951-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1952-01-28 07:59:59",
+          "calculated_time": "1952-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1952-01-01 08:00:00",
+          "calculated_time": "1952-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1952": {
+      "year": 1952,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1952-02-28 07:59:59",
+          "calculated_time": "1952-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1952-02-01 08:00:00",
+          "calculated_time": "1952-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1952-03-28 07:59:59",
+          "calculated_time": "1952-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1952-03-01 08:00:00",
+          "calculated_time": "1952-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1952-04-28 07:59:59",
+          "calculated_time": "1952-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1952-04-01 08:00:00",
+          "calculated_time": "1952-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1952-05-28 07:59:59",
+          "calculated_time": "1952-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1952-05-01 08:00:00",
+          "calculated_time": "1952-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1952-06-28 07:59:59",
+          "calculated_time": "1952-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1952-06-01 08:00:00",
+          "calculated_time": "1952-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1952-07-28 07:59:59",
+          "calculated_time": "1952-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1952-07-01 08:00:00",
+          "calculated_time": "1952-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1952-08-28 07:59:59",
+          "calculated_time": "1952-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1952-08-01 08:00:00",
+          "calculated_time": "1952-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1952-09-28 07:59:59",
+          "calculated_time": "1952-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1952-09-01 08:00:00",
+          "calculated_time": "1952-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1952-10-28 07:59:59",
+          "calculated_time": "1952-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1952-10-01 08:00:00",
+          "calculated_time": "1952-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1952-11-28 07:59:59",
+          "calculated_time": "1952-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1952-11-01 08:00:00",
+          "calculated_time": "1952-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1952-12-28 07:59:59",
+          "calculated_time": "1952-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1952-12-01 08:00:00",
+          "calculated_time": "1952-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1953-01-28 07:59:59",
+          "calculated_time": "1953-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1953-01-01 08:00:00",
+          "calculated_time": "1953-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1953": {
+      "year": 1953,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1953-02-28 07:59:59",
+          "calculated_time": "1953-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1953-02-01 08:00:00",
+          "calculated_time": "1953-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1953-03-28 07:59:59",
+          "calculated_time": "1953-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1953-03-01 08:00:00",
+          "calculated_time": "1953-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1953-04-28 07:59:59",
+          "calculated_time": "1953-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1953-04-01 08:00:00",
+          "calculated_time": "1953-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1953-05-28 07:59:59",
+          "calculated_time": "1953-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1953-05-01 08:00:00",
+          "calculated_time": "1953-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1953-06-28 07:59:59",
+          "calculated_time": "1953-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1953-06-01 08:00:00",
+          "calculated_time": "1953-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1953-07-28 07:59:59",
+          "calculated_time": "1953-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1953-07-01 08:00:00",
+          "calculated_time": "1953-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1953-08-28 07:59:59",
+          "calculated_time": "1953-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1953-08-01 08:00:00",
+          "calculated_time": "1953-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1953-09-28 07:59:59",
+          "calculated_time": "1953-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1953-09-01 08:00:00",
+          "calculated_time": "1953-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1953-10-28 07:59:59",
+          "calculated_time": "1953-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1953-10-01 08:00:00",
+          "calculated_time": "1953-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1953-11-28 07:59:59",
+          "calculated_time": "1953-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1953-11-01 08:00:00",
+          "calculated_time": "1953-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1953-12-28 07:59:59",
+          "calculated_time": "1953-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1953-12-01 08:00:00",
+          "calculated_time": "1953-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1954-01-28 07:59:59",
+          "calculated_time": "1954-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1954-01-01 08:00:00",
+          "calculated_time": "1954-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1954": {
+      "year": 1954,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1954-02-28 07:59:59",
+          "calculated_time": "1954-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1954-02-01 08:00:00",
+          "calculated_time": "1954-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1954-03-28 07:59:59",
+          "calculated_time": "1954-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1954-03-01 08:00:00",
+          "calculated_time": "1954-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1954-04-28 07:59:59",
+          "calculated_time": "1954-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1954-04-01 08:00:00",
+          "calculated_time": "1954-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1954-05-28 07:59:59",
+          "calculated_time": "1954-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1954-05-01 08:00:00",
+          "calculated_time": "1954-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1954-06-28 07:59:59",
+          "calculated_time": "1954-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1954-06-01 08:00:00",
+          "calculated_time": "1954-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1954-07-28 07:59:59",
+          "calculated_time": "1954-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1954-07-01 08:00:00",
+          "calculated_time": "1954-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1954-08-28 07:59:59",
+          "calculated_time": "1954-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1954-08-01 08:00:00",
+          "calculated_time": "1954-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1954-09-28 07:59:59",
+          "calculated_time": "1954-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1954-09-01 08:00:00",
+          "calculated_time": "1954-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1954-10-28 07:59:59",
+          "calculated_time": "1954-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1954-10-01 08:00:00",
+          "calculated_time": "1954-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1954-11-28 07:59:59",
+          "calculated_time": "1954-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1954-11-01 08:00:00",
+          "calculated_time": "1954-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1954-12-28 07:59:59",
+          "calculated_time": "1954-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1954-12-01 08:00:00",
+          "calculated_time": "1954-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1955-01-28 07:59:59",
+          "calculated_time": "1955-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1955-01-01 08:00:00",
+          "calculated_time": "1955-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1955": {
+      "year": 1955,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1955-02-28 07:59:59",
+          "calculated_time": "1955-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1955-02-01 08:00:00",
+          "calculated_time": "1955-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1955-03-28 07:59:59",
+          "calculated_time": "1955-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1955-03-01 08:00:00",
+          "calculated_time": "1955-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1955-04-28 07:59:59",
+          "calculated_time": "1955-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1955-04-01 08:00:00",
+          "calculated_time": "1955-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1955-05-28 07:59:59",
+          "calculated_time": "1955-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1955-05-01 08:00:00",
+          "calculated_time": "1955-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1955-06-28 07:59:59",
+          "calculated_time": "1955-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1955-06-01 08:00:00",
+          "calculated_time": "1955-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1955-07-28 07:59:59",
+          "calculated_time": "1955-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1955-07-01 08:00:00",
+          "calculated_time": "1955-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1955-08-28 07:59:59",
+          "calculated_time": "1955-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1955-08-01 08:00:00",
+          "calculated_time": "1955-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1955-09-28 07:59:59",
+          "calculated_time": "1955-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1955-09-01 08:00:00",
+          "calculated_time": "1955-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1955-10-28 07:59:59",
+          "calculated_time": "1955-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1955-10-01 08:00:00",
+          "calculated_time": "1955-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1955-11-28 07:59:59",
+          "calculated_time": "1955-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1955-11-01 08:00:00",
+          "calculated_time": "1955-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1955-12-28 07:59:59",
+          "calculated_time": "1955-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1955-12-01 08:00:00",
+          "calculated_time": "1955-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1956-01-28 07:59:59",
+          "calculated_time": "1956-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1956-01-01 08:00:00",
+          "calculated_time": "1956-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1956": {
+      "year": 1956,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1956-02-28 07:59:59",
+          "calculated_time": "1956-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1956-02-01 08:00:00",
+          "calculated_time": "1956-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1956-03-28 07:59:59",
+          "calculated_time": "1956-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1956-03-01 08:00:00",
+          "calculated_time": "1956-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1956-04-28 07:59:59",
+          "calculated_time": "1956-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1956-04-01 08:00:00",
+          "calculated_time": "1956-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1956-05-28 07:59:59",
+          "calculated_time": "1956-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1956-05-01 08:00:00",
+          "calculated_time": "1956-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1956-06-28 07:59:59",
+          "calculated_time": "1956-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1956-06-01 08:00:00",
+          "calculated_time": "1956-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1956-07-28 07:59:59",
+          "calculated_time": "1956-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1956-07-01 08:00:00",
+          "calculated_time": "1956-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1956-08-28 07:59:59",
+          "calculated_time": "1956-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1956-08-01 08:00:00",
+          "calculated_time": "1956-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1956-09-28 07:59:59",
+          "calculated_time": "1956-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1956-09-01 08:00:00",
+          "calculated_time": "1956-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1956-10-28 07:59:59",
+          "calculated_time": "1956-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1956-10-01 08:00:00",
+          "calculated_time": "1956-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1956-11-28 07:59:59",
+          "calculated_time": "1956-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1956-11-01 08:00:00",
+          "calculated_time": "1956-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1956-12-28 07:59:59",
+          "calculated_time": "1956-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1956-12-01 08:00:00",
+          "calculated_time": "1956-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1957-01-28 07:59:59",
+          "calculated_time": "1957-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1957-01-01 08:00:00",
+          "calculated_time": "1957-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1957": {
+      "year": 1957,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1957-02-28 07:59:59",
+          "calculated_time": "1957-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1957-02-01 08:00:00",
+          "calculated_time": "1957-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1957-03-28 07:59:59",
+          "calculated_time": "1957-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1957-03-01 08:00:00",
+          "calculated_time": "1957-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1957-04-28 07:59:59",
+          "calculated_time": "1957-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1957-04-01 08:00:00",
+          "calculated_time": "1957-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1957-05-28 07:59:59",
+          "calculated_time": "1957-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1957-05-01 08:00:00",
+          "calculated_time": "1957-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1957-06-28 07:59:59",
+          "calculated_time": "1957-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1957-06-01 08:00:00",
+          "calculated_time": "1957-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1957-07-28 07:59:59",
+          "calculated_time": "1957-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1957-07-01 08:00:00",
+          "calculated_time": "1957-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1957-08-28 07:59:59",
+          "calculated_time": "1957-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1957-08-01 08:00:00",
+          "calculated_time": "1957-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1957-09-28 07:59:59",
+          "calculated_time": "1957-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1957-09-01 08:00:00",
+          "calculated_time": "1957-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1957-10-28 07:59:59",
+          "calculated_time": "1957-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1957-10-01 08:00:00",
+          "calculated_time": "1957-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1957-11-28 07:59:59",
+          "calculated_time": "1957-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1957-11-01 08:00:00",
+          "calculated_time": "1957-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1957-12-28 07:59:59",
+          "calculated_time": "1957-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1957-12-01 08:00:00",
+          "calculated_time": "1957-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1958-01-28 07:59:59",
+          "calculated_time": "1958-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1958-01-01 08:00:00",
+          "calculated_time": "1958-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1958": {
+      "year": 1958,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1958-02-28 07:59:59",
+          "calculated_time": "1958-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1958-02-01 08:00:00",
+          "calculated_time": "1958-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1958-03-28 07:59:59",
+          "calculated_time": "1958-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1958-03-01 08:00:00",
+          "calculated_time": "1958-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1958-04-28 07:59:59",
+          "calculated_time": "1958-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1958-04-01 08:00:00",
+          "calculated_time": "1958-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1958-05-28 07:59:59",
+          "calculated_time": "1958-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1958-05-01 08:00:00",
+          "calculated_time": "1958-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1958-06-28 07:59:59",
+          "calculated_time": "1958-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1958-06-01 08:00:00",
+          "calculated_time": "1958-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1958-07-28 07:59:59",
+          "calculated_time": "1958-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1958-07-01 08:00:00",
+          "calculated_time": "1958-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1958-08-28 07:59:59",
+          "calculated_time": "1958-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1958-08-01 08:00:00",
+          "calculated_time": "1958-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1958-09-28 07:59:59",
+          "calculated_time": "1958-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1958-09-01 08:00:00",
+          "calculated_time": "1958-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1958-10-28 07:59:59",
+          "calculated_time": "1958-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1958-10-01 08:00:00",
+          "calculated_time": "1958-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1958-11-28 07:59:59",
+          "calculated_time": "1958-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1958-11-01 08:00:00",
+          "calculated_time": "1958-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1958-12-28 07:59:59",
+          "calculated_time": "1958-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1958-12-01 08:00:00",
+          "calculated_time": "1958-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1959-01-28 07:59:59",
+          "calculated_time": "1959-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1959-01-01 08:00:00",
+          "calculated_time": "1959-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1959": {
+      "year": 1959,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1959-02-28 07:59:59",
+          "calculated_time": "1959-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1959-02-01 08:00:00",
+          "calculated_time": "1959-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1959-03-28 07:59:59",
+          "calculated_time": "1959-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1959-03-01 08:00:00",
+          "calculated_time": "1959-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1959-04-28 07:59:59",
+          "calculated_time": "1959-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1959-04-01 08:00:00",
+          "calculated_time": "1959-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1959-05-28 07:59:59",
+          "calculated_time": "1959-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1959-05-01 08:00:00",
+          "calculated_time": "1959-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1959-06-28 07:59:59",
+          "calculated_time": "1959-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1959-06-01 08:00:00",
+          "calculated_time": "1959-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1959-07-28 07:59:59",
+          "calculated_time": "1959-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1959-07-01 08:00:00",
+          "calculated_time": "1959-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1959-08-28 07:59:59",
+          "calculated_time": "1959-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1959-08-01 08:00:00",
+          "calculated_time": "1959-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1959-09-28 07:59:59",
+          "calculated_time": "1959-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1959-09-01 08:00:00",
+          "calculated_time": "1959-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1959-10-28 07:59:59",
+          "calculated_time": "1959-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1959-10-01 08:00:00",
+          "calculated_time": "1959-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1959-11-28 07:59:59",
+          "calculated_time": "1959-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1959-11-01 08:00:00",
+          "calculated_time": "1959-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1959-12-28 07:59:59",
+          "calculated_time": "1959-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1959-12-01 08:00:00",
+          "calculated_time": "1959-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1960-01-28 07:59:59",
+          "calculated_time": "1960-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1960-01-01 08:00:00",
+          "calculated_time": "1960-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1960": {
+      "year": 1960,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1960-02-28 07:59:59",
+          "calculated_time": "1960-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1960-02-01 08:00:00",
+          "calculated_time": "1960-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1960-03-28 07:59:59",
+          "calculated_time": "1960-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1960-03-01 08:00:00",
+          "calculated_time": "1960-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1960-04-28 07:59:59",
+          "calculated_time": "1960-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1960-04-01 08:00:00",
+          "calculated_time": "1960-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1960-05-28 07:59:59",
+          "calculated_time": "1960-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1960-05-01 08:00:00",
+          "calculated_time": "1960-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1960-06-28 07:59:59",
+          "calculated_time": "1960-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1960-06-01 08:00:00",
+          "calculated_time": "1960-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1960-07-28 07:59:59",
+          "calculated_time": "1960-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1960-07-01 08:00:00",
+          "calculated_time": "1960-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1960-08-28 07:59:59",
+          "calculated_time": "1960-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1960-08-01 08:00:00",
+          "calculated_time": "1960-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1960-09-28 07:59:59",
+          "calculated_time": "1960-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1960-09-01 08:00:00",
+          "calculated_time": "1960-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1960-10-28 07:59:59",
+          "calculated_time": "1960-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1960-10-01 08:00:00",
+          "calculated_time": "1960-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1960-11-28 07:59:59",
+          "calculated_time": "1960-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1960-11-01 08:00:00",
+          "calculated_time": "1960-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1960-12-28 07:59:59",
+          "calculated_time": "1960-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1960-12-01 08:00:00",
+          "calculated_time": "1960-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1961-01-28 07:59:59",
+          "calculated_time": "1961-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1961-01-01 08:00:00",
+          "calculated_time": "1961-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1961": {
+      "year": 1961,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1961-02-28 07:59:59",
+          "calculated_time": "1961-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1961-02-01 08:00:00",
+          "calculated_time": "1961-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1961-03-28 07:59:59",
+          "calculated_time": "1961-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1961-03-01 08:00:00",
+          "calculated_time": "1961-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1961-04-28 07:59:59",
+          "calculated_time": "1961-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1961-04-01 08:00:00",
+          "calculated_time": "1961-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1961-05-28 07:59:59",
+          "calculated_time": "1961-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1961-05-01 08:00:00",
+          "calculated_time": "1961-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1961-06-28 07:59:59",
+          "calculated_time": "1961-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1961-06-01 08:00:00",
+          "calculated_time": "1961-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1961-07-28 07:59:59",
+          "calculated_time": "1961-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1961-07-01 08:00:00",
+          "calculated_time": "1961-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1961-08-28 07:59:59",
+          "calculated_time": "1961-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1961-08-01 08:00:00",
+          "calculated_time": "1961-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1961-09-28 07:59:59",
+          "calculated_time": "1961-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1961-09-01 08:00:00",
+          "calculated_time": "1961-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1961-10-28 07:59:59",
+          "calculated_time": "1961-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1961-10-01 08:00:00",
+          "calculated_time": "1961-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1961-11-28 07:59:59",
+          "calculated_time": "1961-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1961-11-01 08:00:00",
+          "calculated_time": "1961-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1961-12-28 07:59:59",
+          "calculated_time": "1961-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1961-12-01 08:00:00",
+          "calculated_time": "1961-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1962-01-28 07:59:59",
+          "calculated_time": "1962-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1962-01-01 08:00:00",
+          "calculated_time": "1962-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1962": {
+      "year": 1962,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1962-02-28 07:59:59",
+          "calculated_time": "1962-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1962-02-01 08:00:00",
+          "calculated_time": "1962-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1962-03-28 07:59:59",
+          "calculated_time": "1962-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1962-03-01 08:00:00",
+          "calculated_time": "1962-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1962-04-28 07:59:59",
+          "calculated_time": "1962-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1962-04-01 08:00:00",
+          "calculated_time": "1962-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1962-05-28 07:59:59",
+          "calculated_time": "1962-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1962-05-01 08:00:00",
+          "calculated_time": "1962-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1962-06-28 07:59:59",
+          "calculated_time": "1962-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1962-06-01 08:00:00",
+          "calculated_time": "1962-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1962-07-28 07:59:59",
+          "calculated_time": "1962-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1962-07-01 08:00:00",
+          "calculated_time": "1962-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1962-08-28 07:59:59",
+          "calculated_time": "1962-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1962-08-01 08:00:00",
+          "calculated_time": "1962-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1962-09-28 07:59:59",
+          "calculated_time": "1962-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1962-09-01 08:00:00",
+          "calculated_time": "1962-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1962-10-28 07:59:59",
+          "calculated_time": "1962-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1962-10-01 08:00:00",
+          "calculated_time": "1962-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1962-11-28 07:59:59",
+          "calculated_time": "1962-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1962-11-01 08:00:00",
+          "calculated_time": "1962-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1962-12-28 07:59:59",
+          "calculated_time": "1962-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1962-12-01 08:00:00",
+          "calculated_time": "1962-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1963-01-28 07:59:59",
+          "calculated_time": "1963-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1963-01-01 08:00:00",
+          "calculated_time": "1963-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1963": {
+      "year": 1963,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1963-02-28 07:59:59",
+          "calculated_time": "1963-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1963-02-01 08:00:00",
+          "calculated_time": "1963-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1963-03-28 07:59:59",
+          "calculated_time": "1963-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1963-03-01 08:00:00",
+          "calculated_time": "1963-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1963-04-28 07:59:59",
+          "calculated_time": "1963-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1963-04-01 08:00:00",
+          "calculated_time": "1963-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1963-05-28 07:59:59",
+          "calculated_time": "1963-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1963-05-01 08:00:00",
+          "calculated_time": "1963-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1963-06-28 07:59:59",
+          "calculated_time": "1963-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1963-06-01 08:00:00",
+          "calculated_time": "1963-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1963-07-28 07:59:59",
+          "calculated_time": "1963-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1963-07-01 08:00:00",
+          "calculated_time": "1963-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1963-08-28 07:59:59",
+          "calculated_time": "1963-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1963-08-01 08:00:00",
+          "calculated_time": "1963-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1963-09-28 07:59:59",
+          "calculated_time": "1963-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1963-09-01 08:00:00",
+          "calculated_time": "1963-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1963-10-28 07:59:59",
+          "calculated_time": "1963-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1963-10-01 08:00:00",
+          "calculated_time": "1963-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1963-11-28 07:59:59",
+          "calculated_time": "1963-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1963-11-01 08:00:00",
+          "calculated_time": "1963-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1963-12-28 07:59:59",
+          "calculated_time": "1963-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1963-12-01 08:00:00",
+          "calculated_time": "1963-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1964-01-28 07:59:59",
+          "calculated_time": "1964-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1964-01-01 08:00:00",
+          "calculated_time": "1964-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1964": {
+      "year": 1964,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1964-02-28 07:59:59",
+          "calculated_time": "1964-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1964-02-01 08:00:00",
+          "calculated_time": "1964-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1964-03-28 07:59:59",
+          "calculated_time": "1964-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1964-03-01 08:00:00",
+          "calculated_time": "1964-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1964-04-28 07:59:59",
+          "calculated_time": "1964-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1964-04-01 08:00:00",
+          "calculated_time": "1964-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1964-05-28 07:59:59",
+          "calculated_time": "1964-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1964-05-01 08:00:00",
+          "calculated_time": "1964-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1964-06-28 07:59:59",
+          "calculated_time": "1964-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1964-06-01 08:00:00",
+          "calculated_time": "1964-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1964-07-28 07:59:59",
+          "calculated_time": "1964-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1964-07-01 08:00:00",
+          "calculated_time": "1964-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1964-08-28 07:59:59",
+          "calculated_time": "1964-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1964-08-01 08:00:00",
+          "calculated_time": "1964-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1964-09-28 07:59:59",
+          "calculated_time": "1964-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1964-09-01 08:00:00",
+          "calculated_time": "1964-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1964-10-28 07:59:59",
+          "calculated_time": "1964-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1964-10-01 08:00:00",
+          "calculated_time": "1964-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1964-11-28 07:59:59",
+          "calculated_time": "1964-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1964-11-01 08:00:00",
+          "calculated_time": "1964-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1964-12-28 07:59:59",
+          "calculated_time": "1964-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1964-12-01 08:00:00",
+          "calculated_time": "1964-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1965-01-28 07:59:59",
+          "calculated_time": "1965-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1965-01-01 08:00:00",
+          "calculated_time": "1965-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1965": {
+      "year": 1965,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1965-02-28 07:59:59",
+          "calculated_time": "1965-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1965-02-01 08:00:00",
+          "calculated_time": "1965-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1965-03-28 07:59:59",
+          "calculated_time": "1965-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1965-03-01 08:00:00",
+          "calculated_time": "1965-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1965-04-28 07:59:59",
+          "calculated_time": "1965-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1965-04-01 08:00:00",
+          "calculated_time": "1965-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1965-05-28 07:59:59",
+          "calculated_time": "1965-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1965-05-01 08:00:00",
+          "calculated_time": "1965-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1965-06-28 07:59:59",
+          "calculated_time": "1965-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1965-06-01 08:00:00",
+          "calculated_time": "1965-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1965-07-28 07:59:59",
+          "calculated_time": "1965-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1965-07-01 08:00:00",
+          "calculated_time": "1965-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1965-08-28 07:59:59",
+          "calculated_time": "1965-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1965-08-01 08:00:00",
+          "calculated_time": "1965-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1965-09-28 07:59:59",
+          "calculated_time": "1965-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1965-09-01 08:00:00",
+          "calculated_time": "1965-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1965-10-28 07:59:59",
+          "calculated_time": "1965-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1965-10-01 08:00:00",
+          "calculated_time": "1965-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1965-11-28 07:59:59",
+          "calculated_time": "1965-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1965-11-01 08:00:00",
+          "calculated_time": "1965-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1965-12-28 07:59:59",
+          "calculated_time": "1965-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1965-12-01 08:00:00",
+          "calculated_time": "1965-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1966-01-28 07:59:59",
+          "calculated_time": "1966-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1966-01-01 08:00:00",
+          "calculated_time": "1966-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1966": {
+      "year": 1966,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1966-02-28 07:59:59",
+          "calculated_time": "1966-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1966-02-01 08:00:00",
+          "calculated_time": "1966-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1966-03-28 07:59:59",
+          "calculated_time": "1966-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1966-03-01 08:00:00",
+          "calculated_time": "1966-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1966-04-28 07:59:59",
+          "calculated_time": "1966-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1966-04-01 08:00:00",
+          "calculated_time": "1966-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1966-05-28 07:59:59",
+          "calculated_time": "1966-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1966-05-01 08:00:00",
+          "calculated_time": "1966-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1966-06-28 07:59:59",
+          "calculated_time": "1966-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1966-06-01 08:00:00",
+          "calculated_time": "1966-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1966-07-28 07:59:59",
+          "calculated_time": "1966-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1966-07-01 08:00:00",
+          "calculated_time": "1966-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1966-08-28 07:59:59",
+          "calculated_time": "1966-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1966-08-01 08:00:00",
+          "calculated_time": "1966-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1966-09-28 07:59:59",
+          "calculated_time": "1966-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1966-09-01 08:00:00",
+          "calculated_time": "1966-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1966-10-28 07:59:59",
+          "calculated_time": "1966-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1966-10-01 08:00:00",
+          "calculated_time": "1966-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1966-11-28 07:59:59",
+          "calculated_time": "1966-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1966-11-01 08:00:00",
+          "calculated_time": "1966-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1966-12-28 07:59:59",
+          "calculated_time": "1966-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1966-12-01 08:00:00",
+          "calculated_time": "1966-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1967-01-28 07:59:59",
+          "calculated_time": "1967-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1967-01-01 08:00:00",
+          "calculated_time": "1967-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1967": {
+      "year": 1967,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1967-02-28 07:59:59",
+          "calculated_time": "1967-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1967-02-01 08:00:00",
+          "calculated_time": "1967-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1967-03-28 07:59:59",
+          "calculated_time": "1967-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1967-03-01 08:00:00",
+          "calculated_time": "1967-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1967-04-28 07:59:59",
+          "calculated_time": "1967-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1967-04-01 08:00:00",
+          "calculated_time": "1967-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1967-05-28 07:59:59",
+          "calculated_time": "1967-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1967-05-01 08:00:00",
+          "calculated_time": "1967-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1967-06-28 07:59:59",
+          "calculated_time": "1967-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1967-06-01 08:00:00",
+          "calculated_time": "1967-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1967-07-28 07:59:59",
+          "calculated_time": "1967-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1967-07-01 08:00:00",
+          "calculated_time": "1967-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1967-08-28 07:59:59",
+          "calculated_time": "1967-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1967-08-01 08:00:00",
+          "calculated_time": "1967-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1967-09-28 07:59:59",
+          "calculated_time": "1967-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1967-09-01 08:00:00",
+          "calculated_time": "1967-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1967-10-28 07:59:59",
+          "calculated_time": "1967-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1967-10-01 08:00:00",
+          "calculated_time": "1967-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1967-11-28 07:59:59",
+          "calculated_time": "1967-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1967-11-01 08:00:00",
+          "calculated_time": "1967-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1967-12-28 07:59:59",
+          "calculated_time": "1967-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1967-12-01 08:00:00",
+          "calculated_time": "1967-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1968-01-28 07:59:59",
+          "calculated_time": "1968-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1968-01-01 08:00:00",
+          "calculated_time": "1968-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1968": {
+      "year": 1968,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1968-02-28 07:59:59",
+          "calculated_time": "1968-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1968-02-01 08:00:00",
+          "calculated_time": "1968-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1968-03-28 07:59:59",
+          "calculated_time": "1968-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1968-03-01 08:00:00",
+          "calculated_time": "1968-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1968-04-28 07:59:59",
+          "calculated_time": "1968-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1968-04-01 08:00:00",
+          "calculated_time": "1968-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1968-05-28 07:59:59",
+          "calculated_time": "1968-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1968-05-01 08:00:00",
+          "calculated_time": "1968-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1968-06-28 07:59:59",
+          "calculated_time": "1968-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1968-06-01 08:00:00",
+          "calculated_time": "1968-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1968-07-28 07:59:59",
+          "calculated_time": "1968-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1968-07-01 08:00:00",
+          "calculated_time": "1968-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1968-08-28 07:59:59",
+          "calculated_time": "1968-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1968-08-01 08:00:00",
+          "calculated_time": "1968-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1968-09-28 07:59:59",
+          "calculated_time": "1968-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1968-09-01 08:00:00",
+          "calculated_time": "1968-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1968-10-28 07:59:59",
+          "calculated_time": "1968-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1968-10-01 08:00:00",
+          "calculated_time": "1968-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1968-11-28 07:59:59",
+          "calculated_time": "1968-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1968-11-01 08:00:00",
+          "calculated_time": "1968-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1968-12-28 07:59:59",
+          "calculated_time": "1968-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1968-12-01 08:00:00",
+          "calculated_time": "1968-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1969-01-28 07:59:59",
+          "calculated_time": "1969-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1969-01-01 08:00:00",
+          "calculated_time": "1969-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1969": {
+      "year": 1969,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1969-02-28 07:59:59",
+          "calculated_time": "1969-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1969-02-01 08:00:00",
+          "calculated_time": "1969-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1969-03-28 07:59:59",
+          "calculated_time": "1969-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1969-03-01 08:00:00",
+          "calculated_time": "1969-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1969-04-28 07:59:59",
+          "calculated_time": "1969-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1969-04-01 08:00:00",
+          "calculated_time": "1969-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1969-05-28 07:59:59",
+          "calculated_time": "1969-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1969-05-01 08:00:00",
+          "calculated_time": "1969-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1969-06-28 07:59:59",
+          "calculated_time": "1969-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1969-06-01 08:00:00",
+          "calculated_time": "1969-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1969-07-28 07:59:59",
+          "calculated_time": "1969-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1969-07-01 08:00:00",
+          "calculated_time": "1969-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1969-08-28 07:59:59",
+          "calculated_time": "1969-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1969-08-01 08:00:00",
+          "calculated_time": "1969-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1969-09-28 07:59:59",
+          "calculated_time": "1969-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1969-09-01 08:00:00",
+          "calculated_time": "1969-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1969-10-28 07:59:59",
+          "calculated_time": "1969-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1969-10-01 08:00:00",
+          "calculated_time": "1969-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1969-11-28 07:59:59",
+          "calculated_time": "1969-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1969-11-01 08:00:00",
+          "calculated_time": "1969-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1969-12-28 07:59:59",
+          "calculated_time": "1969-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1969-12-01 08:00:00",
+          "calculated_time": "1969-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1970-01-28 07:59:59",
+          "calculated_time": "1970-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1970-01-01 08:00:00",
+          "calculated_time": "1970-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1970": {
+      "year": 1970,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1970-02-28 07:59:59",
+          "calculated_time": "1970-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1970-02-01 08:00:00",
+          "calculated_time": "1970-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1970-03-28 07:59:59",
+          "calculated_time": "1970-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1970-03-01 08:00:00",
+          "calculated_time": "1970-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1970-04-28 07:59:59",
+          "calculated_time": "1970-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1970-04-01 08:00:00",
+          "calculated_time": "1970-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1970-05-28 07:59:59",
+          "calculated_time": "1970-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1970-05-01 08:00:00",
+          "calculated_time": "1970-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1970-06-28 07:59:59",
+          "calculated_time": "1970-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1970-06-01 08:00:00",
+          "calculated_time": "1970-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1970-07-28 07:59:59",
+          "calculated_time": "1970-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1970-07-01 08:00:00",
+          "calculated_time": "1970-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1970-08-28 07:59:59",
+          "calculated_time": "1970-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1970-08-01 08:00:00",
+          "calculated_time": "1970-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1970-09-28 07:59:59",
+          "calculated_time": "1970-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1970-09-01 08:00:00",
+          "calculated_time": "1970-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1970-10-28 07:59:59",
+          "calculated_time": "1970-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1970-10-01 08:00:00",
+          "calculated_time": "1970-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1970-11-28 07:59:59",
+          "calculated_time": "1970-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1970-11-01 08:00:00",
+          "calculated_time": "1970-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1970-12-28 07:59:59",
+          "calculated_time": "1970-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1970-12-01 08:00:00",
+          "calculated_time": "1970-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1971-01-28 07:59:59",
+          "calculated_time": "1971-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1971-01-01 08:00:00",
+          "calculated_time": "1971-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1971": {
+      "year": 1971,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1971-02-28 07:59:59",
+          "calculated_time": "1971-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1971-02-01 08:00:00",
+          "calculated_time": "1971-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1971-03-28 07:59:59",
+          "calculated_time": "1971-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1971-03-01 08:00:00",
+          "calculated_time": "1971-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1971-04-28 07:59:59",
+          "calculated_time": "1971-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1971-04-01 08:00:00",
+          "calculated_time": "1971-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1971-05-28 07:59:59",
+          "calculated_time": "1971-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1971-05-01 08:00:00",
+          "calculated_time": "1971-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1971-06-28 07:59:59",
+          "calculated_time": "1971-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1971-06-01 08:00:00",
+          "calculated_time": "1971-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1971-07-28 07:59:59",
+          "calculated_time": "1971-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1971-07-01 08:00:00",
+          "calculated_time": "1971-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1971-08-28 07:59:59",
+          "calculated_time": "1971-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1971-08-01 08:00:00",
+          "calculated_time": "1971-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1971-09-28 07:59:59",
+          "calculated_time": "1971-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1971-09-01 08:00:00",
+          "calculated_time": "1971-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1971-10-28 07:59:59",
+          "calculated_time": "1971-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1971-10-01 08:00:00",
+          "calculated_time": "1971-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1971-11-28 07:59:59",
+          "calculated_time": "1971-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1971-11-01 08:00:00",
+          "calculated_time": "1971-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1971-12-28 07:59:59",
+          "calculated_time": "1971-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1971-12-01 08:00:00",
+          "calculated_time": "1971-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1972-01-28 07:59:59",
+          "calculated_time": "1972-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1972-01-01 08:00:00",
+          "calculated_time": "1972-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1972": {
+      "year": 1972,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1972-02-28 07:59:59",
+          "calculated_time": "1972-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1972-02-01 08:00:00",
+          "calculated_time": "1972-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1972-03-28 07:59:59",
+          "calculated_time": "1972-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1972-03-01 08:00:00",
+          "calculated_time": "1972-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1972-04-28 07:59:59",
+          "calculated_time": "1972-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1972-04-01 08:00:00",
+          "calculated_time": "1972-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1972-05-28 07:59:59",
+          "calculated_time": "1972-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1972-05-01 08:00:00",
+          "calculated_time": "1972-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1972-06-28 07:59:59",
+          "calculated_time": "1972-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1972-06-01 08:00:00",
+          "calculated_time": "1972-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1972-07-28 07:59:59",
+          "calculated_time": "1972-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1972-07-01 08:00:00",
+          "calculated_time": "1972-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1972-08-28 07:59:59",
+          "calculated_time": "1972-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1972-08-01 08:00:00",
+          "calculated_time": "1972-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1972-09-28 07:59:59",
+          "calculated_time": "1972-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1972-09-01 08:00:00",
+          "calculated_time": "1972-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1972-10-28 07:59:59",
+          "calculated_time": "1972-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1972-10-01 08:00:00",
+          "calculated_time": "1972-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1972-11-28 07:59:59",
+          "calculated_time": "1972-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1972-11-01 08:00:00",
+          "calculated_time": "1972-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1972-12-28 07:59:59",
+          "calculated_time": "1972-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1972-12-01 08:00:00",
+          "calculated_time": "1972-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1973-01-28 07:59:59",
+          "calculated_time": "1973-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1973-01-01 08:00:00",
+          "calculated_time": "1973-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1973": {
+      "year": 1973,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1973-02-28 07:59:59",
+          "calculated_time": "1973-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1973-02-01 08:00:00",
+          "calculated_time": "1973-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1973-03-28 07:59:59",
+          "calculated_time": "1973-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1973-03-01 08:00:00",
+          "calculated_time": "1973-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1973-04-28 07:59:59",
+          "calculated_time": "1973-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1973-04-01 08:00:00",
+          "calculated_time": "1973-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1973-05-28 07:59:59",
+          "calculated_time": "1973-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1973-05-01 08:00:00",
+          "calculated_time": "1973-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1973-06-28 07:59:59",
+          "calculated_time": "1973-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1973-06-01 08:00:00",
+          "calculated_time": "1973-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1973-07-28 07:59:59",
+          "calculated_time": "1973-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1973-07-01 08:00:00",
+          "calculated_time": "1973-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1973-08-28 07:59:59",
+          "calculated_time": "1973-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1973-08-01 08:00:00",
+          "calculated_time": "1973-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1973-09-28 07:59:59",
+          "calculated_time": "1973-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1973-09-01 08:00:00",
+          "calculated_time": "1973-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1973-10-28 07:59:59",
+          "calculated_time": "1973-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1973-10-01 08:00:00",
+          "calculated_time": "1973-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1973-11-28 07:59:59",
+          "calculated_time": "1973-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1973-11-01 08:00:00",
+          "calculated_time": "1973-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1973-12-28 07:59:59",
+          "calculated_time": "1973-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1973-12-01 08:00:00",
+          "calculated_time": "1973-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1974-01-28 07:59:59",
+          "calculated_time": "1974-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1974-01-01 08:00:00",
+          "calculated_time": "1974-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1974": {
+      "year": 1974,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1974-02-28 07:59:59",
+          "calculated_time": "1974-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1974-02-01 08:00:00",
+          "calculated_time": "1974-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1974-03-28 07:59:59",
+          "calculated_time": "1974-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1974-03-01 08:00:00",
+          "calculated_time": "1974-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1974-04-28 07:59:59",
+          "calculated_time": "1974-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1974-04-01 08:00:00",
+          "calculated_time": "1974-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1974-05-28 07:59:59",
+          "calculated_time": "1974-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1974-05-01 08:00:00",
+          "calculated_time": "1974-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1974-06-28 07:59:59",
+          "calculated_time": "1974-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1974-06-01 08:00:00",
+          "calculated_time": "1974-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1974-07-28 07:59:59",
+          "calculated_time": "1974-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1974-07-01 08:00:00",
+          "calculated_time": "1974-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1974-08-28 07:59:59",
+          "calculated_time": "1974-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1974-08-01 08:00:00",
+          "calculated_time": "1974-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1974-09-28 07:59:59",
+          "calculated_time": "1974-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1974-09-01 08:00:00",
+          "calculated_time": "1974-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1974-10-28 07:59:59",
+          "calculated_time": "1974-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1974-10-01 08:00:00",
+          "calculated_time": "1974-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1974-11-28 07:59:59",
+          "calculated_time": "1974-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1974-11-01 08:00:00",
+          "calculated_time": "1974-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1974-12-28 07:59:59",
+          "calculated_time": "1974-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1974-12-01 08:00:00",
+          "calculated_time": "1974-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1975-01-28 07:59:59",
+          "calculated_time": "1975-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1975-01-01 08:00:00",
+          "calculated_time": "1975-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1975": {
+      "year": 1975,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1975-02-28 07:59:59",
+          "calculated_time": "1975-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1975-02-01 08:00:00",
+          "calculated_time": "1975-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1975-03-28 07:59:59",
+          "calculated_time": "1975-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1975-03-01 08:00:00",
+          "calculated_time": "1975-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1975-04-28 07:59:59",
+          "calculated_time": "1975-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1975-04-01 08:00:00",
+          "calculated_time": "1975-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1975-05-28 07:59:59",
+          "calculated_time": "1975-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1975-05-01 08:00:00",
+          "calculated_time": "1975-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1975-06-28 07:59:59",
+          "calculated_time": "1975-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1975-06-01 08:00:00",
+          "calculated_time": "1975-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1975-07-28 07:59:59",
+          "calculated_time": "1975-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1975-07-01 08:00:00",
+          "calculated_time": "1975-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1975-08-28 07:59:59",
+          "calculated_time": "1975-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1975-08-01 08:00:00",
+          "calculated_time": "1975-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1975-09-28 07:59:59",
+          "calculated_time": "1975-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1975-09-01 08:00:00",
+          "calculated_time": "1975-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1975-10-28 07:59:59",
+          "calculated_time": "1975-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1975-10-01 08:00:00",
+          "calculated_time": "1975-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1975-11-28 07:59:59",
+          "calculated_time": "1975-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1975-11-01 08:00:00",
+          "calculated_time": "1975-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1975-12-28 07:59:59",
+          "calculated_time": "1975-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1975-12-01 08:00:00",
+          "calculated_time": "1975-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1976-01-28 07:59:59",
+          "calculated_time": "1976-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1976-01-01 08:00:00",
+          "calculated_time": "1976-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1976": {
+      "year": 1976,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1976-02-28 07:59:59",
+          "calculated_time": "1976-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1976-02-01 08:00:00",
+          "calculated_time": "1976-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1976-03-28 07:59:59",
+          "calculated_time": "1976-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1976-03-01 08:00:00",
+          "calculated_time": "1976-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1976-04-28 07:59:59",
+          "calculated_time": "1976-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1976-04-01 08:00:00",
+          "calculated_time": "1976-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1976-05-28 07:59:59",
+          "calculated_time": "1976-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1976-05-01 08:00:00",
+          "calculated_time": "1976-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1976-06-28 07:59:59",
+          "calculated_time": "1976-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1976-06-01 08:00:00",
+          "calculated_time": "1976-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1976-07-28 07:59:59",
+          "calculated_time": "1976-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1976-07-01 08:00:00",
+          "calculated_time": "1976-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1976-08-28 07:59:59",
+          "calculated_time": "1976-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1976-08-01 08:00:00",
+          "calculated_time": "1976-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1976-09-28 07:59:59",
+          "calculated_time": "1976-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1976-09-01 08:00:00",
+          "calculated_time": "1976-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1976-10-28 07:59:59",
+          "calculated_time": "1976-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1976-10-01 08:00:00",
+          "calculated_time": "1976-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1976-11-28 07:59:59",
+          "calculated_time": "1976-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1976-11-01 08:00:00",
+          "calculated_time": "1976-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1976-12-28 07:59:59",
+          "calculated_time": "1976-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1976-12-01 08:00:00",
+          "calculated_time": "1976-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1977-01-28 07:59:59",
+          "calculated_time": "1977-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1977-01-01 08:00:00",
+          "calculated_time": "1977-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1977": {
+      "year": 1977,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1977-02-28 07:59:59",
+          "calculated_time": "1977-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1977-02-01 08:00:00",
+          "calculated_time": "1977-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1977-03-28 07:59:59",
+          "calculated_time": "1977-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1977-03-01 08:00:00",
+          "calculated_time": "1977-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1977-04-28 07:59:59",
+          "calculated_time": "1977-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1977-04-01 08:00:00",
+          "calculated_time": "1977-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1977-05-28 07:59:59",
+          "calculated_time": "1977-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1977-05-01 08:00:00",
+          "calculated_time": "1977-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1977-06-28 07:59:59",
+          "calculated_time": "1977-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1977-06-01 08:00:00",
+          "calculated_time": "1977-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1977-07-28 07:59:59",
+          "calculated_time": "1977-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1977-07-01 08:00:00",
+          "calculated_time": "1977-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1977-08-28 07:59:59",
+          "calculated_time": "1977-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1977-08-01 08:00:00",
+          "calculated_time": "1977-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1977-09-28 07:59:59",
+          "calculated_time": "1977-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1977-09-01 08:00:00",
+          "calculated_time": "1977-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1977-10-28 07:59:59",
+          "calculated_time": "1977-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1977-10-01 08:00:00",
+          "calculated_time": "1977-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1977-11-28 07:59:59",
+          "calculated_time": "1977-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1977-11-01 08:00:00",
+          "calculated_time": "1977-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1977-12-28 07:59:59",
+          "calculated_time": "1977-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1977-12-01 08:00:00",
+          "calculated_time": "1977-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1978-01-28 07:59:59",
+          "calculated_time": "1978-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1978-01-01 08:00:00",
+          "calculated_time": "1978-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1978": {
+      "year": 1978,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1978-02-28 07:59:59",
+          "calculated_time": "1978-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1978-02-01 08:00:00",
+          "calculated_time": "1978-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1978-03-28 07:59:59",
+          "calculated_time": "1978-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1978-03-01 08:00:00",
+          "calculated_time": "1978-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1978-04-28 07:59:59",
+          "calculated_time": "1978-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1978-04-01 08:00:00",
+          "calculated_time": "1978-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1978-05-28 07:59:59",
+          "calculated_time": "1978-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1978-05-01 08:00:00",
+          "calculated_time": "1978-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1978-06-28 07:59:59",
+          "calculated_time": "1978-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1978-06-01 08:00:00",
+          "calculated_time": "1978-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1978-07-28 07:59:59",
+          "calculated_time": "1978-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1978-07-01 08:00:00",
+          "calculated_time": "1978-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1978-08-28 07:59:59",
+          "calculated_time": "1978-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1978-08-01 08:00:00",
+          "calculated_time": "1978-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1978-09-28 07:59:59",
+          "calculated_time": "1978-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1978-09-01 08:00:00",
+          "calculated_time": "1978-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1978-10-28 07:59:59",
+          "calculated_time": "1978-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1978-10-01 08:00:00",
+          "calculated_time": "1978-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1978-11-28 07:59:59",
+          "calculated_time": "1978-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1978-11-01 08:00:00",
+          "calculated_time": "1978-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1978-12-28 07:59:59",
+          "calculated_time": "1978-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1978-12-01 08:00:00",
+          "calculated_time": "1978-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1979-01-28 07:59:59",
+          "calculated_time": "1979-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1979-01-01 08:00:00",
+          "calculated_time": "1979-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1979": {
+      "year": 1979,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1979-02-28 07:59:59",
+          "calculated_time": "1979-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1979-02-01 08:00:00",
+          "calculated_time": "1979-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1979-03-28 07:59:59",
+          "calculated_time": "1979-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1979-03-01 08:00:00",
+          "calculated_time": "1979-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1979-04-28 07:59:59",
+          "calculated_time": "1979-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1979-04-01 08:00:00",
+          "calculated_time": "1979-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1979-05-28 07:59:59",
+          "calculated_time": "1979-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1979-05-01 08:00:00",
+          "calculated_time": "1979-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1979-06-28 07:59:59",
+          "calculated_time": "1979-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1979-06-01 08:00:00",
+          "calculated_time": "1979-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1979-07-28 07:59:59",
+          "calculated_time": "1979-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1979-07-01 08:00:00",
+          "calculated_time": "1979-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1979-08-28 07:59:59",
+          "calculated_time": "1979-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1979-08-01 08:00:00",
+          "calculated_time": "1979-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1979-09-28 07:59:59",
+          "calculated_time": "1979-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1979-09-01 08:00:00",
+          "calculated_time": "1979-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1979-10-28 07:59:59",
+          "calculated_time": "1979-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1979-10-01 08:00:00",
+          "calculated_time": "1979-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1979-11-28 07:59:59",
+          "calculated_time": "1979-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1979-11-01 08:00:00",
+          "calculated_time": "1979-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1979-12-28 07:59:59",
+          "calculated_time": "1979-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1979-12-01 08:00:00",
+          "calculated_time": "1979-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1980-01-28 07:59:59",
+          "calculated_time": "1980-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1980-01-01 08:00:00",
+          "calculated_time": "1980-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "1980": {
+      "year": 1980,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "1980-02-28 07:59:59",
+          "calculated_time": "1980-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "1980-02-01 08:00:00",
+          "calculated_time": "1980-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "1980-03-28 07:59:59",
+          "calculated_time": "1980-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "1980-03-01 08:00:00",
+          "calculated_time": "1980-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "1980-04-28 07:59:59",
+          "calculated_time": "1980-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "1980-04-01 08:00:00",
+          "calculated_time": "1980-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "1980-05-28 07:59:59",
+          "calculated_time": "1980-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "1980-05-01 08:00:00",
+          "calculated_time": "1980-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "1980-06-28 07:59:59",
+          "calculated_time": "1980-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "1980-06-01 08:00:00",
+          "calculated_time": "1980-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "1980-07-28 07:59:59",
+          "calculated_time": "1980-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "1980-07-01 08:00:00",
+          "calculated_time": "1980-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "1980-08-28 07:59:59",
+          "calculated_time": "1980-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "1980-08-01 08:00:00",
+          "calculated_time": "1980-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "1980-09-28 07:59:59",
+          "calculated_time": "1980-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "1980-09-01 08:00:00",
+          "calculated_time": "1980-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "1980-10-28 07:59:59",
+          "calculated_time": "1980-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "1980-10-01 08:00:00",
+          "calculated_time": "1980-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "1980-11-28 07:59:59",
+          "calculated_time": "1980-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "1980-11-01 08:00:00",
+          "calculated_time": "1980-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "1980-12-28 07:59:59",
+          "calculated_time": "1980-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "1980-12-01 08:00:00",
+          "calculated_time": "1980-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "1981-01-28 07:59:59",
+          "calculated_time": "1981-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "1981-01-01 08:00:00",
+          "calculated_time": "1981-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    }
+  },
+  "success_rate": 100.0
+}

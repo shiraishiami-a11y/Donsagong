@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Golden Peppa - 四柱推命</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #1c1c1e;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: #D4AF37;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .user-info {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+
+        .user-info span {
+            margin: 0 6px;
+        }
+
+        /* 大運数表示 */
+        .daeunsu-info {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #D4AF37;
+            padding: 12px;
+            margin: 16px;
+            border-radius: 8px;
+            text-align: center;
+            color: #D4AF37;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* 四柱表 */
+        .saju-section {
+            background: #1c1c1e;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .saju-table {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .saju-column {
+            text-align: center;
+        }
+
+        .saju-label {
+            font-size: 12px;
+            color: #8e8e93;
+            margin-bottom: 8px;
+        }
+
+        .saju-box {
+            padding: 18px 8px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+
+        /* 年柱の色 - グレーと薄赤 */
+        .year-top { background: #d1d1d6; color: #000; }
+        .year-bottom { background: #ff9f9f; color: #fff; }
+
+        /* 月柱の色 - 黄色 */
+        .month-top { background: #ffd60a; color: #000; }
+        .month-bottom { background: #ffd60a; color: #000; }
+
+        /* 日柱の色 - 緑と青 */
+        .day-top { background: #30d158; color: #fff; }
+        .day-bottom { background: #64d2ff; color: #fff; }
+
+        /* 時柱の色 - 赤と緑 */
+        .time-top { background: #ff453a; color: #fff; }
+        .time-bottom { background: #30d158; color: #fff; }
+
+        .element-info {
+            font-size: 11px;
+            color: #8e8e93;
+            margin-top: 4px;
+        }
+
+        /* タブナビゲーション */
+        .tabs-container {
+            background: #2c2c2e;
+            padding: 12px;
+            margin: 16px;
+            border-radius: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            background: #48484a;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: #D4AF37;
+            color: #fff;
+        }
+
+        /* 運勢コンテンツ */
+        .fortune-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .fortune-content.active {
+            display: block;
+        }
+
+        /* 大運表示 */
+        .daeun-display {
+            background: #2c2c2e;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+        }
+
+        .daeun-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .daeun-item {
+            background: #48484a;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .daeun-item.active {
+            background: #5856d6;
+            transform: scale(1.05);
+        }
+
+        .daeun-age {
+            font-size: 11px;
+            color: #8e8e93;
+            margin-bottom: 4px;
+        }
+
+        .daeun-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .daeun-fortune {
+            margin-top: 4px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            display: inline-block;
+        }
+
+        /* 年運・月運・日運表示 */
+        .sub-fortune {
+            background: #2c2c2e;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .sub-fortune-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .sub-fortune-item {
+            background: #48484a;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .sub-fortune-item.current {
+            background: #D4AF37;
+        }
+
+        .sub-fortune-period {
+            font-size: 10px;
+            color: #8e8e93;
+        }
+
+        .sub-fortune-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin: 4px 0;
+        }
+
+        .fortune-badge {
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        /* 運勢レベルの色 */
+        .fortune-excellent {
+            background: linear-gradient(135deg, #ff2d55, #ff6b6b);
+        }
+
+        .fortune-good {
+            background: linear-gradient(135deg, #5ac8fa, #007aff);
+        }
+
+        .fortune-normal {
+            background: linear-gradient(135deg, #ffd60a, #ffcc00);
+        }
+
+        .fortune-bad {
+            background: linear-gradient(135deg, #8e8e93, #636366);
+        }
+
+        .fortune-terrible {
+            background: linear-gradient(135deg, #2c2c2e, #1c1c1e);
+        }
+
+        /* 人生運勢グラフ */
+        .graph-section {
+            background: #2c2c2e;
+            padding: 20px;
+            margin: 16px;
+            border-radius: 12px;
+        }
+
+        .graph-container {
+            position: relative;
+            height: 200px;
+            background: #1c1c1e;
+            border-radius: 8px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .graph-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .age-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 10px;
+            color: #8e8e93;
+        }
+
+        .current-position {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff9500;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* 階層的な表示 */
+        .hierarchy-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .hierarchy-level {
+            padding: 4px 8px;
+            background: #D4AF37;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hierarchy-arrow {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1 class="header-title">Golden Peppa</h1>
+            <div class="user-info">
+                <span>山田太郎</span>
+                <span>|</span>
+                <span>1990年3月15日 卯時</span>
+                <span>|</span>
+                <span>男性</span>
+            </div>
+        </div>
+
+        <!-- 大運数表示 -->
+        <div class="daeunsu-info">
+            大運数：5歳・順行
+        </div>
+
+        <!-- 四柱表 -->
+        <div class="saju-section">
+            <h3 class="section-title">四柱命式</h3>
+            <div class="saju-table">
+                <!-- 年柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">年柱</div>
+                    <div class="saju-box year-top">庚</div>
+                    <div class="saju-box year-bottom">午</div>
+                    <div class="element-info">蔵干: 丁己</div>
+                </div>
+
+                <!-- 月柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">月柱</div>
+                    <div class="saju-box month-top">戊</div>
+                    <div class="saju-box month-bottom">辰</div>
+                    <div class="element-info">蔵干: 戊乙癸</div>
+                </div>
+
+                <!-- 日柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">日柱</div>
+                    <div class="saju-box day-top">甲</div>
+                    <div class="saju-box day-bottom">子</div>
+                    <div class="element-info">蔵干: 癸</div>
+                </div>
+
+                <!-- 時柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">時柱</div>
+                    <div class="saju-box time-top">丁</div>
+                    <div class="saju-box time-bottom">卯</div>
+                    <div class="element-info">蔵干: 乙</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 人生運勢グラフ -->
+        <div class="graph-section">
+            <h3 class="section-title">人生運勢グラフ</h3>
+            <div class="current-position">現在: 34歳</div>
+            <div class="graph-container">
+                <svg class="graph-svg" viewBox="0 0 400 150">
+                    <!-- グリッド線 -->
+                    <line x1="0" y1="75" x2="400" y2="75" stroke="#48484a" stroke-width="1"/>
+
+                    <!-- 運勢線 - 大運に基づいて色を変える -->
+                    <path d="M 0,100 Q 50,80 100,60 T 200,40 Q 250,50 300,70 T 400,90"
+                          fill="none" stroke="url(#fortuneGradient)" stroke-width="3"/>
+
+                    <!-- グラデーション定義 -->
+                    <defs>
+                        <linearGradient id="fortuneGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                            <stop offset="20%" style="stop-color:#5ac8fa;stop-opacity:1" />
+                            <stop offset="35%" style="stop-color:#ff2d55;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#5ac8fa;stop-opacity:1" />
+                            <stop offset="70%" style="stop-color:#ffd60a;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8e8e93;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- 現在位置マーカー -->
+                    <circle cx="140" cy="50" r="6" fill="#ff9500" stroke="#fff" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="age-labels">
+                <span>5</span>
+                <span>15</span>
+                <span>25</span>
+                <span>35</span>
+                <span>45</span>
+                <span>55</span>
+                <span>65</span>
+                <span>75</span>
+                <span>85</span>
+            </div>
+        </div>
+
+        <!-- タブナビゲーション -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('daeun')">大運</button>
+                <button class="tab" onclick="showTab('yearly')">年運</button>
+                <button class="tab" onclick="showTab('monthly')">月運</button>
+                <button class="tab" onclick="showTab('daily')">日運</button>
+            </div>
+        </div>
+
+        <!-- 大運コンテンツ -->
+        <div id="daeun" class="fortune-content active">
+            <div class="hierarchy-indicator">
+                <span class="hierarchy-level">大運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span style="color: #8e8e93; font-size: 12px;">10年ごとの大きな運勢</span>
+            </div>
+            <div class="daeun-display">
+                <div class="daeun-grid">
+                    <div class="daeun-item">
+                        <div class="daeun-age">5-14歳</div>
+                        <div class="daeun-text">己巳</div>
+                        <span class="daeun-fortune fortune-good">吉</span>
+                    </div>
+                    <div class="daeun-item">
+                        <div class="daeun-age">15-24歳</div>
+                        <div class="daeun-text">庚午</div>
+                        <span class="daeun-fortune fortune-normal">普通</span>
+                    </div>
+                    <div class="daeun-item active">
+                        <div class="daeun-age">25-34歳</div>
+                        <div class="daeun-text">辛未</div>
+                        <span class="daeun-fortune fortune-excellent">大吉</span>
+                    </div>
+                    <div class="daeun-item">
+                        <div class="daeun-age">35-44歳</div>
+                        <div class="daeun-text">壬申</div>
+                        <span class="daeun-fortune fortune-good">吉</span>
+                    </div>
+                    <div class="daeun-item">
+                        <div class="daeun-age">45-54歳</div>
+                        <div class="daeun-text">癸酉</div>
+                        <span class="daeun-fortune fortune-normal">普通</span>
+                    </div>
+                    <div class="daeun-item">
+                        <div class="daeun-age">55-64歳</div>
+                        <div class="daeun-text">甲戌</div>
+                        <span class="daeun-fortune fortune-bad">凶</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 年運コンテンツ -->
+        <div id="yearly" class="fortune-content">
+            <div class="hierarchy-indicator">
+                <span class="hierarchy-level">大運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">年運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span style="color: #8e8e93; font-size: 12px;">1年ごとの運勢</span>
+            </div>
+            <div class="sub-fortune">
+                <h4 style="font-size: 14px; margin-bottom: 8px;">2024年の運勢</h4>
+                <div class="sub-fortune-grid">
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">2023年</div>
+                        <div class="sub-fortune-text">癸卯</div>
+                        <span class="fortune-badge fortune-good">吉</span>
+                    </div>
+                    <div class="sub-fortune-item current">
+                        <div class="sub-fortune-period">2024年</div>
+                        <div class="sub-fortune-text">甲辰</div>
+                        <span class="fortune-badge fortune-excellent">大吉</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">2025年</div>
+                        <div class="sub-fortune-text">乙巳</div>
+                        <span class="fortune-badge fortune-normal">普通</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">2026年</div>
+                        <div class="sub-fortune-text">丙午</div>
+                        <span class="fortune-badge fortune-bad">凶</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 月運コンテンツ -->
+        <div id="monthly" class="fortune-content">
+            <div class="hierarchy-indicator">
+                <span class="hierarchy-level">大運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">年運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">月運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span style="color: #8e8e93; font-size: 12px;">月ごとの運勢</span>
+            </div>
+            <div class="sub-fortune">
+                <h4 style="font-size: 14px; margin-bottom: 8px;">2024年の月運</h4>
+                <div class="sub-fortune-grid">
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">7月</div>
+                        <div class="sub-fortune-text">辛未</div>
+                        <span class="fortune-badge fortune-normal">普通</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">8月</div>
+                        <div class="sub-fortune-text">壬申</div>
+                        <span class="fortune-badge fortune-good">吉</span>
+                    </div>
+                    <div class="sub-fortune-item current">
+                        <div class="sub-fortune-period">9月</div>
+                        <div class="sub-fortune-text">癸酉</div>
+                        <span class="fortune-badge fortune-excellent">大吉</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">10月</div>
+                        <div class="sub-fortune-text">甲戌</div>
+                        <span class="fortune-badge fortune-good">吉</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日運コンテンツ -->
+        <div id="daily" class="fortune-content">
+            <div class="hierarchy-indicator">
+                <span class="hierarchy-level">大運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">年運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">月運</span>
+                <span class="hierarchy-arrow">→</span>
+                <span class="hierarchy-level">日運</span>
+            </div>
+            <div class="sub-fortune">
+                <h4 style="font-size: 14px; margin-bottom: 8px;">今週の日運</h4>
+                <div class="sub-fortune-grid">
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">25日</div>
+                        <div class="sub-fortune-text">乙亥</div>
+                        <span class="fortune-badge fortune-normal">普通</span>
+                    </div>
+                    <div class="sub-fortune-item current">
+                        <div class="sub-fortune-period">26日</div>
+                        <div class="sub-fortune-text">丙子</div>
+                        <span class="fortune-badge fortune-excellent">大吉</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">27日</div>
+                        <div class="sub-fortune-text">丁丑</div>
+                        <span class="fortune-badge fortune-good">吉</span>
+                    </div>
+                    <div class="sub-fortune-item">
+                        <div class="sub-fortune-period">28日</div>
+                        <div class="sub-fortune-text">戊寅</div>
+                        <span class="fortune-badge fortune-bad">凶</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // タブの切り替え
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // コンテンツの切り替え
+            document.querySelectorAll('.fortune-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // 大運アイテムのクリック
+        document.querySelectorAll('.daeun-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.daeun-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

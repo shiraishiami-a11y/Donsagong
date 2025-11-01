@@ -1,0 +1,776 @@
+{
+  "range": "2020-2024",
+  "total_years": 5,
+  "validated_years": 5,
+  "total_terms": 120,
+  "validated_terms": 120,
+  "error_count": 0,
+  "year_results": {
+    "2020": {
+      "year": 2020,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "2020-02-28 07:59:59",
+          "calculated_time": "2020-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "2020-02-01 08:00:00",
+          "calculated_time": "2020-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "2020-03-28 07:59:59",
+          "calculated_time": "2020-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "2020-03-01 08:00:00",
+          "calculated_time": "2020-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "2020-04-28 07:59:59",
+          "calculated_time": "2020-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "2020-04-01 08:00:00",
+          "calculated_time": "2020-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "2020-05-28 07:59:59",
+          "calculated_time": "2020-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "2020-05-01 08:00:00",
+          "calculated_time": "2020-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "2020-06-28 07:59:59",
+          "calculated_time": "2020-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "2020-06-01 08:00:00",
+          "calculated_time": "2020-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "2020-07-28 07:59:59",
+          "calculated_time": "2020-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "2020-07-01 08:00:00",
+          "calculated_time": "2020-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "2020-08-28 07:59:59",
+          "calculated_time": "2020-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "2020-08-01 08:00:00",
+          "calculated_time": "2020-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "2020-09-28 07:59:59",
+          "calculated_time": "2020-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "2020-09-01 08:00:00",
+          "calculated_time": "2020-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "2020-10-28 07:59:59",
+          "calculated_time": "2020-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "2020-10-01 08:00:00",
+          "calculated_time": "2020-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "2020-11-28 07:59:59",
+          "calculated_time": "2020-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "2020-11-01 08:00:00",
+          "calculated_time": "2020-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "2020-12-28 07:59:59",
+          "calculated_time": "2020-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "2020-12-01 08:00:00",
+          "calculated_time": "2020-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "2021-01-28 07:59:59",
+          "calculated_time": "2021-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "2021-01-01 08:00:00",
+          "calculated_time": "2021-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "2021": {
+      "year": 2021,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "2021-02-28 07:59:59",
+          "calculated_time": "2021-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "2021-02-01 08:00:00",
+          "calculated_time": "2021-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "2021-03-28 07:59:59",
+          "calculated_time": "2021-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "2021-03-01 08:00:00",
+          "calculated_time": "2021-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "2021-04-28 07:59:59",
+          "calculated_time": "2021-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "2021-04-01 08:00:00",
+          "calculated_time": "2021-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "2021-05-28 07:59:59",
+          "calculated_time": "2021-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "2021-05-01 08:00:00",
+          "calculated_time": "2021-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "2021-06-28 07:59:59",
+          "calculated_time": "2021-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "2021-06-01 08:00:00",
+          "calculated_time": "2021-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "2021-07-28 07:59:59",
+          "calculated_time": "2021-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "2021-07-01 08:00:00",
+          "calculated_time": "2021-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "2021-08-28 07:59:59",
+          "calculated_time": "2021-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "2021-08-01 08:00:00",
+          "calculated_time": "2021-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "2021-09-28 07:59:59",
+          "calculated_time": "2021-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "2021-09-01 08:00:00",
+          "calculated_time": "2021-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "2021-10-28 07:59:59",
+          "calculated_time": "2021-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "2021-10-01 08:00:00",
+          "calculated_time": "2021-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "2021-11-28 07:59:59",
+          "calculated_time": "2021-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "2021-11-01 08:00:00",
+          "calculated_time": "2021-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "2021-12-28 07:59:59",
+          "calculated_time": "2021-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "2021-12-01 08:00:00",
+          "calculated_time": "2021-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "2022-01-28 07:59:59",
+          "calculated_time": "2022-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "2022-01-01 08:00:00",
+          "calculated_time": "2022-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "2022": {
+      "year": 2022,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "2022-02-28 07:59:59",
+          "calculated_time": "2022-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "2022-02-01 08:00:00",
+          "calculated_time": "2022-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "2022-03-28 07:59:59",
+          "calculated_time": "2022-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "2022-03-01 08:00:00",
+          "calculated_time": "2022-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "2022-04-28 07:59:59",
+          "calculated_time": "2022-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "2022-04-01 08:00:00",
+          "calculated_time": "2022-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "2022-05-28 07:59:59",
+          "calculated_time": "2022-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "2022-05-01 08:00:00",
+          "calculated_time": "2022-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "2022-06-28 07:59:59",
+          "calculated_time": "2022-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "2022-06-01 08:00:00",
+          "calculated_time": "2022-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "2022-07-28 07:59:59",
+          "calculated_time": "2022-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "2022-07-01 08:00:00",
+          "calculated_time": "2022-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "2022-08-28 07:59:59",
+          "calculated_time": "2022-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "2022-08-01 08:00:00",
+          "calculated_time": "2022-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "2022-09-28 07:59:59",
+          "calculated_time": "2022-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "2022-09-01 08:00:00",
+          "calculated_time": "2022-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "2022-10-28 07:59:59",
+          "calculated_time": "2022-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "2022-10-01 08:00:00",
+          "calculated_time": "2022-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "2022-11-28 07:59:59",
+          "calculated_time": "2022-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "2022-11-01 08:00:00",
+          "calculated_time": "2022-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "2022-12-28 07:59:59",
+          "calculated_time": "2022-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "2022-12-01 08:00:00",
+          "calculated_time": "2022-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "2023-01-28 07:59:59",
+          "calculated_time": "2023-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "2023-01-01 08:00:00",
+          "calculated_time": "2023-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "2023": {
+      "year": 2023,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "2023-02-28 07:59:59",
+          "calculated_time": "2023-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "2023-02-01 08:00:00",
+          "calculated_time": "2023-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "2023-03-28 07:59:59",
+          "calculated_time": "2023-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "2023-03-01 08:00:00",
+          "calculated_time": "2023-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "2023-04-28 07:59:59",
+          "calculated_time": "2023-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "2023-04-01 08:00:00",
+          "calculated_time": "2023-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "2023-05-28 07:59:59",
+          "calculated_time": "2023-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "2023-05-01 08:00:00",
+          "calculated_time": "2023-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "2023-06-28 07:59:59",
+          "calculated_time": "2023-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "2023-06-01 08:00:00",
+          "calculated_time": "2023-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "2023-07-28 07:59:59",
+          "calculated_time": "2023-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "2023-07-01 08:00:00",
+          "calculated_time": "2023-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "2023-08-28 07:59:59",
+          "calculated_time": "2023-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "2023-08-01 08:00:00",
+          "calculated_time": "2023-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "2023-09-28 07:59:59",
+          "calculated_time": "2023-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "2023-09-01 08:00:00",
+          "calculated_time": "2023-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "2023-10-28 07:59:59",
+          "calculated_time": "2023-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "2023-10-01 08:00:00",
+          "calculated_time": "2023-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "2023-11-28 07:59:59",
+          "calculated_time": "2023-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "2023-11-01 08:00:00",
+          "calculated_time": "2023-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "2023-12-28 07:59:59",
+          "calculated_time": "2023-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "2023-12-01 08:00:00",
+          "calculated_time": "2023-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "2024-01-28 07:59:59",
+          "calculated_time": "2024-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "2024-01-01 08:00:00",
+          "calculated_time": "2024-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    },
+    "2024": {
+      "year": 2024,
+      "total_terms": 24,
+      "validated_terms": 24,
+      "error_count": 0,
+      "warnings": [],
+      "details": {
+        "立春": {
+          "our_time": "2024-02-28 07:59:59",
+          "calculated_time": "2024-02-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "雨水": {
+          "our_time": "2024-02-01 08:00:00",
+          "calculated_time": "2024-02-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "驚蟄": {
+          "our_time": "2024-03-28 07:59:59",
+          "calculated_time": "2024-03-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "春分": {
+          "our_time": "2024-03-01 08:00:00",
+          "calculated_time": "2024-03-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "清明": {
+          "our_time": "2024-04-28 07:59:59",
+          "calculated_time": "2024-04-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "穀雨": {
+          "our_time": "2024-04-01 08:00:00",
+          "calculated_time": "2024-04-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立夏": {
+          "our_time": "2024-05-28 07:59:59",
+          "calculated_time": "2024-05-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小満": {
+          "our_time": "2024-05-01 08:00:00",
+          "calculated_time": "2024-05-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "芒種": {
+          "our_time": "2024-06-28 07:59:59",
+          "calculated_time": "2024-06-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "夏至": {
+          "our_time": "2024-06-01 08:00:00",
+          "calculated_time": "2024-06-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小暑": {
+          "our_time": "2024-07-28 07:59:59",
+          "calculated_time": "2024-07-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大暑": {
+          "our_time": "2024-07-01 08:00:00",
+          "calculated_time": "2024-07-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立秋": {
+          "our_time": "2024-08-28 07:59:59",
+          "calculated_time": "2024-08-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "処暑": {
+          "our_time": "2024-08-01 08:00:00",
+          "calculated_time": "2024-08-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "白露": {
+          "our_time": "2024-09-28 07:59:59",
+          "calculated_time": "2024-09-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "秋分": {
+          "our_time": "2024-09-01 08:00:00",
+          "calculated_time": "2024-09-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "寒露": {
+          "our_time": "2024-10-28 07:59:59",
+          "calculated_time": "2024-10-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "霜降": {
+          "our_time": "2024-10-01 08:00:00",
+          "calculated_time": "2024-10-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "立冬": {
+          "our_time": "2024-11-28 07:59:59",
+          "calculated_time": "2024-11-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小雪": {
+          "our_time": "2024-11-01 08:00:00",
+          "calculated_time": "2024-11-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大雪": {
+          "our_time": "2024-12-28 07:59:59",
+          "calculated_time": "2024-12-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "冬至": {
+          "our_time": "2024-12-01 08:00:00",
+          "calculated_time": "2024-12-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "小寒": {
+          "our_time": "2025-01-28 07:59:59",
+          "calculated_time": "2025-01-28 07:59:59",
+          "difference_hours": 0.0,
+          "status": "OK"
+        },
+        "大寒": {
+          "our_time": "2025-01-01 08:00:00",
+          "calculated_time": "2025-01-01 08:00:00",
+          "difference_hours": 0.0,
+          "status": "OK"
+        }
+      }
+    }
+  },
+  "success_rate": 100.0
+}

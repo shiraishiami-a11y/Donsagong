@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>四柱推命 - Golden Peppa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", sans-serif;
+            background-color: #1c1c1e;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #000;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .user-info {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .user-info span {
+            margin: 0 8px;
+        }
+
+        /* 四柱表 */
+        .saju-section {
+            background: #1c1c1e;
+            padding: 20px;
+        }
+
+        .saju-table {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .saju-column {
+            text-align: center;
+        }
+
+        .saju-label {
+            font-size: 12px;
+            color: #8e8e93;
+            margin-bottom: 8px;
+        }
+
+        .saju-box {
+            padding: 20px 10px;
+            border-radius: 12px;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+        }
+
+        /* 年柱 */
+        .year-top { background: #e5e5ea; color: #000; }
+        .year-bottom { background: #ff9f9f; color: #fff; }
+
+        /* 月柱 */
+        .month-top { background: #ffcc00; color: #000; }
+        .month-bottom { background: #ffcc00; color: #000; }
+
+        /* 日柱 */
+        .day-top { background: #34c759; color: #fff; }
+        .day-bottom { background: #5ac8fa; color: #fff; }
+
+        /* 時柱 */
+        .time-top { background: #ff9f9f; color: #fff; }
+        .time-bottom { background: #34c759; color: #fff; }
+
+        .element-info {
+            font-size: 11px;
+            color: #8e8e93;
+            margin-top: 4px;
+        }
+
+        /* 人生運勢グラフ */
+        .graph-section {
+            background: #2c2c2e;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 12px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .graph-container {
+            position: relative;
+            height: 150px;
+            background: #1c1c1e;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .graph-canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .current-marker {
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            width: 12px;
+            height: 12px;
+            background: #ff9500;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .current-label {
+            position: absolute;
+            top: 10%;
+            left: 35%;
+            transform: translateX(-50%);
+            color: #ff9500;
+            font-size: 12px;
+        }
+
+        .age-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 10px;
+            color: #8e8e93;
+        }
+
+        /* 大運表 */
+        .daeun-section {
+            background: #2c2c2e;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 12px;
+        }
+
+        .daeun-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .daeun-item {
+            background: #3a3a3c;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .daeun-item.active {
+            background: #5856d6;
+        }
+
+        .daeun-age {
+            font-size: 11px;
+            color: #8e8e93;
+            margin-bottom: 4px;
+        }
+
+        .daeun-item.active .daeun-age {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .daeun-stem {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            background: #ffcc00;
+            padding: 8px;
+            border-radius: 6px 6px 0 0;
+            margin: 4px 0 1px 0;
+        }
+
+        .daeun-branch {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            background: #ff9f9f;
+            padding: 8px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .daeun-item.active .daeun-stem,
+        .daeun-item.active .daeun-branch {
+            background: #fff;
+            color: #5856d6;
+        }
+
+        /* 下部タブバー */
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1c1c1e;
+            border-top: 1px solid #3a3a3c;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0 20px;
+        }
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            color: #8e8e93;
+            font-size: 10px;
+        }
+
+        .tab-item.active {
+            color: #5856d6;
+        }
+
+        .tab-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 auto 4px;
+            background: #8e8e93;
+            border-radius: 4px;
+        }
+
+        .tab-item.active .tab-icon {
+            background: #5856d6;
+        }
+
+        /* 運勢線グラデーション */
+        .graph-line {
+            position: absolute;
+            top: 40%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                #ff6b6b 0%,
+                #4ecdc4 25%,
+                #ff9500 35%,
+                #4ecdc4 50%,
+                #95e1d3 75%,
+                #ff6b6b 100%);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <div class="user-info">
+                <span>山田太郎</span>
+                <span>|</span>
+                <span>1990年3月15日 卯時</span>
+                <span>|</span>
+                <span>男性</span>
+            </div>
+        </div>
+
+        <!-- 四柱表 -->
+        <div class="saju-section">
+            <div class="saju-table">
+                <!-- 年柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">年柱</div>
+                    <div class="saju-box year-top">庚</div>
+                    <div class="saju-box year-bottom">午</div>
+                    <div class="element-info">蔵干: 丁己</div>
+                </div>
+
+                <!-- 月柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">月柱</div>
+                    <div class="saju-box month-top">戊</div>
+                    <div class="saju-box month-bottom">辰</div>
+                    <div class="element-info">蔵干: 戊乙癸</div>
+                </div>
+
+                <!-- 日柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">日柱</div>
+                    <div class="saju-box day-top">甲</div>
+                    <div class="saju-box day-bottom">子</div>
+                    <div class="element-info">蔵干: 癸</div>
+                </div>
+
+                <!-- 時柱 -->
+                <div class="saju-column">
+                    <div class="saju-label">時柱</div>
+                    <div class="saju-box time-top">丁</div>
+                    <div class="saju-box time-bottom">卯</div>
+                    <div class="element-info">蔵干: 乙</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 人生運勢グラフ -->
+        <div class="graph-section">
+            <h3 class="section-title">人生運勢グラフ</h3>
+            <div class="graph-container">
+                <div class="graph-canvas">
+                    <div class="graph-line"></div>
+                    <div class="current-marker"></div>
+                    <div class="current-label">現在</div>
+                </div>
+            </div>
+            <div class="age-labels">
+                <span>5</span>
+                <span>15</span>
+                <span>25</span>
+                <span>35</span>
+                <span>45</span>
+                <span>55</span>
+                <span>65</span>
+                <span>75</span>
+                <span>85</span>
+            </div>
+        </div>
+
+        <!-- 大運表 -->
+        <div class="daeun-section">
+            <h3 class="section-title">大運（10年運）</h3>
+            <div class="daeun-grid">
+                <div class="daeun-item">
+                    <div class="daeun-age">5-14歳</div>
+                    <div class="daeun-stem">己</div>
+                    <div class="daeun-branch">巳</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">15-24歳</div>
+                    <div class="daeun-stem">庚</div>
+                    <div class="daeun-branch">午</div>
+                </div>
+                <div class="daeun-item active">
+                    <div class="daeun-age">25-34歳</div>
+                    <div class="daeun-stem">辛</div>
+                    <div class="daeun-branch">未</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">35-44歳</div>
+                    <div class="daeun-stem">壬</div>
+                    <div class="daeun-branch">申</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">45-54歳</div>
+                    <div class="daeun-stem">癸</div>
+                    <div class="daeun-branch">酉</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">55-64歳</div>
+                    <div class="daeun-stem">甲</div>
+                    <div class="daeun-branch">戌</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">65-74歳</div>
+                    <div class="daeun-stem">乙</div>
+                    <div class="daeun-branch">亥</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">75-84歳</div>
+                    <div class="daeun-stem">丙</div>
+                    <div class="daeun-branch">子</div>
+                </div>
+                <div class="daeun-item">
+                    <div class="daeun-age">85-94歳</div>
+                    <div class="daeun-stem">丁</div>
+                    <div class="daeun-branch">丑</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- タブバー -->
+        <div class="tab-bar">
+            <div class="tab-item active">
+                <div class="tab-icon"></div>
+                <div>四柱</div>
+            </div>
+            <div class="tab-item">
+                <div class="tab-icon"></div>
+                <div>相性</div>
+            </div>
+            <div class="tab-item">
+                <div class="tab-icon"></div>
+                <div>カレンダー</div>
+            </div>
+            <div class="tab-item">
+                <div class="tab-icon"></div>
+                <div>設定</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

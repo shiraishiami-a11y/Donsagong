@@ -1,0 +1,302 @@
+[
+  {
+    "case_info": {
+      "case_id": 1,
+      "birth_datetime": "1987-07-15 04:41:00",
+      "gender": "男",
+      "formatted_date": "1987年07月15日 04時41分",
+      "year": 1987,
+      "month": 7,
+      "day": 15,
+      "hour": 4,
+      "minute": 41
+    },
+    "saju": {
+      "year_pillar": "丁卯",
+      "month_pillar": "甲午",
+      "day_pillar": "乙未",
+      "hour_pillar": "丙寅",
+      "month_info": "芒種月(06/28 07:59)",
+      "solar_term_used": "芒種月(06/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "小暑",
+      "next_solar_term_date": "1987-07-28 07:59:59",
+      "days_to_solar_term": 13,
+      "daeun_start_age": 4.33,
+      "daeun_start_date": "1987-07-28",
+      "calculation_basis": "13日 ÷ 3 = 4.33年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 2,
+      "birth_datetime": "1979-08-20 13:42:00",
+      "gender": "女",
+      "formatted_date": "1979年08月20日 13時42分",
+      "year": 1979,
+      "month": 8,
+      "day": 20,
+      "hour": 13,
+      "minute": 42
+    },
+    "saju": {
+      "year_pillar": "己未",
+      "month_pillar": "丁未",
+      "day_pillar": "己丑",
+      "hour_pillar": "乙未",
+      "month_info": "小暑月(07/28 07:59)",
+      "solar_term_used": "小暑月(07/28 07:59)"
+    },
+    "daeun": {
+      "direction": "順行",
+      "next_solar_term": "立秋",
+      "next_solar_term_date": "1979-08-28 07:59:59",
+      "days_to_solar_term": 7,
+      "daeun_start_age": 2.33,
+      "daeun_start_date": "1979-08-27",
+      "calculation_basis": "7日 ÷ 3 = 2.33年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 3,
+      "birth_datetime": "2031-06-03 04:19:00",
+      "gender": "男",
+      "formatted_date": "2031年06月03日 04時19分",
+      "year": 2031,
+      "month": 6,
+      "day": 3,
+      "hour": 4,
+      "minute": 19
+    },
+    "saju": {
+      "year_pillar": "辛亥",
+      "month_pillar": "丁巳",
+      "day_pillar": "甲辰",
+      "hour_pillar": "丙寅",
+      "month_info": "立夏月(05/28 07:59)",
+      "solar_term_used": "立夏月(05/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "芒種",
+      "next_solar_term_date": "2031-06-28 07:59:59",
+      "days_to_solar_term": 25,
+      "daeun_start_age": 8.33,
+      "daeun_start_date": "2031-06-28",
+      "calculation_basis": "25日 ÷ 3 = 8.33年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 4,
+      "birth_datetime": "2029-12-14 16:15:00",
+      "gender": "男",
+      "formatted_date": "2029年12月14日 16時15分",
+      "year": 2029,
+      "month": 12,
+      "day": 14,
+      "hour": 16,
+      "minute": 15
+    },
+    "saju": {
+      "year_pillar": "己酉",
+      "month_pillar": "辛亥",
+      "day_pillar": "戊申",
+      "hour_pillar": "丙申",
+      "month_info": "立冬月(11/28 07:59)",
+      "solar_term_used": "立冬月(11/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "大雪",
+      "next_solar_term_date": "2029-12-28 07:59:59",
+      "days_to_solar_term": 13,
+      "daeun_start_age": 4.33,
+      "daeun_start_date": "2029-12-27",
+      "calculation_basis": "13日 ÷ 3 = 4.33年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 5,
+      "birth_datetime": "1972-02-26 02:37:00",
+      "gender": "女",
+      "formatted_date": "1972年02月26日 02時37分",
+      "year": 1972,
+      "month": 2,
+      "day": 26,
+      "hour": 2,
+      "minute": 37
+    },
+    "saju": {
+      "year_pillar": "壬子",
+      "month_pillar": "乙丑",
+      "day_pillar": "丁巳",
+      "hour_pillar": "丁丑",
+      "month_info": "小寒月(01/28 07:59)",
+      "solar_term_used": "小寒月(01/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "立春",
+      "next_solar_term_date": "1972-02-28 07:59:59",
+      "days_to_solar_term": 2,
+      "daeun_start_age": 0.67,
+      "daeun_start_date": "1972-02-28",
+      "calculation_basis": "2日 ÷ 3 = 0.67年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 6,
+      "birth_datetime": "2066-03-28 08:26:00",
+      "gender": "男",
+      "formatted_date": "2066年03月28日 08時26分",
+      "year": 2066,
+      "month": 3,
+      "day": 28,
+      "hour": 8,
+      "minute": 26
+    },
+    "saju": {
+      "year_pillar": "丙戌",
+      "month_pillar": "辛卯",
+      "day_pillar": "辛丑",
+      "hour_pillar": "甲辰",
+      "month_info": "驚蟄月(03/28 07:59)",
+      "solar_term_used": "驚蟄月(03/28 07:59)"
+    },
+    "daeun": {
+      "direction": "順行",
+      "next_solar_term": "清明",
+      "next_solar_term_date": "2066-04-28 07:59:59",
+      "days_to_solar_term": 30,
+      "daeun_start_age": 10.0,
+      "daeun_start_date": "2066-04-27",
+      "calculation_basis": "30日 ÷ 3 = 10.00年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 7,
+      "birth_datetime": "1940-12-19 08:11:00",
+      "gender": "女",
+      "formatted_date": "1940年12月19日 08時11分",
+      "year": 1940,
+      "month": 12,
+      "day": 19,
+      "hour": 8,
+      "minute": 11
+    },
+    "saju": {
+      "year_pillar": "庚辰",
+      "month_pillar": "癸亥",
+      "day_pillar": "丙寅",
+      "hour_pillar": "庚辰",
+      "month_info": "立冬月(11/28 07:59)",
+      "solar_term_used": "立冬月(11/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "大雪",
+      "next_solar_term_date": "1940-12-28 07:59:59",
+      "days_to_solar_term": 8,
+      "daeun_start_age": 2.67,
+      "daeun_start_date": "1940-12-27",
+      "calculation_basis": "8日 ÷ 3 = 2.67年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 8,
+      "birth_datetime": "2047-09-24 13:04:00",
+      "gender": "女",
+      "formatted_date": "2047年09月24日 13時04分",
+      "year": 2047,
+      "month": 9,
+      "day": 24,
+      "hour": 13,
+      "minute": 4
+    },
+    "saju": {
+      "year_pillar": "丁卯",
+      "month_pillar": "丙申",
+      "day_pillar": "辛酉",
+      "hour_pillar": "丁未",
+      "month_info": "立秋月(08/28 07:59)",
+      "solar_term_used": "立秋月(08/28 07:59)"
+    },
+    "daeun": {
+      "direction": "順行",
+      "next_solar_term": "白露",
+      "next_solar_term_date": "2047-09-28 07:59:59",
+      "days_to_solar_term": 3,
+      "daeun_start_age": 1.0,
+      "daeun_start_date": "2047-09-27",
+      "calculation_basis": "3日 ÷ 3 = 1.00年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 9,
+      "birth_datetime": "1966-08-15 01:40:00",
+      "gender": "女",
+      "formatted_date": "1966年08月15日 01時40分",
+      "year": 1966,
+      "month": 8,
+      "day": 15,
+      "hour": 1,
+      "minute": 40
+    },
+    "saju": {
+      "year_pillar": "丙午",
+      "month_pillar": "乙未",
+      "day_pillar": "丙子",
+      "hour_pillar": "丁丑",
+      "month_info": "小暑月(07/28 07:59)",
+      "solar_term_used": "小暑月(07/28 07:59)"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "立秋",
+      "next_solar_term_date": "1966-08-28 07:59:59",
+      "days_to_solar_term": 13,
+      "daeun_start_age": 4.33,
+      "daeun_start_date": "1966-08-28",
+      "calculation_basis": "13日 ÷ 3 = 4.33年"
+    }
+  },
+  {
+    "case_info": {
+      "case_id": 10,
+      "birth_datetime": "2044-01-07 18:20:00",
+      "gender": "女",
+      "formatted_date": "2044年01月07日 18時20分",
+      "year": 2044,
+      "month": 1,
+      "day": 7,
+      "hour": 18,
+      "minute": 20
+    },
+    "saju": {
+      "year_pillar": "甲子",
+      "month_pillar": "丙未確定",
+      "day_pillar": "乙酉",
+      "hour_pillar": "癸酉",
+      "month_info": "節気判定失敗",
+      "solar_term_used": "節気判定失敗"
+    },
+    "daeun": {
+      "direction": "逆行",
+      "next_solar_term": "立春",
+      "next_solar_term_date": "2044-02-28 07:59:59",
+      "days_to_solar_term": 51,
+      "daeun_start_age": 17.0,
+      "daeun_start_date": "2044-02-27",
+      "calculation_basis": "51日 ÷ 3 = 17.00年"
+    }
+  }
+]

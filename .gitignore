@@ -1,0 +1,107 @@
+# Environment variables (機密情報)
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+
+# API Keys and Secrets
+*.key
+*.pem
+config/secrets.*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+ENV/
+env/
+
+# Node.js / React
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.npm
+.eslintcache
+*.tsbuildinfo
+
+# Build outputs
+build/
+dist/
+.next/
+.nuxt/
+out/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temp files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# User-specific data (LocalStorage backup)
+user-data/
+backup/
+
+# Redis dump
+dump.rdb
+
+# Certificate files
+*.crt
+*.cer
+*.p12
+*.pfx

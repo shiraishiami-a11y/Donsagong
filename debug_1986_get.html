@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<TITLE>二十四節気・節入月日時刻計算</TITLE>
+<META NAME="author" CONTENT="M.Suzuki">
+<META NAME="copyright" CONTENT="M.Suzuki">
+<META NAME="Keywords" CONTENT="春分,秋分,夏至,冬至,祝日,二十四節気,節気">
+<META NAME="Description" CONTENT="指定した年の定気と恒気による二十四節気の日時を計算するページ。解説もあります。">
+<script type="text/javascript" src="./env/sv_env.js"></script>
+<script type="text/javascript" src="./js/std.js?20240103"></script>
+<script type="text/javascript" src="./js/stdlib.js"></script>
+<script type='text/javascript' src='./js/xmlhttp_simple.js'></script>
+<script type='text/javascript' src='./js/subjs/24sekki.js'></script>
+<script type="text/javascript">
+<!--
+var HPPage = 205;	// ページ識別コード
+// top.index != undefined) CallMainIndex('.');
+php_pro_url = '.' + php_pro_url;
+// -->
+</SCRIPT>
+<script type="text/javascript" src="./js/xmlhttp.js"></script>
+<script type="text/javascript" src="./js/page_log.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" href="./css/std.css?20230313">
+
+</HEAD>
+<body class="wd-std bgc-p" onLoad="VCount();comm_view(1);Startup();Math24_php();">
+<div id="root">
+<script type="text/javascript" src="./js/mokuji.js?20230313" charset="utf-8"></script>
+<div id="main_doc">
+<div style="font-size: 12pt;line-height: 140%;">
+<dl>
+<dt><strong class="H2">二十四節気の計算</strong></dt>
+<dd>下の表は、指定された年の節入りの月日時刻を<strong>定気法</strong>と<strong>恒気法</strong>の二つの方式で計算し表示しています（現在一般に使われる方式は<strong>定気法</strong>です）。<br>
+二十四節気がどのようなものであるかについては<a href="./24doc.htm#doc1"> 二十四節気とは</a> の解説記事をお読みください。<br>
+七十二候については <a href="./sub/72kou.htm">七十二候の日付計算</a> でご覧ください。<br>
+使い方については <a href="#cf">こちら</a> をご覧ください。</dd>
+</dl>
+</div>
+<style type="text/css">
+th,td {text-align: center;}
+</style>
+
+<table border cellpaddign="0" cellspacing="0" align="center" style="width: 90%;font-size: 12pt;">
+<tr><th colspan="6" bgcolor="#bbbbbb" >二十四節気・一覧</th></tr>
+<FORM name="DATAIN">
+<tr>
+<th COLSPAN="5" class="bgc-bk">
+西暦<select name="nen100">
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+</select><select name="nen1">
+<script language="Javascript">
+for (y = 0; y <= 99 ; y++) {
+	if (y < 10) {
+		tmp = '0' + y;
+	} else {
+		tmp = '' + y;
+	}
+	document.writeln('<option value="' + tmp + '">' + tmp + '</option>');
+}
+</script>
+</select>年　<INPUT TYPE=BUTTON VALUE="計算実行" onClick="Math24_php();Math24();"></th>
+<th class="bgc-y"><a id="csvf">CSVファイル出力</a></th></tr>
+</form>
+<tr BGCOLOR="#aaaaaa">
+<td>季節</td>
+<th COLSPAN="2">節気の名称</th>
+<th>角度</th>
+<th>「定気法」節入日時</th>
+<th>「恒気法」節入日時</th>
+</tr>
+<tr class="bgc-bk">
+<th ROWSPAN="2">冬</th>
+<td>十二月節</td>
+<th>小寒</th>
+<td>285</td>
+<td id="T-1"></td><td id="K-1"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十二月中</td>
+<th>大寒</th>
+<td>300</td>
+<td id="T0"></td><td id="K0"></td>
+</tr>
+
+<tr class="bgc-g">
+<th ROWSPAN="6">春</th>
+<td>正月節</td>
+<th>立春</th>
+<td>315</td>
+<td id="T1"></td><td id="K1"></td>
+</tr>
+<tr class="bgc-g">
+<td>正月中</td>
+<th>雨水</th>
+<td>330</td>
+<td id="T2"></td><td id="K2"></td>
+</tr>
+<tr class="bgc-g">
+<td>二月節</td>
+<th>啓蟄</th>
+<td>345</td>
+<td id="T3"></td><td id="K3"></td>
+</tr>
+<tr class="bgc-g">
+<td>二月中</td>
+<th>春分</th>
+<td>0</td>
+<td id="T4"></td><td id="K4"></td>
+</tr>
+<tr class="bgc-g">
+<td>三月節</td>
+<th>清明</th>
+<td>15</td>
+<td id="T5"></td><td id="K5"></td>
+</tr>
+<tr class="bgc-g">
+<td>三月中</td>
+<th>穀雨</th>
+<td>30</td>
+<td id="T6"></td><td id="K6"></td>
+</tr>
+
+<tr class="bgc-p">
+<th ROWSPAN="6">夏</th>
+<td>四月節</td>
+<th>立夏</th>
+<td>45</td>
+<td id="T7"></td><td id="K7"></td>
+</tr>
+<tr class="bgc-p">
+<td>四月中</td>
+<th>小満</th>
+<td>60</td>
+<td id="T8"></td><td id="K8"></td>
+</tr>
+<tr class="bgc-p">
+<td>五月節</td>
+<th>芒種</th>
+<td>75</td>
+<td id="T9"></td><td id="K9"></td>
+</tr>
+<tr class="bgc-p">
+<td>五月中</td>
+<th>夏至</th>
+<td>90</td>
+<td id="T10"></td><td id="K10"></td>
+</tr>
+<tr class="bgc-p">
+<td>六月節</td>
+<th>小暑</th>
+<td>105</td>
+<td id="T11"></td><td id="K11"></td>
+</tr>
+<tr class="bgc-p">
+<td>六月中</td>
+<th>大暑</th>
+<td>120</td>
+<td id="T12"></td><td id="K12"></td>
+</tr>
+
+<tr class="bgc-w">
+<th ROWSPAN="6">秋</th>
+<td>七月節</td>
+<th>立秋</th>
+<td>135</td>
+<td id="T13"></td><td id="K13"></td>
+</tr>
+<tr class="bgc-w">
+<td>七月中</td>
+<th>処暑</th>
+<td>150</td>
+<td id="T14"></td><td id="K14"></td>
+</tr>
+<tr class="bgc-w">
+<td>八月節</td>
+<th>白露</th>
+<td>165</td>
+<td id="T15"></td><td id="K15"></td>
+</tr>
+<tr class="bgc-w">
+<td>八月中</td>
+<th>秋分</th>
+<td>180</td>
+<td id="T16"></td><td id="K16"></td>
+</tr>
+<tr class="bgc-w">
+<td>九月節</td>
+<th>寒露</th>
+<td>195</td>
+<td id="T17"></td><td id="K17"></td>
+</tr>
+<tr class="bgc-w">
+<td>九月中</td>
+<th>霜降</th>
+<td>210</td>
+<td id="T18"></td><td id="K18"></td>
+</tr>
+
+<tr class="bgc-bk">
+<th ROWSPAN="6">冬</th>
+<td>十月節</td>
+<th>立冬</th>
+<td>225</td>
+<td id="T19"></td><td id="K19"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十月中</td>
+<th>小雪</th>
+<td>240</td>
+<td id="T20"></td><td id="K20"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十一月節</td>
+<th>大雪</th>
+<td>255</td>
+<td id="T21"></td><td id="K21"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十一月中</td>
+<th>冬至</th>
+<td>270</td>
+<td id="T22"></td><td id="K22"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十二月節</td>
+<th>小寒</th>
+<td>285</td>
+<td id="T23"></td><td id="K23"></td>
+</tr>
+<tr class="bgc-bk">
+<td>十二月中</td>
+<th>大寒</th>
+<td>300</td>
+<td id="T24"></td><td id="K24"></td>
+</tr>
+</table>
+
+
+<div id="cf" style="font-size: 12pt; line-height: 140%;">
+<strong>使い方（上表の説明）</strong><br>
+<ol>
+<li>表の「<strong>西暦</strong>」と書いた部分に、求めたい年を4桁の西暦年で指定。</li>
+<li>「<strong>計算実行</strong>」ボタンをクリックする。</li>
+<li>計算結果をエクセルなどに取り込んで使用したい場合は、「<strong>CSV表示</strong>」ボタンをクリックし、表示されたCSVデータをファイルに保存して使用する。</li>
+</ol>
+<hr>節入りの時刻等（ただし定気法によるもの）を更に詳細に確認したい場合は、<a href="./sub/sunmoon_long.htm">太陽と月の視黄経・黄緯の計算</a> を利用してご確認下さい。<strong>七十二候</strong>の日付（定気法による）を知りたい方は、<a href="./sub/72kou.htm">七十二候の日付計算</a> をご利用下さい。<br>
+<hr>
+<strong>補足説明</strong>　<div id="comm_1">
+<ul>
+<li>計算と計算に要する時間<br>計算にはJavascriptを使用しています。お使いのコンピュータ環境によっては、計算に1～2秒の時間を要する場合があります。</li>
+<li>定気法と恒気法の表示<br>従来の定気法による計算結果の他に、2010/05からは恒気法（<strong class="red">注1</strong>）による計算結果も参考まで表示するようにしました。</li>
+</ul>
+<strong>注1</strong>：　ここで用いた恒気法では、節気間隔の基準として冬至と次の冬至の間隔を用いました。平均年の長ではありません。
+<hr>
+<dl>
+<dt><strong>表中の月日時刻についての注意事項</strong></dt>
+<dd>表の「月日」は現在の暦（新暦）での月日です。表の二十四節気は新暦の１月から順に並べておりますので、旧暦では前の年の十二月節と中である小寒と大寒が表の最初に表示されます。<br>
+「旧暦での今年」の小寒と大寒は新暦では翌年の日付となりますので、表の最後に表示しております。<br>このため、<br>
+　最初の小寒・大寒は新暦で「計算年」<br>
+　最後の小寒・大寒は新暦で「計算年の翌年」<br>
+となります。注意してください。</dd>
+</dl>
+<hr>
+この表の日時は太陽の位置計算から得ておりますので、<span class=red>1870～2100年の間</span>ならば、実用上問題ないレベルで計算出来ます。その後のことに関しては、あと50年位したら考えます。<br>
+「<a href="./24doc.htm"><strong>二十四節気とは</strong></a>」も、併せてお読みください。<br>
+<hr>
+</div>
+<br><a href="javascript:comm_view(1);"><span id="comm_continue_1">▼続きを読む・・・</span></a><br>
+<strong>関連ページ</strong>
+<ul>
+<li><a href="./24doc.htm">二十四節気とは</a></li>
+<li><a href="./sub/72kou.htm">七十二候の日付計算</a></li>
+</ul>
+</div>
+PV (<span id="PageViewCount"> </span>) since 2008.7.8
+</div><!-- main_doc -->
+</div><!-- root -->
+</body>
+</html>
