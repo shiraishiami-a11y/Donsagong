@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン - ゴールデン四柱推命</title>
+
+  <!-- MUI v7 CDN -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Material-UI v5 (最新のCDN対応版) -->
+  <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F4E8C1 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* カラーシステム */
+    :root {
+      --primary-gold: #D4AF37;
+      --light-gold: #F4E8C1;
+      --dark-gold: #B8941C;
+      --background: #FFFFFF;
+      --text-primary: #212121;
+      --text-secondary: #757575;
+      --error: #F44336;
+      --divider: #E0E0E0;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: var(--background);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .header-left:hover {
+      opacity: 0.7;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+
+    .material-icons {
+      font-size: 24px;
+    }
+
+    /* メインコンテンツ */
+    .main-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      max-width: 430px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .login-card {
+      background: var(--background);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+      padding: 40px 24px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* タイトルセクション */
+    .title-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .main-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* フォームセクション */
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .input-field::placeholder {
+      color: #BDBDBD;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      user-select: none;
+    }
+
+    .password-toggle:hover {
+      color: var(--primary-gold);
+    }
+
+    /* チェックボックス */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .checkbox-input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary-gold);
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: var(--text-primary);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* ボタンセクション */
+    .button-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .login-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .login-button:active {
+      transform: translateY(0);
+    }
+
+    .forgot-password-link {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    /* フッターセクション */
+    .footer-section {
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .register-link {
+      color: var(--primary-gold);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .register-link:hover {
+      color: var(--dark-gold);
+      text-decoration: underline;
+    }
+
+    /* エラーメッセージ */
+    .error-message {
+      display: none;
+      padding: 12px;
+      background: #FFEBEE;
+      border: 1px solid var(--error);
+      border-radius: 8px;
+      color: var(--error);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /* キラキラエフェクト */
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--primary-gold);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 1s ease-in-out infinite;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 430px) {
+      .login-card {
+        padding: 32px 20px;
+      }
+
+      .main-title {
+        font-size: 24px;
+      }
+
+      .header-center {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <a href="/" class="header-left">
+      <span class="material-icons">arrow_back</span>
+    </a>
+    <div class="header-center">ゴールデン四柱推命</div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="main-container">
+    <div class="login-card">
+      <!-- タイトルセクション -->
+      <div class="title-section">
+        <h1 class="main-title">ログイン</h1>
+        <p class="subtitle">クラウドで命式を管理</p>
+      </div>
+
+      <!-- エラーメッセージ -->
+      <div class="error-message" id="errorMessage">
+        メールアドレスまたはパスワードが正しくありません
+      </div>
+
+      <!-- フォームセクション -->
+      <form class="form-section" id="loginForm">
+        <!-- メールアドレス入力 -->
+        <div class="input-group">
+          <label class="input-label" for="email">メールアドレス</label>
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              class="input-field"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+        </div>
+
+        <!-- パスワード入力 -->
+        <div class="input-group">
+          <label class="input-label" for="password">パスワード</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              class="input-field"
+              placeholder="パスワード"
+              autocomplete="current-password"
+              required
+            >
+            <span class="material-icons password-toggle" id="passwordToggle">visibility_off</span>
+          </div>
+        </div>
+
+        <!-- ログイン状態を保持 -->
+        <div class="checkbox-wrapper">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            class="checkbox-input"
+            checked
+          >
+          <label for="rememberMe" class="checkbox-label">ログイン状態を保持</label>
+        </div>
+      </form>
+
+      <!-- ボタンセクション -->
+      <div class="button-section">
+        <button type="submit" class="login-button" id="loginButton">
+          ログイン
+        </button>
+        <a href="#" class="forgot-password-link">パスワードを忘れた（将来対応）</a>
+      </div>
+
+      <!-- フッターセクション -->
+      <div class="footer-section">
+        <p class="footer-text">アカウントをお持ちでない方</p>
+        <a href="/register" class="register-link">新規登録はこちら</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // パスワード表示/非表示切り替え
+    const passwordInput = document.getElementById('password');
+    const passwordToggle = document.getElementById('passwordToggle');
+
+    passwordToggle.addEventListener('click', function() {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordToggle.textContent = 'visibility';
+      } else {
+        passwordInput.type = 'password';
+        passwordToggle.textContent = 'visibility_off';
+      }
+    });
+
+    // ログインボタンのキラキラエフェクト
+    const loginButton = document.getElementById('loginButton');
+
+    loginButton.addEventListener('mouseenter', function(e) {
+      createSparkles(e.currentTarget);
+    });
+
+    function createSparkles(element) {
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          sparkle.style.left = Math.random() * element.offsetWidth + 'px';
+          sparkle.style.top = Math.random() * element.offsetHeight + 'px';
+          sparkle.style.animationDelay = Math.random() * 0.5 + 's';
+          element.appendChild(sparkle);
+
+          setTimeout(() => sparkle.remove(), 1000);
+        }, i * 100);
+      }
+    }
+
+    // フォーム送信処理（デモ用）
+    loginButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+
+      console.log('ログイン試行:', {
+        email,
+        password: '********',
+        rememberMe
+      });
+
+      // バリデーション
+      if (!email || !password) {
+        showError('メールアドレスとパスワードを入力してください');
+        return;
+      }
+
+      // デモ用の簡易認証
+      if (email === 'test@example.com' && password === 'password') {
+        // 成功時の処理（実際はAPIコール）
+        alert('ログイン成功！命式リストページに移動します');
+        // window.location.href = '/list';
+      } else {
+        showError('メールアドレスまたはパスワードが正しくありません');
+      }
+    });
+
+    function showError(message) {
+      const errorMessage = document.getElementById('errorMessage');
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+
+      setTimeout(() => {
+        errorMessage.classList.remove('show');
+      }, 3000);
+    }
+
+    // エンターキーでログイン
+    document.getElementById('password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        loginButton.click();
+      }
+    });
+
+    document.getElementById('email').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        loginButton.click();
+      }
+    });
+  </script>
+
+  <!--
+  【CF_06引き継ぎ情報】
+
+  UI要件:
+    - ユーザーがメールアドレスとパスワードを入力してログインボタンをクリック
+    - 「ログイン状態を保持」チェックボックスでセッション有効期限を設定
+    - パスワード入力時は目アイコンで表示/非表示を切り替え可能
+
+  必要API: POST /api/auth/login
+
+  入力データ: {
+    email: string,  // メールアドレス
+    password: string,  // パスワード（プレーンテキスト）
+    remember_me: boolean  // ログイン状態保持フラグ
+  }
+
+  出力データ: {
+    access_token: string,  // JWT Access Token（有効期限15分）
+    refresh_token: string,  // Refresh Token（有効期限: remember_meに応じて7日/30日/無期限）
+    token_type: "bearer",
+    user: {
+      id: string,  // ユーザーID（UUID）
+      email: string  // メールアドレス
+    }
+  }
+
+  UI文脈:
+    - ログイン成功時:
+      1. Access TokenとRefresh TokenをLocalStorageに保存
+      2. ユーザー情報を状態管理（Zustand）に保存
+      3. /list（命式リストページ）にリダイレクト
+    - ログイン失敗時:
+      1. エラーメッセージを表示（赤文字、3秒後に自動非表示）
+      2. フォームはクリアしない（再入力の手間を削減）
+
+  特記事項:
+    - バリデーション:
+      * メールアドレス形式チェック（正規表現）
+      * パスワード8文字以上チェック
+      * 空欄チェック
+    - セキュリティ:
+      * パスワードはプレーンテキストで送信（HTTPS必須）
+      * バックエンドでbcryptによるハッシュ照合
+      * 失敗時は詳細を返さない（「メールアドレスまたはパスワードが正しくありません」）
+    - UX:
+      * エンターキーでログイン実行可能
+      * ログインボタンにキラキラエフェクト（ゴールドテーマ）
+      * パスワード表示/非表示切り替えアイコン
+    - ゲストモード制約:
+      * すでにログイン済みの場合は/listに自動リダイレクト
+
+  エラーハンドリング:
+    - 401 Unauthorized: メールアドレスまたはパスワードが間違っている
+    - 500 Internal Server Error: サーバーエラー（「サーバーエラーが発生しました。しばらくしてから再度お試しください」）
+    - Network Error: ネットワークエラー（「ネットワークエラーが発生しました。接続を確認してください」）
+  -->
+</body>
+</html>

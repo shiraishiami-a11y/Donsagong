@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命式リスト - ゴールデン四柱推命</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F4E8C1 100%);
+      color: #333;
+      max-width: 430px;
+      margin: 0 auto;
+    }
+
+    .container {
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-y: auto;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(90deg, #B8941C 0%, #D4AF37 100%);
+      padding: 16px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* コンテンツ */
+    .content {
+      padding: 16px;
+    }
+
+    /* カード */
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .card-name.untitled {
+      color: #999;
+      font-style: italic;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .action-btn.edit:hover {
+      color: #D4AF37;
+    }
+
+    .action-btn.delete:hover {
+      color: #f44336;
+    }
+
+    .card-info {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #666;
+    }
+
+    .empty-state-icon {
+      font-size: 64px;
+      color: #D4AF37;
+      margin-bottom: 16px;
+    }
+
+    .empty-state-text {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .empty-state-subtext {
+      font-size: 0.875rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <div class="header">
+      <button class="icon-btn">
+        <span class="material-icons">add</span>
+      </button>
+      <h1>命式リスト</h1>
+      <button class="icon-btn">
+        <span class="material-icons">login</span>
+      </button>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="content">
+      <!-- カード1 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">山田 太郎</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1990年3月15日 14:30</div>
+      </div>
+
+      <!-- カード2 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">田中 花子</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 1985年6月20日 10:00</div>
+      </div>
+
+      <!-- カード3 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name untitled">無題</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1995年12月5日 08:30</div>
+      </div>
+
+      <!-- カード4 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">佐藤 健</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1988年7月10日 16:45</div>
+      </div>
+
+      <!-- カード5 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">鈴木 美咲</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 1992年11月25日 09:15</div>
+      </div>
+
+      <!-- カード6 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">高橋 翔太</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 2000年4月8日 13:20</div>
+      </div>
+
+      <!-- カード7 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">伊藤 愛</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 1998年9月14日 11:00</div>
+      </div>
+
+      <!-- カード8 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">渡辺 大輔</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1975年2月28日 07:30</div>
+      </div>
+
+      <!-- カード9 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">中村 さくら</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 2005年5月3日 15:40</div>
+      </div>
+
+      <!-- カード10 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-name">小林 誠</div>
+          <div class="card-actions">
+            <button class="action-btn edit">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1982年10月19日 18:25</div>
+      </div>
+
+      <!-- 空の状態（データがない場合） -->
+      <!--
+      <div class="empty-state">
+        <div class="empty-state-icon">✨</div>
+        <div class="empty-state-text">命式がまだありません</div>
+        <div class="empty-state-subtext">「+」ボタンから新しい命式を作成しましょう</div>
+      </div>
+      -->
+    </div>
+  </div>
+</body>
+</html>

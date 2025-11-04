@@ -4,6 +4,8 @@ lunar-pythonを使用して年運・月運・日運の干支を計算し、
 ドンサゴンマトリックスで吉凶判定を行う
 """
 import calendar
+import json
+import os
 from datetime import datetime
 from typing import Dict, List, Literal, Tuple
 
@@ -16,10 +18,22 @@ HEAVENLY_STEMS = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬",
 EARTHLY_BRANCHES = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
 
 # 吉凶レベル型
-FortuneLevel = Literal["大吉", "吉", "平", "凶", "大凶"]
+FortuneLevel = Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"]
 
 # 五行要素型
 FiveElement = Literal["wood", "fire", "earth", "metal", "water"]
+
+# ドンサゴン吉凶マッピング
+DONSAGONG_FORTUNE_MAP = {
+    "대길": "大吉",
+    "소길": "小吉",
+    "길": "吉",
+    "길흉": "吉凶",
+    "평": "平",
+    "흉": "凶",
+    "대흉": "大凶",
+    "무": "平"  # 無は平として扱う
+}
 
 
 class FortuneCalculator:
@@ -27,8 +41,20 @@ class FortuneCalculator:
 
     def __init__(self):
         """初期化"""
-        # 簡易的な吉凶判定マトリックス（実際はドンサゴンマトリックスを使用）
-        self.fortune_matrix: Dict[str, FortuneLevel] = {}
+        # ドンサゴン天干マトリックスを読み込む
+        self.cheongan_matrix = self._load_cheongan_matrix()
+
+    def _load_cheongan_matrix(self) -> Dict:
+        """ドンサゴン天干マトリックスを読み込む"""
+        matrix_path = os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "data",
+            "donsagong_cheongan_matrix.json"
+        )
+        with open(matrix_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data["천간_100_매트릭스"]
 
     def calculate_year_fortune(
         self,
@@ -51,8 +77,9 @@ class FortuneCalculator:
         Returns:
             (年天干, 年地支, 吉凶レベル, 十神)
         """
-        # target_yearの1月1日の干支を取得
-        solar = Solar.fromYmd(target_year, 1, 1)
+        # 立春以降の日付を使用（四柱推命では立春が年の切り替わり）
+        # target_yearの7月1日の干支を取得（確実に立春後）
+        solar = Solar.fromYmd(target_year, 7, 1)
         lunar = solar.getLunar()
         eight_char = lunar.getEightChar()
         year_stem = eight_char.getYearGan()  # 年天干
@@ -83,8 +110,9 @@ class FortuneCalculator:
         Returns:
             (月天干, 月地支, 吉凶レベル, 十神)
         """
-        # target_year/target_monthの1日の干支を取得
-        solar = Solar.fromYmd(target_year, target_month, 1)
+        # 節気後の日付を使用（四柱推命では節入日が月の切り替わり）
+        # target_year/target_monthの15日の干支を取得（確実に節気後）
+        solar = Solar.fromYmd(target_year, target_month, 15)
         lunar = solar.getLunar()
         eight_char = lunar.getEightChar()
         month_stem = eight_char.getMonthGan()  # 月天干
@@ -131,6 +159,50 @@ class FortuneCalculator:
         sipsin = self._calculate_sipsin(day_stem, calc_day_stem)
 
         return calc_day_stem, calc_day_branch, fortune_level, sipsin
+
+    def get_actual_year_pillar(
+        self,
+        target_year: int,
+        target_month: int,
+        target_day: int,
+    ) -> Tuple[str, str]:
+        """
+        指定日時点での実際の年柱を取得（立春考慮）
+
+        Args:
+            target_year: 対象年
+            target_month: 対象月
+            target_day: 対象日
+
+        Returns:
+            (年天干, 年地支)
+        """
+        solar = Solar.fromYmd(target_year, target_month, target_day)
+        lunar = solar.getLunar()
+        eight_char = lunar.getEightChar()
+        return eight_char.getYearGan(), eight_char.getYearZhi()
+
+    def get_actual_month_pillar(
+        self,
+        target_year: int,
+        target_month: int,
+        target_day: int,
+    ) -> Tuple[str, str]:
+        """
+        指定日時点での実際の月柱を取得（節気考慮）
+
+        Args:
+            target_year: 対象年
+            target_month: 対象月
+            target_day: 対象日
+
+        Returns:
+            (月天干, 月地支)
+        """
+        solar = Solar.fromYmd(target_year, target_month, target_day)
+        lunar = solar.getLunar()
+        eight_char = lunar.getEightChar()
+        return eight_char.getMonthGan(), eight_char.getMonthZhi()
 
     def calculate_year_list(
         self,
@@ -272,7 +344,7 @@ class FortuneCalculator:
         target_branch: str,
     ) -> FortuneLevel:
         """
-        吉凶レベルを計算（簡易版）
+        吉凶レベルを計算（ドンサゴンマトリックス使用）
 
         Args:
             day_stem: 日干
@@ -282,14 +354,13 @@ class FortuneCalculator:
         Returns:
             吉凶レベル
         """
-        # TODO: ドンサゴンマトリックスを使用した正確な判定
-        # 現在は簡易的な実装
-        if day_stem == target_stem:
-            return "凶"  # 比肩は凶
-        elif self._is_合(day_stem, target_stem):
-            return "凶"  # 天干の合は凶
+        # ドンサゴン天干マトリックスから吉凶を取得
+        if day_stem in self.cheongan_matrix and target_stem in self.cheongan_matrix[day_stem]:
+            donsagong_result = self.cheongan_matrix[day_stem][target_stem]["길흉"]
+            # 韓国語の吉凶を日本語にマッピング
+            return DONSAGONG_FORTUNE_MAP.get(donsagong_result, "平")
 
-        # デフォルトは平
+        # マトリックスにない場合はデフォルト
         return "平"
 
     def _is_合(self, stem1: str, stem2: str) -> bool:

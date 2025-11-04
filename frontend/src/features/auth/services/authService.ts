@@ -1,107 +1,89 @@
-// 認証API呼び出しサービス
-import axios from 'axios';
+/**
+ * 認証サービス（実API版）
+ * バックエンドAPI統合完了後の本番サービス
+ * プロジェクト標準のapiClient（fetch-based）を使用
+ */
+import { apiClient } from '../../../services/api/client';
 import type { AuthResponse, LoginRequest, RegisterRequest, User } from '../../../types';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432/api';
-
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// リクエストインターセプター（トークン付与）
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-// レスポンスインターセプター（トークンリフレッシュ）
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    // 401エラー かつ リトライしていない場合
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      try {
-        const refreshToken = localStorage.getItem('refreshToken');
-        if (refreshToken) {
-          const response = await axios.post<AuthResponse>(
-            `${API_BASE_URL}/auth/refresh`,
-            { refreshToken }
-          );
-
-          const { accessToken } = response.data;
-          localStorage.setItem('accessToken', accessToken);
-
-          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-          return api(originalRequest);
-        }
-      } catch (refreshError) {
-        // リフレッシュ失敗時はログアウト
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        window.location.href = '/login';
-        return Promise.reject(refreshError);
-      }
-    }
-
-    return Promise.reject(error);
-  }
-);
 
 export const authService = {
   /**
-   * ログイン
+   * POST /api/auth/login
+   * ログイン処理
    */
   async login(data: LoginRequest): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/auth/login', data);
+    console.log('[authService] login called', { email: data.email });
+    console.log('[authService] Sending POST /api/auth/login');
+
+    const response = await apiClient.post<AuthResponse>('/api/auth/login', data);
+    console.log('[authService] Response received', { status: response.status });
+
+    if (!response.data) {
+      throw new Error('ログインに失敗しました');
+    }
+
+    // トークンをLocalStorageに保存（apiClientのgetAuthTokenで使用）
+    localStorage.setItem('auth', JSON.stringify({
+      token: response.data.accessToken,
+      refreshToken: response.data.refreshToken,
+      user: response.data.user,
+    }));
+
+    console.log('[authService] Login success, token saved');
     return response.data;
   },
 
   /**
-   * 新規登録
+   * POST /api/auth/register
+   * 新規登録処理
    */
   async register(data: RegisterRequest): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/auth/register', data);
+    console.log('[authService] register called', { email: data.email });
+    console.log('[authService] Sending POST /api/auth/register');
+
+    const response = await apiClient.post<AuthResponse>('/api/auth/register', data);
+    console.log('[authService] Response received', { status: response.status });
+
+    if (!response.data) {
+      throw new Error('登録に失敗しました');
+    }
+
+    // トークンをLocalStorageに保存
+    localStorage.setItem('auth', JSON.stringify({
+      token: response.data.accessToken,
+      refreshToken: response.data.refreshToken,
+      user: response.data.user,
+    }));
+
+    console.log('[authService] Register success, token saved');
     return response.data;
   },
 
   /**
-   * ログアウト
+   * POST /api/auth/logout
+   * ログアウト処理
    */
   async logout(): Promise<void> {
-    // サーバー側でトークン無効化（将来実装）
-    // await api.post('/auth/logout');
-
-    // ローカルストレージクリア
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    try {
+      await apiClient.post('/api/auth/logout');
+    } finally {
+      // APIエラーでもLocalStorageはクリア
+      localStorage.removeItem('auth');
+    }
   },
 
   /**
+   * GET /api/auth/me
    * 現在のユーザー情報取得
    */
   async getCurrentUser(): Promise<User> {
-    const response = await api.get<User>('/auth/me');
-    return response.data;
-  },
+    const response = await apiClient.get<User>('/api/auth/me');
 
-  /**
-   * パスワード変更
-   */
-  async changePassword(oldPassword: string, newPassword: string): Promise<void> {
-    await api.put('/user/password', { oldPassword, newPassword });
+    if (!response.data) {
+      throw new Error('ユーザー情報の取得に失敗しました');
+    }
+
+    return response.data;
   },
 };
 

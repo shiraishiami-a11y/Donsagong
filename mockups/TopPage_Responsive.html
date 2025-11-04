@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>トップページ（命式記入）- レスポンシブモックアップ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      min-height: 100vh;
+    }
+
+    /* コンテナ - レスポンシブ対応 */
+    .container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 600px;
+        padding: 40px 20px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 800px;
+        padding: 60px 40px;
+      }
+    }
+
+    /* ヘッダー */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .header {
+        margin-bottom: 60px;
+      }
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .logo {
+        font-size: 36px;
+        gap: 12px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .logo {
+        font-size: 48px;
+      }
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .tagline {
+        font-size: 16px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .tagline {
+        font-size: 18px;
+      }
+    }
+
+    /* メインカード */
+    .main-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .main-card {
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .main-card {
+        padding: 50px 60px;
+      }
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .card-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .card-title {
+        font-size: 28px;
+      }
+    }
+
+    /* フォーム */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .form-group {
+        margin-bottom: 32px;
+      }
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .form-label {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    @media (min-width: 768px) {
+      .form-input {
+        padding: 14px 20px;
+        font-size: 18px;
+        border-radius: 12px;
+      }
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    /* 性別選択 */
+    .gender-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .gender-group {
+        gap: 20px;
+      }
+    }
+
+    .gender-option {
+      flex: 1;
+      padding: 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+    }
+
+    @media (min-width: 768px) {
+      .gender-option {
+        padding: 18px;
+        border-radius: 12px;
+        font-size: 18px;
+      }
+    }
+
+    .gender-option:hover {
+      border-color: #D4AF37;
+      background: #fffbf0;
+    }
+
+    .gender-option.selected {
+      border-color: #D4AF37;
+      background: #D4AF37;
+      color: white;
+    }
+
+    /* チェックボックス */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .checkbox {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .checkbox-label {
+        font-size: 16px;
+      }
+    }
+
+    /* 計算ボタン */
+    .calculate-btn {
+      width: 100%;
+      padding: 16px;
+      background: #D4AF37;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .calculate-btn {
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 16px;
+      }
+    }
+
+    .calculate-btn:hover {
+      background: #B8941C;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+    }
+
+    .calculate-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ボトムナビ */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      background: white;
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      margin-top: auto;
+    }
+
+    @media (min-width: 768px) {
+      .bottom-nav {
+        border-radius: 24px;
+        padding: 16px;
+      }
+    }
+
+    .nav-item {
+      flex: 1;
+      text-align: center;
+      padding: 8px;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-item {
+        padding: 12px;
+        font-size: 14px;
+      }
+    }
+
+    .nav-item.active {
+      color: #D4AF37;
+      background: #fffbf0;
+    }
+
+    .nav-item:hover {
+      color: #D4AF37;
+    }
+
+    .nav-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-icon {
+        font-size: 28px;
+      }
+    }
+
+    /* 表示モードインジケータ */
+    .viewport-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2000;
+    }
+
+    @media (min-width: 768px) {
+      .viewport-indicator::before {
+        content: 'タブレット表示';
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .viewport-indicator::before {
+        content: 'PC表示';
+      }
+    }
+
+    @media (max-width: 767px) {
+      .viewport-indicator::before {
+        content: 'スマホ表示';
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <div class="header">
+      <div class="logo">
+        <span>✨</span>
+        <span>ゴールデン四柱推命</span>
+      </div>
+      <div class="tagline">あなたの運命に魔法をかける</div>
+    </div>
+
+    <!-- メインカード -->
+    <div class="main-card">
+      <h2 class="card-title">
+        <span>✨</span>
+        命式を記入
+      </h2>
+
+      <!-- 名前 -->
+      <div class="form-group">
+        <label class="form-label">名前（任意）</label>
+        <input type="text" class="form-input" placeholder="白石" value="白石">
+      </div>
+
+      <!-- 生年月日 -->
+      <div class="form-group">
+        <label class="form-label">生年月日時</label>
+        <input type="date" class="form-input" value="1986-05-26">
+        <div style="height: 12px;"></div>
+        <input type="time" class="form-input" value="05:34" id="timeInput">
+
+        <div class="checkbox-group">
+          <input type="checkbox" class="checkbox" id="timeUnknown">
+          <label class="checkbox-label" for="timeUnknown">時刻不明（正午12:00で計算）</label>
+        </div>
+      </div>
+
+      <!-- 性別 -->
+      <div class="form-group">
+        <label class="form-label">性別</label>
+        <div class="gender-group">
+          <div class="gender-option selected" onclick="selectGender(this)">
+            <div style="font-size: 24px; margin-bottom: 4px;">👨</div>
+            男性
+          </div>
+          <div class="gender-option" onclick="selectGender(this)">
+            <div style="font-size: 24px; margin-bottom: 4px;">👩</div>
+            女性
+          </div>
+        </div>
+      </div>
+
+      <!-- 計算ボタン -->
+      <button class="calculate-btn" onclick="calculate()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+        </svg>
+        命式を計算
+      </button>
+    </div>
+
+    <!-- ボトムナビ -->
+    <div class="bottom-nav">
+      <div class="nav-item active">
+        <div class="nav-icon">✨</div>
+        <div>命式記入</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">📋</div>
+        <div>命式一覧</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">⚙️</div>
+        <div>設定</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 表示モードインジケータ -->
+  <div class="viewport-indicator"></div>
+
+  <script>
+    // 性別選択
+    function selectGender(element) {
+      document.querySelectorAll('.gender-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      element.classList.add('selected');
+    }
+
+    // 時刻不明チェックボックス
+    document.getElementById('timeUnknown').addEventListener('change', function() {
+      const timeInput = document.getElementById('timeInput');
+      if (this.checked) {
+        timeInput.value = '12:00';
+        timeInput.disabled = true;
+        timeInput.style.opacity = '0.5';
+      } else {
+        timeInput.disabled = false;
+        timeInput.style.opacity = '1';
+      }
+    });
+
+    // 計算ボタン
+    function calculate() {
+      alert('命式を計算して詳細ページへ遷移します');
+    }
+
+    // ナビゲーション
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命式詳細・グラフ表示（正規版） - ゴールデン四柱推命</title>
+
+  <!-- フォント -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      color: #333;
+      max-width: 430px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: white;
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding-bottom: 60px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .header h1 {
+      font-size: 1.2rem;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gold-icon {
+      color: #D4AF37;
+      font-size: 1.4rem;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      min-height: 44px;
+      min-width: 44px;
+      justify-content: center;
+    }
+
+    .btn .material-icons {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #D4AF37, #FFD700);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-danger {
+      background: #F44336;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #d32f2f;
+      box-shadow: 0 6px 20px rgba(244, 67, 54, 0.3);
+    }
+
+    /* コンテンツエリア（固定ヘッダー分の余白） */
+    .content {
+      padding-top: 60px;
+    }
+
+    /* セクション共通 */
+    .section {
+      background: white;
+      padding: 16px;
+      margin-bottom: 8px;
+      border-bottom: 8px solid #f5f5f5;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #D4AF37;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .material-icons {
+      font-size: 1.3rem;
+      color: #D4AF37;
+    }
+
+    /* セクション1: 基本情報 */
+    .basic-info-compact {
+      padding: 12px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .name-gender {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .birth-datetime {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .age-info {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* セクション2: 四柱表示（縦2列×2行） */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pillar-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+    }
+
+    .pillar-title {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .pillar-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .stem, .branch {
+      font-size: 1.8rem;
+      font-weight: 700;
+      padding: 0;
+      border-radius: 8px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 五行カラー */
+    .wood { background: linear-gradient(135deg, #4CAF50, #66bb6a); }
+    .fire { background: linear-gradient(135deg, #F44336, #ef5350); }
+    .earth { background: linear-gradient(135deg, #FFB300, #ffa726); }
+    .metal { background: linear-gradient(135deg, #9E9E9E, #BDBDBD); }
+    .water { background: linear-gradient(135deg, #424242, #616161); }
+
+    /* セクション3: 大運表示 */
+    .daeun-header {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #fff9e6;
+      border-radius: 8px;
+      border-left: 3px solid #D4AF37;
+    }
+
+    .daeun-summary {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .daeun-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .daeun-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #f9f9f9;
+      border-left: 3px solid #e0e0e0;
+      transition: all 0.3s ease;
+    }
+
+    .daeun-item.current {
+      background: #FFF9E6;
+      border-left: 3px solid #D4AF37;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+    }
+
+    .daeun-age {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .daeun-chars {
+      display: flex;
+      gap: 8px;
+    }
+
+    .daeun-char {
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fortune-badge {
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .fortune-badge .material-icons {
+      font-size: 0.9rem;
+    }
+
+    /* 吉凶カラー */
+    .great-fortune { background: linear-gradient(45deg, #FFD700, #FFA500); }
+    .fortune { background: linear-gradient(45deg, #4CAF50, #66bb6a); }
+    .neutral { background: linear-gradient(45deg, #9E9E9E, #BDBDBD); }
+    .misfortune { background: linear-gradient(45deg, #FF9800, #ffb74d); }
+    .great-misfortune { background: linear-gradient(45deg, #F44336, #ef5350); }
+
+    .current-marker {
+      font-size: 0.7rem;
+      color: #D4AF37;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* セクション4: 人生グラフ */
+    .graph-container {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 12px;
+      min-height: 320px;
+      position: relative;
+    }
+
+    .graph-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    #lifeGraph {
+      width: 100%;
+      height: 300px;
+      overflow-x: auto;
+    }
+
+    /* セクション5: 年月日運 */
+    .fortune-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .fortune-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 14px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .fortune-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .fortune-card-title .material-icons {
+      font-size: 1.1rem;
+      color: #D4AF37;
+    }
+
+    .fortune-chars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .fortune-char {
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fortune-description {
+      font-size: 0.8rem;
+      color: #555;
+      line-height: 1.5;
+      margin-top: 8px;
+      padding: 10px;
+      background: white;
+      border-radius: 6px;
+    }
+
+    .fortune-card .fortune-badge {
+      margin: 0 auto;
+      width: fit-content;
+    }
+
+    /* スクロール最適化 */
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* タッチ操作最適化 */
+    button, a, .pillar-card, .daeun-item, .fortune-card {
+      -webkit-tap-highlight-color: rgba(212, 175, 55, 0.1);
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 固定ヘッダー -->
+    <div class="header">
+      <h1>
+        <span class="material-icons gold-icon">auto_awesome</span>
+        命式詳細
+      </h1>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="editSaju()" aria-label="編集">
+          <span class="material-icons">edit</span>
+        </button>
+        <button class="btn btn-danger" onclick="deleteSaju()" aria-label="削除">
+          <span class="material-icons">delete</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="content">
+
+    <!--
+    【CF_06引き継ぎ情報】
+    UI要件: ページ読み込み時に命式IDから詳細データを取得し、全セクションに表示
+    必要API: GET /api/saju/{id}
+    入力データ: { id: string, user_id?: string }
+    出力データ: {
+      id: string,
+      name?: string,
+      birth_datetime: Date,
+      gender: 'male' | 'female',
+      year_stem: string,
+      year_branch: string,
+      month_stem: string,
+      month_branch: string,
+      day_stem: string,
+      day_branch: string,
+      hour_stem: string,
+      hour_branch: string,
+      daeun_list: DaeunInfo[],
+      created_at: Date
+    }
+    UI文脈: ルート /detail/:id からIDを取得してデータフェッチ
+    特記事項: ゲストモードはLocalStorage、ログインモードはAPI呼び出し
+    -->
+
+    <!-- セクション1: 基本情報 -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="material-icons">person</span>
+        基本情報
+      </h2>
+      <div class="basic-info-compact">
+        <div class="name-gender" id="nameGender">山田 太郎 (男性)</div>
+        <div class="birth-datetime" id="birthDateTime">生年月日時: 1990年3月15日 14:30</div>
+        <div class="age-info" id="ageInfo">現在年齢: 35歳</div>
+      </div>
+    </div>
+
+    <!-- セクション2: 四柱表示（縦2列×2行） -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="material-icons">view_column</span>
+        四柱推命
+      </h2>
+      <div class="pillars-grid">
+        <!-- 年柱 -->
+        <div class="pillar-card">
+          <div class="pillar-title">年柱</div>
+          <div class="pillar-content">
+            <div class="stem metal">庚</div>
+            <div class="branch fire">午</div>
+          </div>
+        </div>
+        <!-- 月柱 -->
+        <div class="pillar-card">
+          <div class="pillar-title">月柱</div>
+          <div class="pillar-content">
+            <div class="stem earth">己</div>
+            <div class="branch wood">卯</div>
+          </div>
+        </div>
+        <!-- 日柱 -->
+        <div class="pillar-card">
+          <div class="pillar-title">日柱</div>
+          <div class="pillar-content">
+            <div class="stem wood">甲</div>
+            <div class="branch earth">戌</div>
+          </div>
+        </div>
+        <!-- 時柱 -->
+        <div class="pillar-card">
+          <div class="pillar-title">時柱</div>
+          <div class="pillar-content">
+            <div class="stem metal">辛</div>
+            <div class="branch earth">未</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    【CF_06引き継ぎ情報】
+    UI要件: 大運分析データを取得してタイムライン表示、現在の大運をハイライト
+    必要API: GET /api/saju/{id}/daeun
+    入力データ: { id: string, user_id?: string }
+    出力データ: {
+      daeun_number: number,
+      daeun_direction: 'forward' | 'backward',
+      birth_to_first_daeun_period: string,
+      first_daeun_date: Date,
+      daeun_list: [{
+        start_age: number,
+        end_age: number,
+        daeun_stem: string,
+        daeun_branch: string,
+        fortune_level: number (1-5),
+        is_current: boolean
+      }]
+    }
+    UI文脈: 現在年齢を計算し、該当大運期をゴールド枠でハイライト
+    特記事項: 吉凶レベル1-5を大凶・凶・平・吉・大吉に変換
+    -->
+
+    <!-- セクション3: 大運表示 -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="material-icons">timeline</span>
+        大運分析（10年周期）
+      </h2>
+      <div class="daeun-header">
+        <p class="daeun-summary">
+          年齢（大運数：7、順行）生後7年5ヶ月2日<br>
+          第一大運：1997年8月17日頃
+        </p>
+      </div>
+      <div class="daeun-timeline">
+        <!-- 現在の大運（ハイライト） -->
+        <div class="daeun-item current">
+          <div class="daeun-age">28-37歳</div>
+          <div class="daeun-chars">
+            <div class="daeun-char fire">丙</div>
+            <div class="daeun-char fire">午</div>
+          </div>
+          <div class="fortune-badge great-fortune">
+            <span class="material-icons">star</span>
+            大吉
+          </div>
+          <span class="current-marker">← 現在</span>
+        </div>
+
+        <!-- 他の大運期 -->
+        <div class="daeun-item">
+          <div class="daeun-age">38-47歳</div>
+          <div class="daeun-chars">
+            <div class="daeun-char earth">戊</div>
+            <div class="daeun-char earth">辰</div>
+          </div>
+          <div class="fortune-badge fortune">
+            <span class="material-icons">thumb_up</span>
+            吉
+          </div>
+        </div>
+
+        <div class="daeun-item">
+          <div class="daeun-age">48-57歳</div>
+          <div class="daeun-chars">
+            <div class="daeun-char metal">庚</div>
+            <div class="daeun-char metal">申</div>
+          </div>
+          <div class="fortune-badge neutral">
+            <span class="material-icons">remove</span>
+            平
+          </div>
+        </div>
+
+        <div class="daeun-item">
+          <div class="daeun-age">58-67歳</div>
+          <div class="daeun-chars">
+            <div class="daeun-char water">壬</div>
+            <div class="daeun-char water">子</div>
+          </div>
+          <div class="fortune-badge misfortune">
+            <span class="material-icons">warning</span>
+            凶
+          </div>
+        </div>
+
+        <div class="daeun-item">
+          <div class="daeun-age">68-77歳</div>
+          <div class="daeun-chars">
+            <div class="daeun-char wood">甲</div>
+            <div class="daeun-char wood">寅</div>
+          </div>
+          <div class="fortune-badge great-misfortune">
+            <span class="material-icons">error</span>
+            大凶
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    【CF_06引き継ぎ情報】
+    UI要件: 大運ベースの人生グラフをRechart折れ線グラフで描画
+    必要API: データは /api/saju/{id}/daeun から取得済み
+    入力データ: daeun_list配列
+    出力データ: Rechartsデータポイント配列 [{ age: number, fortune_level: number, label: string }]
+    UI文脈: 横軸=年齢(0-100)、縦軸=吉凶レベル(1-5)、現在位置に縦線マーカー
+    特記事項: Recharts v3.3.0使用、ゴールドグラデーションライン、ツールチップ対応
+    -->
+
+    <!-- セクション4: 人生グラフ（必須） -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="material-icons">show_chart</span>
+        人生グラフ（大運ベース）
+      </h2>
+      <div class="graph-container">
+        <div class="graph-title">運勢の推移（0-100歳）</div>
+        <div id="lifeGraph">
+          <!-- Rechartsグラフがここに描画されます（大運10年周期に対応） -->
+          <svg width="100%" height="280" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%;">
+            <!-- グリッド -->
+            <line x1="50" y1="50" x2="50" y2="350" stroke="#e0e0e0" stroke-width="2"/>
+            <line x1="50" y1="350" x2="950" y2="350" stroke="#e0e0e0" stroke-width="2"/>
+
+            <!-- Y軸ラベル -->
+            <text x="20" y="60" font-size="12" fill="#666">5(大吉)</text>
+            <text x="20" y="125" font-size="12" fill="#666">4(吉)</text>
+            <text x="20" y="190" font-size="12" fill="#666">3(平)</text>
+            <text x="20" y="255" font-size="12" fill="#666">2(凶)</text>
+            <text x="20" y="320" font-size="12" fill="#666">1(大凶)</text>
+
+            <!-- X軸ラベル（10年刻み） -->
+            <text x="50" y="370" font-size="12" fill="#666">0歳</text>
+            <text x="140" y="370" font-size="12" fill="#666">10歳</text>
+            <text x="230" y="370" font-size="12" fill="#666">20歳</text>
+            <text x="320" y="370" font-size="12" fill="#666">30歳</text>
+            <text x="410" y="370" font-size="12" fill="#666">40歳</text>
+            <text x="500" y="370" font-size="12" fill="#666">50歳</text>
+            <text x="590" y="370" font-size="12" fill="#666">60歳</text>
+            <text x="680" y="370" font-size="12" fill="#666">70歳</text>
+            <text x="770" y="370" font-size="12" fill="#666">80歳</text>
+            <text x="860" y="370" font-size="12" fill="#666">90歳</text>
+            <text x="950" y="370" font-size="12" fill="#666">100歳</text>
+
+            <!-- グリッド線（水平） -->
+            <line x1="50" y1="110" x2="950" y2="110" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="50" y1="170" x2="950" y2="170" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="50" y1="230" x2="950" y2="230" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="50" y1="290" x2="950" y2="290" stroke="#f0f0f0" stroke-width="1"/>
+
+            <!-- グリッド線（垂直、10年刻み） -->
+            <line x1="140" y1="50" x2="140" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="230" y1="50" x2="230" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="320" y1="50" x2="320" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="410" y1="50" x2="410" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="500" y1="50" x2="500" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="590" y1="50" x2="590" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="680" y1="50" x2="680" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="770" y1="50" x2="770" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+            <line x1="860" y1="50" x2="860" y2="350" stroke="#f0f0f0" stroke-width="1"/>
+
+            <!-- サンプルデータライン（ゴールドグラデーション） -->
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+
+            <!-- データポイント線（大運10年周期: 8歳, 18歳, 28歳, 38歳, 48歳, 58歳, 68歳, 78歳, 88歳, 98歳） -->
+            <polyline
+              points="122,230 212,170 302,110 392,170 482,230 572,290 662,350 752,230 842,170 932,230"
+              fill="none"
+              stroke="url(#goldGradient)"
+              stroke-width="3"
+            />
+
+            <!-- データポイントマーカー（大運中央年齢） -->
+            <circle cx="122" cy="230" r="6" fill="#D4AF37"/><!-- 8歳 -->
+            <circle cx="212" cy="170" r="6" fill="#D4AF37"/><!-- 18歳 -->
+            <circle cx="302" cy="110" r="6" fill="#D4AF37"/><!-- 28歳 -->
+            <circle cx="392" cy="170" r="6" fill="#D4AF37"/><!-- 38歳 -->
+            <circle cx="482" cy="230" r="6" fill="#D4AF37"/><!-- 48歳 -->
+            <circle cx="572" cy="290" r="6" fill="#D4AF37"/><!-- 58歳 -->
+            <circle cx="662" cy="350" r="6" fill="#D4AF37"/><!-- 68歳 -->
+            <circle cx="752" cy="230" r="6" fill="#D4AF37"/><!-- 78歳 -->
+            <circle cx="842" cy="170" r="6" fill="#D4AF37"/><!-- 88歳 -->
+            <circle cx="932" cy="230" r="6" fill="#D4AF37"/><!-- 98歳 -->
+
+            <!-- 現在位置マーカー（35歳） -->
+            <line x1="320" y1="50" x2="320" y2="350" stroke="#FF6B6B" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="325" y="40" font-size="14" fill="#FF6B6B" font-weight="bold">← 現在(35歳)</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    【CF_06引き継ぎ情報】
+    UI要件: 現在の年運・月運・日運を計算して表示
+    必要API: GET /api/saju/{id}/current
+    入力データ: { id: string, user_id?: string, date?: Date }
+    出力データ: {
+      year_fortune: {
+        stem: string,
+        branch: string,
+        fortune_level: number,
+        description: string
+      },
+      month_fortune: { ... },
+      day_fortune: { ... }
+    }
+    UI文脈: 現在日時を使用、または日付指定可能
+    特記事項: lunar-pythonで年月日の干支を計算、天干・地支マトリックスで吉凶判定
+    -->
+
+    <!-- セクション5: 年運・月運・日運 -->
+    <div class="section">
+      <h2 class="section-title">
+        <span class="material-icons">event</span>
+        現在の運勢（2025年11月1日）
+      </h2>
+      <div class="fortune-grid">
+        <!-- 年運 -->
+        <div class="fortune-card">
+          <div class="fortune-card-title">
+            <span class="material-icons">calendar_today</span>
+            年運
+          </div>
+          <div class="fortune-chars">
+            <div class="fortune-char wood">甲</div>
+            <div class="fortune-char wood">辰</div>
+          </div>
+          <div class="fortune-badge fortune">
+            <span class="material-icons">thumb_up</span>
+            吉
+          </div>
+          <div class="fortune-description">
+            今年は新たな成長の年です。木のエネルギーが強く、様々な機会が訪れるでしょう。積極的な行動が吉を呼びます。
+          </div>
+        </div>
+
+        <!-- 月運 -->
+        <div class="fortune-card">
+          <div class="fortune-card-title">
+            <span class="material-icons">date_range</span>
+            月運
+          </div>
+          <div class="fortune-chars">
+            <div class="fortune-char earth">戊</div>
+            <div class="fortune-char water">子</div>
+          </div>
+          <div class="fortune-badge neutral">
+            <span class="material-icons">remove</span>
+            平
+          </div>
+          <div class="fortune-description">
+            今月は安定した時期です。大きな変化はありませんが、着実に前進できます。焦らず計画的に進めましょう。
+          </div>
+        </div>
+
+        <!-- 日運 -->
+        <div class="fortune-card">
+          <div class="fortune-card-title">
+            <span class="material-icons">today</span>
+            日運
+          </div>
+          <div class="fortune-chars">
+            <div class="fortune-char fire">丙</div>
+            <div class="fortune-char fire">午</div>
+          </div>
+          <div class="fortune-badge great-fortune">
+            <span class="material-icons">star</span>
+            大吉
+          </div>
+          <div class="fortune-description">
+            本日は絶好調の一日です。火のエネルギーが高まり、情熱的に物事を進められます。重要な決断にも適した日です。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- .content 終了 -->
+  </div><!-- .container 終了 -->
+
+  <!-- Recharts v3.3.0 CDN（本番実装時に使用） -->
+  <script src="https://cdn.jsdelivr.net/npm/recharts@3.3.0/dist/Recharts.min.js"></script>
+
+  <script>
+    // ナビゲーション関数
+    function editSaju() {
+      // 本番実装時: React Router で /edit/:id に遷移
+      alert('編集ページに移動します');
+      // window.location.href = `/edit/${currentId}`;
+    }
+
+    function deleteSaju() {
+      if (confirm('この命式を削除してもよろしいですか？')) {
+        // 本番実装時: DELETE /api/saju/{id} を呼び出し
+        alert('命式を削除しました');
+        // api.deleteSaju(currentId).then(() => goToList());
+      }
+    }
+
+    // 本番実装時: Rechartsグラフ描画
+    // const { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } = Recharts;
+    //
+    // const graphData = daeunList.map(daeun => ({
+    //   age: (daeun.start_age + daeun.end_age) / 2,
+    //   fortune_level: daeun.fortune_level,
+    //   label: `${daeun.start_age}-${daeun.end_age}歳: ${daeun.daeun_stem}${daeun.daeun_branch}`
+    // }));
+    //
+    // ReactDOM.render(
+    //   <LineChart width={1000} height={400} data={graphData}>
+    //     <CartesianGrid strokeDasharray="3 3" />
+    //     <XAxis dataKey="age" label={{ value: '年齢', position: 'insideBottom', offset: -5 }} />
+    //     <YAxis domain={[1, 5]} label={{ value: '吉凶レベル', angle: -90, position: 'insideLeft' }} />
+    //     <Tooltip />
+    //     <Legend />
+    //     <ReferenceLine x={currentAge} stroke="#FF6B6B" strokeDasharray="5 5" label="現在" />
+    //     <Line type="monotone" dataKey="fortune_level" stroke="url(#goldGradient)" strokeWidth={3} dot={{ fill: '#D4AF37', r: 6 }} />
+    //   </LineChart>,
+    //   document.getElementById('lifeGraph')
+    // );
+
+    console.log('命式詳細ページが読み込まれました');
+    console.log('本番実装時: URLパラメータから命式IDを取得し、APIでデータフェッチします');
+  </script>
+</body>
+</html>

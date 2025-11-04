@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命式リスト（修正版） - ゴールデン四柱推命</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F4E8C1 100%);
+      color: #333;
+      max-width: 430px;
+      margin: 0 auto;
+    }
+
+    .container {
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-y: auto;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+      padding: 16px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* コンテンツ */
+    .content {
+      padding: 20px 16px;
+    }
+
+    /* 新規作成ボタン */
+    .create-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #D4AF37 0%, #F4E8C1 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .create-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #B8941C 0%, #D4AF37 100%);
+    }
+
+    /* カード */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .card-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .card-name.untitled {
+      color: #999;
+      font-style: italic;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .action-btn.edit:hover {
+      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .action-btn.delete:hover {
+      color: #f44336;
+      background: rgba(244, 67, 54, 0.1);
+    }
+
+    .card-info {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    /* 空状態 */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: #666;
+    }
+
+    .empty-state-icon {
+      font-size: 80px;
+      color: #D4AF37;
+      margin-bottom: 16px;
+    }
+
+    .empty-state-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .empty-state-subtext {
+      font-size: 0.875rem;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    .empty-action-btn {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+      transition: all 0.3s;
+    }
+
+    .empty-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <div class="header">
+      <button class="icon-btn" onclick="window.location.href='/'">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <h1>保存した命式</h1>
+      <button class="icon-btn" onclick="window.location.href='/settings'">
+        <span class="material-icons">settings</span>
+      </button>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="content">
+      <!-- 新規作成ボタン -->
+      <button class="create-btn">
+        <span class="material-icons">add_circle</span>
+        新しい命式を作成
+      </button>
+
+      <!-- カード一覧（修正・削除ボタン付き） -->
+
+      <!-- カード1 -->
+      <div class="card" onclick="window.location.href='/detail/1'">
+        <div class="card-header">
+          <div class="card-name">山田 太郎</div>
+          <div class="card-actions">
+            <button class="action-btn edit" onclick="event.stopPropagation(); alert('編集機能は未実装です');" title="編集">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete" onclick="event.stopPropagation(); if(confirm('この命式を削除しますか？')) alert('削除しました');" title="削除">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1990年3月15日 14:30</div>
+      </div>
+
+      <!-- カード2 -->
+      <div class="card" onclick="window.location.href='/detail/2'">
+        <div class="card-header">
+          <div class="card-name">田中 花子</div>
+          <div class="card-actions">
+            <button class="action-btn edit" onclick="event.stopPropagation(); alert('編集機能は未実装です');" title="編集">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete" onclick="event.stopPropagation(); if(confirm('この命式を削除しますか？')) alert('削除しました');" title="削除">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 1985年6月20日 10:00</div>
+      </div>
+
+      <!-- カード3 -->
+      <div class="card" onclick="window.location.href='/detail/3'">
+        <div class="card-header">
+          <div class="card-name untitled">無題</div>
+          <div class="card-actions">
+            <button class="action-btn edit" onclick="event.stopPropagation(); alert('編集機能は未実装です');" title="編集">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete" onclick="event.stopPropagation(); if(confirm('この命式を削除しますか？')) alert('削除しました');" title="削除">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1995年12月5日 08:30</div>
+      </div>
+
+      <!-- カード4 -->
+      <div class="card" onclick="window.location.href='/detail/4'">
+        <div class="card-header">
+          <div class="card-name">佐藤 健</div>
+          <div class="card-actions">
+            <button class="action-btn edit" onclick="event.stopPropagation(); alert('編集機能は未実装です');" title="編集">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete" onclick="event.stopPropagation(); if(confirm('この命式を削除しますか？')) alert('削除しました');" title="削除">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">男性</div>
+        <div class="card-info">📅 1988年7月10日 16:45</div>
+      </div>
+
+      <!-- カード5 -->
+      <div class="card" onclick="window.location.href='/detail/5'">
+        <div class="card-header">
+          <div class="card-name">鈴木 美咲</div>
+          <div class="card-actions">
+            <button class="action-btn edit" onclick="event.stopPropagation(); alert('編集機能は未実装です');" title="編集">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="action-btn delete" onclick="event.stopPropagation(); if(confirm('この命式を削除しますか？')) alert('削除しました');" title="削除">
+              <span class="material-icons">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-info">女性</div>
+        <div class="card-info">📅 1992年11月25日 09:15</div>
+      </div>
+
+      <!-- 空の状態のサンプル（データがない場合） -->
+      <!--
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <span class="material-icons" style="font-size: inherit;">inbox</span>
+        </div>
+        <div class="empty-state-text">まだ命式がありません</div>
+        <div class="empty-state-subtext">「新しい命式を作成」ボタンから始めましょう</div>
+        <button class="empty-action-btn">新しい命式を作成</button>
+      </div>
+      -->
+    </div>
+  </div>
+
+  <!-- 修正内容メモ -->
+  <!--
+  【修正版リストページモックアップ - 2025年11月2日】
+
+  変更点：
+  1. 各カードに修正・削除ボタンを配置
+     - カードヘッダーの右側に Edit と Delete アイコンボタン
+     - ホバー時の色変更（edit: ゴールド、delete: 赤）
+     - クリック時にイベント伝播を停止（event.stopPropagation）
+
+  2. ヘッダー改善
+     - 左：戻るボタン（トップページへ）
+     - 中央：「保存した命式」タイトル
+     - 右：設定ボタン
+     - ゴールドグラデーション背景
+     - sticky配置
+
+  3. 新規作成ボタン追加
+     - 大きなゴールドグラデーションボタン
+     - add_circle アイコン付き
+     - ホバー時のアニメーション
+
+  4. 空状態の改善
+     - Material Icons の inbox アイコン使用
+     - 「新しい命式を作成」アクションボタン
+
+  デザイン方針：
+  - 命式管理（編集・削除）は全てリストページで実行
+  - 詳細ページは閲覧専用
+  - カードクリックで詳細ページへ遷移
+  - 修正・削除ボタンはカードクリックを阻害しない（stopPropagation）
+  -->
+</body>
+</html>

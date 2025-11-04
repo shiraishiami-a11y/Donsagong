@@ -77,16 +77,35 @@
 外部サービス（本番環境）:
   Neon PostgreSQL:
     - URL: https://neon.tech
-    - プロジェクト名: golden-saju-prod
+    - プロジェクト名: golden-saju-production
     - 接続文字列: 環境変数で管理
 
   Vercel:
-    - プロジェクト名: golden-saju
+    - プロジェクト名: frontend
+    - 本番URL: https://frontend-7h8s12mf9-amis-projects-474dde3c.vercel.app
     - 自動デプロイ: main ブランチ
 
   GCP Cloud Run:
+    - プロジェクト: yamatovision-blue-lamp
     - サービス名: golden-saju-api
     - リージョン: asia-northeast1 (東京)
+    - 本番URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
+
+デプロイ履歴:
+  最終デプロイ日時: 2025-11-04（2回目）
+  デプロイステータス:
+    - フロントエンド: ✅ デプロイ成功（vercel.json追加、環境変数設定）
+    - バックエンド: ✅ デプロイ成功（CORS設定更新）
+    - API疎通: ✅ 正常稼働
+    - ログインテスト: ✅ 成功（test@example.com）
+  環境変数:
+    - VITE_API_URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
+    - DATABASE_URL: Neon PostgreSQL（本番環境）
+    - CORS_ORIGIN: https://frontend-7h8s12mf9-amis-projects-474dde3c.vercel.app
+  修正内容:
+    - vercel.json追加（SPAルーティング対応）
+    - バックエンドCORS設定更新
+    - テストユーザー: test@example.com（test@goldensaju.local → 修正）
 ```
 
 ## コーディング規約

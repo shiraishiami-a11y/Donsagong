@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命式詳細ページ - レスポンシブモックアップ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* コンテナ - レスポンシブ対応 */
+    .container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      background: #f5f5f5;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* タブレット以上 */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 900px;
+        padding: 0 24px;
+      }
+    }
+
+    /* PC以上 */
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1400px;
+        padding: 0 40px;
+      }
+    }
+
+    /* ヘッダーボタン */
+    .header-buttons {
+      position: fixed;
+      top: 8px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 1000;
+    }
+
+    @media (min-width: 768px) {
+      .header-buttons {
+        top: 16px;
+        right: 40px;
+        gap: 12px;
+      }
+    }
+
+    .save-btn {
+      background: #D4AF37;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .save-btn:hover {
+      background: #B8941C;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    @media (min-width: 768px) {
+      .save-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+    }
+
+    .close-btn {
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .close-btn:hover {
+      background: #f5f5f5;
+      transform: scale(1.05);
+    }
+
+    @media (min-width: 768px) {
+      .close-btn {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    /* 基本情報セクション */
+    .basic-info {
+      background: white;
+      padding: 60px 20px 20px;
+      border-bottom: 4px solid #D4AF37;
+    }
+
+    @media (min-width: 768px) {
+      .basic-info {
+        padding: 80px 40px 30px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .basic-info h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #1a1a2e;
+    }
+
+    @media (min-width: 768px) {
+      .basic-info h2 {
+        font-size: 28px;
+      }
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .name {
+        font-size: 32px;
+      }
+    }
+
+    .birth-info {
+      color: #666;
+      font-size: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .birth-info {
+        font-size: 20px;
+      }
+    }
+
+    /* 四柱セクション */
+    .pillars-section {
+      background: white;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .pillars-section {
+        padding: 30px 40px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+    }
+
+    .pillars-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .pillars-section h3 {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+    }
+
+    /* 四柱グリッド - レスポンシブ */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .pillars-grid {
+        gap: 30px;
+        max-width: 1000px;
+      }
+    }
+
+    .pillar {
+      text-align: center;
+    }
+
+    .pillar-label {
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .pillar-label {
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .stem, .branch {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: white;
+      margin-bottom: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 768px) {
+      .stem, .branch {
+        font-size: 32px;
+        border-radius: 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .stem, .branch {
+        font-size: 40px;
+      }
+    }
+
+    /* 人生グラフセクション */
+    .graph-section {
+      background: white;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .graph-section {
+        padding: 30px 40px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+    }
+
+    .graph-placeholder {
+      height: 250px;
+      background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .graph-placeholder {
+        height: 350px;
+        font-size: 18px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .graph-placeholder {
+        height: 450px;
+      }
+    }
+
+    /* 今日の運セクション */
+    .today-fortune {
+      background: white;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .today-fortune {
+        padding: 30px 40px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+    }
+
+    .fortune-cards {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    @media (min-width: 768px) {
+      .fortune-cards {
+        gap: 20px;
+        overflow-x: visible;
+      }
+    }
+
+    .fortune-card {
+      min-width: 90px;
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    @media (min-width: 768px) {
+      .fortune-card {
+        min-width: 140px;
+        padding: 20px;
+      }
+    }
+
+    /* 大運セクション - 横スクロール */
+    .daeun-section {
+      background: white;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .daeun-section {
+        padding: 30px 40px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+    }
+
+    .daeun-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 12px 0;
+      scrollbar-width: thin;
+      scrollbar-color: #D4AF37 #f5f5f5;
+    }
+
+    @media (min-width: 768px) {
+      .daeun-scroll {
+        gap: 20px;
+        padding: 20px 0;
+      }
+    }
+
+    .daeun-card {
+      min-width: 100px;
+      background: #fafafa;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .daeun-card {
+        min-width: 160px;
+        padding: 20px;
+      }
+    }
+
+    .daeun-card:hover {
+      border-color: #D4AF37;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.2);
+    }
+
+    .daeun-card.current {
+      border: 3px solid #4CAF50;
+      background: #f0f9f0;
+    }
+
+    /* レスポンシブ表示切り替えインジケータ */
+    .viewport-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2000;
+    }
+
+    @media (min-width: 768px) {
+      .viewport-indicator::before {
+        content: 'タブレット表示';
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .viewport-indicator::before {
+        content: 'PC表示';
+      }
+    }
+
+    @media (max-width: 767px) {
+      .viewport-indicator::before {
+        content: 'スマホ表示';
+      }
+    }
+
+    /* 五行カラー */
+    .wood { background: linear-gradient(135deg, #4CAF50, #66bb6a); }
+    .fire { background: linear-gradient(135deg, #F44336, #ef5350); }
+    .earth { background: linear-gradient(135deg, #FFB300, #ffa726); }
+    .metal { background: linear-gradient(135deg, #9E9E9E, #BDBDBD); }
+    .water { background: linear-gradient(135deg, #424242, #616161); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダーボタン -->
+    <div class="header-buttons">
+      <button class="save-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+        </svg>
+        保存
+      </button>
+      <button class="close-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 基本情報 -->
+    <div class="basic-info">
+      <h2>基本情報</h2>
+      <div class="name">白石（男性）</div>
+      <div class="birth-info">1986年5月26日 5:34</div>
+    </div>
+
+    <!-- 四柱 -->
+    <div class="pillars-section">
+      <h3>命式（四柱）</h3>
+      <div style="color: #666; font-size: 14px; margin-bottom: 16px;">右から年柱→月柱→日柱→時柱</div>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar-label">年柱</div>
+          <div class="stem fire">丙</div>
+          <div class="branch fire">寅</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">月柱</div>
+          <div class="stem water">癸</div>
+          <div class="branch fire">巳</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">日柱</div>
+          <div class="stem wood">甲</div>
+          <div class="branch earth">戌</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">時柱</div>
+          <div class="stem fire">丁</div>
+          <div class="branch wood">卯</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 人生グラフ -->
+    <div class="graph-section">
+      <h3>人生グラフ（吉凶の流れ）</h3>
+      <div class="graph-placeholder">
+        📊 インタラクティブグラフ表示エリア<br>
+        <span style="font-size: 12px;">（Rechartsで実装予定）</span>
+      </div>
+    </div>
+
+    <!-- 今日の運 -->
+    <div class="today-fortune">
+      <h3>今日の運</h3>
+      <div style="color: #666; font-size: 14px; margin-bottom: 16px;">今日の年運・月運・日運の吉凶</div>
+      <div class="fortune-cards">
+        <div class="fortune-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">2025年</div>
+          <div class="stem wood" style="width: 50px; height: 50px; margin: 0 auto 6px; font-size: 24px;">乙</div>
+          <div class="branch fire" style="width: 50px; height: 50px; margin: 0 auto 8px; font-size: 24px;">巳</div>
+          <div style="background: #9E9E9E; color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;">平</div>
+        </div>
+        <div class="fortune-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">11月</div>
+          <div class="stem fire" style="width: 50px; height: 50px; margin: 0 auto 6px; font-size: 24px;">丙</div>
+          <div class="branch earth" style="width: 50px; height: 50px; margin: 0 auto 8px; font-size: 24px;">戌</div>
+          <div style="background: #9E9E9E; color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;">平</div>
+        </div>
+        <div class="fortune-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">3日</div>
+          <div class="stem wood" style="width: 50px; height: 50px; margin: 0 auto 6px; font-size: 24px;">甲</div>
+          <div class="branch earth" style="width: 50px; height: 50px; margin: 0 auto 8px; font-size: 24px;">戌</div>
+          <div style="background: #9E9E9E; color: white; padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;">平</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大運 -->
+    <div class="daeun-section">
+      <h3>大運（大運数：9）</h3>
+      <div class="daeun-scroll">
+        <div class="daeun-card current">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">19-28歳</div>
+          <div class="stem wood" style="width: 60px; height: 60px; margin: 0 auto 6px; font-size: 28px;">甲</div>
+          <div class="branch wood" style="width: 60px; height: 60px; margin: 0 auto 8px; font-size: 28px;">申</div>
+          <div style="background: #4CAF50; color: white; padding: 6px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">吉</div>
+        </div>
+        <div class="daeun-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">9-18歳</div>
+          <div class="stem wood" style="width: 60px; height: 60px; margin: 0 auto 6px; font-size: 28px;">乙</div>
+          <div class="branch metal" style="width: 60px; height: 60px; margin: 0 auto 8px; font-size: 28px;">酉</div>
+          <div style="background: #4CAF50; color: white; padding: 6px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">吉</div>
+        </div>
+        <div class="daeun-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">29-38歳</div>
+          <div class="stem water" style="width: 60px; height: 60px; margin: 0 auto 6px; font-size: 28px;">癸</div>
+          <div class="branch fire" style="width: 60px; height: 60px; margin: 0 auto 8px; font-size: 28px;">未</div>
+          <div style="background: #9E9E9E; color: white; padding: 6px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">平</div>
+        </div>
+        <div class="daeun-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">39-48歳</div>
+          <div class="stem water" style="width: 60px; height: 60px; margin: 0 auto 6px; font-size: 28px;">壬</div>
+          <div class="branch earth" style="width: 60px; height: 60px; margin: 0 auto 8px; font-size: 28px;">午</div>
+          <div style="background: #FF9800; color: white; padding: 6px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">凶</div>
+        </div>
+        <div class="daeun-card">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px; font-weight: 600;">49-58歳</div>
+          <div class="stem metal" style="width: 60px; height: 60px; margin: 0 auto 6px; font-size: 28px;">辛</div>
+          <div class="branch fire" style="width: 60px; height: 60px; margin: 0 auto 8px; font-size: 28px;">巳</div>
+          <div style="background: #9E9E9E; color: white; padding: 6px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">平</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 60px;"></div>
+  </div>
+
+  <!-- 表示モードインジケータ -->
+  <div class="viewport-indicator"></div>
+
+  <script>
+    // スクロール時のアニメーション
+    document.querySelectorAll('.daeun-card').forEach(card => {
+      card.addEventListener('click', function() {
+        document.querySelectorAll('.daeun-card').forEach(c => c.classList.remove('current'));
+        this.classList.add('current');
+      });
+    });
+
+    // レスポンシブ動作確認用
+    window.addEventListener('resize', () => {
+      console.log('Window width:', window.innerWidth);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログインページ - レスポンシブモックアップ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px;
+      }
+    }
+
+    /* コンテナ */
+    .container {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 480px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 600px;
+      }
+    }
+
+    /* ヘッダー */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .header {
+        margin-bottom: 48px;
+      }
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .logo {
+        font-size: 42px;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .logo {
+        font-size: 56px;
+      }
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .tagline {
+        font-size: 16px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .tagline {
+        font-size: 18px;
+      }
+    }
+
+    /* カード */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        border-radius: 24px;
+        padding: 40px;
+        margin-bottom: 24px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .card {
+        padding: 50px 60px;
+      }
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .card-title {
+        font-size: 26px;
+        margin-bottom: 32px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .card-title {
+        font-size: 32px;
+      }
+    }
+
+    /* フォーム */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .form-group {
+        margin-bottom: 28px;
+      }
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .form-label {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    @media (min-width: 768px) {
+      .form-input {
+        padding: 16px 20px;
+        font-size: 18px;
+        border-radius: 12px;
+      }
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    /* チェックボックス */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .checkbox {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .checkbox-label {
+        font-size: 16px;
+      }
+    }
+
+    /* ボタン */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .btn {
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 16px;
+      }
+    }
+
+    .btn-primary {
+      background: #D4AF37;
+      color: white;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #B8941C;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #666;
+      border: 2px solid #e0e0e0;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .btn-secondary {
+        margin-top: 16px;
+      }
+    }
+
+    .btn-secondary:hover {
+      border-color: #D4AF37;
+      color: #D4AF37;
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* リンク */
+    .forgot-password {
+      text-align: right;
+      margin-top: 8px;
+    }
+
+    .forgot-password a {
+      color: #D4AF37;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .forgot-password a {
+        font-size: 16px;
+      }
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    /* ディバイダー */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    @media (min-width: 768px) {
+      .divider {
+        margin: 32px 0;
+      }
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+
+    .divider-text {
+      font-size: 14px;
+      color: #999;
+    }
+
+    @media (min-width: 768px) {
+      .divider-text {
+        font-size: 16px;
+      }
+    }
+
+    /* フッター */
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .footer {
+        margin-top: 24px;
+      }
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (min-width: 768px) {
+      .footer-text {
+        font-size: 16px;
+      }
+    }
+
+    .footer-link {
+      color: #D4AF37;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 表示モードインジケータ */
+    .viewport-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2000;
+    }
+
+    @media (min-width: 768px) {
+      .viewport-indicator::before {
+        content: 'タブレット表示';
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .viewport-indicator::before {
+        content: 'PC表示';
+      }
+    }
+
+    @media (max-width: 767px) {
+      .viewport-indicator::before {
+        content: 'スマホ表示';
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダー -->
+    <div class="header">
+      <div class="logo">
+        <span>✨</span>
+        <span>ゴールデン四柱推命</span>
+      </div>
+      <div class="tagline">あなたの運命に魔法をかける</div>
+    </div>
+
+    <!-- ログインカード -->
+    <div class="card">
+      <h2 class="card-title">ログイン</h2>
+
+      <form>
+        <!-- メールアドレス -->
+        <div class="form-group">
+          <label class="form-label">メールアドレス</label>
+          <input type="email" class="form-input" placeholder="example@goldensaju.local" value="">
+        </div>
+
+        <!-- パスワード -->
+        <div class="form-group">
+          <label class="form-label">パスワード</label>
+          <input type="password" class="form-input" placeholder="パスワードを入力" value="">
+        </div>
+
+        <!-- パスワードを忘れた -->
+        <div class="forgot-password">
+          <a href="#" onclick="forgotPassword(); return false;">パスワードを忘れた場合</a>
+        </div>
+
+        <!-- ログイン状態を保持 -->
+        <div class="checkbox-group">
+          <input type="checkbox" class="checkbox" id="remember">
+          <label class="checkbox-label" for="remember">ログイン状態を保持</label>
+        </div>
+
+        <!-- ログインボタン -->
+        <button type="button" class="btn btn-primary" onclick="login()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+          </svg>
+          ログイン
+        </button>
+      </form>
+
+      <!-- ディバイダー -->
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-text">または</div>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- ゲストモードボタン -->
+      <button class="btn btn-secondary" onclick="guestMode()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+        </svg>
+        ゲストとして利用
+      </button>
+    </div>
+
+    <!-- フッター -->
+    <div class="footer">
+      <div class="footer-text">
+        アカウントをお持ちでない場合
+        <a href="#" class="footer-link" onclick="register(); return false;">新規登録</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 表示モードインジケータ -->
+  <div class="viewport-indicator"></div>
+
+  <script>
+    function login() {
+      alert('ログイン処理を実行します');
+    }
+
+    function guestMode() {
+      alert('ゲストモードで利用を開始します\n（データはこの端末のみに保存されます）');
+    }
+
+    function forgotPassword() {
+      alert('パスワード再設定メールを送信します');
+    }
+
+    function register() {
+      alert('新規登録ページへ遷移します');
+    }
+  </script>
+</body>
+</html>

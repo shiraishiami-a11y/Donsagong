@@ -73,11 +73,12 @@ def get_fortune_calculator() -> FortuneCalculator:
         400: {"model": ErrorResponse, "description": "バリデーションエラー"},
     },
 )
-async def calculate_saju(data: BirthDataRequest):
+async def calculate_saju(data: BirthDataRequest, db: Session = Depends(get_db)):
     """
     命式計算エンドポイント
 
     生年月日時と性別から四柱推命の命式を計算し、大運リスト・吉凶レベルを返す
+    ゲストモードでもデータベースに保存（user_id=NULL）
     """
     try:
         # ISO 8601文字列をdatetimeに変換
@@ -95,6 +96,32 @@ async def calculate_saju(data: BirthDataRequest):
         for daeun in result["daeunList"]:
             daeun["sajuId"] = saju_id
             daeun_list.append(DaeunInfo(**daeun))
+
+        # 吉凶レベル文字列を数値に変換
+        fortune_level_map = {"大凶": 1, "凶": 2, "平": 3, "吉凶": 4, "吉": 5, "小吉": 6, "大吉": 7}
+        fortune_level_int = fortune_level_map.get(result["fortuneLevel"], 3)  # デフォルト=平
+
+        # データベースに保存（ゲストモード: user_id=NULL）
+        saju_db = SajuModel(
+            id=saju_id,
+            user_id=None,  # ゲストモード
+            name=result["name"],
+            birth_datetime=birth_datetime,
+            gender=result["gender"],
+            year_stem=result["yearStem"],
+            year_branch=result["yearBranch"],
+            month_stem=result["monthStem"],
+            month_branch=result["monthBranch"],
+            day_stem=result["dayStem"],
+            day_branch=result["dayBranch"],
+            hour_stem=result["hourStem"],
+            hour_branch=result["hourBranch"],
+            daeun_list=json.dumps([daeun.model_dump() for daeun in daeun_list], ensure_ascii=False),
+            fortune_level=fortune_level_int,
+        )
+        db.add(saju_db)
+        db.commit()
+        db.refresh(saju_db)
 
         # レスポンス構築
         response = SajuResponse(
@@ -154,7 +181,7 @@ async def save_saju(
         birth_datetime = datetime.fromisoformat(saju.birthDatetime.replace("Z", "+00:00"))
 
         # 吉凶レベルを数値に変換
-        fortune_level_map = {"大凶": 1, "凶": 2, "平": 3, "吉": 4, "大吉": 5}
+        fortune_level_map = {"大凶": 1, "凶": 2, "平": 3, "吉凶": 4, "吉": 5, "小吉": 6, "大吉": 7}
         fortune_level_int = fortune_level_map.get(saju.fortuneLevel, 3)
 
         # daeunListをJSON文字列に変換
@@ -248,7 +275,7 @@ async def get_saju_list(
         items_db = query.offset(offset).limit(limit).all()
 
         # 吉凶レベルを文字列に変換
-        fortune_level_reverse_map = {1: "大凶", 2: "凶", 3: "平", 4: "吉", 5: "大吉"}
+        fortune_level_reverse_map = {1: "大凶", 2: "凶", 3: "平", 4: "吉凶", 5: "吉", 6: "小吉", 7: "大吉"}
 
         items = []
         for item in items_db:
@@ -586,7 +613,7 @@ async def get_saju_detail(id: str, db: Session = Depends(get_db)):
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="命式が見つかりません")
 
         # 吉凶レベルを文字列に変換
-        fortune_level_reverse_map = {1: "大凶", 2: "凶", 3: "平", 4: "吉", 5: "大吉"}
+        fortune_level_reverse_map = {1: "大凶", 2: "凶", 3: "平", 4: "吉凶", 5: "吉", 6: "小吉", 7: "大吉"}
         fortune_level_str = fortune_level_reverse_map.get(saju_db.fortune_level, "平")
 
         # daeunListをJSONから復元
@@ -794,22 +821,16 @@ async def get_current_fortune(id: str, date: str = None, db: Session = Depends(g
         # 生年月日を取得
         birth_datetime = saju_db.birth_datetime
 
-        # 年運計算
-        year_stem, year_branch, year_fortune_level, year_sipsin = fortune_calc.calculate_year_fortune(
-            birth_datetime.year,
-            birth_datetime.month,
-            birth_datetime.day,
-            saju_db.day_stem,
+        # 実際の年柱・月柱を取得（今日の運用）
+        year_stem, year_branch = fortune_calc.get_actual_year_pillar(
             target_date.year,
+            target_date.month,
+            target_date.day,
         )
-
-        # 月運計算
-        month_stem, month_branch, month_fortune_level, month_sipsin = (
-            fortune_calc.calculate_month_fortune(
-                saju_db.day_stem,
-                target_date.year,
-                target_date.month,
-            )
+        month_stem, month_branch = fortune_calc.get_actual_month_pillar(
+            target_date.year,
+            target_date.month,
+            target_date.day,
         )
 
         # 日運計算
@@ -819,6 +840,17 @@ async def get_current_fortune(id: str, date: str = None, db: Session = Depends(g
             target_date.month,
             target_date.day,
         )
+
+        # 年運・月運の吉凶判定と十神計算
+        year_fortune_level = fortune_calc._calculate_fortune_level(
+            saju_db.day_stem, year_stem, year_branch
+        )
+        year_sipsin = fortune_calc._calculate_sipsin(saju_db.day_stem, year_stem)
+
+        month_fortune_level = fortune_calc._calculate_fortune_level(
+            saju_db.day_stem, month_stem, month_branch
+        )
+        month_sipsin = fortune_calc._calculate_sipsin(saju_db.day_stem, month_stem)
 
         # 五行要素を取得
         year_element = fortune_calc.get_element_from_stem(year_stem)

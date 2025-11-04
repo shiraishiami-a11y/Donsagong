@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゴールデン四柱推命 - あなたの運命に魔法をかける</title>
+
+  <!-- MUI v7 CDN -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    /* ゴールドテーマカラー */
+    :root {
+      --primary-gold: #D4AF37;
+      --light-gold: #F4E8C1;
+      --dark-gold: #B8941C;
+
+      /* 五行カラー */
+      --wood: #4CAF50;
+      --fire: #F44336;
+      --earth: #FFB300;
+      --metal: #BDBDBD;
+      --water: #424242;
+
+      /* 吉凶カラー */
+      --great-fortune: #FFD700;
+      --fortune: #4CAF50;
+      --neutral: #9E9E9E;
+      --misfortune: #FF9800;
+      --great-misfortune: #F44336;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F4E8C1 100%);
+      min-height: 100vh;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(90deg, var(--dark-gold) 0%, var(--primary-gold) 100%);
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .header a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .header a:hover {
+      opacity: 0.8;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* メインコンテナ */
+    .container {
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* カード */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--dark-gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* フォーム */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #424242;
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #E0E0E0;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .form-select {
+      padding: 12px 8px;
+      font-size: 14px;
+      border: 2px solid #E0E0E0;
+      border-radius: 8px;
+      background: white;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-color: var(--primary-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    /* ラジオボタン */
+    .radio-group {
+      display: flex;
+      gap: 16px;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border: 2px solid #E0E0E0;
+      border-radius: 8px;
+      transition: all 0.2s;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .radio-label:hover {
+      border-color: var(--primary-gold);
+      background: var(--light-gold);
+    }
+
+    .radio-label input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-gold);
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"]:checked + span {
+      font-weight: 500;
+      color: var(--dark-gold);
+    }
+
+    /* ボタン */
+    .btn {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-gold);
+      border: 2px solid var(--primary-gold);
+    }
+
+    .btn-secondary:hover {
+      background: var(--light-gold);
+    }
+
+    /* ローディング */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .loading.active {
+      display: block;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
+      border: 4px solid var(--light-gold);
+      border-top: 4px solid var(--primary-gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: var(--dark-gold);
+      font-weight: 500;
+    }
+
+    /* 結果プレビュー */
+    .result-preview {
+      display: none;
+      margin-top: 24px;
+    }
+
+    .result-preview.active {
+      display: block;
+    }
+
+    .saju-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pillar {
+      text-align: center;
+    }
+
+    .pillar-label {
+      font-size: 12px;
+      color: #757575;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .character-block {
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    /* 五行カラークラス */
+    .wood { background: var(--wood); }
+    .fire { background: var(--fire); }
+    .earth { background: var(--earth); }
+    .metal { background: var(--metal); }
+    .water { background: var(--water); }
+
+    /* 吉凶バッジ */
+    .fortune-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 16px 0;
+    }
+
+    .fortune-neutral {
+      background: var(--neutral);
+      color: white;
+    }
+
+    /* キラキラエフェクト */
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, var(--primary-gold) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sparkle 0.6s ease-out;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 430px) {
+      .container {
+        padding: 16px 12px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .form-row {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+      }
+
+      .form-select {
+        padding: 10px 6px;
+        font-size: 13px;
+      }
+    }
+
+    /* Material Icons fallback */
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <a href="/list">
+      <span class="material-icons" style="font-size: 20px;">list</span>
+      保存した命式
+    </a>
+    <div class="logo">ゴールデン四柱推命</div>
+    <a href="/login">
+      <span class="material-icons" style="font-size: 20px;">login</span>
+      ログイン
+    </a>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <div class="container">
+    <!-- 命式記入フォーム -->
+    <div class="card">
+      <h2 class="card-title">
+        <span class="material-icons" style="color: var(--primary-gold);">auto_awesome</span>
+        命式を記入
+      </h2>
+
+      <form id="sajuForm">
+        <!-- 名前入力 -->
+        <div class="form-group">
+          <label class="form-label" for="name">名前（任意）</label>
+          <input
+            type="text"
+            id="name"
+            class="form-input"
+            placeholder="例: 山田 太郎"
+          >
+        </div>
+
+        <!-- 生年月日時入力 -->
+        <div class="form-group">
+          <label class="form-label">生年月日時</label>
+          <div class="form-row">
+            <select id="year" class="form-select" required>
+              <option value="">年</option>
+            </select>
+            <select id="month" class="form-select" required>
+              <option value="">月</option>
+            </select>
+            <select id="day" class="form-select" required>
+              <option value="">日</option>
+            </select>
+            <select id="hour" class="form-select" required>
+              <option value="">時</option>
+            </select>
+            <select id="minute" class="form-select" required>
+              <option value="">分</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 性別選択 -->
+        <div class="form-group">
+          <label class="form-label">性別</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="gender" value="male" required>
+              <span>男性</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="gender" value="female" required>
+              <span>女性</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 計算ボタン -->
+        <button type="submit" class="btn btn-primary" id="calculateBtn">
+          <span class="material-icons">calculate</span>
+          命式を計算
+        </button>
+      </form>
+
+      <!-- ローディング -->
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">運命を解析中...</div>
+      </div>
+
+      <!-- 結果プレビュー -->
+      <div class="result-preview" id="resultPreview">
+        <h3 class="card-title">
+          <span class="material-icons" style="color: var(--primary-gold);">stars</span>
+          計算結果
+        </h3>
+
+        <!-- 四柱プレビュー -->
+        <div class="saju-grid" id="sajuGrid">
+          <!-- 年柱 -->
+          <div class="pillar">
+            <div class="pillar-label">年柱</div>
+            <div class="character-block metal">庚</div>
+            <div class="character-block fire">午</div>
+          </div>
+
+          <!-- 月柱 -->
+          <div class="pillar">
+            <div class="pillar-label">月柱</div>
+            <div class="character-block earth">己</div>
+            <div class="character-block wood">卯</div>
+          </div>
+
+          <!-- 日柱 -->
+          <div class="pillar">
+            <div class="pillar-label">日柱</div>
+            <div class="character-block wood">甲</div>
+            <div class="character-block earth">戌</div>
+          </div>
+
+          <!-- 時柱 -->
+          <div class="pillar">
+            <div class="pillar-label">時柱</div>
+            <div class="character-block metal">辛</div>
+            <div class="character-block earth">未</div>
+          </div>
+        </div>
+
+        <!-- 吉凶バッジ -->
+        <div style="text-align: center;">
+          <div class="fortune-badge fortune-neutral">
+            <span class="material-icons" style="font-size: 18px;">remove_circle_outline</span>
+            平
+          </div>
+        </div>
+
+        <!-- 保存ボタン -->
+        <button type="button" class="btn btn-secondary" id="saveBtn">
+          <span class="material-icons">save</span>
+          この命式を保存
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  【CF_06引き継ぎ情報】
+
+  ## 命式計算API
+  UI要件: ユーザーが生年月日時・性別を入力して「命式を計算」ボタンをクリック
+  必要API: POST /api/saju/calculate
+  入力データ: {
+    birth_datetime: string (ISO 8601形式: "1990-03-15T14:30:00+09:00"),
+    gender: "male" | "female",
+    name?: string,
+    timezone_offset: number (デフォルト: 9)
+  }
+  出力データ: {
+    id: string,
+    name?: string,
+    birth_datetime: string,
+    gender: string,
+    year_stem: string,
+    year_branch: string,
+    month_stem: string,
+    month_branch: string,
+    day_stem: string,
+    day_branch: string,
+    hour_stem: string,
+    hour_branch: string,
+    daeun_list: Array<{
+      start_age: number,
+      daeun_stem: string,
+      daeun_branch: string,
+      sipsin: string,
+      fortune_level: number
+    }>,
+    fortune_level: string,
+    created_at: string
+  }
+  UI文脈:
+    - 計算ボタンクリック時にローディング表示
+    - 計算完了後、四柱を五行カラーで表示
+    - 吉凶レベルをバッジで表示
+    - 結果プレビューエリアを表示
+  特記事項:
+    - タイムゾーンはKST (UTC+9)固定
+    - 生年月日時は1900-2109年の範囲でバリデーション
+    - 五行カラーマッピング:
+      - 木: 甲(木), 乙(木), 寅(木), 卯(木)
+      - 火: 丙(火), 丁(火), 巳(火), 午(火)
+      - 土: 戊(土), 己(土), 辰(土), 戌(土), 丑(土), 未(土)
+      - 金: 庚(金), 辛(金), 申(金), 酉(金)
+      - 水: 壬(水), 癸(水), 亥(水), 子(水)
+
+  ## 命式保存API
+  UI要件: 計算結果プレビュー下の「この命式を保存」ボタンをクリック
+  必要API: POST /api/saju/save
+  入力データ: {
+    // 計算結果の全データ +
+    user_id?: string (ログインユーザーの場合)
+  }
+  出力データ: {
+    success: boolean,
+    message: string,
+    saju_id: string
+  }
+  UI文脈:
+    - ゲストモード: LocalStorageに保存
+    - ログインモード: PostgreSQLに保存
+    - 保存成功後、トースト通知表示
+    - 「保存した命式」ページへ遷移
+  特記事項:
+    - ゲストモードではuser_idなし（LocalStorage管理）
+    - ログインモードではJWTトークンからuser_idを取得
+    - LocalStorageキー: "gouden_saju_guest_data"
+  -->
+
+  <script>
+    // セレクトボックスの初期化
+    function initSelects() {
+      const yearSelect = document.getElementById('year');
+      const monthSelect = document.getElementById('month');
+      const daySelect = document.getElementById('day');
+      const hourSelect = document.getElementById('hour');
+      const minuteSelect = document.getElementById('minute');
+
+      // 年: 1900-2109年
+      for (let year = 2025; year >= 1900; year--) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year + '年';
+        yearSelect.appendChild(option);
+      }
+
+      for (let year = 2026; year <= 2109; year++) {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year + '年';
+        yearSelect.appendChild(option);
+      }
+
+      // 月: 1-12月
+      for (let month = 1; month <= 12; month++) {
+        const option = document.createElement('option');
+        option.value = month;
+        option.textContent = month + '月';
+        monthSelect.appendChild(option);
+      }
+
+      // 日: 1-31日
+      for (let day = 1; day <= 31; day++) {
+        const option = document.createElement('option');
+        option.value = day;
+        option.textContent = day + '日';
+        daySelect.appendChild(option);
+      }
+
+      // 時: 0-23時
+      for (let hour = 0; hour < 24; hour++) {
+        const option = document.createElement('option');
+        option.value = hour;
+        option.textContent = hour + '時';
+        hourSelect.appendChild(option);
+      }
+
+      // 分: 0-59分
+      for (let minute = 0; minute < 60; minute++) {
+        const option = document.createElement('option');
+        option.value = minute;
+        option.textContent = minute + '分';
+        minuteSelect.appendChild(option);
+      }
+
+      // サンプルデータを設定
+      yearSelect.value = '1990';
+      monthSelect.value = '3';
+      daySelect.value = '15';
+      hourSelect.value = '14';
+      minuteSelect.value = '30';
+      document.querySelector('input[value="male"]').checked = true;
+      document.getElementById('name').value = '山田 太郎';
+    }
+
+    // キラキラエフェクト
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 600);
+    }
+
+    // フォーム送信
+    document.getElementById('sajuForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // キラキラエフェクト
+      const btn = document.getElementById('calculateBtn');
+      const rect = btn.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => {
+          createSparkle(
+            rect.left + Math.random() * rect.width,
+            rect.top + Math.random() * rect.height
+          );
+        }, i * 50);
+      }
+
+      // ローディング表示
+      document.getElementById('loading').classList.add('active');
+      document.getElementById('resultPreview').classList.remove('active');
+
+      // 模擬計算（実際はAPI呼び出し）
+      setTimeout(() => {
+        document.getElementById('loading').classList.remove('active');
+        document.getElementById('resultPreview').classList.add('active');
+      }, 2000);
+    });
+
+    // 保存ボタン
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      alert('命式を保存しました！\n（実際はAPIを呼び出してLocalStorageまたはPostgreSQLに保存）');
+    });
+
+    // 初期化
+    initSelects();
+  </script>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命式詳細（修正版） - ゴールデン四柱推命</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      max-width: 430px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: white;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* セクション */
+    .section {
+      padding: 16px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    /* 基本情報 */
+    .basic-info {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .basic-info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .basic-info-label {
+      font-weight: 600;
+      color: #666;
+    }
+
+    .basic-info-value {
+      font-weight: 500;
+      color: #1a1a2e;
+    }
+
+    /* 四柱グリッド（横一列、右から左）*/
+    .pillars-grid {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 12px 0;
+      direction: rtl; /* 右から左 */
+      -webkit-overflow-scrolling: touch;
+      justify-content: center; /* 中央配置 */
+    }
+
+    .pillars-grid::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .pillars-grid::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .pillars-grid::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 10px;
+    }
+
+    .pillar-card {
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 80px;
+      flex-shrink: 0;
+      direction: ltr; /* カード内は左から右 */
+    }
+
+    .pillar-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .pillar-chars {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .pillar-block {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* 五行カラー */
+    .wood { background: linear-gradient(135deg, #4CAF50, #66bb6a); }
+    .fire { background: linear-gradient(135deg, #F44336, #ef5350); }
+    .earth { background: linear-gradient(135deg, #FFB300, #ffa726); }
+    .metal { background: linear-gradient(135deg, #9E9E9E, #BDBDBD); }
+    .water { background: linear-gradient(135deg, #424242, #616161); }
+
+    /* 水平スクロールコンテナ */
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding: 12px 0;
+      direction: rtl; /* 右から左 */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 10px;
+    }
+
+    /* 運カード */
+    .fortune-card {
+      direction: ltr; /* カード内は左から右 */
+      min-width: 80px;
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .fortune-card.current {
+      border: 2px solid #D4AF37;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .fortune-age {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .fortune-chars {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .fortune-block {
+      width: 45px;
+      height: 45px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* 吉凶バッジ */
+    .fortune-badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .fortune-great { background: #FFD700; color: #1a1a2e; }
+    .fortune-good { background: #4CAF50; color: white; }
+    .fortune-neutral { background: #9E9E9E; color: white; }
+    .fortune-bad { background: #FF9800; color: white; }
+    .fortune-terrible { background: #F44336; color: white; }
+
+    /* 人生グラフ - 修正版（3色、大運境界のみポイント表示）*/
+    .graph-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 12px 0;
+    }
+
+    .graph-content {
+      min-width: 1200px; /* グラフを大きく */
+      height: 300px;
+      position: relative;
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .graph-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 人生グラフ：凶運区間（灰色） */
+    .graph-line-bad {
+      fill: none;
+      stroke: #9E9E9E;
+      stroke-width: 3;
+    }
+
+    /* 人生グラフ：通常区間（ゴールド） */
+    .graph-line-normal {
+      fill: none;
+      stroke: #D4AF37;
+      stroke-width: 3;
+    }
+
+    /* 人生グラフ：最高吉運区間（太赤） */
+    .graph-line-great {
+      fill: none;
+      stroke: #F44336;
+      stroke-width: 5;
+    }
+
+    .graph-dot-bad { fill: #9E9E9E; }
+    .graph-dot-normal { fill: #D4AF37; }
+    .graph-dot-great { fill: #F44336; }
+
+    .graph-axis {
+      stroke: #ccc;
+      stroke-width: 1;
+    }
+
+    .graph-grid {
+      stroke: #e0e0e0;
+      stroke-width: 1;
+      stroke-dasharray: 2,2;
+    }
+
+    .graph-label {
+      font-size: 0.7rem;
+      fill: #666;
+    }
+
+    .current-line {
+      stroke: #F44336;
+      stroke-width: 2;
+      stroke-dasharray: 5,5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ヘッダーなし（修正版） -->
+
+    <!-- 基本情報 -->
+    <div class="section">
+      <div class="section-title">基本情報</div>
+      <div class="basic-info">
+        <div class="basic-info-row">
+          <span class="basic-info-label">名前</span>
+          <span class="basic-info-value">山田 太郎 (男性)</span>
+        </div>
+        <div class="basic-info-row">
+          <span class="basic-info-label">生年月日時</span>
+          <span class="basic-info-value">1990年3月15日 14:30</span>
+        </div>
+        <div class="basic-info-row">
+          <span class="basic-info-label">現在年齢</span>
+          <span class="basic-info-value">35歳</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 四柱（命式） -->
+    <div class="section">
+      <div class="section-title">命式（四柱）</div>
+      <div class="section-subtitle">右から年柱→月柱→日柱→時柱</div>
+      <div class="pillars-grid">
+        <!-- 時柱 -->
+        <div class="pillar-card">
+          <div class="pillar-label">時柱</div>
+          <div class="pillar-chars">
+            <div class="pillar-block metal">辛</div>
+            <div class="pillar-block earth">未</div>
+          </div>
+        </div>
+        <!-- 日柱 -->
+        <div class="pillar-card">
+          <div class="pillar-label">日柱</div>
+          <div class="pillar-chars">
+            <div class="pillar-block wood">甲</div>
+            <div class="pillar-block earth">戌</div>
+          </div>
+        </div>
+        <!-- 月柱 -->
+        <div class="pillar-card">
+          <div class="pillar-label">月柱</div>
+          <div class="pillar-chars">
+            <div class="pillar-block earth">己</div>
+            <div class="pillar-block wood">卯</div>
+          </div>
+        </div>
+        <!-- 年柱 -->
+        <div class="pillar-card">
+          <div class="pillar-label">年柱</div>
+          <div class="pillar-chars">
+            <div class="pillar-block metal">庚</div>
+            <div class="pillar-block fire">午</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 人生グラフ（修正版：3色分け、大運境界のみポイント） -->
+    <div class="section">
+      <div class="section-title">人生グラフ</div>
+      <div class="section-subtitle">大運ベースの吉凶レベル推移（3-97歳、左右スクロール可能）</div>
+      <div class="graph-container">
+        <div class="graph-content">
+          <svg class="graph-svg" viewBox="0 0 1100 250">
+            <!-- グリッド線 -->
+            <line class="graph-grid" x1="50" y1="40" x2="1050" y2="40"/>
+            <line class="graph-grid" x1="50" y1="80" x2="1050" y2="80"/>
+            <line class="graph-grid" x1="50" y1="120" x2="1050" y2="120"/>
+            <line class="graph-grid" x1="50" y1="160" x2="1050" y2="160"/>
+            <line class="graph-grid" x1="50" y1="200" x2="1050" y2="200"/>
+
+            <!-- 軸 -->
+            <line class="graph-axis" x1="50" y1="200" x2="1050" y2="200"/>
+            <line class="graph-axis" x1="50" y1="200" x2="50" y2="40"/>
+
+            <!-- Y軸ラベル -->
+            <text class="graph-label" x="20" y="45">5</text>
+            <text class="graph-label" x="20" y="85">4</text>
+            <text class="graph-label" x="20" y="125">3</text>
+            <text class="graph-label" x="20" y="165">2</text>
+            <text class="graph-label" x="20" y="205">1</text>
+
+            <!-- X軸ラベル（大運境界：3, 13, 23, 33, 43, 53, 63, 73, 83, 93歳） -->
+            <text class="graph-label" x="80" y="220">3</text>
+            <text class="graph-label" x="180" y="220">13</text>
+            <text class="graph-label" x="280" y="220">23</text>
+            <text class="graph-label" x="380" y="220">33</text>
+            <text class="graph-label" x="480" y="220">43</text>
+            <text class="graph-label" x="580" y="220">53</text>
+            <text class="graph-label" x="680" y="220">63</text>
+            <text class="graph-label" x="780" y="220">73</text>
+            <text class="graph-label" x="880" y="220">83</text>
+            <text class="graph-label" x="980" y="220">93</text>
+
+            <!-- 人生グラフデータ（階段式）-->
+            <!-- 3歳: 吉(4) → 通常 -->
+            <!-- 13歳: 大吉(5) → 最高吉運 -->
+            <!-- 23歳: 平(3) → 通常 -->
+            <!-- 33歳: 吉(4) → 通常 -->
+            <!-- 43歳: 凶(2) → 凶運 -->
+            <!-- 53歳: 平(3) → 通常 -->
+            <!-- 63歳: 吉(4) → 通常 -->
+            <!-- 73歳: 凶(2) → 凶運 -->
+            <!-- 83歳: 平(3) → 通常 -->
+            <!-- 93歳: 吉(4) → 通常 -->
+
+            <!-- 階段式グラフ: 水平線は吉凶に応じた色、垂直線は常にゴールド -->
+
+            <!-- 3-13歳: 吉(4) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="80,80 180,80"/>
+
+            <!-- 13歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="180,80 180,40"/>
+
+            <!-- 13-23歳: 大吉(5) 水平線（太赤） -->
+            <polyline class="graph-line-great" points="180,40 280,40"/>
+
+            <!-- 23歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="280,40 280,120"/>
+
+            <!-- 23-33歳: 平(3) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="280,120 380,120"/>
+
+            <!-- 33歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="380,120 380,80"/>
+
+            <!-- 33-43歳: 吉(4) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="380,80 480,80"/>
+
+            <!-- 43歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="480,80 480,160"/>
+
+            <!-- 43-53歳: 凶(2) 水平線（灰色） -->
+            <polyline class="graph-line-bad" points="480,160 580,160"/>
+
+            <!-- 53歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="580,160 580,120"/>
+
+            <!-- 53-63歳: 平(3) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="580,120 680,120"/>
+
+            <!-- 63歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="680,120 680,80"/>
+
+            <!-- 63-73歳: 吉(4) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="680,80 780,80"/>
+
+            <!-- 73歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="780,80 780,160"/>
+
+            <!-- 73-83歳: 凶(2) 水平線（灰色） -->
+            <polyline class="graph-line-bad" points="780,160 880,160"/>
+
+            <!-- 83歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="880,160 880,120"/>
+
+            <!-- 83-93歳: 平(3) 水平線（ゴールド） -->
+            <polyline class="graph-line-normal" points="880,120 980,120"/>
+
+            <!-- 93歳: 垂直線（常にゴールド） -->
+            <polyline class="graph-line-normal" points="980,120 980,80"/>
+
+            <!-- 93-103歳: 吉(4) 水平線（ゴールド）※グラフ範囲外まで少し延長 -->
+            <polyline class="graph-line-normal" points="980,80 1030,80"/>
+
+            <!-- データポイント（大運境界のみ10点） -->
+            <circle class="graph-dot-normal" cx="80" cy="80" r="5"/>
+            <circle class="graph-dot-great" cx="180" cy="40" r="7"/>
+            <circle class="graph-dot-normal" cx="280" cy="120" r="5"/>
+            <circle class="graph-dot-normal" cx="380" cy="80" r="5"/>
+            <circle class="graph-dot-bad" cx="480" cy="160" r="5"/>
+            <circle class="graph-dot-normal" cx="580" cy="120" r="5"/>
+            <circle class="graph-dot-normal" cx="680" cy="80" r="5"/>
+            <circle class="graph-dot-bad" cx="780" cy="160" r="5"/>
+            <circle class="graph-dot-normal" cx="880" cy="120" r="5"/>
+            <circle class="graph-dot-normal" cx="980" cy="80" r="5"/>
+
+            <!-- 現在年齢の垂直線 -->
+            <line class="current-line" x1="380" y1="40" x2="380" y2="200"/>
+            <text class="graph-label" x="360" y="30" fill="#F44336">現在35歳</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 今日の運 -->
+    <div class="section">
+      <div class="section-title">今日の運</div>
+      <div class="section-subtitle">今日の年運・月運・日運の吉凶</div>
+      <div style="display: flex; gap: 16px; justify-content: center; padding: 8px 0;">
+        <!-- 年運 -->
+        <div class="fortune-card">
+          <div class="fortune-age">2025年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">乙</div>
+            <div class="fortune-block fire">巳</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <!-- 月運 -->
+        <div class="fortune-card">
+          <div class="fortune-age">11月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丁</div>
+            <div class="fortune-block water">亥</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <!-- 日運 -->
+        <div class="fortune-card">
+          <div class="fortune-age">1日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">庚</div>
+            <div class="fortune-block fire">午</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大運 -->
+    <div class="section">
+      <div class="section-title">大運</div>
+      <div class="section-subtitle">10年周期の運勢の流れ（右から左へスクロール）</div>
+      <div class="scroll-container">
+        <div class="fortune-card">
+          <div class="fortune-age">3歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">乙</div>
+            <div class="fortune-block wood">卯</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">13歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">甲</div>
+            <div class="fortune-block wood">寅</div>
+          </div>
+          <span class="fortune-badge fortune-great">大吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">23歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block water">癸</div>
+            <div class="fortune-block water">丑</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card current">
+          <div class="fortune-age">33歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block water">壬</div>
+            <div class="fortune-block water">子</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+          <div style="margin-top: 4px; color: #D4AF37; font-size: 0.7rem;">現在</div>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">43歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">辛</div>
+            <div class="fortune-block water">亥</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">53歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">庚</div>
+            <div class="fortune-block earth">戌</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">63歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">己</div>
+            <div class="fortune-block metal">酉</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">73歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">戊</div>
+            <div class="fortune-block metal">申</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">83歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丁</div>
+            <div class="fortune-block earth">未</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">93歳</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丙</div>
+            <div class="fortune-block fire">午</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 年運 -->
+    <div class="section">
+      <div class="section-title">年運</div>
+      <div class="section-subtitle">33-43歳（壬子）の年別運勢（右から左へスクロール）</div>
+      <div class="scroll-container">
+        <div class="fortune-card">
+          <div class="fortune-age">2034年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">甲</div>
+            <div class="fortune-block wood">寅</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2033年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block water">癸</div>
+            <div class="fortune-block water">丑</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2032年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block water">壬</div>
+            <div class="fortune-block water">子</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2031年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">辛</div>
+            <div class="fortune-block water">亥</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2030年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">庚</div>
+            <div class="fortune-block earth">戌</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2029年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">己</div>
+            <div class="fortune-block metal">酉</div>
+          </div>
+          <span class="fortune-badge fortune-great">大吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2028年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">戊</div>
+            <div class="fortune-block metal">申</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2027年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丁</div>
+            <div class="fortune-block earth">未</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">2026年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丙</div>
+            <div class="fortune-block fire">午</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card current">
+          <div class="fortune-age">2025年</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">乙</div>
+            <div class="fortune-block fire">巳</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+          <div style="margin-top: 4px; color: #D4AF37; font-size: 0.7rem;">現在</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 月運 -->
+    <div class="section">
+      <div class="section-title">月運</div>
+      <div class="section-subtitle">2025年（乙巳）の月別運勢（右から左へスクロール）</div>
+      <div class="scroll-container">
+        <div class="fortune-card">
+          <div class="fortune-age">12月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">戊</div>
+            <div class="fortune-block water">子</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card current">
+          <div class="fortune-age">11月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丁</div>
+            <div class="fortune-block water">亥</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+          <div style="margin-top: 4px; color: #D4AF37; font-size: 0.7rem;">現在</div>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">10月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丙</div>
+            <div class="fortune-block earth">戌</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">9月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">乙</div>
+            <div class="fortune-block metal">酉</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">8月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block wood">甲</div>
+            <div class="fortune-block metal">申</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">7月</div>
+          <div class="fortune-chars">
+            <div class="fortune-block water">癸</div>
+            <div class="fortune-block earth">未</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 日運 -->
+    <div class="section">
+      <div class="section-title">日運</div>
+      <div class="section-subtitle">2025年11月の日別運勢（右から左へスクロール）</div>
+      <div class="scroll-container">
+        <div class="fortune-card">
+          <div class="fortune-age">30日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block metal">庚</div>
+            <div class="fortune-block fire">午</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">29日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">己</div>
+            <div class="fortune-block fire">巳</div>
+          </div>
+          <span class="fortune-badge fortune-good">吉</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">28日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block earth">戊</div>
+            <div class="fortune-block wood">辰</div>
+          </div>
+          <span class="fortune-badge fortune-bad">凶</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">27日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丁</div>
+            <div class="fortune-block wood">卯</div>
+          </div>
+          <span class="fortune-badge fortune-neutral">平</span>
+        </div>
+        <div class="fortune-card">
+          <div class="fortune-age">26日</div>
+          <div class="fortune-chars">
+            <div class="fortune-block fire">丙</div>
+            <div class="fortune-block wood">寅</div>
+          </div>
+          <span class="fortune-badge fortune-great">大吉</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 修正内容メモ -->
+  <!--
+  【修正版モックアップ - 2025年11月2日】
+
+  変更点：
+  1. ヘッダー削除
+     - 「命式詳細」タイトル + 編集・削除ボタンを完全に削除
+     - コンテンツが画面上端から開始
+
+  2. 人生グラフの改善
+     - 凶運区間（レベル1-2）: 灰色線（#9E9E9E、太さ3px）
+     - 通常区間（レベル3-4）: ゴールド線（#D4AF37、太さ3px）
+     - 最高吉運区間（レベル5）: 太赤線（#F44336、太さ5px）
+     - データポイント: 大運の開始年齢のみ表示（10点）
+     - X軸: 大運境界（3, 13, 23, 33, 43, 53, 63, 73, 83, 93歳）
+
+  その他の要素:
+  - 基本情報セクション: そのまま
+  - 命式（四柱）セクション: そのまま
+  - 今日の運セクション: そのまま
+  - 大運スクロールセクション: そのまま
+  - 年運・月運・日運セクション: そのまま
+
+  デザイン方針:
+  - 命式詳細ページは「閲覧専用」
+  - 編集・削除機能は命式リストページで提供
+  - 人生グラフで吉凶を視覚的に区別（色・太さ）
+  -->
+</body>
+</html>

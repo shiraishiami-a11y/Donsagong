@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設定 - ゴールデン四柱推命</title>
+
+    <!-- MUI v7 CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FAFAFA 0%, #F4E8C1 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* ゴールドカラーパレット */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F4E8C1;
+            --dark-gold: #B8941C;
+            --background: #FFFFFF;
+            --secondary-bg: #FAFAFA;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #E0E0E0;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--primary-gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .back-button:hover {
+            background: var(--light-gold);
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* コンテンツエリア */
+        .main-content {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* セクションカード */
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 16px;
+            background: var(--light-gold);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dark-gold);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-content {
+            padding: 16px;
+        }
+
+        /* データ管理バナー（ゲストモード専用） */
+        .guest-banner {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .guest-banner-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .guest-banner-text {
+            font-size: 14px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .guest-banner-button {
+            background: white;
+            color: var(--primary-gold);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .guest-banner-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 設定項目 */
+        .setting-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .setting-value {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            background: var(--secondary-bg);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .setting-value.disabled {
+            opacity: 0.5;
+        }
+
+        /* アプリ情報 */
+        .app-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .app-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .app-info-label {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .app-info-value {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .app-info-link {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* アイコン */
+        .material-icons {
+            vertical-align: middle;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 430px) {
+            .main-content {
+                padding: 16px 12px;
+            }
+
+            .section-content {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-button" onclick="window.location.href='/list'">
+                <span class="material-icons">arrow_back</span>
+                <span>リストに戻る</span>
+            </button>
+            <h1 class="header-title">設定</h1>
+            <div style="width: 100px;"></div> <!-- 右側のスペース確保 -->
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <!-- セクション2: データ管理（ゲストモード） -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="material-icons">cloud_upload</span>
+                    データ管理
+                </h2>
+            </div>
+            <div class="section-content">
+                <!-- ゲストモード専用バナー -->
+                <div class="guest-banner">
+                    <div class="guest-banner-title">
+                        <span class="material-icons" style="vertical-align: middle; font-size: 24px;">cloud_done</span>
+                        クラウドに保存しませんか？
+                    </div>
+                    <div class="guest-banner-text">
+                        アカウントを作成すると、複数の端末でデータを同期できます。<br>
+                        大切な命式データを安全にバックアップ！
+                    </div>
+                    <button class="guest-banner-button" onclick="window.location.href='/register'">
+                        アカウントを作成
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション4: 表示設定 -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="material-icons">palette</span>
+                    表示設定
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="setting-item">
+                    <div class="setting-label">テーマ</div>
+                    <div class="setting-value disabled">ゴールド（固定）</div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">言語</div>
+                    <div class="setting-value disabled">日本語（固定）</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- セクション5: アプリ情報 -->
+        <section class="section-card">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="material-icons">info</span>
+                    アプリ情報
+                </h2>
+            </div>
+            <div class="section-content">
+                <div class="app-info-item">
+                    <span class="app-info-label">バージョン</span>
+                    <span class="app-info-value">v1.0.0</span>
+                </div>
+                <div class="app-info-item">
+                    <span class="app-info-label">利用規約</span>
+                    <a href="#" class="app-info-link">準備中</a>
+                </div>
+                <div class="app-info-item">
+                    <span class="app-info-label">プライバシーポリシー</span>
+                    <a href="#" class="app-info-link">準備中</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--
+    【CF_06引き継ぎ情報】
+
+    UI要件: ゲストモードでの設定ページ表示
+
+    セクション2: データ管理
+    - UI文脈: ゲストモード専用バナーを表示
+    - ユーザー操作: 「アカウントを作成」ボタンクリック → /register へ遷移
+    - 必要API: なし（フロントエンド遷移のみ）
+
+    セクション4: 表示設定
+    - UI文脈: テーマと言語は固定表示（将来的な拡張のため項目配置）
+    - 必要API: なし（表示のみ）
+
+    セクション5: アプリ情報
+    - UI文脈: バージョン情報と規約リンク表示（リンクは将来対応）
+    - 必要API: なし（静的表示）
+
+    特記事項:
+    - ゲストモードではセクション1（アカウント設定）とセクション3（自動ログイン設定）は非表示
+    - LocalStorageのみで動作、サーバーAPIは不要
+    - 「アカウントを作成」ボタンで /register に遷移し、ゲストデータ移行オプションを提供
+    -->
+
+    <script>
+        // ゲストモード確認
+        console.log('[ゲストモード] 設定ページ表示');
+
+        // 戻るボタンハンドラー
+        document.querySelector('.back-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('リストページへ遷移: /list');
+            // 実際の遷移はReact Routerで実装
+        });
+
+        // アカウント作成ボタンハンドラー
+        document.querySelector('.guest-banner-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('新規登録ページへ遷移: /register');
+            // 実際の遷移はReact Routerで実装
+        });
+    </script>
+</body>
+</html>

@@ -43,7 +43,7 @@ class DaeunInfo(BaseModel):
     endAge: int = Field(..., description="終了年齢")
     daeunStem: str = Field(..., description="大運天干")
     daeunBranch: str = Field(..., description="大運地支")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     sipsin: Optional[str] = Field(None, description="十神")
     isCurrent: Optional[bool] = Field(False, description="現在の大運期間かどうか")
 
@@ -78,7 +78,7 @@ class SajuResponse(BaseModel):
     daeunList: List[DaeunInfo] = Field(..., description="大運リスト")
 
     # 吉凶レベル
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
 
     createdAt: str = Field(..., description="作成日時（ISO 8601形式）")
 
@@ -140,7 +140,7 @@ class SajuSummary(BaseModel):
     name: Optional[str] = Field(None, description="名前")
     birthDatetime: str = Field(..., description="生年月日時（ISO 8601形式）")
     gender: str = Field(..., description="性別")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     createdAt: str = Field(..., description="作成日時（ISO 8601形式）")
 
     # 四柱プレビュー用
@@ -210,7 +210,7 @@ class FortuneDetail(BaseModel):
 
     stem: str = Field(..., description="天干")
     branch: str = Field(..., description="地支")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     description: str = Field(..., description="解説文")
     element: Optional[Literal["wood", "fire", "earth", "metal", "water"]] = Field(
         None, description="五行要素"
@@ -237,7 +237,7 @@ class YearFortuneInfo(BaseModel):
     yearStem: str = Field(..., description="年天干")
     yearBranch: str = Field(..., description="年地支")
     sipsin: str = Field(..., description="十神")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     isCurrent: bool = Field(..., description="現在の年かどうか")
 
 
@@ -259,7 +259,7 @@ class MonthFortuneInfo(BaseModel):
     monthStem: str = Field(..., description="月天干")
     monthBranch: str = Field(..., description="月地支")
     sipsin: str = Field(..., description="十神")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     isCurrent: bool = Field(..., description="現在の月かどうか")
 
 
@@ -281,7 +281,7 @@ class DayFortuneInfo(BaseModel):
     dayStem: str = Field(..., description="日天干")
     dayBranch: str = Field(..., description="日地支")
     sipsin: str = Field(..., description="十神")
-    fortuneLevel: Literal["大吉", "吉", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
+    fortuneLevel: Literal["大吉", "小吉", "吉", "吉凶", "平", "凶", "大凶"] = Field(..., description="吉凶レベル")
     isToday: bool = Field(..., description="今日かどうか")
 
 

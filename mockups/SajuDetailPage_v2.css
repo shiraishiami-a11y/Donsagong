@@ -1,0 +1,519 @@
+/* ===================================
+   ゴールデン四柱推命 - 命式詳細ページ v2
+   韓国アプリ風水平スクロールレイアウト
+   =================================== */
+
+/* ========== リセット & ベース ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========== コンテナ ========== */
+.app-container {
+  max-width: 430px;
+  margin: 0 auto;
+  background: #ffffff;
+  min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== ヘッダー ========== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.back-button,
+.menu-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover,
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ========== メインコンテンツ ========== */
+.main-content {
+  padding: 20px;
+}
+
+/* ========== 基本情報セクション ========== */
+.basic-info {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-row .label {
+  color: #666;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.info-row .value {
+  color: #333;
+  font-weight: 500;
+}
+
+/* ========== 四柱セクション ========== */
+.saju-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.pillar-card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.pillar-label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pillar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.stem,
+.branch {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 8px;
+  color: white;
+  margin: 0 auto;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* 五行カラー */
+.wood {
+  background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+}
+
+.fire {
+  background: linear-gradient(135deg, #F44336 0%, #D32F2F 100%);
+}
+
+.earth {
+  background: linear-gradient(135deg, #FFB300 0%, #F57C00 100%);
+}
+
+.metal {
+  background: linear-gradient(135deg, #BDBDBD 0%, #9E9E9E 100%);
+}
+
+.water {
+  background: linear-gradient(135deg, #424242 0%, #212121 100%);
+}
+
+.pillar-reading {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+/* ========== 運勢セクション共通 ========== */
+.fortune-section {
+  margin-bottom: 28px;
+}
+
+.section-header {
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ========== 水平スクロール ========== */
+.horizontal-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* スクロールバーのスタイリング */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 3px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb:hover {
+  background: #B8941C;
+}
+
+/* ========== 運勢カード共通 ========== */
+.fortune-card {
+  min-width: 100px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fortune-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+}
+
+.fortune-card.selected {
+  border-color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(184, 148, 28, 0.05) 100%);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* 現在/今日バッジ */
+.current-badge,
+.today-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: white;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== 大運カード ========== */
+.daeun-card {
+  min-width: 110px;
+}
+
+.age-range {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.daeun-characters {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.daeun-stem,
+.daeun-branch {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.sipsin {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.fortune-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* ========== 年運カード ========== */
+.year-card {
+  min-width: 90px;
+}
+
+.year-number {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.year-characters {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.year-stem,
+.year-branch {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ========== 月運カード ========== */
+.month-card {
+  min-width: 75px;
+}
+
+.month-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.month-characters {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.month-stem,
+.month-branch {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ========== 日運カード ========== */
+.day-card {
+  min-width: 70px;
+}
+
+.day-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.day-characters {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.day-stem,
+.day-branch {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 6px;
+  color: white;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ========== 吉凶アイコン ========== */
+.fortune-level-1 .fortune-icon {
+  color: #F44336; /* 大凶 */
+}
+
+.fortune-level-2 .fortune-icon {
+  color: #FF9800; /* 凶 */
+}
+
+.fortune-level-3 .fortune-icon {
+  color: #9E9E9E; /* 平 */
+}
+
+.fortune-level-4 .fortune-icon {
+  color: #4CAF50; /* 吉 */
+}
+
+.fortune-level-5 .fortune-icon {
+  color: #FFD700; /* 大吉 */
+}
+
+/* ========== 吉凶カラーボーダー（オプション） ========== */
+.fortune-level-1 {
+  border-left: 4px solid #F44336;
+}
+
+.fortune-level-2 {
+  border-left: 4px solid #FF9800;
+}
+
+.fortune-level-3 {
+  border-left: 4px solid #9E9E9E;
+}
+
+.fortune-level-4 {
+  border-left: 4px solid #4CAF50;
+}
+
+.fortune-level-5 {
+  border-left: 4px solid #FFD700;
+}
+
+/* ========== レスポンシブ調整 ========== */
+@media (max-width: 375px) {
+  .saju-pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stem,
+  .branch {
+    width: 45px;
+    height: 45px;
+    font-size: 1.35rem;
+  }
+
+  .daeun-card {
+    min-width: 100px;
+  }
+
+  .year-card {
+    min-width: 85px;
+  }
+
+  .month-card {
+    min-width: 70px;
+  }
+
+  .day-card {
+    min-width: 65px;
+  }
+}
+
+/* ========== アニメーション ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fortune-section {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ========== アクセシビリティ ========== */
+.fortune-card:focus {
+  outline: 3px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* ========== タッチフレンドリー ========== */
+@media (hover: none) {
+  .fortune-card:active {
+    transform: scale(0.95);
+  }
+}

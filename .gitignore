@@ -105,3 +105,4 @@ dump.rdb
 *.cer
 *.p12
 *.pfx
+scripts/deploy-*.sh
