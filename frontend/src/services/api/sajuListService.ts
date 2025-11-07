@@ -257,3 +257,39 @@ export async function getCurrentFortune(): Promise<CurrentFortuneResponse> {
 
   return response.data;
 }
+
+/**
+ * 命式を保存（LocalStorageまたはAPI）
+ * @param data - 保存する命式データ
+ * @returns 保存結果
+ */
+export async function saveSaju(data: SajuDetailResponse): Promise<{ success: boolean; message: string }> {
+  try {
+    // LocalStorageから既存データを取得
+    const localData = localStorage.getItem('saju_data');
+    let sajuList: SajuDetailResponse[] = localData ? JSON.parse(localData) : [];
+
+    // 既存データに追加日時とIDがない場合は生成
+    const sajuToSave: SajuDetailResponse = {
+      ...data,
+      id: data.id || `saju-${Date.now()}`,
+      createdAt: data.createdAt || new Date().toISOString(),
+    };
+
+    // 同じIDが既に存在する場合は更新、なければ追加
+    const existingIndex = sajuList.findIndex(item => item.id === sajuToSave.id);
+    if (existingIndex >= 0) {
+      sajuList[existingIndex] = sajuToSave;
+    } else {
+      sajuList.push(sajuToSave);
+    }
+
+    // LocalStorageに保存
+    localStorage.setItem('saju_data', JSON.stringify(sajuList));
+
+    return { success: true, message: '命式を保存しました' };
+  } catch (error: any) {
+    console.error('命式の保存に失敗しました:', error);
+    return { success: false, message: '命式の保存に失敗しました' };
+  }
+}

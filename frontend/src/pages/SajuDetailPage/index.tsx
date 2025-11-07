@@ -14,7 +14,7 @@ import { YearFortuneScrollSection } from './components/YearFortuneScrollSection'
 import { MonthFortuneScrollSection } from './components/MonthFortuneScrollSection';
 import { DayFortuneScrollSection } from './components/DayFortuneScrollSection';
 import type { SajuDetailPageData, CurrentFortuneResponse } from '../../types';
-import { getSajuDetail, getCurrentFortune } from '../../services/api/sajuListService';
+import { getSajuDetail, getCurrentFortune, saveSaju } from '../../services/api/sajuListService';
 import GoldenPeppaLoading from '../../components/GoldenPeppaLoading';
 import { FortuneLevelMap } from '../../types';
 import { ApiError } from '../../services/api/client';
@@ -176,9 +176,22 @@ export const SajuDetailPage: React.FC = () => {
           <Button
             variant="contained"
             startIcon={<SaveIcon sx={{ fontSize: '20px' }} />}
-            onClick={() => {
-              // TODO: 保存処理を実装
-              alert('命式を保存しました');
+            onClick={async () => {
+              if (!data) return;
+
+              try {
+                const result = await saveSaju(data);
+                if (result.success) {
+                  alert(result.message);
+                  // 保存後、リストページに戻る
+                  navigate('/list');
+                } else {
+                  alert(result.message);
+                }
+              } catch (error) {
+                console.error('保存エラー:', error);
+                alert('保存中にエラーが発生しました');
+              }
             }}
             sx={{
               backgroundColor: '#D4AF37',
