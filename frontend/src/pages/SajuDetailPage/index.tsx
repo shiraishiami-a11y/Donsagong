@@ -180,7 +180,38 @@ export const SajuDetailPage: React.FC = () => {
               if (!data) return;
 
               try {
-                const result = await saveSaju(data);
+                // SajuDetailPageDataからSajuDetailResponseに必要なフィールドを抽出
+                const dataToSave: any = {
+                  id: data.id,
+                  name: data.name,
+                  birthDatetime: data.birthDatetime,
+                  gender: data.gender,
+                  yearStem: data.yearStem,
+                  yearBranch: data.yearBranch,
+                  monthStem: data.monthStem,
+                  monthBranch: data.monthBranch,
+                  dayStem: data.dayStem,
+                  dayBranch: data.dayBranch,
+                  hourStem: data.hourStem,
+                  hourBranch: data.hourBranch,
+                  daeunList: data.daeunList,
+                  fortuneLevel: data.fortuneLevel,
+                  createdAt: data.createdAt,
+                  daeunNumber: data.daeunNumber,
+                  isForward: data.isForward,
+                  afterBirthYears: data.afterBirthYears,
+                  afterBirthMonths: data.afterBirthMonths,
+                  afterBirthDays: data.afterBirthDays,
+                  firstDaeunDate: data.firstDaeunDate,
+                  lifeGraphData: data.lifeGraph?.dataPoints || [],
+                  tenganAnalysis: data.tenganAnalysis || {},
+                  jijiAnalysis: data.jijiAnalysis || {},
+                  interpretation: data.interpretation || '',
+                };
+
+                console.log('[SajuDetailPage] 保存データ:', dataToSave);
+
+                const result = await saveSaju(dataToSave);
                 if (result.success) {
                   alert(result.message);
                   // 保存後、リストページに戻る

@@ -22,6 +22,7 @@ import { LocalizationProvider, DatePicker, TimePicker } from '@mui/x-date-picker
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { ja } from 'date-fns/locale/ja';
 import { GoldenPeppaLoading } from '../../components/GoldenPeppaLoading';
+import { BottomNavigation } from '../../components/BottomNavigation';
 import { calculateSaju, saveSaju } from '../../services/api/sajuCalculationService';
 import { AuthContext } from '../../features/auth/contexts/AuthContext';
 import type { BirthDataRequest, SajuResponse } from '../../types';
@@ -113,15 +114,20 @@ export const TopPage: React.FC = () => {
         const existingData = localStorage.getItem('saju_data');
         const sajuList: SajuResponse[] = existingData ? JSON.parse(existingData) : [];
 
+        console.log('[TopPage] 保存前のLocalStorage:', sajuList.length, '件');
+
         // 既存データがあれば更新、なければ追加
         const existingIndex = sajuList.findIndex(item => item.id === result.id);
         if (existingIndex >= 0) {
           sajuList[existingIndex] = result;
+          console.log('[TopPage] 既存データを更新:', result.id);
         } else {
           sajuList.push(result);
+          console.log('[TopPage] 新規データを追加:', result.id);
         }
 
         localStorage.setItem('saju_data', JSON.stringify(sajuList));
+        console.log('[TopPage] 保存後のLocalStorage:', sajuList.length, '件');
       }
 
       // 3. 詳細ページに遷移
@@ -139,16 +145,18 @@ export const TopPage: React.FC = () => {
   }
 
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: { xs: '20px', md: '40px' },
-      }}
-    >
+    <>
+      <Box
+        sx={{
+          minHeight: '100vh',
+          background: 'linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: { xs: '20px', md: '40px' },
+          paddingBottom: { xs: '90px', md: '100px' }, // ボトムナビゲーション分の余白
+        }}
+      >
       {/* メインコンテナ */}
       <Box
         sx={{
@@ -164,21 +172,37 @@ export const TopPage: React.FC = () => {
             marginBottom: { xs: '40px', md: '60px' },
           }}
         >
+          {/* ペッパーミル画像 + キラキラエフェクト（統合画像） */}
+          <Box
+            component="img"
+            src="/images/peppa-with-sparkles.png"
+            alt="Golden Peppa"
+            sx={{
+              width: { xs: '160px', md: '200px', lg: '240px' },
+              height: { xs: '160px', md: '200px', lg: '240px' },
+              objectFit: 'contain',
+              marginBottom: { xs: '16px', md: '20px' },
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}
+          />
+
+          {/* Golden Peppa タイトル */}
           <Typography
             sx={{
-              fontSize: { xs: '28px', md: '36px', lg: '48px' },
-              fontWeight: 700,
+              fontSize: { xs: '40px', md: '52px', lg: '68px' },
+              fontWeight: 400,
               color: '#D4AF37',
               marginBottom: { xs: '8px', md: '8px' },
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: { xs: '8px', md: '12px' },
+              letterSpacing: '1px',
+              fontFamily: "'Indie Flower', cursive",
             }}
           >
-            <AutoAwesome sx={{ fontSize: { xs: '28px', md: '36px', lg: '48px' } }} />
-            <span>ゴールデン四柱推命</span>
+            Golden Peppa
           </Typography>
+
+          {/* サブタイトル */}
           <Typography
             sx={{
               fontSize: { xs: '14px', md: '16px', lg: '18px' },
@@ -533,7 +557,11 @@ export const TopPage: React.FC = () => {
           </Box>
         </Box>
       </Box>
-    </Box>
+      </Box>
+
+      {/* ボトムナビゲーション */}
+      <BottomNavigation />
+    </>
   );
 };
 

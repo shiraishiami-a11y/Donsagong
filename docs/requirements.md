@@ -13,7 +13,10 @@
 ### 1.1 成果目標
 既存の210年節気データベース（1900-2109年）と検証済み万年暦計算システムを統合し、ゴールドテーマの美しいUIで四柱推命・大運・年月日運を網羅的に分析し、5段階吉凶判定と折れ線グラフで視覚化する個人利用型四柱推命Webアプリケーション。
 
-**コンセプト**: 「ゴールデン四柱推命 - あなたの運命に魔法をかける」
+**ブランド名**: Golden Peppa（ゴールデンペッパー）
+**コンセプト**: 「あなたの運命に魔法をかける」
+**シンボル**: ゴールデンペッパーミル + キラキラエフェクト
+**デザインテーマ**: 伝統的な四柱推命に「魔法のような」親しみやすさとワクワク感を加えた、ゴールド×手書き風の現代的デザイン
 
 ### 1.2 成功指標
 
@@ -790,13 +793,59 @@ Node.js: 20.x LTS
 
 ## 付録：デザイン仕様
 
-### ゴールドカラーパレット
+### ゴールドカラーパレット（最終版 2025-11-07更新）
 ```yaml
-Primary Gold: #D4AF37
-Light Gold: #F4E8C1
-Dark Gold: #B8941C
-Background: #FFFFFF
-Secondary Background: #FAFAFA
+# プライマリゴールド
+PRIMARY_GOLD: #D4AF37      # メインゴールド - ボタン、アイコン、ブランディング
+LIGHT_GOLD: #EBCC42        # ライトゴールド - セカンダリボタン、ハイライト
+DARK_GOLD: #B8941C         # ダークゴールド - ボタンホバー、シャドウ
+PALE_GOLD: #fffbf0         # ペールゴールド - 背景、ホバーエフェクト
+
+# 背景
+Background Primary: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)
+Card Background: #FFFFFF
+```
+
+### タイポグラフィ（最終版 2025-11-07更新）
+```yaml
+# ブランドフォント（Golden Peppa ロゴ専用）
+Brand Font: 'Indie Flower', cursive
+  - Google Fonts CDN: https://fonts.googleapis.com/css2?family=Indie+Flower
+  - 特徴: 手書き風、親しみやすい、大人のカジュアル
+  - 適用箇所: "Golden Peppa" ロゴタイトルのみ
+  - サイズ: xs: 40px, md: 52px, lg: 68px
+  - ウェイト: 400
+  - レタースペーシング: 1px
+  - 色: #D4AF37
+
+# 本文フォント
+Primary Font: 'Roboto', 'Noto Sans JP', sans-serif
+  - 適用箇所: ボタン、フォーム、ナビゲーション、本文
+
+# 四柱推命表示フォント（任意）
+Secondary Font: 'Noto Serif JP', serif
+  - 適用箇所: 天干・地支などの伝統的表記
+```
+
+### ビジュアルアセット（最終版 2025-11-07更新）
+```yaml
+# メインロゴ（現行）
+Logo Image: /public/images/peppa-with-sparkles.png
+  - 説明: ゴールデンペッパーミル + キラキラエフェクト統合画像
+  - サイズ: xs: 160px, md: 200px, lg: 240px
+  - 配置: 中央揃え（display: block, margin: auto）
+  - 変更日: 2025-11-07
+  - 変更理由: レイアウト安定性向上（5枚→1枚統合）
+
+# 旧アセット（非推奨、ローディングアニメーションでのみ使用）
+Old Assets:
+  - /public/images/peppa.png
+  - /public/images/キラキラ1.png
+  - /public/images/キラキラ2.png
+  - /public/images/キラキラ3.png
+  - /public/images/キラキラ4.png
+  - /public/images/左下光線.png
+  - /public/images/右上光線.png
 ```
 
 ### 五行カラーシステム
@@ -823,30 +872,45 @@ Secondary Background: #FAFAFA
 
 ### 10.1 アニメーション・エフェクト仕様
 
-#### Golden Peppa ローディングアニメーション
+#### Golden Peppa ローディングアニメーション（最終版 2025-11-07更新）
 - **使用場面**:
-  - トップページ初回訪問時（短時間表示）
-  - 命式計算中のローディング
+  - 命式計算中のローディング（TopPage）
   - データ保存中の待機画面
 - **アニメーション構成**:
-  - ペッパー画像の回転・スケール変動（4秒ループ）
-  - 左下・右上光線の輝きエフェクト（3秒ループ）
-  - キラキラ粒子の落下アニメーション（3.2秒ループ）
-  - ローディングドットのパルス（1.5秒ループ）
+  - ペッパー画像の回転・スケール変動（4秒ループ、gentleShake）
+  - 左下・右上光線の輝きエフェクト（3秒ループ、rayGlowPart）
+  - キラキラ粒子の落下アニメーション（3.2秒ループ、sparkleFall）
+  - ローディングドットのパルス（1.5秒ループ、dotPulse）
+  - タイトル・タグラインのフェードイン（fadeInUp、0.5s/0.7s delay）
 - **技術実装**: CSS keyframes + z-index階層管理
-- **アセット**: peppa.png、光線画像×2、キラキラ画像×複数
+- **アセット**:
+  - peppa.png（180x180px）
+  - 左下光線.png（60x80px）
+  - 右上光線.png（60x80px）
+  - キラキラ1.png（25x25px）
+  - キラキラ2.png（25x25px、opacity: 0.8）
+  - キラキラ3.png（20x20px、45度回転）
+  - キラキラ4.png（12.5x12.5px）
+- **テキスト**:
+  - "Golden Peppa"（48px、Indie Flower、#D4AF37）
+  - "あなたの運命に魔法をかける"（14px、#666）
 
-#### ボタンインタラクション
-- **ホバー時**:
-  - 上昇アニメーション（translateY: -2px）
-  - シャドウ拡大（4px → 6px）
+#### ボタンインタラクション（最終版 2025-11-07更新）
+- **プライマリボタン（計算ボタン等）**:
+  - 通常: background #D4AF37、color white、boxShadow 0 4px 12px rgba(212,175,55,0.3)
+  - ホバー: background #B8941C、translateY(-2px)、boxShadow 0 6px 16px
+  - クリック: translateY(0)
   - トランジション: 0.2秒
-- **クリック時**:
-  - 沈み込みアニメーション（translateY: 0）
-  - リップルエフェクト（MUI標準）
-- **Disabled状態**:
-  - 透明度: 0.6
-  - カーソル: not-allowed
+- **セカンダリボタン（保存・削除ボタン等）**:
+  - 通常: background #EBCC42、color white、boxShadow none
+  - ホバー: background #D4AF37
+  - padding: 10px 24px
+  - borderRadius: 8px
+  - トランジション: 0.2秒
+- **共通**:
+  - textTransform: none（大文字化なし）
+  - fontWeight: 600-700
+  - Disabled状態: opacity 0.6、cursor not-allowed
 
 #### カードホバーエフェクト
 - **命式リストカード**:

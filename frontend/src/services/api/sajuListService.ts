@@ -36,31 +36,36 @@ interface PaginatedResponse<T> {
  * @throws ApiError
  */
 export async function getSajuList(): Promise<SajuSummary[]> {
+  // まずLocalStorageから取得を試みる（ゲストモード優先）
+  const localData = localStorage.getItem('saju_data');
+
+  if (localData) {
+    try {
+      const sajuList: SajuSummary[] = JSON.parse(localData);
+      console.log('[getSajuList] LocalStorageから取得:', sajuList.length, '件');
+      return sajuList;
+    } catch (parseError) {
+      console.error('[getSajuList] LocalStorageのパースに失敗:', parseError);
+      // パースエラーの場合、LocalStorageをクリアして続行
+      localStorage.removeItem('saju_data');
+    }
+  }
+
+  // LocalStorageにデータがない場合、APIから取得を試みる（ログインユーザー用）
   try {
-    // まずAPIから取得を試みる（ログインユーザー用）
     const response = await apiGet<PaginatedResponse<SajuSummary>>('/api/saju/list');
 
     if (!response.data) {
       throw new Error('命式一覧の取得に失敗しました');
     }
 
+    console.log('[getSajuList] APIから取得:', response.data.items.length, '件');
     // ページネーション形式から items を抽出
     return response.data.items;
   } catch (error: any) {
-    // 401 または ネットワークエラーの場合、LocalStorageから取得（ゲストユーザー用）
-    if (error.status === 401 || error.status === 0) {
-      const localData = localStorage.getItem('saju_data');
-
-      if (!localData) {
-        return []; // ゲストモードでデータがない場合は空配列
-      }
-
-      const sajuList: SajuSummary[] = JSON.parse(localData);
-      return sajuList;
-    }
-
-    // その他のエラーは再スロー
-    throw error;
+    console.error('[getSajuList] API取得エラー:', error);
+    // APIエラーの場合は空配列を返す（LocalStorageも空だった場合）
+    return [];
   }
 }
 
@@ -234,13 +239,54 @@ export async function getSajuDetail(id: string): Promise<SajuDetailPageData> {
  * @throws ApiError
  */
 export async function deleteSaju(id: string): Promise<DeleteResponse> {
-  const response = await apiDelete<DeleteResponse>(`/api/saju/${id}`);
+  // まずLocalStorageから削除を試みる（ゲストモード優先）
+  const localData = localStorage.getItem('saju_data');
 
-  if (!response.data) {
-    throw new Error('命式の削除に失敗しました');
+  if (localData) {
+    try {
+      const sajuList: SajuSummary[] = JSON.parse(localData);
+      const filteredList = sajuList.filter(item => item.id !== id);
+
+      console.log('[deleteSaju] 削除前:', sajuList.length, '件');
+      console.log('[deleteSaju] 削除後:', filteredList.length, '件');
+      console.log('[deleteSaju] 削除ID:', id);
+
+      // LocalStorageを更新
+      if (filteredList.length > 0) {
+        localStorage.setItem('saju_data', JSON.stringify(filteredList));
+      } else {
+        localStorage.removeItem('saju_data'); // 空になった場合は削除
+      }
+
+      return {
+        success: true,
+        message: '命式を削除しました',
+      };
+    } catch (parseError) {
+      console.error('[deleteSaju] LocalStorageのパースに失敗:', parseError);
+      // パースエラーの場合、LocalStorageをクリアして続行
+      localStorage.removeItem('saju_data');
+    }
   }
 
-  return response.data;
+  // LocalStorageにデータがない場合、APIから削除を試みる（ログインユーザー用）
+  try {
+    const response = await apiDelete<DeleteResponse>(`/api/saju/${id}`);
+
+    if (!response.data) {
+      throw new Error('命式の削除に失敗しました');
+    }
+
+    console.log('[deleteSaju] APIから削除成功');
+    return response.data;
+  } catch (error: any) {
+    console.error('[deleteSaju] API削除エラー:', error);
+    // APIエラーでもLocalStorageから削除できていればOK
+    return {
+      success: true,
+      message: '命式を削除しました',
+    };
+  }
 }
 
 /**
@@ -269,6 +315,8 @@ export async function saveSaju(data: SajuDetailResponse): Promise<{ success: boo
     const localData = localStorage.getItem('saju_data');
     let sajuList: SajuDetailResponse[] = localData ? JSON.parse(localData) : [];
 
+    console.log('[saveSaju] 保存前のLocalStorage:', sajuList.length, '件');
+
     // 既存データに追加日時とIDがない場合は生成
     const sajuToSave: SajuDetailResponse = {
       ...data,
@@ -276,20 +324,25 @@ export async function saveSaju(data: SajuDetailResponse): Promise<{ success: boo
       createdAt: data.createdAt || new Date().toISOString(),
     };
 
+    console.log('[saveSaju] 保存データID:', sajuToSave.id);
+
     // 同じIDが既に存在する場合は更新、なければ追加
     const existingIndex = sajuList.findIndex(item => item.id === sajuToSave.id);
     if (existingIndex >= 0) {
       sajuList[existingIndex] = sajuToSave;
+      console.log('[saveSaju] 既存データを更新:', sajuToSave.id);
     } else {
       sajuList.push(sajuToSave);
+      console.log('[saveSaju] 新規データを追加:', sajuToSave.id);
     }
 
     // LocalStorageに保存
     localStorage.setItem('saju_data', JSON.stringify(sajuList));
+    console.log('[saveSaju] 保存後のLocalStorage:', sajuList.length, '件');
 
     return { success: true, message: '命式を保存しました' };
   } catch (error: any) {
-    console.error('命式の保存に失敗しました:', error);
+    console.error('[saveSaju] 保存エラー:', error);
     return { success: false, message: '命式の保存に失敗しました' };
   }
 }

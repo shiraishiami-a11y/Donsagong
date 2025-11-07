@@ -46,7 +46,10 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: {
+            xs: 'repeat(2, 1fr)',  // モバイル: 2カラム（2x2グリッド）
+            sm: 'repeat(4, 1fr)',  // タブレット以上: 4カラム（1行）
+          },
           gap: { xs: '12px', sm: '20px', lg: '30px' },
           maxWidth: { xs: '100%', sm: '800px', lg: '1000px' },
           margin: '0 auto',

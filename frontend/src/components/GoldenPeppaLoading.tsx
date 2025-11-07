@@ -328,11 +328,12 @@ export const GoldenPeppaLoading: React.FC = () => {
       <Typography
         variant="h3"
         sx={{
-          fontSize: '36px',
-          fontWeight: 700,
+          fontSize: '48px',
+          fontWeight: 400,
           color: '#D4AF37',
           marginBottom: '10px',
-          letterSpacing: '3px',
+          letterSpacing: '1px',
+          fontFamily: "'Indie Flower', cursive",
           animation: `${fadeInUp} 1s ease-out 0.5s both`,
         }}
       >

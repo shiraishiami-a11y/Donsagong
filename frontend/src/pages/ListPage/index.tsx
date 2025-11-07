@@ -4,6 +4,7 @@ import { Box, Typography, Button, Alert, IconButton, Dialog, DialogTitle, Dialog
 import { AddCircle, CloudUpload, ChevronRight, ArrowBack, Settings as SettingsIcon, Inbox } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/hooks/useAuth';
+import { BottomNavigation } from '../../components/BottomNavigation';
 import { SajuCard } from './components/SajuCard';
 import { getSajuList, deleteSaju } from '../../services/api/sajuListService';
 import type { SajuSummary } from '../../types';
@@ -140,7 +141,7 @@ export const ListPage: React.FC = () => {
           margin: '0 auto', // 中央配置を確実に実装
           minHeight: '100vh',
           px: { xs: '20px', md: '24px', lg: '40px' },
-          pb: { xs: '80px', md: '80px' },
+          pb: { xs: '100px', md: '110px' }, // ボトムナビゲーション分の余白を追加
           pt: { xs: '20px', md: '30px' },
         }}
       >
@@ -184,18 +185,18 @@ export const ListPage: React.FC = () => {
           startIcon={<AddCircle />}
           onClick={handleCreateNew}
           sx={{
-            background: 'linear-gradient(135deg, #D4AF37 0%, #F4E8C1 100%)',
+            background: '#EBCC42', // 濃い黄金色（単色）
+            color: 'white', // 白文字
             py: { xs: 1.5, md: 1.75 },
             fontWeight: 700,
             fontSize: { xs: '14px', md: '16px' },
             borderRadius: { xs: '10px', md: '12px' },
-            boxShadow: '0 4px 12px rgba(212, 175, 55, 0.4)',
+            boxShadow: 'none', // 影なし
             mb: { xs: 2, md: 2.5 },
             transition: 'all 0.3s',
             '&:hover': {
-              transform: 'translateY(-2px)',
-              boxShadow: '0 6px 20px rgba(212, 175, 55, 0.5)',
-              background: 'linear-gradient(135deg, #B8941C 0%, #D4AF37 100%)',
+              background: '#D4AF37', // ホバー時は通常の金色
+              boxShadow: 'none', // ホバー時も影なし
             },
           }}
         >
@@ -234,24 +235,10 @@ export const ListPage: React.FC = () => {
             <Typography
               variant="h6"
               color="text.secondary"
-              gutterBottom
               sx={{ fontSize: { xs: '18px', md: '24px' } }}
             >
               まだ命式がありません
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                mb: 3,
-                fontSize: { xs: '14px', md: '16px' },
-              }}
-            >
-              「新しい命式を作成」ボタンから始めましょう
-            </Typography>
-            <Button variant="contained" onClick={handleCreateNew}>
-              新しい命式を作成
-            </Button>
           </Box>
         )}
       </Box>
@@ -277,6 +264,9 @@ export const ListPage: React.FC = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* ボトムナビゲーション */}
+      <BottomNavigation />
     </Box>
   );
 };

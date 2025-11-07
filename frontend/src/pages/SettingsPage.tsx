@@ -1,14 +1,15 @@
 // SettingsPage - 設定ページ
-import { Box, Typography, Paper, Divider, Button } from '@mui/material';
-import { MainLayout } from '../layouts/MainLayout';
-import { Header } from '../components/Header';
-import { Sidebar } from '../components/Sidebar';
+import { Box, Typography, Paper, Divider, Button, IconButton } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { BottomNavigation } from '../components/BottomNavigation';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useState } from 'react';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432';
 
 export const SettingsPage: React.FC = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [isExporting, setIsExporting] = useState(false);
 
@@ -49,16 +50,40 @@ export const SettingsPage: React.FC = () => {
   };
 
   return (
-    <MainLayout header={<Header />} sidebar={<Sidebar />}>
-      <Box sx={{ maxWidth: { xs: '100%', md: '900px', lg: '1400px' }, mx: 'auto', px: { xs: '20px', md: '24px', lg: '40px' } }}>
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '24px', md: '28px', lg: '32px' } }}>
-            設定
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            アカウント設定とアプリ設定を管理します。
-          </Typography>
-        </Box>
+    <Box sx={{ width: '100%', minHeight: '100vh', backgroundColor: 'background.paper' }}>
+      {/* カスタムヘッダー */}
+      <Box
+        sx={{
+          position: 'sticky',
+          top: 0,
+          background: 'linear-gradient(135deg, #D4AF37 0%, #B8941C 100%)',
+          color: 'white',
+          padding: { xs: '16px 20px', md: '20px 32px' },
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          boxShadow: '0 2px 8px rgba(212, 175, 55, 0.3)',
+          zIndex: 100,
+          borderRadius: { xs: 0, md: '0 0 16px 16px' },
+        }}
+      >
+        <IconButton onClick={() => navigate('/list')} sx={{ color: 'white', width: 48, height: 48 }} aria-label="リストページに戻る">
+          <ArrowBack />
+        </IconButton>
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: { xs: 600, md: 700 },
+            fontSize: { xs: '18px', md: '24px', lg: '28px' },
+          }}
+        >
+          設定
+        </Typography>
+        <Box sx={{ width: 48 }} /> {/* スペーサー */}
+      </Box>
+
+      {/* メインコンテンツ */}
+      <Box sx={{ maxWidth: { xs: '100%', md: '900px', lg: '1400px' }, mx: 'auto', px: { xs: '20px', md: '24px', lg: '40px' }, pb: { xs: '100px', md: '110px' }, pt: { xs: '20px', md: '30px' } }}>
 
         {/* アカウント情報 */}
         <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
@@ -98,10 +123,23 @@ export const SettingsPage: React.FC = () => {
             </Typography>
             <Button
               variant="contained"
-              color="primary"
               onClick={handleExport}
               disabled={isExporting}
               data-testid="export-button"
+              sx={{
+                background: '#D4AF37', // 通常の金色
+                color: 'white', // 白文字
+                fontWeight: 600,
+                boxShadow: 'none',
+                '&:hover': {
+                  background: '#B8941C', // ホバー時は濃い金色
+                  boxShadow: 'none',
+                },
+                '&:disabled': {
+                  background: '#E0E0E0',
+                  color: '#9E9E9E',
+                },
+              }}
             >
               {isExporting ? 'エクスポート中...' : 'データをエクスポート'}
             </Button>
@@ -123,7 +161,10 @@ export const SettingsPage: React.FC = () => {
           </Box>
         </Paper>
       </Box>
-    </MainLayout>
+
+      {/* ボトムナビゲーション */}
+      <BottomNavigation />
+    </Box>
   );
 };
 

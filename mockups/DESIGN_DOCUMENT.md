@@ -1,18 +1,25 @@
-# 四柱推命アプリケーション - UI/UXデザインドキュメント
+# Golden Peppa - UI/UXデザインドキュメント
 
 ## 1. プロジェクト概要
 
 ### 1.1 アプリケーション名
-**四柱推命・相性診断アプリ**
+**Golden Peppa（ゴールデン四柱推命）**
+英語名: Golden Saju Fortune
 
-### 1.2 デザインコンセプト
-210年節気データベース統合による高精度四柱推命アプリケーションとして、**伝統と先進性の融合**をテーマに、和風の美学と現代的なUIの使いやすさを両立させたデザイン。
+### 1.2 ブランディング
+- **タグライン**: あなたの運命に魔法をかける
+- **シンボル**: ゴールデンペッパーミル（peppa.png）
+- **コンセプト**: 伝統的な四柱推命に「魔法」のような親しみやすさとワクワク感を加えた、現代的で楽しいアプリケーション
 
-### 1.3 設計思想
+### 1.3 デザインコンセプト
+210年節気データベース統合による高精度四柱推命アプリケーションとして、**伝統と遊び心の融合**をテーマに、ゴールドの輝きと手書き風のフレンドリーなタイポグラフィで、専門性と親しみやすさを両立させたデザイン。
+
+### 1.4 設計思想
 - **信頼性の視覚化**: 210年データベースの正確性を表現
-- **親しみやすさ**: 専門的な内容を初心者にも分かりやすく
+- **親しみやすさ**: 専門的な内容を初心者にも分かりやすく、楽しく
 - **効率性**: 複雑な計算結果を直感的に理解できる表示
 - **継続利用**: ユーザーが長期的に使い続けたくなるUX
+- **魔法のような体験**: ゴールドとキラキラエフェクトで特別感を演出
 
 ## 2. 作成済みモックアップ一覧
 
@@ -32,56 +39,104 @@
 
 ### 3.1 カラーパレット
 
-#### 主要カラー
+#### ゴールデンパレット（メインカラー）
 ```css
-/* P-001: 四柱推命計算 - 紺・金系 */
-Primary: #1a1a2e → #16213e → #0f3460
-Accent: #ffd700, #ffed4a
-Secondary: #2d5a87 → #4a90c2
+/* プライマリゴールド */
+PRIMARY_GOLD: #D4AF37     /* メインゴールド - ボタン、アイコン、ブランディング */
+LIGHT_GOLD: #EBCC42       /* ライトゴールド - ボタンホバー、ハイライト */
+DARK_GOLD: #B8941C        /* ダークゴールド - ボタンホバー、シャドウ */
+PALE_GOLD: #fffbf0        /* ペールゴールド - 背景、ホバーエフェクト */
 
-/* P-002: 相性診断 - 茶・金系 */
-Primary: #2c1810 → #8b4513 → #daa520
-Accent: #ffd700, #ffed4a
-Secondary: #8b4513 → #cd853f
-
-/* P-003: 大運分析 - 紫系 */
-Primary: #4a148c → #7b1fa2 → #9c27b0
-Accent: #ffd700, #ffed4a
-Secondary: #7b1fa2 → #9c27b0
-
-/* P-004: データ管理 - 青系 */
-Primary: #0d47a1 → #1976d2 → #42a5f5
-Accent: #ffd700, #ffed4a
-Secondary: #1976d2 → #42a5f5
+/* グラデーション背景 */
+Background Primary: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)
+Card Background: white
 ```
 
-#### 共通カラー
+#### 五行カラー（四柱推命表示用）
+```css
+WOOD: #4CAF50            /* 木（緑） */
+FIRE: #F44336            /* 火（赤） */
+EARTH: #FFB300           /* 土（黄/オレンジ） */
+METAL: #BDBDBD           /* 金（グレー/白） */
+WATER: #424242           /* 水（黒/ダークグレー） */
+```
+
+#### 吉凶カラー（運勢レベル表示用）
+```css
+GREAT_FORTUNE: #FFD700   /* 大吉（ゴールド） */
+FORTUNE: #4CAF50         /* 吉（緑） */
+NEUTRAL: #9E9E9E         /* 平（グレー） */
+MISFORTUNE: #FF9800      /* 凶（オレンジ） */
+GREAT_MISFORTUNE: #F44336 /* 大凶（赤） */
+```
+
+#### システムカラー
 ```css
 /* 成功・警告・エラー */
-Success: #4caf50 → #66bb6a
-Warning: #ff9800 → #ffb74d
-Error: #f44336 → #ef5350
-Info: #2196f3 → #42a5f5
+Success: #4caf50
+Warning: #ff9800
+Error: #f44336
+Info: #2196f3
 
-/* ニュートラル */
-Background: rgba(255, 255, 255, 0.95)
-Text: #1a1a2e, #333, #666
-Border: #e0e0e0, #dee2e6
+/* テキスト */
+Text Primary: #1a1a2e
+Text Secondary: #333
+Text Tertiary: #666
+
+/* ボーダー・背景 */
+Border: #e0e0e0
+Background Card: white
+Background Overlay: rgba(255, 255, 255, 0.95)
 ```
 
 ### 3.2 タイポグラフィ
 
 #### フォントファミリー
 ```css
+/* ブランディング（Golden Peppa ロゴ専用） */
+Brand: 'Indie Flower', cursive
+  - 適用箇所: "Golden Peppa" ロゴタイトル
+  - 特徴: 手書き風、親しみやすい、子供っぽくない大人のカジュアル
+  - ウェイト: 400（通常）
+  - レタースペーシング: 1px
+
+/* 本文・UI */
 Primary: 'Roboto', 'Noto Sans JP', sans-serif
-Secondary: 'Noto Serif JP', serif (四柱推命文字専用)
+  - 適用箇所: ボタン、フォーム、ナビゲーション、本文
+  - 可読性重視の標準フォント
+
+/* 四柱推命表示（任意） */
+Secondary: 'Noto Serif JP', serif
+  - 適用箇所: 天干・地支などの四柱推命文字
+  - 伝統的な表示が必要な箇所のみ使用
+```
+
+#### Google Fonts読み込み
+```html
+<!-- index.html に追加済み -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet" />
 ```
 
 #### フォントサイズ階層
 ```css
+/* ブランドタイトル（Golden Peppa） */
+Brand Title:
+  - Desktop (lg): 68px
+  - Tablet (md): 52px
+  - Mobile (xs): 40px
+  - fontWeight: 400
+  - color: #D4AF37
+  - letterSpacing: 1px
+  - fontFamily: 'Indie Flower', cursive
+
+/* セクションタイトル */
 h1 (Main Title): 2.5rem (40px) - モバイル: 2rem (32px)
 h2 (Section Title): 1.5rem (24px)
 h3 (Subsection): 1.2rem (19px)
+
+/* 本文 */
 Body: 1rem (16px)
 Small: 0.9rem (14px)
 Caption: 0.8rem (13px)
@@ -116,64 +171,277 @@ Space-xl: 30px
 Space-2xl: 40px
 ```
 
-### 3.4 コンポーネント設計
+### 3.4 ビジュアルアセット
+
+#### ロゴとアイコン
+```yaml
+メインロゴ:
+  - ファイル: /public/images/peppa-with-sparkles.png
+  - 説明: ゴールデンペッパーミル + キラキラエフェクト統合画像
+  - サイズ:
+    - Desktop (lg): 240x240px
+    - Tablet (md): 200x200px
+    - Mobile (xs): 160x160px
+  - 配置: 中央揃え（marginLeft/Right: auto）
+  - 備考: 以前は peppa.png + キラキラ1-4.png の5枚を個別配置していたが、
+         レイアウトの安定性のため1枚の統合画像に変更（2025-11-07）
+
+旧アセット（非推奨）:
+  - /public/images/peppa.png（80-120px）
+  - /public/images/キラキラ1.png
+  - /public/images/キラキラ2.png
+  - /public/images/キラキラ3.png
+  - /public/images/キラキラ4.png
+  - /public/images/左下光線.png
+  - /public/images/右上光線.png
+  ※ ローディングアニメーション（GoldenPeppaLoading）では引き続き使用
+```
+
+#### キラキラエフェクト
+```css
+/* ローディングアニメーション用 */
+- キラキラ1: 25x25px
+- キラキラ2: 25x25px（opacity: 0.8）
+- キラキラ3: 20x20px（45度回転）
+- キラキラ4: 12.5x12.5px
+- アニメーション: sparkleFall（3.2s、降下＆回転）
+```
+
+### 3.5 コンポーネント設計
 
 #### 基本コンポーネント
 ```css
 /* カード */
 .card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 16px;
-  padding: 20px-30px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  border-radius: 16px-24px;  /* レスポンシブ対応 */
+  padding: 24px-60px;        /* レスポンシブ対応 */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* ボタン */
+/* ボタン - プライマリ */
 .button-primary {
-  background: linear-gradient(45deg, [Primary Color]);
+  background: #D4AF37;      /* PRIMARY_GOLD */
   color: white;
-  border-radius: 8px;
-  padding: 12px-15px;
-  font-weight: 600;
-  transition: transform 0.2s ease;
+  border-radius: 12px-16px; /* レスポンシブ対応 */
+  padding: 16px-20px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: all 0.2s;
+  text-transform: none;     /* MUIデフォルトの大文字化を無効 */
 }
 
 .button-primary:hover {
+  background: #B8941C;      /* DARK_GOLD */
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba([Primary], 0.3);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+}
+
+.button-primary:active {
+  transform: translateY(0);
+}
+
+/* ボタン - セカンダリ（命式詳細ページ等） */
+.button-secondary {
+  background: #EBCC42;      /* LIGHT_GOLD */
+  color: white;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  box-shadow: none;         /* シャドウなし */
+  transition: all 0.2s;
+}
+
+.button-secondary:hover {
+  background: #D4AF37;
 }
 
 /* 入力フィールド */
 .input-field {
   border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 8px-12px;  /* レスポンシブ対応 */
+  padding: 12px-20px;
   transition: border-color 0.3s ease;
 }
 
+.input-field:hover {
+  border-color: #D4AF37;
+}
+
 .input-field:focus {
-  border-color: [Primary Color];
-  box-shadow: 0 0 0 3px rgba([Primary], 0.1);
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 ```
 
-## 4. 各ページ詳細設計
+## 4. 最新の実装変更履歴（2025-11-07）
 
-### 4.1 P-001: 四柱推命計算ページ
+### 4.1 ブランディング変更
+```yaml
+変更内容:
+  - アプリ名: 四柱推命アプリ → Golden Peppa
+  - タグライン: あなたの運命に魔法をかける
+  - ロゴ: ゴールデンペッパーミル + キラキラエフェクト
+  - コンセプト: 伝統的 → 親しみやすく魔法のような体験
+
+影響範囲:
+  - TopPage（トップページ）
+  - GoldenPeppaLoading（ローディングアニメーション）
+  - index.html（タイトルタグ）
+```
+
+### 4.2 フォント変更
+```yaml
+変更内容:
+  - "Golden Peppa" ロゴ専用フォント追加
+  - フォント名: Indie Flower（Google Fonts）
+  - 特徴: 手書き風、親しみやすい、大人のカジュアル
+  - 検討候補: Great Vibes（却下：装飾的すぎ）、Caveat、Patrick Hand、Shadows Into Light
+
+実装:
+  - index.html: Google Fonts CDN追加
+  - TopPage: fontFamily: "'Indie Flower', cursive"
+  - GoldenPeppaLoading: fontFamily: "'Indie Flower', cursive"
+
+サイズ:
+  - TopPage: xs: 40px, md: 52px, lg: 68px
+  - GoldenPeppaLoading: 48px（固定）
+```
+
+### 4.3 ロゴ画像統合
+```yaml
+変更前（2025-11-06まで）:
+  - peppa.png（80-120px）を中央配置
+  - キラキラ1-4.png を absolute positioning で個別配置
+  - 合計5枚の画像を複雑な座標計算で配置
+  - 問題: レスポンシブ時にレイアウトが崩れやすい
+
+変更後（2025-11-07）:
+  - peppa-with-sparkles.png 1枚の統合画像
+  - 160-240px レスポンシブサイズ
+  - display: block, margin: auto で中央揃え
+  - メリット: レイアウト安定、コード簡潔化
+
+旧実装（20回以上の位置調整を経て統合決定）:
+  - キラキラ1: 右40px、下50px 移動
+  - キラキラ2: opacity 0.8、下80px
+  - キラキラ3: 45度回転、20x20px
+  - キラキラ4: 右左微調整
+  - ペッパーミル: 左80px移動
+  → 最終的に1枚画像に統合して解決
+```
+
+### 4.4 ボタンスタイリング統一
+```yaml
+トップページ（計算ボタン）:
+  - background: #D4AF37（PRIMARY_GOLD）
+  - color: white
+  - boxShadow: 0 4px 12px rgba(212, 175, 55, 0.3)
+  - hover: #B8941C、translateY(-2px)
+
+命式詳細ページ（保存・削除ボタン）:
+  - background: #EBCC42（LIGHT_GOLD）
+  - color: white
+  - boxShadow: none（シャドウなし）
+  - padding: 10px 24px
+  - borderRadius: 8px
+
+変更理由:
+  - 統一感のあるゴールドテーマ
+  - 視認性向上（白文字）
+  - シャドウ削減でモダンな印象
+```
+
+### 4.5 機能実装
+```yaml
+保存機能:
+  - LocalStorage へ命式データ保存
+  - 既存データがあれば更新、なければ追加
+  - 実装箇所: TopPage handleCalculate関数
+
+削除機能:
+  - LocalStorage から命式データ削除
+  - 削除後に一覧ページへ遷移
+  - 実装箇所: SajuDetailPage handleDelete関数
+
+ナビゲーション:
+  - 全ページにボトムナビゲーション追加
+  - paddingBottom: 90-100px で余白確保
+  - BottomNavigation コンポーネント共通化
+
+ページクリーンアップ:
+  - ListPage: 重複ボタン削除
+  - SettingsPage: サイドバー削除（シンプル化）
+```
+
+### 4.6 既知の問題（未修正）
+```yaml
+SajuDetailPage レスポンシブ問題:
+  - 現象: 小画面で右側が切れる
+  - 原因: レスポンシブレイアウト設計の問題
+  - ステータス: 要件定義レベルで修正予定
+  - 優先度: 高（次のタスク）
+
+対応方針:
+  1. DESIGN_DOCUMENT.md でレスポンシブ要件を明確化
+  2. requirements.md で実装要件を更新
+  3. 実装修正
+```
+
+## 5. 各ページ詳細設計
+
+### 5.1 P-001: 四柱推命計算ページ（TopPage）
 
 #### 設計意図
-- **信頼性重視**: 210年データベースの正確性を前面に押し出し
+- **魔法のような体験**: Golden Peppa ブランディングで親しみやすく
 - **シンプルな入力**: 必要最小限の入力項目で操作の迷いを排除
-- **結果の視覚化**: 四柱を分かりやすくカード形式で表示
+- **即時保存**: 計算後すぐに LocalStorage（ゲスト）or サーバー（ログイン）に保存
+- **スムーズな遷移**: 計算 → 保存 → 詳細ページへ自動遷移
+
+#### 現在の実装（2025-11-07時点）
+```yaml
+ヘッダーセクション:
+  - Golden Peppa ロゴ画像: peppa-with-sparkles.png（160-240px）
+  - タイトル: "Golden Peppa"（Indie Flower、40-68px）
+  - タグライン: "あなたの運命に魔法をかける"
+
+入力フォーム:
+  1. 名前入力（任意）
+     - プレースホルダー: "白石"
+     - フォーカス時: ゴールドボーダー (#D4AF37)
+
+  2. 生年月日時入力
+     - DatePicker: yyyy年MM月dd日形式
+     - TimePicker: HH:mm形式（24時間）
+     - チェックボックス: "時刻不明（正午12:00で計算）"
+     - 範囲制限: 1900-2109年
+     - フォーカス時: ゴールドボーダー + シャドウ
+
+  3. 性別選択
+     - ビジュアルボタン: 男性👨、女性👩
+     - 選択時: ゴールド背景 (#D4AF37)、白文字
+     - ホバー時: ペールゴールド背景 (#fffbf0)
+
+計算ボタン:
+  - テキスト: "命式を計算"
+  - アイコン: Calculate
+  - スタイル: PRIMARY_GOLD、白文字、シャドウあり
+  - ホバー: DARK_GOLD、上昇アニメーション
+
+処理フロー:
+  1. バリデーション実行
+  2. ローディングアニメーション表示（GoldenPeppaLoading）
+  3. FastAPI へ命式計算リクエスト
+  4. LocalStorage へ自動保存（ゲストモード）
+  5. 詳細ページへ遷移（/detail/:id）
+```
 
 #### 主要機能
 1. **生年月日時入力フォーム**: 直感的な日時ピッカー
 2. **性別選択**: ビジュアルなボタン選択
-3. **四柱表示**: 伝統的な漢字表記 + 読み方
-4. **大運タイムライン**: 現在運勢のハイライト
-5. **ドンサゴン分析**: 独自の価値提案
+3. **時刻不明対応**: 正午12:00でデフォルト計算
+4. **自動保存**: 計算完了後に即保存
+5. **ローディング**: Golden Peppa アニメーション表示
 
 #### 実装注意点
 ```typescript
@@ -291,34 +559,148 @@ const useDataList = () => {
 };
 ```
 
-## 5. レスポンシブデザイン戦略
+## 6. レスポンシブデザイン戦略
 
-### 5.1 ブレークポイント
+### 6.1 ブレークポイント（MUI標準準拠）
 ```css
 /* モバイル優先設計 */
-Mobile: 320px - 767px
-Tablet: 768px - 1023px
-Desktop: 1024px - 1440px
-Large Desktop: 1441px+
+xs (mobile): 0px - 599px
+sm (small tablet): 600px - 899px
+md (tablet): 900px - 1199px
+lg (desktop): 1200px - 1535px
+xl (large desktop): 1536px+
 ```
 
-### 5.2 各デバイスでの最適化
+### 6.2 各デバイスでの最適化
 
-#### モバイル（320px-767px）
-- **シングルカラムレイアウト**
-- **大きなタッチターゲット（44px以上）**
-- **スワイプ操作対応**
-- **フォントサイズ調整**
+#### モバイル（xs: 0-599px）
+```yaml
+レイアウト:
+  - シングルカラムレイアウト
+  - 全幅カード（padding: 15-20px）
+  - ボトムナビゲーション固定
 
-#### タブレット（768px-1023px）
-- **2カラムレイアウト**
-- **タッチ操作最適化**
-- **横画面対応**
+タイポグラフィ:
+  - Golden Peppa ロゴ: 40px
+  - タグライン: 14px
+  - セクションタイトル: 20px
+  - 本文: 16px
 
-#### デスクトップ（1024px+）
-- **マルチカラムレイアウト**
-- **ホバー効果活用**
-- **キーボードショートカット**
+インタラクション:
+  - タッチターゲット: 最低44x44px
+  - ボタン padding: 16px
+  - スワイプ操作対応
+  - ホバー効果なし
+
+間隔:
+  - カード間: 20px
+  - セクション間: 24px
+  - paddingBottom: 90px（ボトムナビ分）
+```
+
+#### タブレット（md: 900-1199px）
+```yaml
+レイアウト:
+  - 2カラムレイアウト（必要に応じて）
+  - カードmax-width: 600px
+  - 中央揃え配置
+
+タイポグラフィ:
+  - Golden Peppa ロゴ: 52px
+  - タグライン: 16px
+  - セクションタイトル: 24px
+
+インタラクション:
+  - タッチ + マウス両対応
+  - ホバー効果あり
+
+間隔:
+  - カード間: 30px
+  - セクション間: 32px
+  - paddingBottom: 100px
+```
+
+#### デスクトップ（lg: 1200px+）
+```yaml
+レイアウト:
+  - マルチカラムレイアウト
+  - カードmax-width: 800px
+  - サイドバー表示（一部ページ）
+
+タイポグラフィ:
+  - Golden Peppa ロゴ: 68px
+  - タグライン: 18px
+  - セクションタイトル: 28px
+
+インタラクション:
+  - マウス操作最適化
+  - ホバー効果フル活用
+  - キーボードショートカット
+
+間隔:
+  - カード間: 40px
+  - セクション間: 40px
+```
+
+### 6.3 レスポンシブ実装パターン
+
+#### MUI sx prop パターン
+```typescript
+<Box sx={{
+  // モバイルファースト: デフォルト値 = xs
+  fontSize: '14px',
+  padding: '16px',
+  width: '100%',
+
+  // タブレット以上
+  md: {
+    fontSize: '16px',
+    padding: '24px',
+    maxWidth: '600px',
+  },
+
+  // デスクトップ以上
+  lg: {
+    fontSize: '18px',
+    padding: '32px',
+    maxWidth: '800px',
+  },
+}}>
+```
+
+#### 統一されたブレークポイント使用
+```typescript
+// 全コンポーネントで統一
+sx={{
+  fontSize: { xs: '14px', md: '16px', lg: '18px' },
+  padding: { xs: '16px', md: '24px', lg: '32px' },
+  borderRadius: { xs: '8px', md: '12px', lg: '16px' },
+}}
+```
+
+### 6.4 既知のレスポンシブ問題と修正方針
+
+#### SajuDetailPage 右側切れ問題
+```yaml
+現象:
+  - 小画面（xs, sm）で右側コンテンツが画面外に
+  - 水平スクロールバーが表示される場合あり
+  - 主に命式表示部分（四柱表示）で発生
+
+原因推定:
+  - 固定幅のテーブルまたはグリッド使用
+  - overflow 設定不足
+  - min-width 制約が厳しすぎる
+
+修正方針:
+  1. 全てのテーブル・グリッドを responsive 化
+  2. xs, sm ブレークポイントでシングルカラム化
+  3. overflow-x: auto 追加（必要な箇所のみ）
+  4. min-width 制約を見直し
+  5. テスト: 320px幅で全ページ確認
+
+優先度: 高（次のタスク）
+```
 
 ### 5.3 実装例
 ```css
