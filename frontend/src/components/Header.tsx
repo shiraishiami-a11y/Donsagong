@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
         {/* タイトル */}
         <Typography variant="h6" noWrap sx={{ flexGrow: 1, fontWeight: 700 }}>
-          ゴールデン四柱推命
+          Golden Peppa
         </Typography>
 
         {/* ユーザーメニュー */}

@@ -22,7 +22,7 @@ export const PublicLayout: React.FC<LayoutProps> = ({ children, maxWidth = 'sm' 
       >
         <Toolbar>
           <Typography variant="h6" sx={{ fontWeight: 700, color: 'white' }}>
-            ゴールデン四柱推命
+            Golden Peppa
           </Typography>
         </Toolbar>
       </AppBar>

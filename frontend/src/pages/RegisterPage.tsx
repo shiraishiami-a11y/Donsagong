@@ -116,7 +116,7 @@ export const RegisterPage: React.FC = () => {
             }}
           >
             <span>✨</span>
-            <span>ゴールデン四柱推命</span>
+            <span>Golden Peppa</span>
           </Box>
           <Typography
             sx={{

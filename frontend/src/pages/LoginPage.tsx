@@ -114,7 +114,7 @@ export const LoginPage: React.FC = () => {
                 color: '#D4AF37',
               }}
             >
-              ゴールデン四柱推命
+              Golden Peppa
             </Typography>
           </Box>
           <Typography
