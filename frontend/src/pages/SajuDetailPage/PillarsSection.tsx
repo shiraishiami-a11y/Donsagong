@@ -65,7 +65,7 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
             <Typography
               variant="caption"
               sx={{
-                fontSize: { xs: '11px', sm: '14px' },
+                fontSize: { xs: '12px', md: '14px', lg: '16px' },
                 color: '#666',
                 mb: { xs: '8px', sm: '12px' },
                 display: 'block',
@@ -92,7 +92,7 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: { xs: '20px', sm: '32px', lg: '40px' },
+                  fontSize: { xs: '24px', md: '28px', lg: '32px' },
                   color: 'white',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   background: getElementColor(pillar.stemElement),
@@ -112,7 +112,7 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: { xs: '20px', sm: '32px', lg: '40px' },
+                  fontSize: { xs: '24px', md: '28px', lg: '32px' },
                   color: 'white',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   background: getElementColor(pillar.branchElement),

@@ -50,13 +50,10 @@ app = FastAPI(
 )
 
 # CORS設定（環境変数から読み込み）
-# 開発環境では複数ポート対応（3247, 3248, 3249）
-allowed_origins = [
-    "http://localhost:3247",
-    "http://localhost:3248",
-    "http://localhost:3249",
-    settings.CORS_ORIGIN,  # .env.localから読み込み（本番環境用）
-]
+# CORS_ORINGINにカンマ区切りで複数指定可能
+cors_origins_str = settings.CORS_ORIGIN
+allowed_origins = [origin.strip() for origin in cors_origins_str.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,

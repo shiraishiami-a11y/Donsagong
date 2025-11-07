@@ -1,17 +1,33 @@
 // SettingsPage - 設定ページ
-import { Box, Typography, Paper, Divider, Button, IconButton } from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
+import { Box, Typography, Paper, Divider, Button, IconButton, Alert, Stack } from '@mui/material';
+import { ArrowBack, PersonAdd, Login, Logout } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { BottomNavigation } from '../components/BottomNavigation';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useState } from 'react';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432';
+if (!import.meta.env.VITE_API_URL) {
+  throw new Error('VITE_API_URL environment variable is not set');
+}
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const SettingsPage: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const [isExporting, setIsExporting] = useState(false);
+
+  const handleLogout = async () => {
+    if (confirm('ログアウトしますか？')) {
+      try {
+        await logout();
+        // ログアウト後も設定ページにとどまる（ページはリロードされる）
+        window.location.reload();
+      } catch (error) {
+        console.error('Logout error:', error);
+        alert('ログアウトに失敗しました');
+      }
+    }
+  };
 
   const handleExport = async () => {
     setIsExporting(true);
@@ -85,30 +101,135 @@ export const SettingsPage: React.FC = () => {
       {/* メインコンテンツ */}
       <Box sx={{ maxWidth: { xs: '100%', md: '900px', lg: '1400px' }, mx: 'auto', px: { xs: '20px', md: '24px', lg: '40px' }, pb: { xs: '100px', md: '110px' }, pt: { xs: '20px', md: '30px' } }}>
 
-        {/* アカウント情報 */}
-        <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
-          <Typography variant="h6" gutterBottom>
-            アカウント情報
-          </Typography>
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body2" color="text.secondary">
-              メールアドレス
+        {/* ゲストユーザー向け：アカウント管理（ログイン/新規登録） */}
+        {!isAuthenticated && (
+          <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '18px', md: '22px', lg: '24px' },
+                fontWeight: 700,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}
+            >
+              <span>👤</span>
+              アカウント管理
             </Typography>
-            <Typography variant="body1">{user?.email}</Typography>
-          </Box>
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body2" color="text.secondary">
-              ユーザー名
+
+            <Alert severity="info" sx={{ mb: { xs: 2, md: 3 } }}>
+              ログインすると、複数端末でデータを同期できます。
+            </Alert>
+
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+              <Button
+                variant="contained"
+                onClick={() => navigate('/register')}
+                startIcon={<PersonAdd />}
+                sx={{
+                  minHeight: '48px',
+                  fontSize: { xs: '16px', md: '18px' },
+                  fontWeight: 600,
+                  flex: { xs: 'none', sm: 1 },
+                  background: '#D4AF37',
+                  '&:hover': {
+                    background: '#B8941C'
+                  }
+                }}
+              >
+                新規登録
+              </Button>
+              <Button
+                variant="outlined"
+                onClick={() => navigate('/login')}
+                startIcon={<Login />}
+                sx={{
+                  minHeight: '48px',
+                  fontSize: { xs: '16px', md: '18px' },
+                  fontWeight: 600,
+                  flex: { xs: 'none', sm: 1 },
+                  borderColor: '#D4AF37',
+                  borderWidth: '2px',
+                  color: '#D4AF37',
+                  '&:hover': {
+                    borderColor: '#B8941C',
+                    borderWidth: '2px',
+                    color: '#B8941C',
+                    background: 'rgba(212, 175, 55, 0.05)'
+                  }
+                }}
+              >
+                ログイン
+              </Button>
+            </Stack>
+          </Paper>
+        )}
+
+        {/* ログインユーザー向け：アカウント情報 */}
+        {isAuthenticated && (
+          <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{
+                fontSize: { xs: '18px', md: '22px', lg: '24px' },
+                fontWeight: 700,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}
+            >
+              <span>👤</span>
+              アカウント情報
             </Typography>
-            <Typography variant="body1">{user?.profile?.name}</Typography>
-          </Box>
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body2" color="text.secondary">
-              権限
-            </Typography>
-            <Typography variant="body1">{user?.role}</Typography>
-          </Box>
-        </Paper>
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="body2" color="text.secondary">
+                メールアドレス
+              </Typography>
+              <Typography variant="body1">{user?.email}</Typography>
+            </Box>
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="body2" color="text.secondary">
+                ユーザー名
+              </Typography>
+              <Typography variant="body1">{user?.profile?.name}</Typography>
+            </Box>
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="body2" color="text.secondary">
+                権限
+              </Typography>
+              <Typography variant="body1">{user?.role}</Typography>
+            </Box>
+
+            <Divider sx={{ my: 3 }} />
+
+            {/* ログアウトボタン */}
+            <Button
+              variant="outlined"
+              onClick={handleLogout}
+              startIcon={<Logout />}
+              fullWidth
+              sx={{
+                minHeight: '48px',
+                fontSize: { xs: '16px', md: '18px' },
+                fontWeight: 600,
+                borderColor: '#F44336',
+                borderWidth: '2px',
+                color: '#F44336',
+                '&:hover': {
+                  borderColor: '#D32F2F',
+                  borderWidth: '2px',
+                  color: '#D32F2F',
+                  background: 'rgba(244, 67, 54, 0.05)'
+                }
+              }}
+            >
+              ログアウト
+            </Button>
+          </Paper>
+        )}
 
         <Divider sx={{ my: 3 }} />
 

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>設定ページ（ゲストユーザー） - ゴールデン四柱推命</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+      color: white;
+      height: 64px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-button {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .back-button:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* メインコンテナ */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        padding: 40px 32px;
+      }
+    }
+
+    /* セクション */
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 32px;
+      }
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* アラート（情報メッセージ） */
+    .alert {
+      background: #E3F2FD;
+      border-left: 4px solid #2196F3;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      color: #1565C0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      .alert {
+        padding: 16px 20px;
+        font-size: 15px;
+      }
+    }
+
+    /* ボタングループ */
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .button-group {
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
+    /* ボタン */
+    .btn {
+      min-height: 48px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 24px;
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      .btn {
+        flex: 1;
+      }
+    }
+
+    .btn-contained {
+      background: #D4AF37;
+      color: white;
+      box-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-contained:hover {
+      background: #B8941C;
+      box-shadow: 0 4px 8px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-outlined {
+      background: transparent;
+      color: #D4AF37;
+      border: 2px solid #D4AF37;
+    }
+
+    .btn-outlined:hover {
+      background: rgba(212, 175, 55, 0.05);
+      border-color: #B8941C;
+      color: #B8941C;
+    }
+
+    /* データ管理セクション */
+    .data-description {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .data-description {
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* アプリ情報セクション */
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (min-width: 768px) {
+      .info-label,
+      .info-value {
+        font-size: 15px;
+      }
+    }
+
+    /* 下部ナビゲーション */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      height: 64px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    @media (min-width: 768px) {
+      .bottom-nav {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 800px;
+        border-radius: 16px 16px 0 0;
+      }
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-item {
+        font-size: 14px;
+      }
+    }
+
+    .nav-item.active {
+      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .nav-item:hover {
+      color: #D4AF37;
+    }
+
+    .nav-icon {
+      font-size: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-icon {
+        font-size: 28px;
+      }
+    }
+
+    /* レスポンシブインジケータ */
+    .viewport-indicator {
+      position: fixed;
+      bottom: 90px;
+      left: 20px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2000;
+    }
+
+    @media (max-width: 767px) {
+      .viewport-indicator::before {
+        content: 'スマホ表示 (375px)';
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .viewport-indicator::before {
+        content: 'タブレット表示 (768px)';
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .viewport-indicator::before {
+        content: 'PC表示 (1200px)';
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-left">
+      <button class="back-button" onclick="history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      <h1 class="header-title">設定</h1>
+    </div>
+  </div>
+
+  <!-- メインコンテナ -->
+  <div class="container">
+    <!-- アカウント管理セクション -->
+    <div class="section">
+      <h2 class="section-title">アカウント管理</h2>
+
+      <div class="alert">
+        ログインすると、複数端末でデータを同期できます。
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-contained" onclick="navigateToRegister()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+          新規登録
+        </button>
+        <button class="btn btn-outlined" onclick="navigateToLogin()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11 7L9.6 8.4l2.6 2.6H2v2h10.2l-2.6 2.6L11 17l5-5-5-5zm9 12h-8v2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-8v2h8v14z"/>
+          </svg>
+          ログイン
+        </button>
+      </div>
+    </div>
+
+    <!-- データ管理セクション -->
+    <div class="section">
+      <h2 class="section-title">データ管理</h2>
+
+      <p class="data-description">
+        保存された命式データをJSON形式でエクスポートします。
+      </p>
+
+      <button class="btn btn-contained" onclick="exportData()" style="width: 100%;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
+        </svg>
+        データをエクスポート
+      </button>
+    </div>
+
+    <!-- アプリ情報セクション -->
+    <div class="section">
+      <h2 class="section-title">アプリ情報</h2>
+
+      <div class="info-item">
+        <div class="info-label">アプリバージョン</div>
+        <div class="info-value">v1.0.0</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">利用規約</div>
+        <div class="info-value">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4AF37">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">プライバシーポリシー</div>
+        <div class="info-value">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4AF37">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下部ナビゲーション -->
+  <div class="bottom-nav">
+    <div class="nav-item" onclick="navigateToTop()">
+      <div class="nav-icon">✨</div>
+      <div>命式記入</div>
+    </div>
+    <div class="nav-item" onclick="navigateToList()">
+      <div class="nav-icon">📋</div>
+      <div>命式一覧</div>
+    </div>
+    <div class="nav-item active">
+      <div class="nav-icon">⚙️</div>
+      <div>設定</div>
+    </div>
+  </div>
+
+  <!-- レスポンシブインジケータ -->
+  <div class="viewport-indicator"></div>
+
+  <script>
+    function navigateToRegister() {
+      alert('新規登録ページに遷移します');
+    }
+
+    function navigateToLogin() {
+      alert('ログインページに遷移します');
+    }
+
+    function exportData() {
+      // ゲストモード: LocalStorageからデータを取得してエクスポート
+      const data = {
+        exportDate: new Date().toISOString(),
+        mode: 'guest',
+        sajuData: [
+          // LocalStorageから取得したデータをここに含める
+        ]
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `saju-data-guest-${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      alert('データをエクスポートしました');
+    }
+
+    function navigateToTop() {
+      alert('命式記入ページに遷移します');
+    }
+
+    function navigateToList() {
+      alert('命式一覧ページに遷移します');
+    }
+  </script>
+</body>
+</html>

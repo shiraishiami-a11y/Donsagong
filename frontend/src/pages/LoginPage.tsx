@@ -311,8 +311,11 @@ export const LoginPage: React.FC = () => {
               sx={{
                 color: '#D4AF37',
                 textDecoration: 'none',
-                fontSize: { xs: '14px', sm: '16px' },
+                fontSize: { xs: '14px', md: '15px' },
                 fontWeight: 500,
+                minHeight: '44px',
+                display: 'inline-flex',
+                alignItems: 'center',
                 transition: 'all 0.2s',
                 '&:hover': {
                   textDecoration: 'underline',

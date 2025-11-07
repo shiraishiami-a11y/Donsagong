@@ -70,8 +70,10 @@ export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) =
           onClick={handleDelete}
           sx={{
             background: '#f5f5f5',
-            width: { xs: 32, md: 36 },
-            height: { xs: 32, md: 36 },
+            minWidth: '44px',
+            minHeight: '44px',
+            width: { xs: '44px', md: '48px' },
+            height: { xs: '44px', md: '48px' },
             transition: 'all 0.2s',
             '&:hover': {
               background: '#ffebee',
@@ -79,7 +81,7 @@ export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) =
             },
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ fontSize: '14px' }}>
             <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
           </svg>
         </IconButton>

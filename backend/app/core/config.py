@@ -17,14 +17,14 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
-    # アプリケーション
-    BACKEND_URL: str = "http://localhost:8432"
-    FRONTEND_URL: str = "http://localhost:3247"
-    CORS_ORIGIN: str = "http://localhost:3247"
+    # アプリケーション（全て環境変数から取得、デフォルト値なし）
+    BACKEND_URL: str
+    FRONTEND_URL: str
+    CORS_ORIGIN: str
 
-    # 既存資産パス
-    SOLAR_TERMS_DB_PATH: str = "/app/solar_terms_1900_2109_JIEQI_ONLY.json"
-    DONSAGONG_MASTER_DB_PATH: str = "/app/docs/DONSAGONG_MASTER_DATABASE.md"
+    # 既存資産パス（ローカル開発とDocker両対応）
+    SOLAR_TERMS_DB_PATH: str = "./solar_terms_1900_2109_JIEQI_ONLY.json"
+    DONSAGONG_MASTER_DB_PATH: str = "./docs/DONSAGONG_MASTER_DATABASE.md"
 
     model_config = SettingsConfigDict(
         env_file="../.env.local",  # backend/から見た相対パス

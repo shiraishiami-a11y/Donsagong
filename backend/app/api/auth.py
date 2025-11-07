@@ -155,8 +155,8 @@ async def register(data: RegisterRequest, db: Session = Depends(get_db)):
             detail="このメールアドレスは既に登録されています",
         )
 
-    # プロフィール名生成（メールアドレスのローカル部分）
-    profile_name = data.email.split("@")[0]
+    # プロフィール名生成（nameが指定されていればそれを使用、なければメールアドレスのローカル部分）
+    profile_name = data.name if data.name else data.email.split("@")[0]
 
     # ユーザー作成
     user_id = str(uuid.uuid4())

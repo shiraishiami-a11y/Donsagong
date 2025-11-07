@@ -2,9 +2,10 @@
 認証用Pydanticスキーマ
 フロントエンドの型定義（frontend/src/types/index.ts）と同期
 """
+import re
 from typing import List, Optional
 
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, field_validator
 
 
 # ==================== ユーザー関連 ====================
@@ -36,18 +37,40 @@ class UserResponse(BaseModel):
 class LoginRequest(BaseModel):
     """ログインリクエスト"""
 
-    email: EmailStr
+    email: str
     password: str
     rememberMe: Optional[bool] = False
+
+    @field_validator('email')
+    @classmethod
+    def validate_email(cls, v: str) -> str:
+        """メールアドレスのバリデーション（.localドメイン許可）"""
+        email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        local_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.local$'
+
+        if not (re.match(email_pattern, v) or re.match(local_pattern, v)):
+            raise ValueError('有効なメールアドレスを入力してください')
+        return v.lower()
 
 
 class RegisterRequest(BaseModel):
     """新規登録リクエスト"""
 
-    email: EmailStr
+    email: str
     password: str
-    name: str  # プロフィール名
+    name: Optional[str] = None  # プロフィール名（任意）
     migrateGuestData: Optional[bool] = False
+
+    @field_validator('email')
+    @classmethod
+    def validate_email(cls, v: str) -> str:
+        """メールアドレスのバリデーション（.localドメイン許可）"""
+        email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        local_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.local$'
+
+        if not (re.match(email_pattern, v) or re.match(local_pattern, v)):
+            raise ValueError('有効なメールアドレスを入力してください')
+        return v.lower()
 
 
 class AuthResponse(BaseModel):

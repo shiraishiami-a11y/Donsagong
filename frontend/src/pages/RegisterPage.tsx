@@ -316,7 +316,7 @@ export const RegisterPage: React.FC = () => {
                     key={barIndex}
                     sx={{
                       flex: 1,
-                      height: '4px',
+                      height: { xs: '4px', md: '6px' },
                       background:
                         passwordStrength.level >= barIndex ? passwordStrength.color : '#e0e0e0',
                       borderRadius: '2px',
@@ -328,7 +328,7 @@ export const RegisterPage: React.FC = () => {
               {passwordStrength.text && (
                 <Typography
                   sx={{
-                    fontSize: { xs: '12px', sm: '14px' },
+                    fontSize: { xs: '12px', md: '14px' },
                     color: passwordStrength.color,
                     mt: 0.5,
                   }}
@@ -479,6 +479,10 @@ export const RegisterPage: React.FC = () => {
                       color: '#D4AF37',
                       textDecoration: 'none',
                       fontWeight: 600,
+                      fontSize: { xs: '14px', md: '15px' },
+                      minHeight: '44px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       '&:hover': {
                         textDecoration: 'underline',
                       },
@@ -498,6 +502,10 @@ export const RegisterPage: React.FC = () => {
                       color: '#D4AF37',
                       textDecoration: 'none',
                       fontWeight: 600,
+                      fontSize: { xs: '14px', md: '15px' },
+                      minHeight: '44px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
                       '&:hover': {
                         textDecoration: 'underline',
                       },
@@ -523,8 +531,8 @@ export const RegisterPage: React.FC = () => {
               disabled={!isFormValid() || loading}
               onClick={handleRegister}
               sx={{
-                padding: { xs: '16px', sm: '20px' },
-                fontSize: { xs: '18px', sm: '20px' },
+                padding: { xs: '14px', sm: '16px' },
+                fontSize: { xs: '16px', sm: '18px' },
                 fontWeight: 700,
                 borderRadius: { xs: '12px', sm: '16px' },
                 background: '#D4AF37',
@@ -552,8 +560,8 @@ export const RegisterPage: React.FC = () => {
             >
               <Box
                 component="svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >

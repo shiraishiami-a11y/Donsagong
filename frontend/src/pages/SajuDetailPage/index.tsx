@@ -250,6 +250,8 @@ export const SajuDetailPage: React.FC = () => {
             sx={{
               backgroundColor: 'white',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              minWidth: '48px',
+              minHeight: '48px',
               width: { xs: '48px', sm: '52px' },
               height: { xs: '48px', sm: '52px' },
               transition: 'all 0.2s',

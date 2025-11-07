@@ -83,7 +83,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
               data-testid={`daeun-card-${daeun.startAge}`}
               onClick={() => onDaeunSelect(daeun.startAge)}
               sx={{
-                minWidth: { xs: '100px', sm: '160px' },
+                minWidth: { xs: '140px', md: '160px' },
                 padding: { xs: '12px', sm: '20px' },
                 borderRadius: '12px',
                 border: isCurrent
@@ -139,7 +139,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
                     justifyContent: 'center',
                     background: getElementColor(getStemElement(daeun.daeunStem)),
                     borderRadius: 1,
-                    fontSize: '28px',
+                    fontSize: { xs: '18px', md: '20px', lg: '22px' },
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -156,7 +156,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
                     justifyContent: 'center',
                     background: getElementColor(getBranchElement(daeun.daeunBranch)),
                     borderRadius: 1,
-                    fontSize: '28px',
+                    fontSize: { xs: '18px', md: '20px', lg: '22px' },
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',

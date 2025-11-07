@@ -106,3 +106,4 @@ dump.rdb
 *.p12
 *.pfx
 scripts/deploy-*.sh
+scripts/deploy-*.sh

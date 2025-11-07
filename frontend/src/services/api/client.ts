@@ -8,7 +8,12 @@
  * - 認証トークン自動付与
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432';
+// 環境変数が設定されていない場合はエラーを発生させる（本番環境での設定漏れを防ぐ）
+if (!import.meta.env.VITE_API_URL) {
+  throw new Error('VITE_API_URL environment variable is not set');
+}
+
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 const API_TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT) || 30000;
 
 /**

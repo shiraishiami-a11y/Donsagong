@@ -1285,3 +1285,383 @@ fontSize: { xs: '24px', md: '28px', lg: '32px' }
 
 **注**: 実装完了後は該当部分を削除し、コードを真実源とする
 
+
+---
+
+## 🆕 機能拡張要件 - ログイン/新規登録への導線追加
+
+**追加日**: 2025年11月7日  
+**優先度**: Critical（現在、ログイン/新規登録ページへアクセスできない）  
+**対象**: SettingsPage
+
+### 拡張概要
+- **機能名**: 設定ページにログイン/新規登録ボタン追加
+- **目的**: ゲストユーザーがログイン/新規登録ページにアクセスできるようにする
+- **解決する課題**:
+  - 現在、ログイン/新規登録ページへの導線が全くない
+  - ゲストモードから抜け出せない
+  - 設定画面に「アカウント情報」セクションはあるが、ボタンがない
+- **期待効果**:
+  - ゲストユーザーが簡単にログイン/新規登録できる
+  - データをクラウド同期できるようになる
+  - 複数端末でデータ共有が可能になる
+
+### 既存システムとの関係
+- **影響を受ける既存機能**: SettingsPage
+- **統合ポイント**: 既存の「アカウント情報」セクションを拡張
+
+### 新規追加要素
+
+#### 画面設計
+
+**SettingsPage - アカウント管理セクション（ゲストユーザー時）**
+
+```tsx
+<Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
+  <Typography 
+    variant="h6" 
+    sx={{ 
+      fontSize: { xs: '18px', md: '22px', lg: '24px' },
+      mb: { xs: 2, md: 3 }
+    }}
+  >
+    アカウント管理
+  </Typography>
+  
+  <Alert severity="info" sx={{ mb: 2 }}>
+    ログインすると、複数端末でデータを同期できます。
+  </Alert>
+  
+  <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+    <Button 
+      variant="contained" 
+      color="primary"
+      onClick={() => navigate('/register')}
+      sx={{ 
+        minHeight: '48px',
+        fontSize: { xs: '16px', md: '18px' },
+        flex: 1
+      }}
+    >
+      新規登録
+    </Button>
+    
+    <Button 
+      variant="outlined" 
+      color="primary"
+      onClick={() => navigate('/login')}
+      sx={{ 
+        minHeight: '48px',
+        fontSize: { xs: '16px', md: '18px' },
+        flex: 1
+      }}
+    >
+      ログイン
+    </Button>
+  </Stack>
+</Paper>
+```
+
+**SettingsPage - アカウント管理セクション（ログイン済みユーザー時）**
+
+```tsx
+<Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
+  <Typography 
+    variant="h6" 
+    sx={{ 
+      fontSize: { xs: '18px', md: '22px', lg: '24px' },
+      mb: { xs: 2, md: 3 }
+    }}
+  >
+    アカウント管理
+  </Typography>
+  
+  <Box sx={{ mb: 3 }}>
+    <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+      メールアドレス
+    </Typography>
+    <Typography variant="body1" sx={{ fontSize: { xs: '14px', md: '16px' } }}>
+      {user.email}
+    </Typography>
+  </Box>
+  
+  <Box sx={{ mb: 3 }}>
+    <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+      ユーザー名
+    </Typography>
+    <Typography variant="body1" sx={{ fontSize: { xs: '14px', md: '16px' } }}>
+      {user.name || 'ゲストユーザー'}
+    </Typography>
+  </Box>
+  
+  <Button 
+    variant="outlined" 
+    color="error"
+    onClick={handleLogout}
+    sx={{ 
+      minHeight: '48px',
+      fontSize: { xs: '16px', md: '18px' }
+    }}
+  >
+    ログアウト
+  </Button>
+</Paper>
+```
+
+#### データフロー
+
+```
+ゲストユーザー操作:
+  設定ページを開く
+    ↓
+  「アカウント管理」セクションを確認
+    ↓
+  「新規登録」ボタンをタップ
+    ↓
+  RegisterPageに遷移（/register）
+    ↓
+  登録完了後、自動ログイン
+    ↓
+  ListPageに戻る（ローカルデータ移行確認ダイアログ表示）
+```
+
+```
+ログイン済みユーザー操作:
+  設定ページを開く
+    ↓
+  「アカウント管理」セクションを確認
+    ↓
+  メールアドレス・ユーザー名を確認
+    ↓
+  「ログアウト」ボタンをタップ
+    ↓
+  確認ダイアログ表示
+    ↓
+  ログアウト実行
+    ↓
+  TopPageに遷移
+```
+
+---
+
+### 実装計画
+
+#### Phase 1: 認証状態の取得（必須）
+
+**実装箇所**: `frontend/src/pages/SettingsPage.tsx`
+
+```tsx
+import { useAuth } from '../features/auth/AuthContext';
+
+const SettingsPage = () => {
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
+  
+  const handleLogout = async () => {
+    // 確認ダイアログ表示
+    const confirmed = window.confirm('ログアウトしますか？');
+    if (!confirmed) return;
+    
+    // ログアウト実行
+    await logout();
+    
+    // TopPageに遷移
+    navigate('/');
+  };
+  
+  // ...
+};
+```
+
+#### Phase 2: 条件分岐表示（必須）
+
+**実装箇所**: `frontend/src/pages/SettingsPage.tsx`（60-85行目付近に挿入）
+
+```tsx
+{/* アカウント管理セクション */}
+<Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
+  <Typography 
+    variant="h6" 
+    sx={{ 
+      fontSize: { xs: '18px', md: '22px', lg: '24px' },
+      fontWeight: 700,
+      mb: { xs: 2, md: 3 }
+    }}
+  >
+    アカウント管理
+  </Typography>
+  
+  {!isAuthenticated ? (
+    // ゲストユーザー時
+    <>
+      <Alert severity="info" sx={{ mb: 2 }}>
+        ログインすると、複数端末でデータを同期できます。
+      </Alert>
+      
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={() => navigate('/register')}
+          sx={{ 
+            minHeight: '48px',
+            fontSize: { xs: '16px', md: '18px' },
+            flex: 1
+          }}
+        >
+          新規登録
+        </Button>
+        
+        <Button 
+          variant="outlined" 
+          color="primary"
+          onClick={() => navigate('/login')}
+          sx={{ 
+            minHeight: '48px',
+            fontSize: { xs: '16px', md: '18px' },
+            flex: 1
+          }}
+        >
+          ログイン
+        </Button>
+      </Stack>
+    </>
+  ) : (
+    // ログイン済みユーザー時
+    <>
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+          メールアドレス
+        </Typography>
+        <Typography variant="body1" sx={{ fontSize: { xs: '14px', md: '16px' } }}>
+          {user?.email || '未設定'}
+        </Typography>
+      </Box>
+      
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
+          ユーザー名
+        </Typography>
+        <Typography variant="body1" sx={{ fontSize: { xs: '14px', md: '16px' } }}>
+          {user?.name || 'ゲストユーザー'}
+        </Typography>
+      </Box>
+      
+      <Button 
+        variant="outlined" 
+        color="error"
+        onClick={handleLogout}
+        sx={{ 
+          minHeight: '48px',
+          fontSize: { xs: '16px', md: '18px' }
+        }}
+      >
+        ログアウト
+      </Button>
+    </>
+  )}
+</Paper>
+
+{/* 既存の「データ管理」セクション以降はそのまま */}
+```
+
+#### Phase 3: 既存の「アカウント情報」セクション削除
+
+**削除対象**: `frontend/src/pages/SettingsPage.tsx`（65-85行目）
+
+現在の以下のセクションを削除：
+```tsx
+<Paper sx={{ p: 3, mb: 3 }}>
+  <Typography variant="h6" gutterBottom>
+    アカウント情報
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    メールアドレス
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    ユーザー名
+  </Typography>
+  <Typography variant="body2" color="text.secondary">
+    権限
+  </Typography>
+</Paper>
+```
+
+→ Phase 2の「アカウント管理」セクションで置き換え
+
+---
+
+### 実装基準
+
+#### Apple Human Interface Guidelines準拠
+- **ボタンの最小タップ領域**: 48px（minHeight: '48px'）
+- **フォントサイズ**: 16px以上（スマホ）
+
+#### MUIコンポーネント使用
+- **Alert**: 情報表示（ログイン誘導メッセージ）
+- **Stack**: ボタン配置（レスポンシブ対応）
+- **Button**: variant="contained"（新規登録）、variant="outlined"（ログイン・ログアウト）
+
+---
+
+### 制約事項・リスク
+
+#### 技術的制約
+- **認証状態の取得**: AuthContextが実装済みであること
+- **ログアウト処理**: logout()関数が実装済みであること
+- **ルーティング**: /login, /register が設定済みであること
+
+#### リスクと対策
+| リスク | 評価 | 対策 |
+|--------|------|------|
+| AuthContextが未実装 | 低 | 既存のLoginPage/RegisterPageで使用中 |
+| ログアウト後の挙動 | 中 | 確認ダイアログで誤操作防止 |
+| ローカルデータ消失 | 低 | ログアウト前にエクスポート推奨 |
+
+---
+
+### テスト計画
+
+#### 手動テスト項目
+- [ ] ゲストユーザー時に「新規登録」「ログイン」ボタンが表示される
+- [ ] 「新規登録」ボタンをタップして/registerに遷移
+- [ ] 「ログイン」ボタンをタップして/loginに遷移
+- [ ] ログイン後、設定ページで「メールアドレス」「ユーザー名」が表示される
+- [ ] ログイン後、「ログアウト」ボタンが表示される
+- [ ] 「ログアウト」ボタンをタップして確認ダイアログが表示される
+- [ ] ログアウト後、TopPageに遷移する
+- [ ] ログアウト後、再度設定ページで「新規登録」「ログイン」ボタンが表示される
+
+#### レスポンシブテスト
+- [ ] スマホ（xs）: ボタンが縦並び
+- [ ] タブレット（sm）: ボタンが横並び
+- [ ] PC（md+）: ボタンが横並び
+
+---
+
+### 完了チェックリスト
+- [ ] SettingsPageに「アカウント管理」セクション追加
+- [ ] ゲスト/ログイン済み時の条件分岐実装
+- [ ] 新規登録・ログインボタン実装
+- [ ] ログアウトボタン実装
+- [ ] 既存の「アカウント情報」セクション削除
+- [ ] 手動テスト全項目Pass
+- [ ] レスポンシブテスト完了
+- [ ] E2Eテスト追加（オプション）
+
+---
+
+### 工数見積もり
+
+| Phase | 内容 | 工数 |
+|-------|------|------|
+| Phase 1 | 認証状態取得 | 5分 |
+| Phase 2 | UI実装 | 15分 |
+| Phase 3 | 既存セクション削除 | 5分 |
+| テスト | 手動テスト | 10分 |
+| **合計** | - | **約35分** |
+
+---
+
+**注**: 実装完了後は該当部分を削除し、コードを真実源とする
+

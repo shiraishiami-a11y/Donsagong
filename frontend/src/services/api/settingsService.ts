@@ -34,7 +34,10 @@ export async function changePassword(
  * 注: バックエンドからJSON形式でダウンロードします
  */
 export async function exportData(): Promise<Blob> {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432';
+  if (!import.meta.env.VITE_API_URL) {
+    throw new Error('VITE_API_URL environment variable is not set');
+  }
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   const token = getAuthToken();
 
   const headers: HeadersInit = {
@@ -62,7 +65,10 @@ export async function exportData(): Promise<Blob> {
  * multipart/form-data形式でファイルをアップロード
  */
 export async function importData(file: File): Promise<ImportResponse> {
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8432';
+  if (!import.meta.env.VITE_API_URL) {
+    throw new Error('VITE_API_URL environment variable is not set');
+  }
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   const token = getAuthToken();
 
   const formData = new FormData();

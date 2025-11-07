@@ -432,6 +432,7 @@ export const TopPage: React.FC = () => {
                       flex: 1,
                       margin: 0,
                       padding: { xs: '14px', md: '18px' },
+                      minHeight: '48px',
                       border: '2px solid #e0e0e0',
                       borderRadius: { xs: '8px', md: '12px' },
                       transition: 'all 0.2s',
@@ -466,6 +467,7 @@ export const TopPage: React.FC = () => {
                       flex: 1,
                       margin: 0,
                       padding: { xs: '14px', md: '18px' },
+                      minHeight: '48px',
                       border: '2px solid #e0e0e0',
                       borderRadius: { xs: '8px', md: '12px' },
                       transition: 'all 0.2s',
@@ -491,11 +493,12 @@ export const TopPage: React.FC = () => {
                 sx={{
                   marginBottom: '16px',
                   padding: '12px 16px',
+                  minHeight: '40px',
                   background: '#FFEBEE',
                   border: '1px solid #F44336',
                   borderRadius: '8px',
                   color: '#C62828',
-                  fontSize: '14px',
+                  fontSize: { xs: '14px', md: '15px' },
                   fontWeight: 500,
                 }}
               >
@@ -510,11 +513,12 @@ export const TopPage: React.FC = () => {
                 sx={{
                   marginBottom: '16px',
                   padding: '12px 16px',
+                  minHeight: '40px',
                   background: '#FFEBEE',
                   border: '1px solid #F44336',
                   borderRadius: '8px',
                   color: '#C62828',
-                  fontSize: '14px',
+                  fontSize: { xs: '14px', md: '15px' },
                   fontWeight: 500,
                 }}
               >

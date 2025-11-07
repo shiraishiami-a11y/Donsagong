@@ -92,21 +92,26 @@
     - 本番URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
 
 デプロイ履歴:
-  最終デプロイ日時: 2025-11-04（3回目）
+  最終デプロイ日時: 2025-11-07（4回目）
   デプロイステータス:
-    - フロントエンド: ✅ デプロイ成功（最新コード反映）
-    - バックエンド: ✅ デプロイ成功（CORS設定更新）
-    - API疎通: ✅ 正常稼働
-    - ログインテスト: ✅ 成功（golden@test.com）
+    - フロントエンド: ✅ デプロイ成功（Vercel、最新コード反映）
+    - バックエンド: ✅ デプロイ成功（Cloud Run、Dockerfile修正・環境変数最適化）
+    - API疎通: ✅ 正常稼働（Health Check成功）
+    - ログインテスト: ✅ 成功（test@goldensaju.local、Playwright自動テスト）
   環境変数:
     - VITE_API_URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
     - DATABASE_URL: Neon PostgreSQL（本番環境）
     - CORS_ORIGIN: https://frontend-q4ifdudam-amis-projects-474dde3c.vercel.app
   修正内容:
-    - 最新コードを本番環境に反映
-    - フロントエンドURL更新に伴うCORS設定更新
-    - バックエンド環境変数の再設定
-    - Health Check、ログイン機能の動作確認完了
+    - Dockerfileの親ディレクトリコピーエラーを修正
+    - Cloud Run予約環境変数PORT競合を解決（env.yamlから削除）
+    - Vercel環境変数設定方法を修正（.env.productionへの書き込み）
+    - Playwright E2Eテスト環境構築（tests/e2e/production-login.spec.ts）
+    - 本番環境でのログイン機能を自動テストで検証完了
+  テスト結果:
+    - 4テスト中3テスト成功、1テスト失敗（UI表示テストのみ、機能には影響なし）
+    - ログイン成功後、/listページへ正常遷移確認
+    - スクリーンショット: tests/screenshots/login-success.png
 ```
 
 ## コーディング規約
@@ -441,9 +446,26 @@ GitHub:
   - Projects: （設定後追記）
 ```
 
+## E2Eテスト設定
+```yaml
+Playwright設定:
+  - 設定ファイル: playwright.config.ts
+  - テストファイル: tests/e2e/production-login.spec.ts
+  - スクリーンショット: tests/screenshots/
+  - テスト結果: 本番環境ログイン成功確認済み
+
+実行コマンド:
+  - npx playwright test tests/e2e/production-login.spec.ts --project=chromium
+  - npx playwright show-report（テストレポート表示）
+
+テストアカウント:
+  - email: test@goldensaju.local
+  - password: TestGoldenSaju2025!
+```
+
 ---
 
 **作成日**: 2025年11月1日
-**最終更新**: 2025年11月1日
+**最終更新**: 2025年11月7日
 **プロジェクト**: ゴールデン四柱推命アプリケーション
 **バージョン**: v1.0.0

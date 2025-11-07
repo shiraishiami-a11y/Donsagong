@@ -116,7 +116,7 @@ export const ListPage: React.FC = () => {
           borderRadius: { xs: 0, md: '0 0 16px 16px' },
         }}
       >
-        <IconButton onClick={handleBack} sx={{ color: 'white', width: 48, height: 48 }} aria-label="トップページに戻る">
+        <IconButton onClick={handleBack} sx={{ color: 'white', minWidth: '48px', minHeight: '48px', width: 48, height: 48 }} aria-label="トップページに戻る">
           <ArrowBack />
         </IconButton>
         <Typography
@@ -128,7 +128,7 @@ export const ListPage: React.FC = () => {
         >
           保存した命式
         </Typography>
-        <IconButton onClick={handleSettings} sx={{ color: 'white', width: 48, height: 48 }} aria-label="設定">
+        <IconButton onClick={handleSettings} sx={{ color: 'white', minWidth: '48px', minHeight: '48px', width: 48, height: 48 }} aria-label="設定">
           <SettingsIcon />
         </IconButton>
       </Box>
@@ -231,11 +231,11 @@ export const ListPage: React.FC = () => {
               px: { xs: 2, md: 4 },
             }}
           >
-            <Inbox sx={{ fontSize: { xs: 60, md: 80 }, color: '#E0E0E0', mb: 2 }} />
+            <Inbox sx={{ fontSize: { xs: '48px', md: '64px' }, color: '#E0E0E0', mb: 2 }} />
             <Typography
               variant="h6"
               color="text.secondary"
-              sx={{ fontSize: { xs: '18px', md: '24px' } }}
+              sx={{ fontSize: { xs: '16px', md: '18px' } }}
             >
               まだ命式がありません
             </Typography>
