@@ -174,7 +174,8 @@ async def save_saju(
     """
     命式保存エンドポイント
 
-    計算済みの命式をPostgreSQLに保存
+    計算済みの命式をPostgreSQLに保存（UPSERT処理）
+    既に存在する場合はuser_idを更新、存在しない場合は新規作成
     """
     try:
         # birth_datetimeをdatetimeオブジェクトに変換
@@ -187,31 +188,43 @@ async def save_saju(
         # daeunListをJSON文字列に変換
         daeun_list_json = json.dumps([d.model_dump() for d in saju.daeunList], ensure_ascii=False)
 
-        # SQLAlchemyモデル作成
-        db_saju = SajuModel(
-            id=saju.id,
-            user_id=current_user.id,
-            name=saju.name,
-            birth_datetime=birth_datetime,
-            gender=saju.gender,
-            year_stem=saju.yearStem,
-            year_branch=saju.yearBranch,
-            month_stem=saju.monthStem,
-            month_branch=saju.monthBranch,
-            day_stem=saju.dayStem,
-            day_branch=saju.dayBranch,
-            hour_stem=saju.hourStem,
-            hour_branch=saju.hourBranch,
-            daeun_list=daeun_list_json,
-            fortune_level=fortune_level_int,
-        )
+        # 既存レコードを確認
+        existing_saju = db.query(SajuModel).filter(SajuModel.id == saju.id).first()
 
-        # DB保存
-        db.add(db_saju)
-        db.commit()
-        db.refresh(db_saju)
+        if existing_saju:
+            # 既存レコードが存在する場合はuser_idを更新（ゲスト→ログインユーザー）
+            existing_saju.user_id = current_user.id
+            existing_saju.name = saju.name
+            existing_saju.updated_at = datetime.now()
+            db.commit()
+            db.refresh(existing_saju)
+            return SaveResponse(success=True, id=existing_saju.id, message="命式を保存しました")
+        else:
+            # 新規レコードを作成
+            db_saju = SajuModel(
+                id=saju.id,
+                user_id=current_user.id,
+                name=saju.name,
+                birth_datetime=birth_datetime,
+                gender=saju.gender,
+                year_stem=saju.yearStem,
+                year_branch=saju.yearBranch,
+                month_stem=saju.monthStem,
+                month_branch=saju.monthBranch,
+                day_stem=saju.dayStem,
+                day_branch=saju.dayBranch,
+                hour_stem=saju.hourStem,
+                hour_branch=saju.hourBranch,
+                daeun_list=daeun_list_json,
+                fortune_level=fortune_level_int,
+            )
 
-        return SaveResponse(success=True, id=db_saju.id, message="命式を保存しました")
+            # DB保存
+            db.add(db_saju)
+            db.commit()
+            db.refresh(db_saju)
+
+            return SaveResponse(success=True, id=db_saju.id, message="命式を保存しました")
 
     except Exception as e:
         db.rollback()

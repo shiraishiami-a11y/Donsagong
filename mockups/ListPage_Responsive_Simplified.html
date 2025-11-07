@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>命式一覧ページ - レスポンシブモックアップ</title>
+  <title>命式一覧ページ - レスポンシブ簡易版</title>
   <style>
     * {
       margin: 0;
@@ -194,62 +194,6 @@
       }
     }
 
-    .pillars-mini {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    @media (min-width: 768px) {
-      .pillars-mini {
-        gap: 8px;
-        margin-bottom: 16px;
-      }
-    }
-
-    .pillar-mini {
-      text-align: center;
-    }
-
-    .stem-mini, .branch-mini {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-      color: white;
-      margin-bottom: 2px;
-    }
-
-    @media (min-width: 768px) {
-      .stem-mini, .branch-mini {
-        font-size: 16px;
-        border-radius: 8px;
-      }
-    }
-
-    .fortune-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 6px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      color: white;
-    }
-
-    @media (min-width: 768px) {
-      .fortune-badge {
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-    }
-
     /* 空状態 */
     .empty-state {
       text-align: center;
@@ -364,20 +308,6 @@
       }
     }
 
-    /* 五行カラー */
-    .wood { background: linear-gradient(135deg, #4CAF50, #66bb6a); }
-    .fire { background: linear-gradient(135deg, #F44336, #ef5350); }
-    .earth { background: linear-gradient(135deg, #FFB300, #ffa726); }
-    .metal { background: linear-gradient(135deg, #9E9E9E, #BDBDBD); }
-    .water { background: linear-gradient(135deg, #424242, #616161); }
-
-    /* 吉凶カラー */
-    .fortune-great { background: #FFD700; }
-    .fortune-good { background: #4CAF50; }
-    .fortune-neutral { background: #9E9E9E; }
-    .fortune-bad { background: #FF9800; }
-    .fortune-terrible { background: #F44336; }
-
     /* 表示モードインジケータ */
     .viewport-indicator {
       position: fixed;
@@ -435,25 +365,6 @@
           </button>
         </div>
         <div class="card-birth">1986年5月26日 5:34</div>
-        <div class="pillars-mini">
-          <div class="pillar-mini">
-            <div class="stem-mini fire">丙</div>
-            <div class="branch-mini fire">寅</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini water">癸</div>
-            <div class="branch-mini fire">巳</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini wood">甲</div>
-            <div class="branch-mini earth">戌</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini fire">丁</div>
-            <div class="branch-mini wood">卯</div>
-          </div>
-        </div>
-        <div class="fortune-badge fortune-good">吉 4/5</div>
       </div>
 
       <!-- 命式カード2 -->
@@ -470,25 +381,6 @@
           </button>
         </div>
         <div class="card-birth">1992年8月15日 14:20</div>
-        <div class="pillars-mini">
-          <div class="pillar-mini">
-            <div class="stem-mini water">壬</div>
-            <div class="branch-mini metal">申</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini earth">戊</div>
-            <div class="branch-mini metal">申</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini wood">乙</div>
-            <div class="branch-mini fire">巳</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini water">癸</div>
-            <div class="branch-mini earth">未</div>
-          </div>
-        </div>
-        <div class="fortune-badge fortune-neutral">平 3/5</div>
       </div>
 
       <!-- 命式カード3 -->
@@ -505,25 +397,6 @@
           </button>
         </div>
         <div class="card-birth">1988年3月10日 12:00</div>
-        <div class="pillars-mini">
-          <div class="pillar-mini">
-            <div class="stem-mini earth">戊</div>
-            <div class="branch-mini fire">辰</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini wood">乙</div>
-            <div class="branch-mini wood">卯</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini metal">辛</div>
-            <div class="branch-mini metal">酉</div>
-          </div>
-          <div class="pillar-mini">
-            <div class="stem-mini wood">甲</div>
-            <div class="branch-mini fire">午</div>
-          </div>
-        </div>
-        <div class="fortune-badge fortune-great">大吉 5/5</div>
       </div>
     </div>
   </div>

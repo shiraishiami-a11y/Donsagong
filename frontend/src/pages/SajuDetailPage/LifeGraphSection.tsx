@@ -78,7 +78,7 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
       >
         <Box
           sx={{
-            minWidth: '1200px',
+            minWidth: { xs: '800px', sm: '1000px', lg: '1200px' },
             height: { xs: '250px', sm: '350px', lg: '450px' },
             background: 'white',
             borderRadius: '12px',

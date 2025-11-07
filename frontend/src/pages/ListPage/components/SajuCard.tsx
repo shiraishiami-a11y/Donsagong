@@ -1,4 +1,4 @@
-// SajuCard - 命式カードコンポーネント（レスポンシブモックアップ完全一致版）
+// SajuCard - 命式カードコンポーネント（簡易版・五行吉凶表示なし）
 import { Box, Typography, IconButton } from '@mui/material';
 import type { SajuSummary } from '../../../types';
 import { formatBirthDateTime } from '../../../utils/sajuHelpers';
@@ -9,47 +9,6 @@ interface SajuCardProps {
   onDelete: (id: string) => void;
   onClick: (id: string) => void;
 }
-
-// 五行カラーマッピング
-const elementColors: Record<string, string> = {
-  wood: 'linear-gradient(135deg, #4CAF50, #66bb6a)',
-  fire: 'linear-gradient(135deg, #F44336, #ef5350)',
-  earth: 'linear-gradient(135deg, #FFB300, #ffa726)',
-  metal: 'linear-gradient(135deg, #9E9E9E, #BDBDBD)',
-  water: 'linear-gradient(135deg, #424242, #616161)',
-};
-
-// 天干・地支から五行を判定（簡易版）
-const getElementFromStem = (stem: string): string => {
-  const stemMap: Record<string, string> = {
-    '甲': 'wood', '乙': 'wood',
-    '丙': 'fire', '丁': 'fire',
-    '戊': 'earth', '己': 'earth',
-    '庚': 'metal', '辛': 'metal',
-    '壬': 'water', '癸': 'water',
-  };
-  return stemMap[stem] || 'metal';
-};
-
-const getElementFromBranch = (branch: string): string => {
-  const branchMap: Record<string, string> = {
-    '寅': 'wood', '卯': 'wood',
-    '巳': 'fire', '午': 'fire',
-    '辰': 'earth', '戌': 'earth', '丑': 'earth', '未': 'earth',
-    '申': 'metal', '酉': 'metal',
-    '子': 'water', '亥': 'water',
-  };
-  return branchMap[branch] || 'earth';
-};
-
-// 吉凶レベルから表示を生成
-const getFortuneBadge = (level: number): { text: string; color: string } => {
-  if (level === 5) return { text: '大吉 5/5', color: '#FFD700' };
-  if (level === 4) return { text: '吉 4/5', color: '#4CAF50' };
-  if (level === 3) return { text: '平 3/5', color: '#9E9E9E' };
-  if (level === 2) return { text: '凶 2/5', color: '#FF9800' };
-  return { text: '大凶 1/5', color: '#F44336' };
-};
 
 export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) => {
   const handleCardClick = () => {
@@ -64,18 +23,6 @@ export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) =
   // 性別アイコン
   const genderIcon = data.gender === 'male' ? '👨' : '👩';
   const genderLabel = data.gender === 'male' ? '男性' : '女性';
-
-  // 吉凶バッジ
-  const fortuneLevel = typeof data.fortuneLevel === 'number' ? data.fortuneLevel : 3;
-  const fortuneBadge = getFortuneBadge(fortuneLevel);
-
-  // 四柱データ
-  const pillars = [
-    { stem: data.yearStem, branch: data.yearBranch },
-    { stem: data.monthStem, branch: data.monthBranch },
-    { stem: data.dayStem, branch: data.dayBranch },
-    { stem: data.hourStem, branch: data.hourBranch },
-  ];
 
   return (
     <Box
@@ -149,79 +96,6 @@ export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) =
       >
         {formatBirthDateTime(data.birthDatetime)}
       </Typography>
-
-      {/* 四柱ミニ表示 (4×2グリッド) */}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: { xs: '6px', md: '8px' },
-          mb: { xs: 1.5, md: 2 },
-        }}
-      >
-        {pillars.map((pillar, idx) => {
-          const stemElement = getElementFromStem(pillar.stem);
-          const branchElement = getElementFromBranch(pillar.branch);
-          return (
-            <Box key={idx} sx={{ textAlign: 'center' }}>
-              {/* 天干 */}
-              <Box
-                data-testid={`${['year', 'month', 'day', 'hour'][idx]}-stem`}
-                sx={{
-                  width: '100%',
-                  aspectRatio: '1',
-                  borderRadius: { xs: '6px', md: '8px' },
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: { xs: '14px', md: '16px' },
-                  color: 'white',
-                  background: elementColors[stemElement],
-                  mb: '2px',
-                }}
-              >
-                {pillar.stem}
-              </Box>
-              {/* 地支 */}
-              <Box
-                sx={{
-                  width: '100%',
-                  aspectRatio: '1',
-                  borderRadius: { xs: '6px', md: '8px' },
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 700,
-                  fontSize: { xs: '14px', md: '16px' },
-                  color: 'white',
-                  background: elementColors[branchElement],
-                }}
-              >
-                {pillar.branch}
-              </Box>
-            </Box>
-          );
-        })}
-      </Box>
-
-      {/* 吉凶バッジ */}
-      <Box
-        data-testid="fortune-icon"
-        sx={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 0.5,
-          padding: { xs: '6px 12px', md: '8px 16px' },
-          borderRadius: '12px',
-          fontSize: { xs: '12px', md: '14px' },
-          fontWeight: 600,
-          color: 'white',
-          background: fortuneBadge.color,
-        }}
-      >
-        {fortuneBadge.text}
-      </Box>
     </Box>
   );
 };

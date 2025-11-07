@@ -1,5 +1,5 @@
 // SettingsPage - 設定ページ
-import { Box, Typography, Container, Paper, Divider, Button } from '@mui/material';
+import { Box, Typography, Paper, Divider, Button } from '@mui/material';
 import { MainLayout } from '../layouts/MainLayout';
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar';
@@ -50,9 +50,9 @@ export const SettingsPage: React.FC = () => {
 
   return (
     <MainLayout header={<Header />} sidebar={<Sidebar />}>
-      <Container maxWidth="lg">
+      <Box sx={{ maxWidth: { xs: '100%', md: '900px', lg: '1400px' }, mx: 'auto', px: { xs: '20px', md: '24px', lg: '40px' } }}>
         <Box sx={{ mb: 4 }}>
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700 }}>
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, fontSize: { xs: '24px', md: '28px', lg: '32px' } }}>
             設定
           </Typography>
           <Typography variant="body1" color="text.secondary">
@@ -61,7 +61,7 @@ export const SettingsPage: React.FC = () => {
         </Box>
 
         {/* アカウント情報 */}
-        <Paper sx={{ p: 3, mb: 3 }}>
+        <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
           <Typography variant="h6" gutterBottom>
             アカウント情報
           </Typography>
@@ -88,7 +88,7 @@ export const SettingsPage: React.FC = () => {
         <Divider sx={{ my: 3 }} />
 
         {/* データ管理 */}
-        <Paper sx={{ p: 3, mb: 3 }}>
+        <Paper sx={{ p: { xs: 2, sm: 3, md: 4 }, mb: 3 }}>
           <Typography variant="h6" gutterBottom>
             データ管理
           </Typography>
@@ -111,7 +111,7 @@ export const SettingsPage: React.FC = () => {
         <Divider sx={{ my: 3 }} />
 
         {/* アプリ情報 */}
-        <Paper sx={{ p: 3 }}>
+        <Paper sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
           <Typography variant="h6" gutterBottom>
             アプリ情報
           </Typography>
@@ -122,7 +122,7 @@ export const SettingsPage: React.FC = () => {
             <Typography variant="body1">v1.0.0</Typography>
           </Box>
         </Paper>
-      </Container>
+      </Box>
     </MainLayout>
   );
 };

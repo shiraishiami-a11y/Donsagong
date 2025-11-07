@@ -1,13 +1,12 @@
-// ListPage - 命式リストページ（完全実装版）
+// ListPage - 命式リストページ（簡易版・検索フィルタなし）
 import { useState, useEffect, useMemo } from 'react';
 import { Box, Typography, Button, Alert, IconButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { AddCircle, CloudUpload, ChevronRight, ArrowBack, Settings as SettingsIcon, Inbox } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { SajuCard } from './components/SajuCard';
-import { SearchFilterBar } from './components/SearchFilterBar';
 import { getSajuList, deleteSaju } from '../../services/api/sajuListService';
-import type { SajuSummary, FortuneLevel } from '../../types';
+import type { SajuSummary } from '../../types';
 
 export const ListPage: React.FC = () => {
   const navigate = useNavigate();
@@ -16,9 +15,6 @@ export const ListPage: React.FC = () => {
 
   // 状態管理
   const [sajuList, setSajuList] = useState<SajuSummary[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterLevel, setFilterLevel] = useState<FortuneLevel | 'all'>('all');
-  const [sortBy, setSortBy] = useState<'createdAt' | 'name' | 'birthDate'>('createdAt');
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [targetDeleteId, setTargetDeleteId] = useState<string | null>(null);
 
@@ -38,41 +34,12 @@ export const ListPage: React.FC = () => {
     loadSajuList();
   }, []);
 
-  // フィルタリング・ソート処理
-  const filteredAndSortedList = useMemo(() => {
-    let result = [...sajuList];
-
-    // 検索フィルタ
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter((saju) => {
-        const name = (saju.name || '').toLowerCase();
-        const birthDate = saju.birthDatetime.toLowerCase();
-        return name.includes(query) || birthDate.includes(query);
-      });
-    }
-
-    // 吉凶レベルフィルタ
-    if (filterLevel !== 'all') {
-      result = result.filter((saju) => saju.fortuneLevel === filterLevel);
-    }
-
-    // ソート
-    result.sort((a, b) => {
-      switch (sortBy) {
-        case 'createdAt':
-          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-        case 'name':
-          return (a.name || '無題').localeCompare(b.name || '無題', 'ja');
-        case 'birthDate':
-          return new Date(b.birthDatetime).getTime() - new Date(a.birthDatetime).getTime();
-        default:
-          return 0;
-      }
-    });
-
+  // デフォルトソート（作成日降順）
+  const sortedList = useMemo(() => {
+    const result = [...sajuList];
+    result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     return result;
-  }, [sajuList, searchQuery, filterLevel, sortBy]);
+  }, [sajuList]);
 
   // ハンドラー
   const handleCardClick = (id: string) => {
@@ -148,7 +115,7 @@ export const ListPage: React.FC = () => {
           borderRadius: { xs: 0, md: '0 0 16px 16px' },
         }}
       >
-        <IconButton onClick={handleBack} sx={{ color: 'white' }} aria-label="トップページに戻る">
+        <IconButton onClick={handleBack} sx={{ color: 'white', width: 48, height: 48 }} aria-label="トップページに戻る">
           <ArrowBack />
         </IconButton>
         <Typography
@@ -160,7 +127,7 @@ export const ListPage: React.FC = () => {
         >
           保存した命式
         </Typography>
-        <IconButton onClick={handleSettings} sx={{ color: 'white' }} aria-label="設定">
+        <IconButton onClick={handleSettings} sx={{ color: 'white', width: 48, height: 48 }} aria-label="設定">
           <SettingsIcon />
         </IconButton>
       </Box>
@@ -235,18 +202,8 @@ export const ListPage: React.FC = () => {
           新しい命式を作成
         </Button>
 
-        {/* 検索・フィルタバー */}
-        <SearchFilterBar
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          filterLevel={filterLevel}
-          onFilterChange={setFilterLevel}
-          sortBy={sortBy}
-          onSortChange={setSortBy}
-        />
-
         {/* 命式カード一覧 - レスポンシブグリッド（モックアップ完全一致） */}
-        {filteredAndSortedList.length > 0 ? (
+        {sortedList.length > 0 ? (
           <Box
             data-testid="saju-list-container"
             sx={{
@@ -259,7 +216,7 @@ export const ListPage: React.FC = () => {
               gap: { xs: '16px', md: '20px', lg: '24px' },
             }}
           >
-            {filteredAndSortedList.map((saju) => (
+            {sortedList.map((saju) => (
               <SajuCard key={saju.id} data={saju} onEdit={handleEdit} onDelete={handleDelete} onClick={handleCardClick} />
             ))}
           </Box>
@@ -280,7 +237,7 @@ export const ListPage: React.FC = () => {
               gutterBottom
               sx={{ fontSize: { xs: '18px', md: '24px' } }}
             >
-              {searchQuery || filterLevel !== 'all' ? '該当する命式がありません' : 'まだ命式がありません'}
+              まだ命式がありません
             </Typography>
             <Typography
               variant="body2"
@@ -290,15 +247,11 @@ export const ListPage: React.FC = () => {
                 fontSize: { xs: '14px', md: '16px' },
               }}
             >
-              {searchQuery || filterLevel !== 'all'
-                ? '検索条件を変更してください'
-                : '「新しい命式を作成」ボタンから始めましょう'}
+              「新しい命式を作成」ボタンから始めましょう
             </Typography>
-            {(!searchQuery && filterLevel === 'all') && (
-              <Button variant="contained" onClick={handleCreateNew}>
-                新しい命式を作成
-              </Button>
-            )}
+            <Button variant="contained" onClick={handleCreateNew}>
+              新しい命式を作成
+            </Button>
           </Box>
         )}
       </Box>

@@ -151,7 +151,7 @@ export const SajuDetailPage: React.FC = () => {
     <MainLayout>
       <Box
         sx={{
-          maxWidth: { xs: '100%', sm: '900px', lg: '1400px' },
+          maxWidth: { sm: '900px', lg: '1400px' },
           width: '100%',
           margin: '0 auto',
           backgroundColor: '#f5f5f5',
@@ -184,8 +184,9 @@ export const SajuDetailPage: React.FC = () => {
               backgroundColor: '#D4AF37',
               color: 'white',
               fontWeight: 600,
-              fontSize: { xs: '14px', sm: '16px' },
-              padding: { xs: '10px 20px', sm: '12px 24px' },
+              fontSize: { xs: '16px', sm: '18px' },
+              padding: { xs: '14px 24px', sm: '16px 28px' },
+              minHeight: '48px',
               borderRadius: '8px',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               transition: 'all 0.2s',
@@ -205,8 +206,8 @@ export const SajuDetailPage: React.FC = () => {
             sx={{
               backgroundColor: 'white',
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              width: { xs: '40px', sm: '48px' },
-              height: { xs: '40px', sm: '48px' },
+              width: { xs: '48px', sm: '52px' },
+              height: { xs: '48px', sm: '52px' },
               transition: 'all 0.2s',
               '&:hover': {
                 backgroundColor: '#f5f5f5',

@@ -93,6 +93,7 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
           flexDirection: 'row-reverse',
           gap: 1.5,
           overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch',
           pb: 1.5,
           '&::-webkit-scrollbar': {
             height: '6px',
