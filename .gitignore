@@ -86,6 +86,8 @@ coverage/
 .pytest_cache/
 .coverage
 htmlcov/
+playwright-report/
+test-results/
 
 # Temp files
 *.tmp
@@ -107,3 +109,4 @@ dump.rdb
 *.pfx
 scripts/deploy-*.sh
 scripts/deploy-*.sh
+.vercel
