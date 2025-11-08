@@ -152,9 +152,10 @@ export const TodayFortuneSection: React.FC<TodayFortuneSectionProps> = ({
     <Box
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px', sm: '30px 40px' },
+        padding: { xs: '20px 16px', sm: '30px 40px' },
         margin: { xs: '16px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
+        overflow: 'hidden',
       }}
     >
       {/* タイトル */}
@@ -174,9 +175,9 @@ export const TodayFortuneSection: React.FC<TodayFortuneSectionProps> = ({
       <Typography
         variant="body2"
         sx={{
-          fontSize: '14px',
+          fontSize: { xs: '12px', sm: '14px' },
           color: '#666',
-          mb: '16px',
+          mb: { xs: '12px', sm: '16px' },
         }}
       >
         今日の年運・月運・日運の吉凶

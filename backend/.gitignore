@@ -32,3 +32,4 @@ htmlcov/
 # Database
 *.db
 *.sqlite3
+.vercel

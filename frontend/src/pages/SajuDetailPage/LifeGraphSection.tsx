@@ -36,11 +36,13 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
 
   return (
     <Box
+      data-testid="life-graph-section"
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px', sm: '30px 40px' },
+        padding: { xs: '20px 16px', sm: '30px 40px' },
         margin: { xs: '16px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
+        overflow: 'hidden',
       }}
     >
       {/* タイトル */}
@@ -60,9 +62,9 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
       <Typography
         variant="body2"
         sx={{
-          fontSize: '14px',
+          fontSize: { xs: '12px', sm: '14px' },
           color: '#666',
-          mb: '16px',
+          mb: { xs: '12px', sm: '16px' },
         }}
       >
         大運ベースの吉凶レベル推移（{minAge}-{maxAge}歳、左右スクロール可能）

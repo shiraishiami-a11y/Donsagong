@@ -71,11 +71,11 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
   }
 
   return (
-    <Box sx={{ px: 2, py: 3, backgroundColor: '#fff', borderTop: '1px solid #e0e0e0' }}>
+    <Box sx={{ px: { xs: 2, sm: 5 }, py: 3, backgroundColor: '#fff', borderTop: '1px solid #e0e0e0', overflow: 'hidden' }}>
       <Typography
         variant="h6"
         sx={{
-          fontSize: '1rem',
+          fontSize: { xs: '0.9rem', sm: '1rem' },
           fontWeight: 600,
           color: '#1a1a2e',
           mb: 2,

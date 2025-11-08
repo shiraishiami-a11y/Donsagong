@@ -12,9 +12,10 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
     <Box
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px', sm: '30px 40px' },
+        padding: { xs: '20px 16px', sm: '30px 40px' },
         margin: { xs: '16px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
+        overflow: 'hidden',
       }}
     >
       {/* タイトル */}
@@ -34,9 +35,9 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
       <Typography
         variant="body2"
         sx={{
-          fontSize: '14px',
+          fontSize: { xs: '12px', sm: '14px' },
           color: '#666',
-          mb: '16px',
+          mb: { xs: '12px', sm: '16px' },
         }}
       >
         右から年柱→月柱→日柱→時柱
@@ -50,8 +51,9 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
             xs: 'repeat(2, 1fr)',  // モバイル: 2カラム（2x2グリッド）
             sm: 'repeat(4, 1fr)',  // タブレット以上: 4カラム（1行）
           },
-          gap: { xs: '12px', sm: '20px', lg: '30px' },
-          maxWidth: { xs: '100%', sm: '800px', lg: '1000px' },
+          gap: { xs: '10px', sm: '20px', lg: '30px' },
+          maxWidth: '100%',
+          width: '100%',
           margin: '0 auto',
         }}
       >
@@ -86,13 +88,14 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
               <Box
                 sx={{
                   width: '100%',
+                  maxWidth: { xs: '80px', sm: '120px', md: '140px', lg: '160px' },
                   aspectRatio: '1',
-                  borderRadius: { xs: '12px', sm: '16px' },
+                  borderRadius: { xs: '8px', sm: '12px', md: '16px' },
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: { xs: '24px', md: '28px', lg: '32px' },
+                  fontSize: { xs: '20px', sm: '24px', md: '28px', lg: '32px' },
                   color: 'white',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   background: getElementColor(pillar.stemElement),
@@ -106,13 +109,14 @@ export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
               <Box
                 sx={{
                   width: '100%',
+                  maxWidth: { xs: '80px', sm: '120px', md: '140px', lg: '160px' },
                   aspectRatio: '1',
-                  borderRadius: { xs: '12px', sm: '16px' },
+                  borderRadius: { xs: '8px', sm: '12px', md: '16px' },
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
-                  fontSize: { xs: '24px', md: '28px', lg: '32px' },
+                  fontSize: { xs: '20px', sm: '24px', md: '28px', lg: '32px' },
                   color: 'white',
                   textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
                   background: getElementColor(pillar.branchElement),
