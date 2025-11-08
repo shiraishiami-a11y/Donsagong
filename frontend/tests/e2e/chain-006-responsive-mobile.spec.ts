@@ -182,13 +182,18 @@ test.only('E2E-CHAIN-006-S2: 横スクロール - 大運', async ({ page }) => {
   expect(cardWidth).toBeGreaterThanOrEqual(120);
 
   // スクロールコンテナを確認
-  const scrollContainer = daeunSection.locator('> div').first();
+  const scrollContainer = page.locator('[data-testid="daeun-scroll-container"]');
 
   // スクロール可能性を確認
-  const isScrollable = await scrollContainer.evaluate(el => {
-    return el.scrollWidth > el.clientWidth;
+  const scrollInfo = await scrollContainer.evaluate(el => {
+    return {
+      scrollWidth: el.scrollWidth,
+      clientWidth: el.clientWidth,
+      isScrollable: el.scrollWidth > el.clientWidth,
+    };
   });
-  expect(isScrollable).toBeTruthy();
+  console.log('📊 スクロール情報:', scrollInfo);
+  expect(scrollInfo.isScrollable).toBeTruthy();
 
   // スクロール実行
   await scrollContainer.evaluate(el => {

@@ -76,38 +76,44 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
           padding: '12px 0',
+          marginLeft: { xs: '-16px', sm: '0' },
+          marginRight: { xs: '-16px', sm: '0' },
+          paddingLeft: { xs: '16px', sm: '0' },
+          paddingRight: { xs: '16px', sm: '0' },
         }}
       >
         <Box
           sx={{
-            minWidth: { xs: '800px', sm: '800px', lg: '800px' },
-            height: { xs: '250px', sm: '350px', lg: '450px' },
+            minWidth: { xs: '600px', sm: '700px', lg: '800px' },
+            height: { xs: '200px', sm: '300px', md: '350px', lg: '450px' },
             background: 'white',
-            borderRadius: '12px',
-            padding: '20px',
+            borderRadius: { xs: '8px', sm: '12px' },
+            padding: { xs: '12px', sm: '16px', md: '20px' },
             boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           }}
         >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={chartData}
-              margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+              margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
             >
               <CartesianGrid strokeDasharray="2 2" stroke="#e0e0e0" />
 
               <XAxis
                 dataKey="age"
                 stroke="#666"
-                style={{ fontSize: '0.7rem' }}
+                style={{ fontSize: '0.65rem' }}
                 domain={[minAge, maxAge]}
                 ticks={xAxisTicks}
+                tick={{ fontSize: 11 }}
               />
 
               <YAxis
                 stroke="#666"
-                style={{ fontSize: '0.7rem' }}
+                style={{ fontSize: '0.65rem' }}
                 domain={[1, 5]}
                 ticks={[1, 2, 3, 4, 5]}
+                tick={{ fontSize: 11 }}
               />
 
               <Tooltip

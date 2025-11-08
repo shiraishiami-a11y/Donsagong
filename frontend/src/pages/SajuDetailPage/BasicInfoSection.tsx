@@ -12,10 +12,11 @@ export const BasicInfoSection: React.FC<BasicInfoSectionProps> = ({ data }) => {
     <Box
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '60px 20px 20px', sm: '80px 40px 30px' },
+        padding: { xs: '60px 16px 20px', sm: '80px 40px 30px' },
         borderBottom: '4px solid #D4AF37',
         borderRadius: { xs: 0, sm: '12px' },
         marginBottom: { xs: 0, sm: '20px' },
+        overflow: 'hidden',
       }}
     >
       <Typography
