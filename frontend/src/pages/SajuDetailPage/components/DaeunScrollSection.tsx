@@ -2,6 +2,7 @@
 import { Box, Typography } from '@mui/material';
 import type { DaeunInfo, FortuneLevel } from '../../../types';
 import { getElementColor, getStemElement, getBranchElement } from '../../../utils/sajuHelpers';
+import { UNIFIED_CARD_STYLES } from '../../../constants/cardStyles';
 
 interface DaeunScrollSectionProps {
   daeunList: DaeunInfo[];
@@ -14,7 +15,9 @@ interface DaeunScrollSectionProps {
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
+    '小吉': '#4CAF50',
     '吉': '#4CAF50',
+    '吉凶': '#9E9E9E',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
@@ -22,18 +25,28 @@ const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   return colorMap[fortuneLevel];
 };
 
+// 大運の開始年齢のみを表示
+const getAgeRangeLabel = (startAge: number, _endAge: number): string => {
+  return `${startAge}`;
+};
+
 export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
   daeunList,
   selectedDaeunStartAge,
   onDaeunSelect,
-  daeunNumber,
 }) => {
+  // 最初の大運の年齢範囲を取得してタイトルに表示
+  const firstDaeun = daeunList[0];
+  const titleLabel = firstDaeun
+    ? getAgeRangeLabel(firstDaeun.startAge, firstDaeun.endAge)
+    : '大運';
+
   return (
     <Box
       data-testid="daeun-scroll-section"
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px 16px', sm: '30px 40px' },
+        padding: { xs: '20px', sm: '30px 40px' },
         margin: { xs: '16px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
       }}
@@ -47,18 +60,17 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
           mb: { xs: '16px', sm: '24px' },
         }}
       >
-        大運（大運数：{daeunNumber}）
+        大運（{titleLabel}）
       </Typography>
 
+      {/* スクロールコンテナ */}
       <Box
         data-testid="daeun-scroll-container"
         sx={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          gap: { xs: '12px', sm: '20px' },
+          maxWidth: '100%',
           overflowX: 'auto',
-          padding: { xs: '12px 0', sm: '20px 0' },
           WebkitOverflowScrolling: 'touch',
+          padding: { xs: '12px 0', sm: '20px 0' },
           scrollbarWidth: 'thin',
           scrollbarColor: '#D4AF37 #f5f5f5',
           '&::-webkit-scrollbar': {
@@ -74,7 +86,15 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
           },
         }}
       >
-        {daeunList.map((daeun) => {
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: UNIFIED_CARD_STYLES.spacing.gap,
+            minWidth: 'min-content',
+          }}
+        >
+        {[...daeunList].reverse().map((daeun) => {
           const isSelected = selectedDaeunStartAge === daeun.startAge;
           const isCurrent = daeun.isCurrent;
 
@@ -84,7 +104,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
               data-testid={`daeun-card-${daeun.startAge}`}
               onClick={() => onDaeunSelect(daeun.startAge)}
               sx={{
-                minWidth: { xs: '140px', md: '160px' },
+                minWidth: UNIFIED_CARD_STYLES.card.minWidth,
                 padding: { xs: '12px', sm: '20px' },
                 borderRadius: '12px',
                 border: isCurrent
@@ -117,7 +137,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
                   mb: '8px',
                 }}
               >
-                {daeun.startAge}-{daeun.endAge}歳
+                {getAgeRangeLabel(daeun.startAge, daeun.endAge)}
               </Typography>
 
               {/* 天干地支（縦並び） */}
@@ -133,14 +153,14 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
               >
                 <Box
                   sx={{
-                    width: '60px',
-                    height: '60px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getStemElement(daeun.daeunStem)),
-                    borderRadius: 1,
-                    fontSize: { xs: '18px', md: '20px', lg: '22px' },
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -150,14 +170,14 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
                 </Box>
                 <Box
                   sx={{
-                    width: '60px',
-                    height: '60px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getBranchElement(daeun.daeunBranch)),
-                    borderRadius: 1,
-                    fontSize: { xs: '18px', md: '20px', lg: '22px' },
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -198,6 +218,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
             </Box>
           );
         })}
+        </Box>
       </Box>
     </Box>
   );

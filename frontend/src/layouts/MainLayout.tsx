@@ -64,6 +64,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, header, sideba
           p: 3,
           width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
           backgroundColor: '#fafafa',
+          overflowX: 'hidden',
         }}
       >
         <Toolbar />

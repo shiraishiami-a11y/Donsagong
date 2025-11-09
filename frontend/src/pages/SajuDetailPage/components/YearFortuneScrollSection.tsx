@@ -4,6 +4,7 @@ import { Box, Typography, Chip } from '@mui/material';
 import type { YearFortuneInfo, FortuneLevel } from '../../../types';
 import { getElementColor, getStemElement, getBranchElement } from '../../../utils/sajuHelpers';
 import { getYearFortuneList } from '../../../services/api/sajuFortuneService';
+import { UNIFIED_CARD_STYLES } from '../../../constants/cardStyles';
 
 interface YearFortuneScrollSectionProps {
   sajuId: string;
@@ -16,7 +17,9 @@ interface YearFortuneScrollSectionProps {
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
+    '小吉': '#4CAF50',
     '吉': '#4CAF50',
+    '吉凶': '#9E9E9E',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
@@ -73,14 +76,22 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
   }
 
   return (
-    <Box sx={{ px: { xs: 2, sm: 5 }, py: 3, backgroundColor: '#fff', borderTop: '1px solid #e0e0e0', overflow: 'hidden' }}>
+    <Box
+      data-testid="year-scroll-section"
+      sx={{
+        backgroundColor: 'white',
+        padding: { xs: '20px', sm: '30px 40px' },
+        margin: { xs: '16px 0', sm: '20px 0' },
+        borderRadius: { xs: 0, sm: '12px' },
+      }}
+    >
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: '0.9rem', sm: '1rem' },
-          fontWeight: 600,
+          fontSize: { xs: '18px', sm: '24px' },
+          fontWeight: 700,
           color: '#1a1a2e',
-          mb: 2,
+          mb: { xs: '16px', sm: '24px' },
         }}
       >
         年運（{daeunStartAge}-{daeunStartAge + 9}歳）
@@ -89,17 +100,17 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
       <Box
         data-testid="year-scroll-container"
         sx={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          gap: 1.5,
+          maxWidth: '100%',
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
-          pb: 1.5,
+          padding: { xs: '12px 0', sm: '20px 0' },
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#D4AF37 #f5f5f5',
           '&::-webkit-scrollbar': {
             height: '6px',
           },
           '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
+            background: '#f5f5f5',
             borderRadius: '10px',
           },
           '&::-webkit-scrollbar-thumb': {
@@ -108,19 +119,28 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
           },
         }}
       >
-        {years.map((yearFortune) => {
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: UNIFIED_CARD_STYLES.spacing.gap,
+            justifyContent: { xs: 'flex-start', sm: 'flex-start' },
+            minWidth: { xs: 'min-content', sm: 'auto' },
+          }}
+        >
+          {[...years].reverse().map((yearFortune) => {
           const isSelected = selectedYear === yearFortune.year;
           const isCurrent = yearFortune.isCurrent;
 
           return (
             <Box
               key={yearFortune.id}
-              data-testid="year-card"
+              data-testid={`year-card-${yearFortune.year}`}
               onClick={() => onYearSelect(yearFortune.year)}
               sx={{
-                minWidth: { xs: '90px', sm: '100px' },
-                p: 1.5,
-                borderRadius: 2,
+                minWidth: UNIFIED_CARD_STYLES.card.minWidth,
+                padding: { xs: '12px', sm: '20px' },
+                borderRadius: '12px',
                 border: isSelected
                   ? '2px solid #D4AF37'
                   : '1px solid #e0e0e0',
@@ -167,14 +187,14 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
                 <Box
                   data-testid="year-stem"
                   sx={{
-                    width: '45px',
-                    height: '45px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getStemElement(yearFortune.yearStem)),
-                    borderRadius: 1,
-                    fontSize: '1.3rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -186,14 +206,14 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
                 <Box
                   data-testid="year-branch"
                   sx={{
-                    width: '45px',
-                    height: '45px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getBranchElement(yearFortune.yearBranch)),
-                    borderRadius: 1,
-                    fontSize: '1.3rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -252,6 +272,7 @@ export const YearFortuneScrollSection: React.FC<YearFortuneScrollSectionProps> =
             </Box>
           );
         })}
+        </Box>
       </Box>
     </Box>
   );

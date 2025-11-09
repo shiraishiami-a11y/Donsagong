@@ -521,10 +521,24 @@ async def import_saju_data(import_data: ExportData, db: Session = Depends(get_db
     summary="今日の運勢を取得",
 )
 async def get_current_fortune(
+    birth_year: int,
+    birth_month: int,
+    birth_day: int,
+    birth_hour: int,
+    birth_minute: int,
+    gender: str,
     calculator: SajuCalculator = Depends(get_calculator),
 ) -> CurrentFortuneResponse:
     """
     今日の年運・月運・日運の干支と吉凶レベルを計算して返す
+
+    Args:
+        birth_year: 生年
+        birth_month: 生月
+        birth_day: 生日
+        birth_hour: 生時
+        birth_minute: 生分
+        gender: 性別 ('male' or 'female')
 
     Returns:
         CurrentFortuneResponse: 今日の年・月・日運情報
@@ -537,8 +551,16 @@ async def get_current_fortune(
         now = datetime.now(ZoneInfo("Asia/Seoul"))
         today_str = now.strftime("%Y-%m-%d")
 
-        # lunar-pythonで今日の八字を計算
-        from lunar_python import Solar, Lunar
+        # ユーザーの命式を計算して日干を取得
+        from lunar_python import Solar as UserSolar
+
+        user_solar = UserSolar.fromYmdHms(birth_year, birth_month, birth_day, birth_hour, birth_minute, 0)
+        user_lunar = user_solar.getLunar()
+        user_eight_char = user_lunar.getEightChar()
+        user_day_stem = user_eight_char.getDayGan()  # ユーザーの日干
+
+        # 今日の年・月・日の干支を取得
+        from lunar_python import Solar
 
         solar = Solar.fromYmdHms(now.year, now.month, now.day, now.hour, 0, 0)
         lunar = solar.getLunar()
@@ -552,22 +574,22 @@ async def get_current_fortune(
         day_stem = eight_char.getDayGan()  # 日干
         day_branch = eight_char.getDayZhi()  # 日支
 
-        # 吉凶レベルを計算（簡易版：天干地支マトリックスから判定）
+        # 吉凶レベルを計算（ユーザーの日干を基準に判定）
         from app.services.fortune_analyzer import FortuneAnalyzer
 
         fortune_analyzer = FortuneAnalyzer()
 
-        # 年運の吉凶レベル（天干のみで簡易判定）
-        year_tengan_level = fortune_analyzer.tengan_matrix.get(day_stem, {}).get(year_stem, "平")
+        # 年運の吉凶レベル（ユーザーの日干 vs 今年の年干）
+        year_tengan_level = fortune_analyzer.tengan_matrix.get(user_day_stem, {}).get(year_stem, "平")
         year_fortune_level = year_tengan_level
 
-        # 月運の吉凶レベル（天干のみで簡易判定）
-        month_tengan_level = fortune_analyzer.tengan_matrix.get(day_stem, {}).get(month_stem, "平")
+        # 月運の吉凶レベル（ユーザーの日干 vs 今月の月干）
+        month_tengan_level = fortune_analyzer.tengan_matrix.get(user_day_stem, {}).get(month_stem, "平")
         month_fortune_level = month_tengan_level
 
-        # 日運の吉凶レベル
-        # 日運は自分自身なので常に「平」
-        day_fortune_level = "平"
+        # 日運の吉凶レベル（ユーザーの日干 vs 今日の日干）
+        day_tengan_level = fortune_analyzer.tengan_matrix.get(user_day_stem, {}).get(day_stem, "平")
+        day_fortune_level = day_tengan_level
 
         # FortuneDetailを構築
         year_fortune = FortuneDetail(

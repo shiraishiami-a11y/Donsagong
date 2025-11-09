@@ -291,11 +291,26 @@ export async function deleteSaju(id: string): Promise<DeleteResponse> {
 
 /**
  * 今日の運勢を取得
+ * @param birthYear - 生年
+ * @param birthMonth - 生月
+ * @param birthDay - 生日
+ * @param birthHour - 生時
+ * @param birthMinute - 生分
+ * @param gender - 性別
  * @returns 今日の年運・月運・日運
  * @throws ApiError
  */
-export async function getCurrentFortune(): Promise<CurrentFortuneResponse> {
-  const response = await apiGet<CurrentFortuneResponse>('/api/saju/current-fortune');
+export async function getCurrentFortune(
+  birthYear: number,
+  birthMonth: number,
+  birthDay: number,
+  birthHour: number,
+  birthMinute: number,
+  gender: string
+): Promise<CurrentFortuneResponse> {
+  const response = await apiGet<CurrentFortuneResponse>(
+    `/api/saju/current-fortune?birth_year=${birthYear}&birth_month=${birthMonth}&birth_day=${birthDay}&birth_hour=${birthHour}&birth_minute=${birthMinute}&gender=${gender}`
+  );
 
   if (!response.data) {
     throw new Error('今日の運勢の取得に失敗しました');

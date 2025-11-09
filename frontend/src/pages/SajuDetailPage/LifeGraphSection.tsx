@@ -36,23 +36,21 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
 
   return (
     <Box
-      data-testid="life-graph-section"
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px 16px', sm: '30px 40px' },
-        margin: { xs: '16px 0', sm: '20px 0' },
+        padding: { xs: '16px', sm: '30px 40px' },
+        margin: { xs: '12px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
-        overflow: 'hidden',
       }}
     >
       {/* タイトル */}
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: '18px', sm: '24px' },
+          fontSize: { xs: '16px', sm: '24px' },
           fontWeight: 700,
           color: '#1a1a2e',
-          mb: { xs: '16px', sm: '24px' },
+          mb: { xs: '12px', sm: '24px' },
         }}
       >
         人生グラフ（吉凶の流れ）
@@ -62,9 +60,10 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
       <Typography
         variant="body2"
         sx={{
-          fontSize: { xs: '12px', sm: '14px' },
+          display: { xs: 'none', sm: 'block' },
+          fontSize: '14px',
           color: '#666',
-          mb: { xs: '12px', sm: '16px' },
+          mb: '16px',
         }}
       >
         大運ベースの吉凶レベル推移（{minAge}-{maxAge}歳、左右スクロール可能）
@@ -73,29 +72,39 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
       {/* グラフコンテナ（横スクロール可能） */}
       <Box
         sx={{
+          maxWidth: '100%',
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
-          padding: '12px 0',
-          marginLeft: { xs: '-16px', sm: '0' },
-          marginRight: { xs: '-16px', sm: '0' },
-          paddingLeft: { xs: '16px', sm: '0' },
-          paddingRight: { xs: '16px', sm: '0' },
+          padding: { xs: '4px 0', sm: '20px 0' },
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#D4AF37 #f5f5f5',
+          '&::-webkit-scrollbar': {
+            height: '4px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#f5f5f5',
+            borderRadius: '10px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#D4AF37',
+            borderRadius: '10px',
+          },
         }}
       >
         <Box
           sx={{
-            minWidth: { xs: '600px', sm: '700px', lg: '800px' },
-            height: { xs: '200px', sm: '300px', md: '350px', lg: '450px' },
+            width: '100%',
+            height: { xs: '200px', sm: '350px', lg: '450px' },
             background: 'white',
-            borderRadius: { xs: '8px', sm: '12px' },
-            padding: { xs: '12px', sm: '16px', md: '20px' },
+            borderRadius: '12px',
+            padding: { xs: '8px', sm: '20px' },
             boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
           }}
         >
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
               data={chartData}
-              margin={{ top: 10, right: 20, left: 10, bottom: 10 }}
+              margin={{ top: 8, right: 8, left: 0, bottom: 8 }}
             >
               <CartesianGrid strokeDasharray="2 2" stroke="#e0e0e0" />
 
@@ -105,7 +114,7 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
                 style={{ fontSize: '0.65rem' }}
                 domain={[minAge, maxAge]}
                 ticks={xAxisTicks}
-                tick={{ fontSize: 11 }}
+                tickMargin={4}
               />
 
               <YAxis
@@ -113,7 +122,8 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
                 style={{ fontSize: '0.65rem' }}
                 domain={[1, 5]}
                 ticks={[1, 2, 3, 4, 5]}
-                tick={{ fontSize: 11 }}
+                width={28}
+                tickMargin={4}
               />
 
               <Tooltip

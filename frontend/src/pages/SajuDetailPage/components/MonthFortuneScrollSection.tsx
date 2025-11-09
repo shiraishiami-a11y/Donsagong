@@ -4,6 +4,7 @@ import { Box, Typography, Chip } from '@mui/material';
 import type { MonthFortuneInfo, FortuneLevel } from '../../../types';
 import { getElementColor, getStemElement, getBranchElement } from '../../../utils/sajuHelpers';
 import { getMonthFortuneList } from '../../../services/api/sajuFortuneService';
+import { UNIFIED_CARD_STYLES } from '../../../constants/cardStyles';
 
 interface MonthFortuneScrollSectionProps {
   sajuId: string;
@@ -16,7 +17,9 @@ interface MonthFortuneScrollSectionProps {
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
+    '小吉': '#4CAF50',
     '吉': '#4CAF50',
+    '吉凶': '#9E9E9E',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
@@ -73,14 +76,22 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
   }
 
   return (
-    <Box sx={{ px: { xs: 2, sm: 5 }, py: 3, backgroundColor: '#fff', borderTop: '1px solid #e0e0e0', overflow: 'hidden' }}>
+    <Box
+      data-testid="month-scroll-section"
+      sx={{
+        backgroundColor: 'white',
+        padding: { xs: '20px', sm: '30px 40px' },
+        margin: { xs: '16px 0', sm: '20px 0' },
+        borderRadius: { xs: 0, sm: '12px' },
+      }}
+    >
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: '0.9rem', sm: '1rem' },
-          fontWeight: 600,
+          fontSize: { xs: '18px', sm: '24px' },
+          fontWeight: 700,
           color: '#1a1a2e',
-          mb: 2,
+          mb: { xs: '16px', sm: '24px' },
         }}
       >
         月運（{year}年）
@@ -89,17 +100,17 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
       <Box
         data-testid="month-scroll-container"
         sx={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          gap: 1.5,
+          maxWidth: '100%',
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
-          pb: 1.5,
+          padding: { xs: '12px 0', sm: '20px 0' },
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#D4AF37 #f5f5f5',
           '&::-webkit-scrollbar': {
             height: '6px',
           },
           '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
+            background: '#f5f5f5',
             borderRadius: '10px',
           },
           '&::-webkit-scrollbar-thumb': {
@@ -108,17 +119,26 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
           },
         }}
       >
-        {months.map((monthFortune) => {
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: UNIFIED_CARD_STYLES.spacing.gap,
+            minWidth: 'min-content',
+          }}
+        >
+          {[...months].reverse().map((monthFortune) => {
           const isSelected = selectedMonth === monthFortune.month;
           const isCurrent = monthFortune.isCurrent;
 
           return (
             <Box
               key={monthFortune.id}
-              data-testid="month-card"
+              data-testid={`month-card-${monthFortune.month}`}
               onClick={() => onMonthSelect(monthFortune.month)}
               sx={{
-                minWidth: { xs: '85px', sm: '95px' },
+                minWidth: UNIFIED_CARD_STYLES.card.minWidth,
+                flexShrink: 0,
                 p: 1.5,
                 borderRadius: 2,
                 border: isSelected
@@ -167,14 +187,14 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
                 <Box
                   data-testid="month-stem"
                   sx={{
-                    width: '40px',
-                    height: '40px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getStemElement(monthFortune.monthStem)),
-                    borderRadius: 1,
-                    fontSize: '1.2rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -186,14 +206,14 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
                 <Box
                   data-testid="month-branch"
                   sx={{
-                    width: '40px',
-                    height: '40px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getBranchElement(monthFortune.monthBranch)),
-                    borderRadius: 1,
-                    fontSize: '1.2rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -252,6 +272,7 @@ export const MonthFortuneScrollSection: React.FC<MonthFortuneScrollSectionProps>
             </Box>
           );
         })}
+        </Box>
       </Box>
     </Box>
   );

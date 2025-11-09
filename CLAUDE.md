@@ -82,26 +82,26 @@
 
   Vercel:
     - プロジェクト名: frontend
-    - 本番URL: https://frontend-q4ifdudam-amis-projects-474dde3c.vercel.app
+    - 本番URL（固定）: https://frontend-amis-projects-474dde3c.vercel.app
     - 自動デプロイ: main ブランチ
 
   GCP Cloud Run:
     - プロジェクト: yamatovision-blue-lamp
     - サービス名: golden-saju-api
     - リージョン: asia-northeast1 (東京)
-    - 本番URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
+    - 本番URL（固定）: https://golden-saju-api-235426778039.asia-northeast1.run.app
 
 デプロイ履歴:
-  最終デプロイ日時: 2025-11-07（4回目）
+  最終デプロイ日時: 2025-11-08（5回目）
   デプロイステータス:
-    - フロントエンド: ✅ デプロイ成功（Vercel、最新コード反映）
-    - バックエンド: ✅ デプロイ成功（Cloud Run、Dockerfile修正・環境変数最適化）
+    - フロントエンド: ✅ デプロイ成功（Vercel、固定URL設定完了）
+    - バックエンド: ✅ デプロイ成功（Cloud Run、CORS設定最適化）
     - API疎通: ✅ 正常稼働（Health Check成功）
-    - ログインテスト: ✅ 成功（test@goldensaju.local、Playwright自動テスト）
+    - 固定URL: ✅ 設定完了（次回からURLが変わらない）
   環境変数:
     - VITE_API_URL: https://golden-saju-api-235426778039.asia-northeast1.run.app
     - DATABASE_URL: Neon PostgreSQL（本番環境）
-    - CORS_ORIGIN: https://frontend-q4ifdudam-amis-projects-474dde3c.vercel.app
+    - CORS_ORIGIN: https://frontend-amis-projects-474dde3c.vercel.app
   修正内容:
     - Dockerfileの親ディレクトリコピーエラーを修正
     - Cloud Run予約環境変数PORT競合を解決（env.yamlから削除）

@@ -21,7 +21,9 @@ export const getElementColor = (element?: FiveElement): string => {
 export const getFortuneColor = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': 'linear-gradient(45deg, #FFD700, #FFA500)',
+    '小吉': 'linear-gradient(45deg, #4CAF50, #66bb6a)',
     '吉': 'linear-gradient(45deg, #4CAF50, #66bb6a)',
+    '吉凶': 'linear-gradient(45deg, #9E9E9E, #BDBDBD)',
     '平': 'linear-gradient(45deg, #9E9E9E, #BDBDBD)',
     '凶': 'linear-gradient(45deg, #FF9800, #ffb74d)',
     '大凶': 'linear-gradient(45deg, #F44336, #ef5350)',
@@ -34,7 +36,9 @@ export const getFortuneColor = (fortuneLevel: FortuneLevel): string => {
 export const getFortuneIcon = (fortuneLevel: FortuneLevel): string => {
   const iconMap: Record<FortuneLevel, string> = {
     '大吉': 'star',
+    '小吉': 'thumb_up',
     '吉': 'thumb_up',
+    '吉凶': 'remove',
     '平': 'remove',
     '凶': 'warning',
     '大凶': 'error',

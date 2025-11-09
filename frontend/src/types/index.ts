@@ -81,12 +81,14 @@ export interface DaeunInfo {
   isCurrent?: boolean; // 現在の大運期間かどうか
 }
 
-export type FortuneLevel = '大吉' | '吉' | '平' | '凶' | '大凶';
+export type FortuneLevel = '大吉' | '小吉' | '吉' | '吉凶' | '平' | '凶' | '大凶';
 
 // 吉凶レベルの数値マッピング
 export const FortuneLevelMap: Record<FortuneLevel, number> = {
   '大吉': 5,
+  '小吉': 4,
   '吉': 4,
+  '吉凶': 3,
   '平': 3,
   '凶': 2,
   '大凶': 1

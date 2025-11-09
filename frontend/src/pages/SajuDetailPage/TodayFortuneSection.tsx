@@ -1,5 +1,6 @@
 // TodayFortuneSection.tsx - 今日の運セクション（年運・月運・日運）
 import { Box, Typography } from '@mui/material';
+import { UNIFIED_CARD_STYLES } from '../../constants/cardStyles';
 
 // 五行カラー
 const ELEMENT_COLORS: Record<string, string> = {
@@ -38,10 +39,10 @@ const FortuneCard: React.FC<FortuneCardProps> = ({ label, tengan, jishi, fortune
   return (
     <Box
       sx={{
-        minWidth: { xs: '90px', sm: '140px' },
+        minWidth: UNIFIED_CARD_STYLES.card.minWidth,
         background: '#fafafa',
-        borderRadius: '12px',
-        padding: { xs: '12px', sm: '20px' },
+        borderRadius: UNIFIED_CARD_STYLES.card.borderRadius,
+        padding: UNIFIED_CARD_STYLES.card.padding,
         boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
         textAlign: 'center',
         flexShrink: 0,
@@ -65,14 +66,14 @@ const FortuneCard: React.FC<FortuneCardProps> = ({ label, tengan, jishi, fortune
         {/* 天干 */}
         <Box
           sx={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '8px',
+            width: UNIFIED_CARD_STYLES.pillar.width,
+            height: UNIFIED_CARD_STYLES.pillar.height,
+            borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontWeight: 700,
-            fontSize: '24px',
+            fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
             color: 'white',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             background: ELEMENT_COLORS[tengan.element] || '#9E9E9E',
@@ -84,14 +85,14 @@ const FortuneCard: React.FC<FortuneCardProps> = ({ label, tengan, jishi, fortune
         {/* 地支 */}
         <Box
           sx={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '8px',
+            width: UNIFIED_CARD_STYLES.pillar.width,
+            height: UNIFIED_CARD_STYLES.pillar.height,
+            borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             fontWeight: 700,
-            fontSize: '24px',
+            fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
             color: 'white',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             background: ELEMENT_COLORS[jishi.element] || '#9E9E9E',
@@ -152,10 +153,9 @@ export const TodayFortuneSection: React.FC<TodayFortuneSectionProps> = ({
     <Box
       sx={{
         backgroundColor: 'white',
-        padding: { xs: '20px 16px', sm: '30px 40px' },
+        padding: { xs: '20px', sm: '30px 40px' },
         margin: { xs: '16px 0', sm: '20px 0' },
         borderRadius: { xs: 0, sm: '12px' },
-        overflow: 'hidden',
       }}
     >
       {/* タイトル */}
@@ -175,9 +175,9 @@ export const TodayFortuneSection: React.FC<TodayFortuneSectionProps> = ({
       <Typography
         variant="body2"
         sx={{
-          fontSize: { xs: '12px', sm: '14px' },
+          fontSize: '14px',
           color: '#666',
-          mb: { xs: '12px', sm: '16px' },
+          mb: '16px',
         }}
       >
         今日の年運・月運・日運の吉凶
@@ -187,8 +187,8 @@ export const TodayFortuneSection: React.FC<TodayFortuneSectionProps> = ({
       <Box
         sx={{
           display: 'flex',
-          gap: { xs: '12px', sm: '20px' },
-          justifyContent: { xs: 'flex-start', sm: 'center' },
+          gap: UNIFIED_CARD_STYLES.spacing.gap,
+          justifyContent: 'center',
           padding: '8px 0',
           overflowX: { xs: 'auto', sm: 'visible' },
           WebkitOverflowScrolling: 'touch',

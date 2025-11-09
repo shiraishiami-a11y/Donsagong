@@ -44,14 +44,35 @@ export const SajuDetailPage: React.FC = () => {
           throw new Error('命式IDが指定されていません');
         }
 
-        // 命式詳細と今日の運を並列取得
-        const [sajuData, fortuneData] = await Promise.all([
-          getSajuDetail(id),
-          getCurrentFortune()
-        ]);
+        // 命式詳細を取得
+        const sajuData = await getSajuDetail(id);
+
+        // birthDatetimeから年月日時分を抽出
+        const birthDate = new Date(sajuData.birthDatetime);
+        const birthYear = birthDate.getFullYear();
+        const birthMonth = birthDate.getMonth() + 1; // 0-indexed なので +1
+        const birthDay = birthDate.getDate();
+        const birthHour = birthDate.getHours();
+        const birthMinute = birthDate.getMinutes();
+
+        // 命式データから生年月日情報を取得して今日の運を取得
+        const fortuneData = await getCurrentFortune(
+          birthYear,
+          birthMonth,
+          birthDay,
+          birthHour,
+          birthMinute,
+          sajuData.gender
+        );
 
         setData(sajuData);
         setCurrentFortune(fortuneData);
+
+        // デバッグ用ログ
+        console.log('[SajuDetailPage] fortuneData:', fortuneData);
+        console.log('[SajuDetailPage] yearFortune.fortuneLevel:', fortuneData.yearFortune.fortuneLevel, '→', FortuneLevelMap[fortuneData.yearFortune.fortuneLevel]);
+        console.log('[SajuDetailPage] monthFortune.fortuneLevel:', fortuneData.monthFortune.fortuneLevel, '→', FortuneLevelMap[fortuneData.monthFortune.fortuneLevel]);
+        console.log('[SajuDetailPage] dayFortune.fortuneLevel:', fortuneData.dayFortune.fortuneLevel, '→', FortuneLevelMap[fortuneData.dayFortune.fortuneLevel]);
 
         // 現在の大運を自動選択（初回のみ）
         const currentDaeun = sajuData.daeunList.find((d) => d.isCurrent);
@@ -158,7 +179,8 @@ export const SajuDetailPage: React.FC = () => {
           minHeight: '100vh',
           pb: 7.5,
           position: 'relative',
-          px: { xs: 0, sm: '24px', lg: '40px' },
+          px: { xs: '8px', sm: '16px', lg: '24px' },
+          overflowX: 'hidden',
         }}
       >
         {/* ヘッダーボタン（固定位置・右端） */}
@@ -293,7 +315,7 @@ export const SajuDetailPage: React.FC = () => {
                 char: currentFortune.yearFortune.branch,
                 element: getBranchElement(currentFortune.yearFortune.branch),
               },
-              fortuneLevel: FortuneLevelMap[currentFortune.yearFortune.fortuneLevel],
+              fortuneLevel: FortuneLevelMap[currentFortune.yearFortune.fortuneLevel] ?? 3,
             }}
             monthFortune={{
               tengan: {
@@ -304,7 +326,7 @@ export const SajuDetailPage: React.FC = () => {
                 char: currentFortune.monthFortune.branch,
                 element: getBranchElement(currentFortune.monthFortune.branch),
               },
-              fortuneLevel: FortuneLevelMap[currentFortune.monthFortune.fortuneLevel],
+              fortuneLevel: FortuneLevelMap[currentFortune.monthFortune.fortuneLevel] ?? 3,
             }}
             dayFortune={{
               tengan: {
@@ -315,7 +337,7 @@ export const SajuDetailPage: React.FC = () => {
                 char: currentFortune.dayFortune.branch,
                 element: getBranchElement(currentFortune.dayFortune.branch),
               },
-              fortuneLevel: FortuneLevelMap[currentFortune.dayFortune.fortuneLevel],
+              fortuneLevel: FortuneLevelMap[currentFortune.dayFortune.fortuneLevel] ?? 3,
             }}
           />
         )}

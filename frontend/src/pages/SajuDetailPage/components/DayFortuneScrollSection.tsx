@@ -4,6 +4,7 @@ import { Box, Typography, Chip } from '@mui/material';
 import type { DayFortuneInfo, FortuneLevel } from '../../../types';
 import { getElementColor, getStemElement, getBranchElement } from '../../../utils/sajuHelpers';
 import { getDayFortuneList } from '../../../services/api/sajuFortuneService';
+import { UNIFIED_CARD_STYLES } from '../../../constants/cardStyles';
 
 interface DayFortuneScrollSectionProps {
   sajuId: string;
@@ -15,7 +16,9 @@ interface DayFortuneScrollSectionProps {
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
+    '小吉': '#4CAF50',
     '吉': '#4CAF50',
+    '吉凶': '#9E9E9E',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
@@ -71,14 +74,19 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
   }
 
   return (
-    <Box sx={{ px: { xs: 2, sm: 5 }, py: 3, backgroundColor: '#fff', borderTop: '1px solid #e0e0e0', overflow: 'hidden' }}>
+    <Box sx={{
+      backgroundColor: 'white',
+      padding: { xs: '20px', sm: '30px 40px' },
+      margin: { xs: '16px 0', sm: '20px 0' },
+      borderRadius: { xs: 0, sm: '12px' },
+    }}>
       <Typography
         variant="h6"
         sx={{
-          fontSize: { xs: '0.9rem', sm: '1rem' },
-          fontWeight: 600,
+          fontSize: { xs: '18px', sm: '24px' },
+          fontWeight: 700,
           color: '#1a1a2e',
-          mb: 2,
+          mb: { xs: '16px', sm: '24px' },
         }}
       >
         日運（{year}年{month}月）
@@ -87,17 +95,17 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
       <Box
         data-testid="day-scroll-container"
         sx={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          gap: 1.5,
+          maxWidth: '100%',
           overflowX: 'auto',
           WebkitOverflowScrolling: 'touch',
-          pb: 1.5,
+          padding: { xs: '12px 0', sm: '20px 0' },
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#D4AF37 #f5f5f5',
           '&::-webkit-scrollbar': {
             height: '6px',
           },
           '&::-webkit-scrollbar-track': {
-            background: '#f1f1f1',
+            background: '#f5f5f5',
             borderRadius: '10px',
           },
           '&::-webkit-scrollbar-thumb': {
@@ -106,7 +114,15 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
           },
         }}
       >
-        {days.map((dayFortune) => {
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: UNIFIED_CARD_STYLES.spacing.gap,
+            minWidth: 'min-content',
+          }}
+        >
+          {[...days].reverse().map((dayFortune) => {
           const isToday = dayFortune.isToday;
 
           return (
@@ -114,7 +130,8 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
               key={dayFortune.id}
               data-testid="day-card"
               sx={{
-                minWidth: { xs: '80px', sm: '90px' },
+                minWidth: UNIFIED_CARD_STYLES.card.minWidth,
+                flexShrink: 0,
                 p: 1.5,
                 borderRadius: 2,
                 border: '1px solid #e0e0e0',
@@ -158,14 +175,14 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
                 <Box
                   data-testid="day-stem"
                   sx={{
-                    width: '38px',
-                    height: '38px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getStemElement(dayFortune.dayStem)),
-                    borderRadius: 1,
-                    fontSize: '1.1rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -177,14 +194,14 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
                 <Box
                   data-testid="day-branch"
                   sx={{
-                    width: '38px',
-                    height: '38px',
+                    width: UNIFIED_CARD_STYLES.pillar.width,
+                    height: UNIFIED_CARD_STYLES.pillar.height,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: getElementColor(getBranchElement(dayFortune.dayBranch)),
-                    borderRadius: 1,
-                    fontSize: '1.1rem',
+                    borderRadius: UNIFIED_CARD_STYLES.pillar.borderRadius,
+                    fontSize: UNIFIED_CARD_STYLES.fontSize.pillarChar,
                     fontWeight: 600,
                     color: '#fff',
                     textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
@@ -243,6 +260,7 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
             </Box>
           );
         })}
+        </Box>
       </Box>
     </Box>
   );
