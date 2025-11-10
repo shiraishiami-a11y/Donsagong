@@ -81,14 +81,14 @@ export interface DaeunInfo {
   isCurrent?: boolean; // 現在の大運期間かどうか
 }
 
-export type FortuneLevel = '大吉' | '小吉' | '吉' | '吉凶' | '平' | '凶' | '大凶';
+export type FortuneLevel = '大吉' | '吉' | '中吉' | '小吉' | '平' | '凶' | '大凶';
 
-// 吉凶レベルの数値マッピング
+// 吉凶レベルの数値マッピング（7段階）
 export const FortuneLevelMap: Record<FortuneLevel, number> = {
-  '大吉': 5,
+  '大吉': 7,
+  '吉': 6,
+  '中吉': 5,
   '小吉': 4,
-  '吉': 4,
-  '吉凶': 3,
   '平': 3,
   '凶': 2,
   '大凶': 1
@@ -96,8 +96,10 @@ export const FortuneLevelMap: Record<FortuneLevel, number> = {
 
 // 逆マッピング（数値から吉凶レベル）
 export const FortuneLevelReverseMap: Record<number, FortuneLevel> = {
-  5: '大吉',
-  4: '吉',
+  7: '大吉',
+  6: '吉',
+  5: '中吉',
+  4: '小吉',
   3: '平',
   2: '凶',
   1: '大凶'
@@ -105,7 +107,7 @@ export const FortuneLevelReverseMap: Record<number, FortuneLevel> = {
 
 export interface GraphDataPoint {
   age: number;
-  fortuneLevel: number; // 1-5
+  fortuneLevel: number; // 1-7（7段階）
   daeunStem: string;
   daeunBranch: string;
   label: string; // "8-17歳: 甲子"

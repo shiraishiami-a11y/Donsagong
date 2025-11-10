@@ -5,8 +5,8 @@ DONSAGONG_MASTER_DATABASE.mdに基づいた大運の吉凶レベル判定
 from datetime import datetime
 from typing import Dict, List, Literal, Optional, Tuple
 
-# 吉凶レベル型
-FortuneLevel = Literal["大吉", "吉", "平", "凶", "大凶"]
+# 吉凶レベル型（7段階）
+FortuneLevel = Literal["大吉", "吉", "中吉", "小吉", "平", "凶", "大凶"]
 
 # 月地支から季節を取得するマッピング
 MONTH_BRANCH_TO_SEASON = {
@@ -50,12 +50,12 @@ class FortuneAnalyzer:
         daeun_branch: str,
     ) -> FortuneLevel:
         """
-        大運の吉凶レベルを判定
+        大運の吉凶レベルを7段階で判定
 
-        ドンサゴン原則（占い師検証版）:
-        - 天干 60% : 地支 40% : 調候 40% (正規化後)
-        - 一柱運が最も重要
-        - 4ポイントチェック: 日干vs運天干、日支vs運地支、時干vs運天干、時支vs運地支
+        新ロジック（2025-11-10確定）:
+        - 日柱50% + 時柱20% + 調候30% = 100%
+        - 各柱内: 天干70% + 地支30%（三合時は40%）
+        - 三合成立時は地支を吉(+1)扱い
 
         Args:
             day_stem: 日干
@@ -67,38 +67,52 @@ class FortuneAnalyzer:
             daeun_branch: 大運地支
 
         Returns:
-            吉凶レベル（'大吉', '吉', '平', '凶', '大凶'）
+            吉凶レベル（7段階）
         """
-        # 4ポイントチェック
-        point1_fortune = self._check_tengan_relation(day_stem, daeun_stem)  # 日干 vs 運天干
-        point2_fortune = self._check_jiji_relation(day_branch, daeun_branch)  # 日支 vs 運地支
-        point3_fortune = self._check_tengan_relation(hour_stem, daeun_stem)  # 時干 vs 運天干
-        point4_fortune = self._check_jiji_relation(hour_branch, daeun_branch)  # 時支 vs 運地支
+        # 天干の吉凶を取得
+        day_stem_fortune = self._check_tengan_relation(day_stem, daeun_stem)
+        hour_stem_fortune = self._check_tengan_relation(hour_stem, daeun_stem)
 
-        # 調候判定（40%の重要度）
-        johoo_fortune = self._check_johoo(month_branch, daeun_branch, day_stem)
+        # 地支の吉凶を取得
+        day_branch_fortune = self._check_jiji_relation(day_branch, daeun_branch)
+        hour_branch_fortune = self._check_jiji_relation(hour_branch, daeun_branch)
 
-        # ポイントをスコア化（-2: 大凶, -1: 凶, 0: 平, 1: 吉, 2: 大吉）
-        point_scores = [
-            self._fortune_to_score(point1_fortune),  # 日干 vs 運天干
-            self._fortune_to_score(point2_fortune),  # 日支 vs 運地支
-            self._fortune_to_score(point3_fortune),  # 時干 vs 運天干
-            self._fortune_to_score(point4_fortune),  # 時支 vs 運地支
-        ]
+        # 調候判定
+        johoo_fortune = self._check_johoo(month_branch, daeun_stem, day_stem)
 
-        johoo_score = self._fortune_to_score(johoo_fortune)
+        # スコア化
+        score_map = {"大吉": 2, "吉": 1, "平": 0, "凶": -1, "大凶": -2}
+        day_stem_score = score_map.get(day_stem_fortune, 0)
+        hour_stem_score = score_map.get(hour_stem_fortune, 0)
+        johoo_score = score_map.get(johoo_fortune, 0)
 
-        # 総合判定（天干60%、地支40%、調候40%）
-        # 日柱・時柱の重み（日7：時3）
-        # 天干スコア = (日干70% + 時干30%)
-        tengan_avg = point_scores[0] * 0.7 + point_scores[2] * 0.3
-        # 地支スコア = (日支70% + 時支30%)
-        jiji_avg = point_scores[1] * 0.7 + point_scores[3] * 0.3
+        # 三合チェック
+        day_sangap = self._is_sangap(day_branch, daeun_branch)
+        hour_sangap = self._is_sangap(hour_branch, daeun_branch)
 
-        # 合計140%なので正規化（1.4で割る）
-        total_score = (tengan_avg * 0.6 + jiji_avg * 0.4 + johoo_score * 0.4) / 1.4
+        # 地支スコアと重み（三合時は吉+1扱い＆重み0.4）
+        if day_sangap:
+            day_branch_score = 1  # 吉扱い
+            day_jiji_weight = 0.4
+        else:
+            day_branch_score = score_map.get(day_branch_fortune, 0)
+            day_jiji_weight = 0.3
 
-        # スコアを吉凶レベルに変換
+        if hour_sangap:
+            hour_branch_score = 1  # 吉扱い
+            hour_jiji_weight = 0.4
+        else:
+            hour_branch_score = score_map.get(hour_branch_fortune, 0)
+            hour_jiji_weight = 0.3
+
+        # 柱スコア計算
+        day_pillar = day_stem_score * 0.7 + day_branch_score * day_jiji_weight
+        hour_pillar = hour_stem_score * 0.7 + hour_branch_score * hour_jiji_weight
+
+        # 最終スコア（日柱50% + 時柱20% + 調候30%）
+        total_score = day_pillar * 0.5 + hour_pillar * 0.2 + johoo_score * 0.3
+
+        # 7段階に変換
         return self._score_to_fortune(total_score)
 
     def _check_tengan_relation(self, from_stem: str, to_stem: str) -> str:
@@ -147,9 +161,37 @@ class FortuneAnalyzer:
         relation = self.jiji_matrix.get(from_branch, {}).get(to_branch, "平")
         return relation
 
-    def _check_johoo(self, month_branch: str, daeun_branch: str, day_stem: str) -> str:
+    def _is_sangap(self, branch1: str, branch2: str) -> bool:
         """
-        調候用神判定
+        三合（サンガプ）判定
+
+        三合グループ（六合は除外）:
+        - 木局: 寅・午・戌
+        - 火局: 巳・酉・丑
+        - 金局: 申・子・辰
+        - 水局: 亥・卯・未
+
+        Args:
+            branch1: 地支1
+            branch2: 地支2
+
+        Returns:
+            True: 三合成立, False: 三合なし
+        """
+        sangap_groups = [
+            {"寅", "午", "戌"},  # 木局
+            {"巳", "酉", "丑"},  # 火局
+            {"申", "子", "辰"},  # 金局
+            {"亥", "卯", "未"},  # 水局
+        ]
+        for group in sangap_groups:
+            if branch1 in group and branch2 in group:
+                return True
+        return False
+
+    def _check_johoo(self, month_branch: str, daeun_stem: str, day_stem: str) -> str:
+        """
+        調候用神判定（大運天干ベース）
 
         ドンサゴン原則:
         - 調候用神 80% : 原局 20%（最重要）
@@ -158,7 +200,7 @@ class FortuneAnalyzer:
 
         Args:
             month_branch: 原局月地支
-            daeun_branch: 大運地支
+            daeun_stem: 大運天干（調候判定用）
             day_stem: 日干（特殊規則判定用）
 
         Returns:
@@ -166,16 +208,40 @@ class FortuneAnalyzer:
         """
         # 特殊規則: 丁火・辛金は独自の調候を使用
         if day_stem in ["丁", "辛"]:
-            return self._check_special_johoo(daeun_branch)
+            return self._check_special_johoo_by_stem(daeun_stem)
 
         # 原局の季節を取得
         season = MONTH_BRANCH_TO_SEASON.get(month_branch, "봄")
 
-        # 調候表から吉凶を取得
+        # 調候表から吉凶を取得（大運天干ベース）
         johoo_data = self.johoo_table.get(month_branch, {})
-        fortune = johoo_data.get(daeun_branch, "平")
+        fortune = johoo_data.get(daeun_stem, "平")
 
         return fortune
+
+    def _check_special_johoo_by_stem(self, daeun_stem: str) -> str:
+        """
+        丁火・辛金の特殊調候判定（天干ベース）
+
+        Args:
+            daeun_stem: 大運天干
+
+        Returns:
+            吉凶判定
+        """
+        # 秋冬の天干（金水系）
+        autumn_winter = ["庚", "辛", "壬", "癸"]
+
+        if daeun_stem in autumn_winter:
+            return "吉"  # 秋冬は小吉
+
+        # 夏（火系）
+        summer = ["丙", "丁"]
+        if daeun_stem in summer:
+            return "凶"
+
+        # 春・土は平
+        return "平"
 
     def _check_special_johoo(self, daeun_branch: str) -> str:
         """
@@ -217,17 +283,21 @@ class FortuneAnalyzer:
         return score_map.get(fortune, 0.0)
 
     def _score_to_fortune(self, score: float) -> FortuneLevel:
-        """スコアを吉凶レベルに変換"""
+        """スコアを7段階吉凶レベルに変換"""
         if score >= 1.5:
             return "大吉"
-        elif score >= 0.5:
+        elif score >= 0.7:
             return "吉"
-        elif score <= -1.0:
-            return "大凶"
-        elif score <= -0.5:
+        elif score >= 0.4:
+            return "中吉"
+        elif score >= 0.1:
+            return "小吉"
+        elif score > -0.3:
+            return "平"
+        elif score > -0.6:
             return "凶"
         else:
-            return "平"
+            return "大凶"
 
     def _load_tengan_matrix(self) -> Dict[str, Dict[str, str]]:
         """
@@ -260,15 +330,15 @@ class FortuneAnalyzer:
                 "己": "平", "庚": "凶", "辛": "凶", "壬": "凶", "癸": "平"
             },
             "庚": {
-                "甲": "吉", "乙": "凶", "丙": "吉", "丁": "吉", "戊": "吉",
-                "己": "吉", "庚": "平", "辛": "凶", "壬": "吉", "癸": "吉"
+                "甲": "吉", "乙": "大凶", "丙": "吉", "丁": "吉", "戊": "吉",
+                "己": "吉", "庚": "平", "辛": "大凶", "壬": "吉", "癸": "吉"
             },
             "辛": {
                 "甲": "吉", "乙": "吉", "丙": "大凶", "丁": "大凶", "戊": "凶",
                 "己": "平", "庚": "凶", "辛": "平", "壬": "大吉", "癸": "吉"
             },
             "壬": {
-                "甲": "吉", "乙": "吉", "丙": "吉", "丁": "大凶", "戊": "吉",
+                "甲": "吉", "乙": "吉", "丙": "大吉", "丁": "大凶", "戊": "吉",
                 "己": "凶", "庚": "大吉", "辛": "凶", "壬": "平", "癸": "凶"
             },
             "癸": {
