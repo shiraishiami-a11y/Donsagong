@@ -26,7 +26,7 @@ export const SajuCard: React.FC<SajuCardProps> = ({ data, onDelete, onClick }) =
 
   return (
     <Box
-      data-testid="saju-card"
+      data-testid={`saju-card-${data.id}`}
       onClick={handleCardClick}
       sx={{
         background: 'white',

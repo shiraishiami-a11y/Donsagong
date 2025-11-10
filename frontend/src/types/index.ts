@@ -290,7 +290,7 @@ export interface LifeGraphData {
   currentAge: number;
   maxAge: number; // 表示する最大年齢（通常100歳）
   minFortuneLevel: number; // 最小吉凶レベル（1）
-  maxFortuneLevel: number; // 最大吉凶レベル（5）
+  maxFortuneLevel: number; // 最大吉凶レベル（7）
   averageFortuneLevel?: number; // 平均吉凶レベル
 }
 

@@ -78,7 +78,7 @@ class FortuneAnalyzer:
         hour_branch_fortune = self._check_jiji_relation(hour_branch, daeun_branch)
 
         # 調候判定
-        johoo_fortune = self._check_johoo(month_branch, daeun_stem, day_stem)
+        johoo_fortune = self._check_johoo(month_branch, daeun_branch, day_stem)
 
         # スコア化
         score_map = {"大吉": 2, "吉": 1, "平": 0, "凶": -1, "大凶": -2}
@@ -189,9 +189,9 @@ class FortuneAnalyzer:
                 return True
         return False
 
-    def _check_johoo(self, month_branch: str, daeun_stem: str, day_stem: str) -> str:
+    def _check_johoo(self, month_branch: str, daeun_branch: str, day_stem: str) -> str:
         """
-        調候用神判定（大運天干ベース）
+        調候用神判定（大運地支ベース）
 
         ドンサゴン原則:
         - 調候用神 80% : 原局 20%（最重要）
@@ -200,7 +200,7 @@ class FortuneAnalyzer:
 
         Args:
             month_branch: 原局月地支
-            daeun_stem: 大運天干（調候判定用）
+            daeun_branch: 大運地支（調候判定用）
             day_stem: 日干（特殊規則判定用）
 
         Returns:
@@ -208,14 +208,14 @@ class FortuneAnalyzer:
         """
         # 特殊規則: 丁火・辛金は独自の調候を使用
         if day_stem in ["丁", "辛"]:
-            return self._check_special_johoo_by_stem(daeun_stem)
+            return self._check_special_johoo(daeun_branch)
 
         # 原局の季節を取得
         season = MONTH_BRANCH_TO_SEASON.get(month_branch, "봄")
 
-        # 調候表から吉凶を取得（大運天干ベース）
+        # 調候表から吉凶を取得（大運地支ベース）
         johoo_data = self.johoo_table.get(month_branch, {})
-        fortune = johoo_data.get(daeun_stem, "平")
+        fortune = johoo_data.get(daeun_branch, "平")
 
         return fortune
 

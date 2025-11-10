@@ -17,13 +17,13 @@ export const getElementColor = (element?: FiveElement): string => {
   return colorMap[element];
 };
 
-// 吉凶レベルからカラーを取得
+// 吉凶レベルからカラーを取得（7段階システム対応）
 export const getFortuneColor = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': 'linear-gradient(45deg, #FFD700, #FFA500)',
-    '小吉': 'linear-gradient(45deg, #4CAF50, #66bb6a)',
     '吉': 'linear-gradient(45deg, #4CAF50, #66bb6a)',
-    '吉凶': 'linear-gradient(45deg, #9E9E9E, #BDBDBD)',
+    '中吉': 'linear-gradient(45deg, #66bb6a, #81c784)',
+    '小吉': 'linear-gradient(45deg, #81c784, #a5d6a7)',
     '平': 'linear-gradient(45deg, #9E9E9E, #BDBDBD)',
     '凶': 'linear-gradient(45deg, #FF9800, #ffb74d)',
     '大凶': 'linear-gradient(45deg, #F44336, #ef5350)',
@@ -32,13 +32,13 @@ export const getFortuneColor = (fortuneLevel: FortuneLevel): string => {
   return colorMap[fortuneLevel];
 };
 
-// 吉凶レベルからアイコンを取得
+// 吉凶レベルからアイコンを取得（7段階システム対応）
 export const getFortuneIcon = (fortuneLevel: FortuneLevel): string => {
   const iconMap: Record<FortuneLevel, string> = {
     '大吉': 'star',
-    '小吉': 'thumb_up',
     '吉': 'thumb_up',
-    '吉凶': 'remove',
+    '中吉': 'thumb_up',
+    '小吉': 'thumb_up',
     '平': 'remove',
     '凶': 'warning',
     '大凶': 'error',
@@ -80,12 +80,31 @@ export const getGenderLabel = (gender: string): string => {
 
 // 日付フォーマット（ISO 8601 → 日本語表記）
 export const formatBirthDateTime = (isoString: string): string => {
-  const date = new Date(isoString);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
+  // ISO文字列から直接パース（タイムゾーン変換を避ける）
+  // 形式: "1977-11-07T12:00:00+09:00" または "1977-11-07T12:00:00Z"
+  const match = isoString.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+
+  if (!match) {
+    // フォールバック：Dateオブジェクトを使用
+    const date = new Date(isoString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}年${month}月${day}日 時間不明`;
+  }
+
+  const year = parseInt(match[1], 10);
+  const month = parseInt(match[2], 10);
+  const day = parseInt(match[3], 10);
+  const hour = parseInt(match[4], 10);
+  const minute = parseInt(match[5], 10);
+
+  // 時刻が12:00または00:00の場合は「時間不明」と判定（デフォルト値のため）
+  const isTimeUnknown = (hour === 12 && minute === 0) || (hour === 0 && minute === 0);
+
+  if (isTimeUnknown) {
+    return `${year}年${month}月${day}日 時間不明`;
+  }
 
   return `${year}年${month}月${day}日 ${hour}:${minute.toString().padStart(2, '0')}`;
 };

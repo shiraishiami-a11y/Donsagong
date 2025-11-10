@@ -4,7 +4,8 @@
 export const UNIFIED_CARD_STYLES = {
   // カード全体のサイズ
   card: {
-    minWidth: { xs: '70px', sm: '100px', md: '140px' },
+    minWidth: { xs: '130px', sm: '146px', md: '166px' }, // pxを文字列で明示（ブラウザ互換性のため）
+    width: { xs: '130px', sm: '146px', md: '166px' }, // widthを明示的に設定
     padding: { xs: '8px', sm: '12px' },
     borderRadius: '8px',
   },

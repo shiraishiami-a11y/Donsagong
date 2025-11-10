@@ -268,6 +268,7 @@ export const SajuDetailPage: React.FC = () => {
 
           {/* 閉じるボタン */}
           <IconButton
+            data-testid="close-button"
             onClick={() => navigate('/list')}
             sx={{
               backgroundColor: 'white',

@@ -11,6 +11,7 @@ interface PillarsSectionProps {
 export const PillarsSection: React.FC<PillarsSectionProps> = ({ data }) => {
   return (
     <Box
+      data-testid="pillars-section"
       sx={{
         backgroundColor: 'white',
         padding: { xs: '16px 8px', sm: '24px 16px' },

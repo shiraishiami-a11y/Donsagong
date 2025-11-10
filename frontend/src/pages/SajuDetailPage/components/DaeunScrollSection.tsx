@@ -11,13 +11,13 @@ interface DaeunScrollSectionProps {
   daeunNumber: number; // 大運数
 }
 
-// 吉凶カラーを取得（境界線用）
+// 吉凶カラーを取得（境界線用） - 7段階システム対応
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
-    '小吉': '#4CAF50',
     '吉': '#4CAF50',
-    '吉凶': '#9E9E9E',
+    '中吉': '#66bb6a',
+    '小吉': '#81c784',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
@@ -105,6 +105,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
               onClick={() => onDaeunSelect(daeun.startAge)}
               sx={{
                 minWidth: UNIFIED_CARD_STYLES.card.minWidth,
+                boxSizing: 'border-box',
                 padding: { xs: '12px', sm: '20px' },
                 borderRadius: '12px',
                 border: isCurrent
@@ -131,7 +132,7 @@ export const DaeunScrollSection: React.FC<DaeunScrollSectionProps> = ({
                 variant="caption"
                 sx={{
                   display: 'block',
-                  fontSize: '12px',
+                  fontSize: '14px',
                   color: '#666',
                   fontWeight: 600,
                   mb: '8px',

@@ -137,37 +137,22 @@
 
 ### 3.1 全6ページ実装状況
 
-**✅ 全ページ実装完了（コードが真実源）**
+**✅ コア6ページ実装完了（詳細は `frontend/src/pages/` 参照）**
 
-| ページ | ルート | 実装状況 |
-|--------|--------|----------|
-| 命式記入ページ | `/` | ✅ 完了 |
-| 命式リストページ | `/list` | ✅ 完了 |
-| 命式詳細ページ | `/detail/:id` | ✅ 完了 |
-| 設定ページ | `/settings` | ✅ 完了 |
-| ログインページ | `/login` | ✅ 完了 |
-| 新規登録ページ | `/register` | ✅ 完了 |
-
-#### 今後の拡張機能（Phase 2以降）
-- パスワードリセット機能（未実装）
-- パスワード変更機能（エンドポイント未実装）
-- セッション有効期限選択UI（未実装）
+#### Phase 2以降で追加予定の機能
+- パスワードリセット機能
+- パスワード変更機能
+- セッション有効期限選択UI
 
 ---
 
 ## 4. データモデル実装状況
 
-**✅ 全モデル実装完了（コードが真実源: `backend/app/models/__init__.py`）**
-
-| モデル名 | テーブル名 | 実装状況 |
-|----------|------------|----------|
-| User | users | ✅ 完了 |
-| Saju | saju | ✅ 完了 |
-| RefreshToken | refresh_tokens | ✅ 完了 |
+**✅ 実装完了（詳細は `backend/app/models/__init__.py` 参照）**
 
 外部データベース:
 - 210年節気DB: `solar_terms_1900_2109_JIEQI_ONLY.json`
-- 天干地支マトリックス: Pythonコード内（`fortune_analyzer.py`）
+- ドンサゴンマトリックス: `backend/app/services/fortune_analyzer.py`
 
 ---
 
@@ -181,6 +166,11 @@
 - **データ正確性**: 210年節気データベース範囲内（1900-2109年）でのみ100%正確
 - **計算複雑度**: 大運・年月日運・グラフ計算で応答時間が増加する可能性
 - **ローカルストレージ**: ブラウザデータクリアで消失
+- **タイムゾーン統一**: 必ずKST（韓国標準時、UTC+9）で統一
+  - 入力：KST形式（例：`2025-01-01T12:00:00+09:00`）
+  - 保存：KST形式でデータベース・LocalStorageに保存
+  - 表示：KST形式のISO文字列から直接抽出（タイムゾーン変換を避ける）
+  - 時間不明の場合：12:00または00:00をデフォルト値として使用
 
 ### ドンサゴン分析の絶対禁止事項
 - ❌ 五行論（木火土金水、相生相剋）使用禁止
@@ -200,108 +190,35 @@
 
 ## 6. API実装状況
 
-**✅ 全APIエンドポイント実装完了（コードが真実源: `backend/app/api/`）**
+**✅ コア機能実装完了（詳細は `backend/app/api/` 参照）**
 
-### 認証API (`/api/auth`)
-- `POST /api/auth/register`: 新規登録
-- `POST /api/auth/login`: ログイン
-- `POST /api/auth/logout`: ログアウト
-- `POST /api/auth/refresh`: トークンリフレッシュ
-
-### 命式API (`/api/saju`)
-- `POST /api/saju/calculate`: 命式計算
-- `POST /api/saju/save`: 命式保存
-- `GET /api/saju/list`: 命式一覧
-- `GET /api/saju/{id}`: 命式詳細
-- `DELETE /api/saju/{id}`: 命式削除
-- `GET /api/saju/{id}/daeun`: 大運分析
-- `GET /api/saju/current-fortune`: 現在の年月日運（生年月日パラメータ必須）
-- `GET /api/saju/{id}/year/{daeun_start_age}`: 年運リスト
-- `GET /api/saju/{id}/month/{year}`: 月運リスト
-- `GET /api/saju/{id}/day/{year}/{month}`: 日運リスト
-- `GET /api/saju/export`: データエクスポート
-- `POST /api/saju/migrate`: ゲストデータ移行
-
-### ユーザーAPI (`/api/user`)
-- `GET /api/user/me`: ユーザー情報取得（未実装）
-- `PUT /api/user/password`: パスワード変更（未実装）
+### 未実装機能（Phase 2以降）
+- `GET /api/user/me`: ユーザー情報取得
+- `PUT /api/user/password`: パスワード変更
 
 ---
 
 ## 7. 技術スタック
 
-### フロントエンド
-```yaml
-フレームワーク: React 18
-言語: TypeScript 5
-UIライブラリ: MUI v6 (Material-UI)
-グラフ: Recharts v3.3.0
-状態管理: Zustand
-ルーティング: React Router v6
-データフェッチ: React Query (TanStack Query)
-ビルドツール: Vite 5
-ホスティング: Vercel
+**✅ 実装完了（詳細は `package.json` / `requirements.txt` 参照）**
 
-カスタムテーマ:
-  - ゴールドカラーパレット（#D4AF37）
-  - 五行カラーシステム
-  - golden-peppaアニメーション統合
-```
-
-### バックエンド
-```yaml
-言語: Python 3.11+
-フレームワーク: FastAPI 0.100+
-ORM: SQLAlchemy 2.0
-マイグレーション: Alembic
-バリデーション: Pydantic v2
-認証: FastAPI-Users + JWT
-ホスティング: GCP Cloud Run
-
-既存資産統合:
-  - lunar-python（万年暦計算）
-  - 210年節気データベース（JSON → PostgreSQL）
-  - ドンサゴン分析エンジン
-```
-
-### データベース
-```yaml
-メインDB: PostgreSQL 15+ (Neon)
-キャッシュ: Redis (Upstash, オプション)
-```
-
-### 開発環境
-```yaml
-Python: 3.11+
-Node.js: 20.x LTS
-パッケージマネージャ:
-  - Python: Poetry
-  - JavaScript: pnpm
-コード品質:
-  - Python: Black, Ruff, mypy
-  - TypeScript: ESLint, Prettier
-```
+### 主要技術
+- **フロントエンド**: React 19 + TypeScript 5 + Vite 7 + MUI v7
+- **バックエンド**: FastAPI 0.109 + Python 3.9 + SQLAlchemy 2.0
+- **データベース**: PostgreSQL 15 (Neon)
+- **グラフ描画**: Recharts v3.3.0
+- **万年暦計算**: lunar-python
+- **210年節気DB**: 1900-2109年（検証済み）
 
 ---
 
-## 8. 必要な外部サービス・アカウント
+## 8. デプロイ環境
 
-### 必須サービス
+**✅ 本番稼働中（2025-11-08時点）**
 
-| サービス名 | 用途 | 取得先 | 備考 |
-|-----------|------|--------|------|
-| lunar-python | 万年暦計算ライブラリ | `pip install lunar-python` | 無料、1900-2100年対応 |
-| Neon PostgreSQL | メインデータベース | https://neon.tech | 無料枠0.5GB、サーバーレス |
-| Vercel | フロントエンドホスティング | https://vercel.com | 無料枠あり、自動デプロイ |
-| GCP Cloud Run | バックエンドホスティング | https://cloud.google.com/run | 無料枠月2M req |
-| GitHub | コード管理・CI/CD | https://github.com | 無料 |
-
-### オプションサービス
-
-| サービス名 | 用途 | 取得先 | 備考 |
-|-----------|------|--------|------|
-| Upstash Redis | キャッシュ | https://upstash.com | 無料枠あり、初期不要 |
-| Sentry | エラー監視 | https://sentry.io | 無料枠あり、本番後推奨 |
+- **フロントエンド**: Vercel - https://frontend-amis-projects-474dde3c.vercel.app
+- **バックエンド**: GCP Cloud Run - https://golden-saju-api-235426778039.asia-northeast1.run.app
+- **データベース**: Neon PostgreSQL（無料枠）
 
 ---
 

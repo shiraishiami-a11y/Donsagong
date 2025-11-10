@@ -36,6 +36,7 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
 
   return (
     <Box
+      data-testid="life-graph-section"
       sx={{
         backgroundColor: 'white',
         padding: { xs: '16px', sm: '30px 40px' },
@@ -120,8 +121,8 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
               <YAxis
                 stroke="#666"
                 style={{ fontSize: '0.65rem' }}
-                domain={[1, 5]}
-                ticks={[1, 2, 3, 4, 5]}
+                domain={[1, 7]}
+                ticks={[1, 2, 3, 4, 5, 6, 7]}
                 width={28}
                 tickMargin={4}
               />
@@ -139,8 +140,10 @@ export const LifeGraphSection: React.FC<LifeGraphSectionProps> = ({ currentAge, 
                                    typeof value === 'string' ? parseFloat(value) : null;
                   if (numValue === null || isNaN(numValue)) return null;
                   const labels: Record<number, string> = {
-                    5: '大吉',
-                    4: '吉',
+                    7: '大吉',
+                    6: '吉',
+                    5: '中吉',
+                    4: '小吉',
                     3: '平',
                     2: '凶',
                     1: '大凶',

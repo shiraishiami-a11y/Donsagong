@@ -74,12 +74,15 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
   }
 
   return (
-    <Box sx={{
-      backgroundColor: 'white',
-      padding: { xs: '20px', sm: '30px 40px' },
-      margin: { xs: '16px 0', sm: '20px 0' },
-      borderRadius: { xs: 0, sm: '12px' },
-    }}>
+    <Box
+      data-testid="day-scroll-section"
+      sx={{
+        backgroundColor: 'white',
+        padding: { xs: '20px', sm: '30px 40px' },
+        margin: { xs: '16px 0', sm: '20px 0' },
+        borderRadius: { xs: 0, sm: '12px' },
+      }}
+    >
       <Typography
         variant="h6"
         sx={{
@@ -128,7 +131,7 @@ export const DayFortuneScrollSection: React.FC<DayFortuneScrollSectionProps> = (
           return (
             <Box
               key={dayFortune.id}
-              data-testid="day-card"
+              data-testid={`day-card-${dayFortune.day}`}
               sx={{
                 minWidth: UNIFIED_CARD_STYLES.card.minWidth,
                 flexShrink: 0,

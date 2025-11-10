@@ -80,10 +80,22 @@ export const TopPage: React.FC = () => {
     const month = String(birthDate.getMonth() + 1).padStart(2, '0');
     const day = String(birthDate.getDate()).padStart(2, '0');
 
+    // デバッグ: DatePickerの生の値をログ出力
+    console.log('[TopPage DEBUG] birthDate:', birthDate);
+    console.log('[TopPage DEBUG] birthDate.toISOString():', birthDate.toISOString());
+    console.log('[TopPage DEBUG] year:', year, 'month:', month, 'day:', day);
+
+    if (!timeUnknown && birthTime) {
+      console.log('[TopPage DEBUG] birthTime:', birthTime);
+      console.log('[TopPage DEBUG] birthTime.toISOString():', birthTime.toISOString());
+    }
+
     // 時刻不明の場合は正午（12:00）を使用
     const hour = timeUnknown ? '12' : String(birthTime!.getHours()).padStart(2, '0');
     const minute = timeUnknown ? '00' : String(birthTime!.getMinutes()).padStart(2, '0');
     const birthDatetime = `${year}-${month}-${day}T${hour}:${minute}:00+09:00`;
+
+    console.log('[TopPage DEBUG] 生成されたbirthDatetime:', birthDatetime);
 
     const requestData: BirthDataRequest = {
       birthDatetime,
@@ -91,6 +103,8 @@ export const TopPage: React.FC = () => {
       name: name || undefined,
       timezoneOffset: 9, // KST
     };
+
+    console.log('[TopPage DEBUG] APIリクエストデータ:', JSON.stringify(requestData, null, 2));
 
     setIsLoading(true);
 

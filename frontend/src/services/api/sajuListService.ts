@@ -221,7 +221,7 @@ export async function getSajuDetail(id: string): Promise<SajuDetailPageData> {
       currentAge: currentAge,
       maxAge: 100,
       minFortuneLevel: 1,
-      maxFortuneLevel: 5,
+      maxFortuneLevel: 7,
     },
     currentAge: currentAge,
     currentYear: today.getFullYear(),
