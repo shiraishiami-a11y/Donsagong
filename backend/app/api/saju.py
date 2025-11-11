@@ -3,7 +3,7 @@
 """
 import json
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, status, Depends, Response
 from sqlalchemy.orm import Session
@@ -37,7 +37,7 @@ from app.schemas.saju import (
     YearFortuneInfo,
     YearFortuneListResponse,
 )
-from app.services.saju_calculator import SajuCalculator, SolarTermsDB
+from app.services.saju_calculator import SajuCalculator, SolarTermsDB, KST
 from app.services.fortune_service import FortuneCalculator
 
 router = APIRouter(prefix="/api/saju", tags=["saju"])
@@ -63,6 +63,29 @@ def get_fortune_calculator() -> FortuneCalculator:
     if _fortune_calculator_instance is None:
         _fortune_calculator_instance = FortuneCalculator()
     return _fortune_calculator_instance
+
+
+def convert_db_datetime_to_kst_iso(dt: datetime) -> str:
+    """
+    データベースから取得したnaive datetimeをKSTのISO文字列に変換
+
+    データベースのDateTimeカラムはタイムゾーン情報を保持しないため、
+    取得したdatetimeはnaive（タイムゾーン情報なし）です。
+    データベースにはUTCで保存されているので、これをUTCとして扱い、
+    KSTに変換してISO文字列として返します。
+
+    Args:
+        dt: データベースから取得したnaive datetime（UTC）
+
+    Returns:
+        KSTのISO文字列（例：'1986-05-26T05:00:00+09:00'）
+    """
+    # naive datetimeにUTCタイムゾーンを付与
+    dt_utc = dt.replace(tzinfo=timezone.utc)
+    # KSTに変換
+    dt_kst = dt_utc.astimezone(KST)
+    # ISO文字列として返す
+    return dt_kst.isoformat()
 
 
 @router.post(
@@ -297,10 +320,10 @@ async def get_saju_list(
                 SajuSummary(
                     id=item.id,
                     name=item.name,
-                    birthDatetime=item.birth_datetime.isoformat(),
+                    birthDatetime=convert_db_datetime_to_kst_iso(item.birth_datetime),
                     gender=item.gender,
                     fortuneLevel=fortune_level_str,
-                    createdAt=item.created_at.isoformat(),
+                    createdAt=convert_db_datetime_to_kst_iso(item.created_at),
                     yearStem=item.year_stem,
                     yearBranch=item.year_branch,
                     monthStem=item.month_stem,
@@ -370,10 +393,10 @@ async def export_saju_data(
             export_item = ExportSajuItem(
                 id=saju_db.id,
                 name=saju_db.name,
-                birth_datetime=saju_db.birth_datetime.isoformat(),
+                birth_datetime=convert_db_datetime_to_kst_iso(saju_db.birth_datetime),
                 gender=saju_db.gender,
                 saju=saju_dict,
-                created_at=saju_db.created_at.isoformat(),
+                created_at=convert_db_datetime_to_kst_iso(saju_db.created_at),
             )
             export_items.append(export_item)
 
@@ -661,7 +684,7 @@ async def get_saju_detail(id: str, db: Session = Depends(get_db)):
         response = SajuResponse(
             id=saju_db.id,
             name=saju_db.name,
-            birthDatetime=saju_db.birth_datetime.isoformat(),
+            birthDatetime=convert_db_datetime_to_kst_iso(saju_db.birth_datetime),
             gender=saju_db.gender,
             yearStem=saju_db.year_stem,
             yearBranch=saju_db.year_branch,
@@ -673,7 +696,7 @@ async def get_saju_detail(id: str, db: Session = Depends(get_db)):
             hourBranch=saju_db.hour_branch,
             daeunList=daeun_list,
             fortuneLevel=fortune_level_str,
-            createdAt=saju_db.created_at.isoformat(),
+            createdAt=convert_db_datetime_to_kst_iso(saju_db.created_at),
         )
 
         return response

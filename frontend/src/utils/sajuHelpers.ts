@@ -81,16 +81,28 @@ export const getGenderLabel = (gender: string): string => {
 // 日付フォーマット（ISO 8601 → 日本語表記）
 export const formatBirthDateTime = (isoString: string): string => {
   // ISO文字列から直接パース（タイムゾーン変換を避ける）
-  // 形式: "1977-11-07T12:00:00+09:00" または "1977-11-07T12:00:00Z"
-  const match = isoString.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+  // 形式: "1977-11-07T12:00:00+09:00" または "1977-11-07T12:00:00Z" または "1977-11-07T12:00:00.000+09:00"
+  // ミリ秒を含む形式にも対応（6桁まで）
+  const match = isoString.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?([+-]\d{2}:\d{2}|Z)?/);
 
   if (!match) {
-    // フォールバック：Dateオブジェクトを使用
-    const date = new Date(isoString);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}年${month}月${day}日 時間不明`;
+    // フォールバック：正規表現にマッチしない場合（異常な形式）
+    // この場合、可能な限り日付を抽出するが、完全な正確性は保証できない
+    console.warn('[formatBirthDateTime] ISO文字列が標準形式ではありません:', isoString);
+    try {
+      // 日付部分のみを抽出する試み
+      const dateOnlyMatch = isoString.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (dateOnlyMatch) {
+        const year = parseInt(dateOnlyMatch[1], 10);
+        const month = parseInt(dateOnlyMatch[2], 10);
+        const day = parseInt(dateOnlyMatch[3], 10);
+        return `${year}年${month}月${day}日 時間不明`;
+      }
+      return '日付不明';
+    } catch (error) {
+      console.error('[formatBirthDateTime] ISO文字列のパースに失敗:', error, 'isoString:', isoString);
+      return '日付不明';
+    }
   }
 
   const year = parseInt(match[1], 10);

@@ -17,9 +17,9 @@ interface MonthFortuneScrollSectionProps {
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
     '大吉': '#FFD700',
-    '小吉': '#4CAF50',
     '吉': '#4CAF50',
-    '吉凶': '#9E9E9E',
+    '中吉': '#66bb6a',
+    '小吉': '#81c784',
     '平': '#9E9E9E',
     '凶': '#FF9800',
     '大凶': '#F44336',
