@@ -2,22 +2,22 @@
 import { Box, Typography } from '@mui/material';
 import { UNIFIED_CARD_STYLES } from '../../constants/cardStyles';
 
-// 五行カラー
+// 五行カラー（ブランディングガイドライン準拠）
 const ELEMENT_COLORS: Record<string, string> = {
-  wood: 'linear-gradient(135deg, #4CAF50, #66bb6a)',
-  fire: 'linear-gradient(135deg, #F44336, #ef5350)',
-  earth: 'linear-gradient(135deg, #FFB300, #ffa726)',
-  metal: 'linear-gradient(135deg, #9E9E9E, #BDBDBD)',
-  water: 'linear-gradient(135deg, #424242, #616161)',
+  wood: '#388E3C',   // 木 - 緑
+  fire: '#D32F2F',   // 火 - 赤
+  earth: '#F57C00',  // 土 - オレンジ
+  metal: '#BDBDBD',  // 金 - グレー
+  water: '#1976D2',  // 水 - 青
 };
 
-// 吉凶カラー
+// 吉凶カラー（ブランディングガイドライン準拠）
 const FORTUNE_COLORS: Record<number, { bg: string; color: string }> = {
-  5: { bg: '#FFD700', color: '#1a1a2e' }, // 大吉
-  4: { bg: '#4CAF50', color: 'white' },   // 吉
-  3: { bg: '#9E9E9E', color: 'white' },   // 平
-  2: { bg: '#FF9800', color: 'white' },   // 凶
-  1: { bg: '#F44336', color: 'white' },   // 大凶
+  5: { bg: '#FFD700', color: '#212121' }, // 大吉（ゴールド）
+  4: { bg: '#388E3C', color: 'white' },   // 吉（木 - 緑）
+  3: { bg: '#757575', color: 'white' },   // 平（グレー）
+  2: { bg: '#F57C00', color: 'white' },   // 凶（土 - オレンジ）
+  1: { bg: '#D32F2F', color: 'white' },   // 大凶（火 - 赤）
 };
 
 const FORTUNE_LABELS: Record<number, string> = {

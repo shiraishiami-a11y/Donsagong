@@ -12,16 +12,16 @@ interface DayFortuneScrollSectionProps {
   month: number;
 }
 
-// 吉凶カラーを取得（境界線用）
+// 吉凶カラーを取得（ブランディングガイドライン準拠）
 const getFortuneColorSolid = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
-    '大吉': '#FFD700',
-    '吉': '#4CAF50',
-    '中吉': '#66bb6a',
-    '小吉': '#81c784',
-    '平': '#9E9E9E',
-    '凶': '#FF9800',
-    '大凶': '#F44336',
+    '大吉': '#FFD700',   // ゴールド
+    '吉': '#388E3C',     // 木 - 緑
+    '中吉': '#388E3C',   // 木 - 緑
+    '小吉': '#388E3C',   // 木 - 緑
+    '平': '#757575',     // グレー
+    '凶': '#F57C00',     // 土 - オレンジ
+    '大凶': '#D32F2F',   // 火 - 赤
   };
   return colorMap[fortuneLevel];
 };

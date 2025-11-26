@@ -2,31 +2,32 @@
 
 import type { FiveElement, FortuneLevel } from '../types';
 
-// 五行要素からカラーを取得
+// 五行要素からカラーを取得（ブランディングガイドライン準拠）
 export const getElementColor = (element?: FiveElement): string => {
-  if (!element) return '#9E9E9E';
+  if (!element) return '#757575';
 
+  // 五行カラー（原色）- requirements.md準拠
   const colorMap: Record<FiveElement, string> = {
-    wood: 'linear-gradient(135deg, #4CAF50, #66bb6a)',
-    fire: 'linear-gradient(135deg, #F44336, #ef5350)',
-    earth: 'linear-gradient(135deg, #FFB300, #ffa726)',
-    metal: 'linear-gradient(135deg, #9E9E9E, #BDBDBD)',
-    water: 'linear-gradient(135deg, #424242, #616161)',
+    wood: '#388E3C',   // 木 - 緑
+    fire: '#D32F2F',   // 火 - 赤
+    earth: '#F57C00',  // 土 - オレンジ
+    metal: '#BDBDBD',  // 金 - グレー
+    water: '#1976D2',  // 水 - 青
   };
 
   return colorMap[element];
 };
 
-// 吉凶レベルからカラーを取得（7段階システム対応）
+// 吉凶レベルからカラーを取得（ブランディングガイドライン準拠）
 export const getFortuneColor = (fortuneLevel: FortuneLevel): string => {
   const colorMap: Record<FortuneLevel, string> = {
-    '大吉': 'linear-gradient(45deg, #FFD700, #FFA500)',
-    '吉': 'linear-gradient(45deg, #4CAF50, #66bb6a)',
-    '中吉': 'linear-gradient(45deg, #66bb6a, #81c784)',
-    '小吉': 'linear-gradient(45deg, #81c784, #a5d6a7)',
-    '平': 'linear-gradient(45deg, #9E9E9E, #BDBDBD)',
-    '凶': 'linear-gradient(45deg, #FF9800, #ffb74d)',
-    '大凶': 'linear-gradient(45deg, #F44336, #ef5350)',
+    '大吉': '#FFD700',   // ゴールド
+    '吉': '#388E3C',     // 木 - 緑
+    '中吉': '#388E3C',   // 木 - 緑
+    '小吉': '#388E3C',   // 木 - 緑
+    '平': '#757575',     // グレー
+    '凶': '#F57C00',     // 土 - オレンジ
+    '大凶': '#D32F2F',   // 火 - 赤
   };
 
   return colorMap[fortuneLevel];
