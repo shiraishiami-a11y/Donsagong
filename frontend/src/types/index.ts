@@ -44,6 +44,14 @@ export interface BirthDataRequest {
   timezoneOffset?: number; // KST = 9
 }
 
+// 命式更新用リクエスト型（Phase 2-A: 命式修正機能）
+export interface SajuUpdateRequest {
+  name?: string;
+  birthDatetime: string; // ISO 8601 format
+  gender: 'male' | 'female';
+  timezoneOffset?: number; // KST = 9
+}
+
 export interface SajuResponse {
   id: string;
   name?: string;

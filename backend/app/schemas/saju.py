@@ -31,6 +31,26 @@ class BirthDataRequest(BaseModel):
             raise ValueError("birthDatetimeはISO 8601形式である必要があります")
 
 
+class SajuUpdateRequest(BaseModel):
+    """命式更新リクエスト（Phase 2-A: 命式修正機能）"""
+
+    name: Optional[str] = Field(None, description="名前（オプション）")
+    birthDatetime: str = Field(..., description="生年月日時（ISO 8601形式）")
+    gender: Literal["male", "female"] = Field(..., description="性別")
+    timezoneOffset: Optional[int] = Field(9, description="タイムゾーンオフセット（KST=9）")
+
+    @field_validator("birthDatetime")
+    @classmethod
+    def validate_datetime(cls, v: str) -> str:
+        """ISO 8601形式の日時をバリデーション"""
+        try:
+            # ISO 8601パース可能かチェック
+            datetime.fromisoformat(v.replace("Z", "+00:00"))
+            return v
+        except ValueError:
+            raise ValueError("birthDatetimeはISO 8601形式である必要があります")
+
+
 # ==================== レスポンススキーマ ====================
 
 

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ListPage - 編集ボタン付きSajuCard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: white;
+      min-height: 100vh;
+      padding: 0;
+      padding-bottom: 100px; /* BottomNavigation分の余白 */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+      color: white;
+      padding: 20px 32px;
+      border-radius: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+      margin-bottom: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    @media (min-width: 768px) {
+      .header {
+        border-radius: 0 0 16px 16px;
+      }
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .header-button {
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .header-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .saju-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .saju-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      border-color: #D4AF37;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .card-title-section {
+      flex: 1;
+    }
+
+    .card-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .card-gender {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-button {
+      background: #f5f5f5;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .icon-button.edit:hover {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .icon-button.delete:hover {
+      background: #ffebee;
+      color: #f44336;
+    }
+
+    .card-birth {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .annotation {
+      position: absolute;
+      background: #1976d2;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+      z-index: 10;
+    }
+
+    .annotation::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid #1976d2;
+    }
+
+    .annotation-1 {
+      top: 180px;
+      left: -280px;
+    }
+
+    .annotation-2 {
+      top: 250px;
+      right: -280px;
+    }
+
+    .annotation-2::after {
+      right: auto;
+      left: -8px;
+      border-left: none;
+      border-right: 8px solid #1976d2;
+    }
+
+    /* BottomNavigation */
+    .bottom-navigation {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: #666;
+      min-width: 80px;
+    }
+
+    .nav-item:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 12px;
+    }
+
+    .nav-item.active {
+      color: #D4AF37;
+    }
+
+    .nav-item .material-icons {
+      font-size: 28px;
+    }
+
+    .nav-label {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .annotation {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="material-icons header-button">arrow_back</span>
+      <h1>保存した命式</h1>
+      <span class="material-icons header-button">settings</span>
+    </div>
+
+    <div class="card-grid">
+      <!-- カード1: 編集ボタンを強調 -->
+      <div class="saju-card" style="position: relative;">
+        <div class="annotation annotation-1">
+          ✨ 編集ボタンを追加<br>鉛筆アイコンで一目でわかる
+        </div>
+        <div class="card-header">
+          <div class="card-title-section">
+            <div class="card-name">白石亜美</div>
+            <div class="card-gender">👩 女性</div>
+          </div>
+          <div class="card-actions">
+            <button class="icon-button edit" title="編集">
+              <span class="material-icons" style="font-size: 18px;">edit</span>
+            </button>
+            <button class="icon-button delete" title="削除">
+              <span class="material-icons" style="font-size: 18px;">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-birth">1990年1月15日 14:30</div>
+      </div>
+
+      <!-- カード2: ボタン配置を強調 -->
+      <div class="saju-card" style="position: relative;">
+        <div class="annotation annotation-2">
+          削除ボタンの横に配置<br>操作が直感的
+        </div>
+        <div class="card-header">
+          <div class="card-title-section">
+            <div class="card-name">山田太郎</div>
+            <div class="card-gender">👨 男性</div>
+          </div>
+          <div class="card-actions">
+            <button class="icon-button edit" title="編集">
+              <span class="material-icons" style="font-size: 18px;">edit</span>
+            </button>
+            <button class="icon-button delete" title="削除">
+              <span class="material-icons" style="font-size: 18px;">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-birth">1985年6月20日 10:15</div>
+      </div>
+
+      <!-- カード3: 通常状態 -->
+      <div class="saju-card">
+        <div class="card-header">
+          <div class="card-title-section">
+            <div class="card-name">佐藤花子</div>
+            <div class="card-gender">👩 女性</div>
+          </div>
+          <div class="card-actions">
+            <button class="icon-button edit" title="編集">
+              <span class="material-icons" style="font-size: 18px;">edit</span>
+            </button>
+            <button class="icon-button delete" title="削除">
+              <span class="material-icons" style="font-size: 18px;">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-birth">1992年12月5日 時刻不明</div>
+      </div>
+
+      <!-- カード4: 通常状態 -->
+      <div class="saju-card">
+        <div class="card-header">
+          <div class="card-title-section">
+            <div class="card-name">鈴木一郎</div>
+            <div class="card-gender">👨 男性</div>
+          </div>
+          <div class="card-actions">
+            <button class="icon-button edit" title="編集">
+              <span class="material-icons" style="font-size: 18px;">edit</span>
+            </button>
+            <button class="icon-button delete" title="削除">
+              <span class="material-icons" style="font-size: 18px;">delete</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-birth">1978年3月10日 08:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BottomNavigation -->
+  <div class="bottom-navigation">
+    <a href="/" class="nav-item">
+      <span class="material-icons">auto_awesome</span>
+      <span class="nav-label">命式記入</span>
+    </a>
+    <a href="/list" class="nav-item active">
+      <span class="material-icons">content_paste</span>
+      <span class="nav-label">命式一覧</span>
+    </a>
+    <a href="/settings" class="nav-item">
+      <span class="material-icons">settings</span>
+      <span class="nav-label">設定</span>
+    </a>
+  </div>
+
+  <script>
+    // ホバーエフェクト
+    document.querySelectorAll('.icon-button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const action = button.classList.contains('edit') ? '編集' : '削除';
+        console.log(`${action}ボタンがクリックされました`);
+      });
+    });
+
+    document.querySelectorAll('.saju-card').forEach(card => {
+      card.addEventListener('click', () => {
+        console.log('カードがクリックされました - 詳細ページに遷移');
+      });
+    });
+  </script>
+</body>
+</html>

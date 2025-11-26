@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>編集モーダルダイアログ - 命式修正</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      background: white;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* オーバーレイ（背景ぼかし） */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    /* モーダルダイアログ */
+    .modal-dialog {
+      background: white;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* モーダルヘッダー */
+    .modal-header {
+      padding: 24px 32px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      color: #666;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    /* モーダルコンテンツ */
+    .modal-content {
+      padding: 32px;
+    }
+
+    /* フォーム */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .form-input:hover {
+      border-color: #D4AF37;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    /* 日付・時刻入力 */
+    .datetime-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .datetime-group .form-input {
+      flex: 1;
+    }
+
+    /* 時刻不明チェックボックス */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #D4AF37;
+      cursor: pointer;
+    }
+
+    .checkbox-wrapper label {
+      font-size: 16px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    /* 性別選択 */
+    .gender-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .gender-option {
+      flex: 1;
+      padding: 18px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: white;
+    }
+
+    .gender-option:hover {
+      border-color: #D4AF37;
+      background: #fffbf0;
+    }
+
+    .gender-option.selected {
+      border-color: #D4AF37;
+      background: #D4AF37;
+      color: white;
+    }
+
+    .gender-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .gender-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    /* モーダルフッター */
+    .modal-footer {
+      padding: 24px 32px;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .button {
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+    }
+
+    .button-cancel {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .button-cancel:hover {
+      background: #e0e0e0;
+    }
+
+    .button-save {
+      background: #D4AF37;
+      color: white;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .button-save:hover {
+      background: #B8941C;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+    }
+
+    /* アノテーション */
+    .annotation {
+      position: absolute;
+      background: #1976d2;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+      z-index: 2000;
+    }
+
+    .annotation-1 {
+      top: 120px;
+      left: -250px;
+    }
+
+    .annotation-1::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: -8px;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid #1976d2;
+    }
+
+    .annotation-2 {
+      bottom: 100px;
+      right: -280px;
+    }
+
+    .annotation-2::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid #1976d2;
+    }
+
+    @media (max-width: 768px) {
+      .modal-dialog {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+      }
+
+      .annotation {
+        display: none;
+      }
+
+      .datetime-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- オーバーレイ -->
+  <div class="modal-overlay" onclick="closeModal(event)">
+    <!-- モーダルダイアログ -->
+    <div class="modal-dialog" onclick="event.stopPropagation()" style="position: relative;">
+      <!-- アノテーション -->
+      <div class="annotation annotation-1">
+        ✨ すべての項目を編集可能<br>
+        名前・生年月日時・性別
+      </div>
+      <div class="annotation annotation-2">
+        保存すると四柱推命を<br>
+        自動で再計算します
+      </div>
+
+      <!-- ヘッダー -->
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="material-icons" style="color: #D4AF37;">edit</span>
+          命式を編集
+        </div>
+        <button class="modal-close" onclick="closeModal()">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+
+      <!-- コンテンツ -->
+      <div class="modal-content">
+        <form id="editForm">
+          <!-- 名前 -->
+          <div class="form-group">
+            <label class="form-label">名前（任意）</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="白石亜美"
+              value="白石亜美"
+            />
+          </div>
+
+          <!-- 生年月日時 -->
+          <div class="form-group">
+            <label class="form-label">生年月日時</label>
+            <div class="datetime-group">
+              <input
+                type="date"
+                class="form-input"
+                value="1990-01-15"
+              />
+              <input
+                type="time"
+                class="form-input"
+                value="14:30"
+                id="timeInput"
+              />
+            </div>
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="timeUnknown" onchange="toggleTime()">
+              <label for="timeUnknown">時刻不明（正午12:00で計算）</label>
+            </div>
+          </div>
+
+          <!-- 性別 -->
+          <div class="form-group">
+            <label class="form-label">性別</label>
+            <div class="gender-group">
+              <div class="gender-option" onclick="selectGender(this, 'male')">
+                <div class="gender-icon">👨</div>
+                <div class="gender-label">男性</div>
+              </div>
+              <div class="gender-option selected" onclick="selectGender(this, 'female')">
+                <div class="gender-icon">👩</div>
+                <div class="gender-label" style="color: white;">女性</div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- フッター -->
+      <div class="modal-footer">
+        <button class="button button-cancel" onclick="closeModal()">
+          キャンセル
+        </button>
+        <button class="button button-save" onclick="saveEdit()">
+          保存
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let selectedGender = 'female';
+
+    function closeModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      console.log('モーダルを閉じます');
+      // 実際のアプリでは、ここでモーダルを非表示にする
+    }
+
+    function selectGender(element, gender) {
+      // すべての選択を解除
+      document.querySelectorAll('.gender-option').forEach(option => {
+        option.classList.remove('selected');
+        const label = option.querySelector('.gender-label');
+        label.style.color = '';
+      });
+
+      // 選択された要素をハイライト
+      element.classList.add('selected');
+      element.querySelector('.gender-label').style.color = 'white';
+      selectedGender = gender;
+      console.log('性別を選択:', gender);
+    }
+
+    function toggleTime() {
+      const timeInput = document.getElementById('timeInput');
+      const checkbox = document.getElementById('timeUnknown');
+      timeInput.disabled = checkbox.checked;
+      timeInput.style.opacity = checkbox.checked ? '0.5' : '1';
+      if (checkbox.checked) {
+        console.log('時刻不明を選択（正午12:00で計算）');
+      }
+    }
+
+    function saveEdit() {
+      console.log('命式を保存します');
+      console.log('性別:', selectedGender);
+      // 実際のアプリでは、ここでAPIを呼び出す
+      alert('命式を更新しました（デモ）');
+    }
+
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

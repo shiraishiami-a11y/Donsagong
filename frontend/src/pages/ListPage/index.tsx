@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/hooks/useAuth';
 import { BottomNavigation } from '../../components/BottomNavigation';
 import { SajuCard } from './components/SajuCard';
+import { EditSajuModal } from './components/EditSajuModal';
 import { getSajuList, deleteSaju } from '../../services/api/sajuListService';
 import type { SajuSummary } from '../../types';
 
@@ -18,6 +19,8 @@ export const ListPage: React.FC = () => {
   const [sajuList, setSajuList] = useState<SajuSummary[]>([]);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [targetDeleteId, setTargetDeleteId] = useState<string | null>(null);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [targetEditSaju, setTargetEditSaju] = useState<SajuSummary | null>(null);
 
   // データ読み込み
   useEffect(() => {
@@ -48,7 +51,26 @@ export const ListPage: React.FC = () => {
   };
 
   const handleEdit = (id: string) => {
-    navigate(`/edit/${id}`);
+    const targetSaju = sajuList.find(saju => saju.id === id);
+    if (targetSaju) {
+      setTargetEditSaju(targetSaju);
+      setEditModalOpen(true);
+    }
+  };
+
+  const handleEditModalClose = () => {
+    setEditModalOpen(false);
+    setTargetEditSaju(null);
+  };
+
+  const handleEditModalSaved = async () => {
+    // リストを再読み込み
+    try {
+      const updatedList = await getSajuList();
+      setSajuList(updatedList);
+    } catch (error) {
+      console.error('命式一覧の再読み込みに失敗しました:', error);
+    }
   };
 
   const handleDelete = (id: string) => {
@@ -242,6 +264,14 @@ export const ListPage: React.FC = () => {
           </Box>
         )}
       </Box>
+
+      {/* 編集モーダル */}
+      <EditSajuModal
+        open={editModalOpen}
+        sajuData={targetEditSaju}
+        onClose={handleEditModalClose}
+        onSaved={handleEditModalSaved}
+      />
 
       {/* 削除確認ダイアログ */}
       <Dialog

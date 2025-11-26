@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f5;
+      background: white;
     }
 
     /* コンテナ */
@@ -22,28 +22,32 @@
       max-width: 100%;
       margin: 0 auto;
       min-height: 100vh;
-      padding-bottom: 80px;
+      padding-bottom: 100px;
     }
 
     @media (min-width: 768px) {
       .container {
-        max-width: 600px;
-        padding: 0 24px 80px;
+        max-width: 900px;
+        padding-bottom: 110px;
       }
     }
 
     @media (min-width: 1200px) {
       .container {
-        max-width: 800px;
-        padding: 0 40px 80px;
+        max-width: 1400px;
       }
     }
 
     /* ヘッダー */
     .header {
-      background: white;
-      padding: 20px;
-      border-bottom: 2px solid #D4AF37;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8941C 100%);
+      color: white;
+      padding: 20px 32px;
+      border-radius: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -51,7 +55,6 @@
 
     @media (min-width: 768px) {
       .header {
-        padding: 24px 40px;
         border-radius: 0 0 16px 16px;
       }
     }
@@ -59,7 +62,9 @@
     .header-title {
       font-size: 20px;
       font-weight: 700;
-      color: #1a1a2e;
+      color: white;
+      flex: 1;
+      text-align: center;
     }
 
     @media (min-width: 768px) {
@@ -70,7 +75,8 @@
 
     .header-subtitle {
       font-size: 12px;
-      color: #666;
+      color: white;
+      opacity: 0.9;
       margin-top: 4px;
     }
 
@@ -80,6 +86,25 @@
       }
     }
 
+    .header-button {
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-button:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
     /* 設定セクション */
     .settings-container {
       padding: 20px;
@@ -87,7 +112,13 @@
 
     @media (min-width: 768px) {
       .settings-container {
-        padding: 30px 0;
+        padding: 30px 24px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .settings-container {
+        padding: 30px 40px;
       }
     }
 
@@ -297,6 +328,9 @@
       padding: 24px;
       color: white;
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
     @media (min-width: 768px) {
@@ -304,6 +338,7 @@
         border-radius: 20px;
         padding: 32px;
         margin-bottom: 30px;
+        gap: 20px;
       }
     }
 
@@ -318,7 +353,7 @@
       justify-content: center;
       font-size: 28px;
       font-weight: 700;
-      margin-bottom: 12px;
+      flex-shrink: 0;
     }
 
     @media (min-width: 768px) {
@@ -326,14 +361,18 @@
         width: 80px;
         height: 80px;
         font-size: 36px;
-        margin-bottom: 16px;
       }
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .user-name {
       font-size: 20px;
       font-weight: 700;
-      margin-bottom: 4px;
     }
 
     @media (min-width: 768px) {
@@ -362,62 +401,41 @@
       display: flex;
       justify-content: space-around;
       background: white;
-      padding: 12px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-    }
-
-    @media (min-width: 768px) {
-      .bottom-nav {
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 600px;
-        border-radius: 24px 24px 0 0;
-        padding: 16px;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .bottom-nav {
-        max-width: 800px;
-      }
+      padding: 12px 0;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+      z-index: 100;
     }
 
     .nav-item {
-      flex: 1;
-      text-align: center;
-      padding: 8px;
-      color: #999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 24px;
+      color: #666;
       cursor: pointer;
       transition: all 0.2s;
-      border-radius: 12px;
+      text-decoration: none;
+      min-width: 80px;
       font-size: 12px;
-    }
-
-    @media (min-width: 768px) {
-      .nav-item {
-        padding: 12px;
-        font-size: 14px;
-      }
     }
 
     .nav-item.active {
       color: #D4AF37;
-      background: #fffbf0;
     }
 
     .nav-item:hover {
-      color: #D4AF37;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 12px;
     }
 
     .nav-icon {
-      font-size: 24px;
-      margin-bottom: 4px;
+      font-size: 28px;
     }
 
-    @media (min-width: 768px) {
-      .nav-icon {
-        font-size: 28px;
-      }
+    .nav-label {
+      font-size: 12px;
+      font-weight: 500;
     }
 
     /* 表示モードインジケータ */
@@ -457,16 +475,23 @@
   <div class="container">
     <!-- ヘッダー -->
     <div class="header">
-      <h1 class="header-title">⚙️ 設定</h1>
-      <div class="header-subtitle">アカウント管理と各種設定</div>
+      <button class="header-button" onclick="history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+      </button>
+      <h1 class="header-title">設定</h1>
+      <div style="width: 48px;"></div> <!-- スペーサー -->
     </div>
 
     <div class="settings-container">
       <!-- ユーザー情報カード -->
       <div class="user-card">
         <div class="user-avatar">白</div>
-        <div class="user-name">白石</div>
-        <div class="user-email">test@goldensaju.local</div>
+        <div class="user-info">
+          <div class="user-name">白石</div>
+          <div class="user-email">test@goldensaju.local</div>
+        </div>
       </div>
 
       <!-- アカウント設定 -->
@@ -607,18 +632,18 @@
 
   <!-- ボトムナビ -->
   <div class="bottom-nav">
-    <div class="nav-item">
-      <div class="nav-icon">✨</div>
-      <div>命式記入</div>
-    </div>
-    <div class="nav-item">
-      <div class="nav-icon">📋</div>
-      <div>命式一覧</div>
-    </div>
-    <div class="nav-item active">
-      <div class="nav-icon">⚙️</div>
-      <div>設定</div>
-    </div>
+    <a href="/" class="nav-item">
+      <span class="nav-icon">✨</span>
+      <span class="nav-label">命式記入</span>
+    </a>
+    <a href="/list" class="nav-item">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">命式一覧</span>
+    </a>
+    <a href="/settings" class="nav-item active">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">設定</span>
+    </a>
   </div>
 
   <!-- 表示モードインジケータ -->
@@ -642,14 +667,6 @@
         alert('ログアウトしました');
       }
     }
-
-    // ナビゲーション
-    document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', function() {
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
   </script>
 </body>
 </html>

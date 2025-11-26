@@ -30,7 +30,7 @@ test('E2E-CHAIN-001-S1: 正常系 - 男性、1990年3月15日14時30分生まれ
 
   // 2-5. 入力フォーム入力
   // 名前入力
-  const nameInput = page.locator('input[placeholder="例: 山田 太郎"]');
+  const nameInput = page.locator('input[data-testid="name"]');
   await nameInput.fill('テスト太郎');
 
   // 生年月日: spinbutton要素をクリア→入力（MUI DatePickerの実装）
@@ -61,7 +61,7 @@ test('E2E-CHAIN-001-S1: 正常系 - 男性、1990年3月15日14時30分生まれ
   await minutesInput.fill('30');
 
   // 性別: 男性を選択
-  await page.locator('input[value="male"]').check();
+  await page.locator('[data-testid="gender-male"]').click();
 
   // 6. 計算ボタンクリック前にAPI待機を開始
   const calculateResponsePromise = page.waitForResponse(

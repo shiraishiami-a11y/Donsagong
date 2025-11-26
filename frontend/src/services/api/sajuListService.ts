@@ -32,39 +32,51 @@ interface PaginatedResponse<T> {
 
 /**
  * 命式一覧取得
+ * ログイン状態に応じてAPIまたはLocalStorageから取得
  * @returns 命式サマリーの配列
  * @throws ApiError
  */
 export async function getSajuList(): Promise<SajuSummary[]> {
-  // まずLocalStorageから取得を試みる（ゲストモード優先）
-  const localData = localStorage.getItem('saju_data');
+  // ログイン状態をチェック（authオブジェクトの有無）
+  const authData = localStorage.getItem('auth');
+  const token = authData ? JSON.parse(authData).token : null;
 
-  if (localData) {
+  if (token) {
+    // ログイン中：APIから取得
     try {
-      const sajuList: SajuSummary[] = JSON.parse(localData);
-      console.log('[getSajuList] LocalStorageから取得:', sajuList.length, '件');
-      return sajuList;
-    } catch (parseError) {
-      console.error('[getSajuList] LocalStorageのパースに失敗:', parseError);
-      // パースエラーの場合、LocalStorageをクリアして続行
-      localStorage.removeItem('saju_data');
+      const response = await apiGet<PaginatedResponse<SajuSummary>>('/api/saju/list');
+
+      if (!response.data) {
+        throw new Error('命式一覧の取得に失敗しました');
+      }
+
+      console.log('[getSajuList] APIから取得（ログイン中）:', response.data.items.length, '件');
+      // ページネーション形式から items を抽出
+      return response.data.items;
+    } catch (error: any) {
+      console.error('[getSajuList] API取得エラー:', error);
+      // APIエラーの場合は空配列を返す
+      return [];
     }
-  }
+  } else {
+    // ゲストモード：LocalStorageから取得
+    const localData = localStorage.getItem('saju_data');
 
-  // LocalStorageにデータがない場合、APIから取得を試みる（ログインユーザー用）
-  try {
-    const response = await apiGet<PaginatedResponse<SajuSummary>>('/api/saju/list');
-
-    if (!response.data) {
-      throw new Error('命式一覧の取得に失敗しました');
+    if (localData) {
+      try {
+        const sajuList: SajuSummary[] = JSON.parse(localData);
+        console.log('[getSajuList] LocalStorageから取得（ゲストモード）:', sajuList.length, '件');
+        return sajuList;
+      } catch (parseError) {
+        console.error('[getSajuList] LocalStorageのパースに失敗:', parseError);
+        // パースエラーの場合、LocalStorageをクリアして空配列を返す
+        localStorage.removeItem('saju_data');
+        return [];
+      }
     }
 
-    console.log('[getSajuList] APIから取得:', response.data.items.length, '件');
-    // ページネーション形式から items を抽出
-    return response.data.items;
-  } catch (error: any) {
-    console.error('[getSajuList] API取得エラー:', error);
-    // APIエラーの場合は空配列を返す（LocalStorageも空だった場合）
+    // LocalStorageも空の場合は空配列
+    console.log('[getSajuList] データなし（ゲストモード）');
     return [];
   }
 }

@@ -32,6 +32,7 @@ from app.schemas.saju import (
     MonthFortuneListResponse,
     SajuListResponse,
     SajuSummary,
+    SajuUpdateRequest,
     SaveResponse,
     SajuResponse,
     YearFortuneInfo,
@@ -707,6 +708,139 @@ async def get_saju_detail(id: str, db: Session = Depends(get_db)):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"命式詳細取得中にエラーが発生しました: {str(e)}",
+        )
+
+
+@router.put(
+    "/{id}",
+    response_model=SajuResponse,
+    status_code=status.HTTP_200_OK,
+    responses={
+        401: {"model": ErrorResponse, "description": "認証が必要です"},
+        403: {"model": ErrorResponse, "description": "この命式にアクセスする権限がありません"},
+        404: {"model": ErrorResponse, "description": "命式が見つかりません"},
+    },
+)
+async def update_saju(
+    id: str,
+    update_data: SajuUpdateRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    命式更新エンドポイント（Phase 2-A: 命式修正機能）
+
+    指定された命式IDのデータを更新
+    認証必須、自分の命式のみ更新可能
+
+    生年月日時・性別が変更された場合は四柱推命を自動で再計算
+    名前のみ変更の場合は再計算不要
+    """
+    try:
+        # DBから命式を取得
+        saju_db = db.query(SajuModel).filter(SajuModel.id == id).first()
+
+        # 存在チェック
+        if not saju_db:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="命式が見つかりません"
+            )
+
+        # 権限チェック（自分の命式のみ更新可能）
+        if saju_db.user_id != current_user.id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="この命式にアクセスする権限がありません"
+            )
+
+        # 新しい生年月日時をdatetimeオブジェクトに変換
+        new_birth_datetime = datetime.fromisoformat(update_data.birthDatetime.replace("Z", "+00:00"))
+
+        # 変更検出: 生年月日時または性別が変更されたか
+        birth_datetime_changed = new_birth_datetime != saju_db.birth_datetime
+        gender_changed = update_data.gender != saju_db.gender
+        needs_recalculation = birth_datetime_changed or gender_changed
+
+        if needs_recalculation:
+            # 四柱推命を再計算
+            calculator = get_calculator()
+            result = calculator.calculate(new_birth_datetime, update_data.gender, update_data.name)
+
+            # 命式データを更新
+            saju_db.name = update_data.name
+            saju_db.birth_datetime = new_birth_datetime
+            saju_db.gender = update_data.gender
+            saju_db.year_stem = result["yearStem"]
+            saju_db.year_branch = result["yearBranch"]
+            saju_db.month_stem = result["monthStem"]
+            saju_db.month_branch = result["monthBranch"]
+            saju_db.day_stem = result["dayStem"]
+            saju_db.day_branch = result["dayBranch"]
+            saju_db.hour_stem = result["hourStem"]
+            saju_db.hour_branch = result["hourBranch"]
+
+            # 大運リストを更新
+            daeun_list = []
+            for daeun in result["daeunList"]:
+                daeun["sajuId"] = id
+                daeun_list.append(DaeunInfo(**daeun))
+
+            saju_db.daeun_list = json.dumps([d.model_dump() for d in daeun_list], ensure_ascii=False)
+
+            # 吉凶レベルを更新
+            fortune_level_map = {"大凶": 1, "凶": 2, "平": 3, "吉凶": 4, "吉": 5, "小吉": 6, "大吉": 7}
+            saju_db.fortune_level = fortune_level_map.get(result["fortuneLevel"], 3)
+
+        else:
+            # 名前のみ変更（再計算不要）
+            saju_db.name = update_data.name
+
+        # 更新日時を設定
+        saju_db.updated_at = datetime.now()
+
+        # データベースに保存
+        db.commit()
+        db.refresh(saju_db)
+
+        # 吉凶レベルを文字列に変換
+        fortune_level_reverse_map = {1: "大凶", 2: "凶", 3: "平", 4: "吉凶", 5: "吉", 6: "小吉", 7: "大吉"}
+        fortune_level_str = fortune_level_reverse_map.get(saju_db.fortune_level, "平")
+
+        # daeunListをJSONから復元
+        daeun_list_data = json.loads(saju_db.daeun_list) if saju_db.daeun_list else []
+        daeun_list_response = [DaeunInfo(**d) for d in daeun_list_data]
+
+        # レスポンス構築
+        response = SajuResponse(
+            id=saju_db.id,
+            name=saju_db.name,
+            birthDatetime=convert_db_datetime_to_kst_iso(saju_db.birth_datetime),
+            gender=saju_db.gender,
+            yearStem=saju_db.year_stem,
+            yearBranch=saju_db.year_branch,
+            monthStem=saju_db.month_stem,
+            monthBranch=saju_db.month_branch,
+            dayStem=saju_db.day_stem,
+            dayBranch=saju_db.day_branch,
+            hourStem=saju_db.hour_stem,
+            hourBranch=saju_db.hour_branch,
+            daeunList=daeun_list_response,
+            fortuneLevel=fortune_level_str,
+            createdAt=convert_db_datetime_to_kst_iso(saju_db.created_at),
+        )
+
+        return response
+
+    except HTTPException:
+        raise
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"更新中にエラーが発生しました: {str(e)}"
         )
 
 

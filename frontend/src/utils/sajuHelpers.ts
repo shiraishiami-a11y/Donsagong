@@ -111,13 +111,7 @@ export const formatBirthDateTime = (isoString: string): string => {
   const hour = parseInt(match[4], 10);
   const minute = parseInt(match[5], 10);
 
-  // 時刻が12:00または00:00の場合は「時間不明」と判定（デフォルト値のため）
-  const isTimeUnknown = (hour === 12 && minute === 0) || (hour === 0 && minute === 0);
-
-  if (isTimeUnknown) {
-    return `${year}年${month}月${day}日 時間不明`;
-  }
-
+  // 時刻を表示（12:00や00:00も正当な時刻として扱う）
   return `${year}年${month}月${day}日 ${hour}:${minute.toString().padStart(2, '0')}`;
 };
 
